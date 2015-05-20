@@ -1,0 +1,5 @@
+* Item 																																:drill:
+%^{question}
+** Definitions
++ %^{word} :: %^{furigana}
+%^{definition}

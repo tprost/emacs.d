@@ -4,8 +4,8 @@
 ;; (require 'org-drill)
 (setq org-drill-add-random-noise-to-intervals-p t)
 
-(defun add-my-org-mode-keys ()
-  (local-set-key (kbd "C-c d") 'org-drill)
-    (local-set-key (kbd "C-c r") 'org-drill-resume))
+(defun my-org-mode-hook ()
+	(local-set-key (kbd "C-c d") 'org-drill)
+	(local-set-key (kbd "C-c r") 'org-drill-resume))
 
-(add-hook 'org-mode-hook 'add-my-org-mode-keys)
+(add-hook 'org-mode-hook 'my-org-mode-hook)
