@@ -1,8 +1,40 @@
+(defun set-frame-size-to-80-36 ()
+	(interactive)
+	(when window-system (set-frame-size (selected-frame) 80 36)))
 
-(global-set-key (kbd "C-@") 'er/expand-region)
+(defun move-line-down ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines 1))
+    (forward-line)
+    (move-to-column col)))
 
-(global-set-key (kbd "<C-S-down>") 'move-text-down)
-(global-set-key (kbd "<C-S-up>") 'move-text-up)
+(defun move-line-up ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines -1))
+    (move-to-column col)))
+
+(global-set-key (kbd "<C-S-down>") 'move-line-down)
+(global-set-key (kbd "<C-S-up>") 'move-line-up)
+
+(defun open-line-below ()
+  (interactive)
+  (end-of-line)
+  (newline)
+  (indent-for-tab-command))
+
+(defun open-line-above ()
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (forward-line -1)
+  (indent-for-tab-command))
+
 (defun open-my-emacs-file ()
   (interactive)
   ;;; Place your code below this line, but inside the bracket.
@@ -11,7 +43,7 @@
 
 (defun open-my-japanese-file ()
   (interactive)
-  (find-file "~/org/japanese.org"))
+  (find-file "~/org/drill/japanese.org"))
 
 ;; (dolist (key '("s-a" "s-b" "s-c" "s-d" "s-e" "s-f" "s-g"
 ;;                "s-h" "s-i" "s-j" "s-k" "s-l" "s-m" "s-n"
@@ -61,25 +93,24 @@
 (global-set-key (kbd "s-|") nil) ;; shell-command-on-region
 (global-set-key (kbd "s-~") nil) ;; ns-prev-frame
 
-
-(global-set-key (kbd "<f9> <f6>") 'visual-line-mode)
-(global-set-key (kbd "<f9> <f7>") 'org-capture)
-(global-set-key (kbd "<f9> <f8>") 'whitespace-mode)
-(global-set-key (kbd "<f9> <f9>") 'shell)
-(global-set-key (kbd "<f9> <f10>") 'calendar)
-
-;; (global-set-key (kbd "<f9> 3") 'emacs-lisp-mode)
-;; (global-set-key (kbd "<f9> 4") 'python-mode)
-;; (global-set-key (kbd "<f9> 5") 'ruby-mode)
-;; (global-set-key (kbd "<f9> 6") 'html-mode)
-
- ;; (global-set-key (kbd "<f9> SPC") 'flyspell-buffer)
-
-(global-set-key (kbd "<f12> <f12>") 'open-my-emacs-file)
-(global-set-key (kbd "<f12> <f1>") 'open-my-japanese-file)
-
 (global-set-key (kbd "<f5>") 'cleanup-buffer)
 
-(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "<f12> c") 'calendar)
+(global-set-key (kbd "<f12> g") 'magit-status)
+(global-set-key (kbd "<f12> o") 'org-capture)
+(global-set-key (kbd "<f12> s") 'shell)
+(global-set-key (kbd "<f12> v") 'visual-line-mode)
+(global-set-key (kbd "<f12> w") 'whitespace-mode)
+(global-set-key (kbd "<f12> e") 'open-my-emacs-file)
+(global-set-key (kbd "<f12> j") 'open-my-japanese-file)
 
-;; eval-region
+(global-set-key (kbd "<f12> f") 'set-frame-size-to-80-36)
+
+(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "M-i") 'back-to-indentation)
+(global-set-key (kbd "M-m") 'iy-go-to-char)
+
+(global-set-key (kbd "C-@") 'er/expand-region)
+(global-set-key (kbd "<C-return>") 'open-line-below)
+(global-set-key (kbd "<C-S-return>") 'open-line-above)
+(global-set-key (kbd "M-`") 'other-frame)

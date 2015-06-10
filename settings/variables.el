@@ -1,6 +1,13 @@
-;; disable auto-save and auto-backup
-(setq auto-save-default nil)
-(setq make-backup-files nil)
+
+
+
+;; okay okay auto-save and backups
+(setq auto-save-default t)
+(setq make-backup-files t)
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 ;; 
 (setq electric-indent-mode nil)
