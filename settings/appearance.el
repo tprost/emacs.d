@@ -1,65 +1,79 @@
 ;; Disable the splash screen (to enable it agin, replace the t with 0)
 (setq inhibit-splash-screen 0)
 
-;; appearance config
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:height 160 :family "Monaco")))))
-;; show line numbers
-;; (global-linum-mode t)
+;; set default font in initial window and for any new window
+(cond
+ ((string-equal system-type "windows-nt") ; Microsoft Windows
+  (when (member "Courier" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Courier-14"))
+    (add-to-list 'default-frame-alist '(font . "Courier-14"))))
+ ((string-equal system-type "darwin") ; Mac OS X
+  (when (member "Monaco" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Monaco-18"))
+    (add-to-list 'default-frame-alist '(font . "Monaco-18"))))
+ ((string-equal system-type "gnu/linux") ; linux
+  (when (member "DejaVu Sans Mono" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "DejaVu Sans Mono-10"))
+    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10")))))
+;; ;; appearance config
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(default ((t (:height 160 :family "Monaco")))))
+;; ;; show line numbers
+;; ;; (global-linum-mode t)
 
 
-;; clean mode line
-(defvar mode-line-cleaner-alist
-  `((auto-complete-mode . " α")
-    ;; (yas/minor-mode . " υ")
-    ;; (paredit-mode . " π")
-    ;; (eldoc-mode . "")
-    ;; (abbrev-mode . "")
-    ;; Major modes
-    ;; (lisp-interaction-mode . "λ")
-    ;; (hi-lock-mode . "")
-		(web-mode . "web")
-    (python-mode . "Py")
-    (emacs-lisp-mode . "EL")
-    (nxhtml-mode . "nx"))
-  "Alist for `clean-mode-line'.
+;; ;; clean mode line
+;; (defvar mode-line-cleaner-alist
+;;   `((auto-complete-mode . " α")
+;;     ;; (yas/minor-mode . " υ")
+;;     ;; (paredit-mode . " π")
+;;     ;; (eldoc-mode . "")
+;;     ;; (abbrev-mode . "")
+;;     ;; Major modes
+;;     ;; (lisp-interaction-mode . "λ")
+;;     ;; (hi-lock-mode . "")
+;; 		(web-mode . "web")
+;;     (python-mode . "Py")
+;;     (emacs-lisp-mode . "EL")
+;;     (nxhtml-mode . "nx"))
+;;   "Alist for `clean-mode-line'.
 
-When you add a new element to the alist, keep in mind that you
-must pass the correct minor/major mode symbol and a string you
-want to use in the modeline *in lieu of* the original.")
-
-
-(defun clean-mode-line ()
-  (interactive)
-  (loop for cleaner in mode-line-cleaner-alist
-        do (let* ((mode (car cleaner))
-                 (mode-str (cdr cleaner))
-                 (old-mode-str (cdr (assq mode minor-mode-alist))))
-             (when old-mode-str
-                 (setcar old-mode-str mode-str))
-               ;; major mode
-             (when (eq mode major-mode)
-               (setq mode-name mode-str)))))
+;; When you add a new element to the alist, keep in mind that you
+;; must pass the correct minor/major mode symbol and a string you
+;; want to use in the modeline *in lieu of* the original.")
 
 
-(add-hook 'after-change-major-mode-hook 'clean-mode-line)
+;; (defun clean-mode-line ()
+;;   (interactive)
+;;   (loop for cleaner in mode-line-cleaner-alist
+;;         do (let* ((mode (car cleaner))
+;;                  (mode-str (cdr cleaner))
+;;                  (old-mode-str (cdr (assq mode minor-mode-alist))))
+;;              (when old-mode-str
+;;                  (setcar old-mode-str mode-str))
+;;                ;; major mode
+;;              (when (eq mode major-mode)
+;;                (setq mode-name mode-str)))))
 
-;;; alias the new `flymake-report-status-slim' to
-;;; `flymake-report-status'
-(defalias 'flymake-report-status 'flymake-report-status-slim)
-(defun flymake-report-status-slim (e-w &optional status)
-  "Show \"slim\" flymake status in mode line."
-  (when e-w
-    (setq flymake-mode-line-e-w e-w))
-  (when status
-    (setq flymake-mode-line-status status))
-  (let* ((mode-line " Φ"))
-    (when (> (length flymake-mode-line-e-w) 0)
-      (setq mode-line (concat mode-line ":" flymake-mode-line-e-w)))
-    (setq mode-line (concat mode-line flymake-mode-line-status))
-    (setq flymake-mode-line mode-line)
-    (force-mode-line-update)))
+
+;; (add-hook 'after-change-major-mode-hook 'clean-mode-line)
+
+;; ;;; alias the new `flymake-report-status-slim' to
+;; ;;; `flymake-report-status'
+;; (defalias 'flymake-report-status 'flymake-report-status-slim)
+;; (defun flymake-report-status-slim (e-w &optional status)
+;;   "Show \"slim\" flymake status in mode line."
+;;   (when e-w
+;;     (setq flymake-mode-line-e-w e-w))
+;;   (when status
+;;     (setq flymake-mode-line-status status))
+;;   (let* ((mode-line " Φ"))
+;;     (when (> (length flymake-mode-line-e-w) 0)
+;;       (setq mode-line (concat mode-line ":" flymake-mode-line-e-w)))
+;;     (setq mode-line (concat mode-line flymake-mode-line-status))
+;;     (setq flymake-mode-line mode-line)
+;;     (force-mode-line-update)))

@@ -95,6 +95,7 @@
 
 (global-set-key (kbd "<f5>") 'cleanup-buffer)
 
+(global-unset-key (kbd "<f12>"))
 (global-set-key (kbd "<f12> c") 'calendar)
 (global-set-key (kbd "<f12> g") 'magit-status)
 (global-set-key (kbd "<f12> o") 'org-capture)

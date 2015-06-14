@@ -1,6 +1,13 @@
-(load "~/.emacs.d/settings/package")
 
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
 
+(load-file "~/.emacs.d/prelude/init.el")
+
+(prelude-require-packages '(scss-mode rvm js2-mode js2-refactor jasminejs-mode))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -74,15 +81,6 @@
 		(org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-rmail org-w3m org-drill)))
  '(tool-bar-mode nil))
 
-
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:height 160 :family "Monaco")))))
-
 (setq org-capture-templates
 			'(		;; ... other templates
 
@@ -126,17 +124,17 @@ Including indent-buffer, which should not be called automatically on save."
 ;; appearance
 (load "~/.emacs.d/settings/appearance")
 
-;; mac
+;; ;; mac
 (load "~/.emacs.d/settings/mac")
 
-;; global key bindings
+;; ;; global key bindings
 (load "~/.emacs.d/settings/bindings")
 
 ;; variables
 (load "~/.emacs.d/settings/variables")
 
 ;; mode setup
-(load "~/.emacs.d/settings/autocomplete.mode")
+;; (load "~/.emacs.d/settings/autocomplete.mode")
 (load "~/.emacs.d/settings/js2.mode")
 (load "~/.emacs.d/settings/org.mode")
 (load "~/.emacs.d/settings/projectile.mode")
@@ -165,25 +163,8 @@ Including indent-buffer, which should not be called automatically on save."
 (ido-mode 1)
 (setq ido-create-new-buffer 'always)
 
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.swig?\\'" . web-mode))
-
-(defun my-web-mode-hook ()
-	"Hooks for Web mode."
-	(setq web-mode-markup-indent-offset 2)
-	(define-key web-mode-map (kbd "s-e") 'emmet-expand-line)
-	(define-key web-mode-map (kbd "C-c t s") 'tagedit-forward-slurp-tag)
-	(define-key web-mode-map (kbd "C-c t b") 'tagedit-forward-barf-tag)
-	(define-key web-mode-map (kbd "M-r") 'tagedit-raise-tag)
-	(define-key web-mode-map (kbd "M-s") 'tagedit-splice-tag)
-	(define-key web-mode-map (kbd "M-J") 'tagedit-join-tags)
-	(define-key web-mode-map (kbd "M-S") 'tagedit-split-tag)
-	(define-key web-mode-map (kbd "M-?") 'tagedit-convolute-tags)
-	(define-key web-mode-map (kbd "C-c t k") 'tagedit-kill)
-	(define-key web-mode-map (kbd "s-k") 'tagedit-kill-attribute))
-
 (add-hook 'web-mode-hook 'emmet-mode)
-(add-hook 'web-mode-hook 'my-web-mode-hook)
+
 
 
 ;; TODO defun go-to-next-empty-line
@@ -206,3 +187,8 @@ Including indent-buffer, which should not be called automatically on save."
   (local-set-key (kbd "{") 'my-electric-brace))
 
 (add-hook 'css-mode-hook 'my-css-mode-hook)
+
+
+(load-file "~/.emacs.d/settings/web.mode.el")
+
+(cd "~")
