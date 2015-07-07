@@ -7,7 +7,14 @@
 
 (load-file "~/.emacs.d/prelude/init.el")
 
-(prelude-require-packages '(scss-mode rvm js2-mode js2-refactor jasminejs-mode))
+(prelude-require-packages '(
+	auto-complete
+	scss-mode
+	smart-tab
+	rvm
+	js2-mode
+	js2-refactor
+	jasminejs-mode))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -140,8 +147,6 @@ Including indent-buffer, which should not be called automatically on save."
 (load "~/.emacs.d/settings/projectile.mode")
 (load "~/.emacs.d/settings/yasnippet.mode")
 
-(add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
-
 ;; disable auto-save and auto-backup
 (setq auto-save-default nil)
 
@@ -166,14 +171,18 @@ Including indent-buffer, which should not be called automatically on save."
 (add-hook 'web-mode-hook 'emmet-mode)
 
 
-
-;; TODO defun go-to-next-empty-line
+;; TODO go-to-next-empty-line
+;; TODO go-to-previous-empty-line
+;; TODO open-line-above
+;; TODO open-line-below
+;; TODO set key for indent-according-to-mode
+;; TODO ace jump mode
+;; TODO sort through prelude hotkeys
+;; TODO next-buffer and previous buffer to left/right arrow keys
+;; TODO make some yasnippets for swig blocks
 ;; TODO defun iy-go-to-char M-m (remap M-m to M-i)
 ;; TODO somehow make the bower lib directory accessible through projectile
-;; TODO ace jump mode
-;; TODO make some yasnippets for swig blocks
-;; TODO kill current element but not contents
-;; TODO unbind all the useless hotkeys
+;; TODO make auto complete mode faster and find ways to choose options fast
 
 (defun my-electric-brace (arg)
   "Automatically add a closing '}' for every '{' inserted."
@@ -191,4 +200,18 @@ Including indent-buffer, which should not be called automatically on save."
 
 (load-file "~/.emacs.d/settings/web.mode.el")
 
+(autoload 'scss-mode "scss-mode")
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+(setq auto-save-default nil)
+
+
 (cd "~")
+
+(global-auto-complete-mode t)
+(define-key ac-mode-map (kbd "<tab>") 'auto-complete)
+;; (global-set-key (kbd "<tab>") 'smart-tab)
+;; (add-to-list 'ac-modes 'org-mode)
+
+;; (load-file "~/.emacs.d/elisp/hanconvert.el")
+
+(require 'prelude-helm-everywhere)

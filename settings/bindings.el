@@ -19,9 +19,6 @@
       (transpose-lines -1))
     (move-to-column col)))
 
-(global-set-key (kbd "<C-S-down>") 'move-line-down)
-(global-set-key (kbd "<C-S-up>") 'move-line-up)
-
 (defun open-line-below ()
   (interactive)
   (end-of-line)
@@ -93,12 +90,15 @@
 (global-set-key (kbd "s-|") nil) ;; shell-command-on-region
 (global-set-key (kbd "s-~") nil) ;; ns-prev-frame
 
+;; (global-set-key (kbd "<C-S-up>") nil)
+
+
 (global-set-key (kbd "<f5>") 'cleanup-buffer)
 
 (global-unset-key (kbd "<f12>"))
 (global-set-key (kbd "<f12> c") 'calendar)
 (global-set-key (kbd "<f12> g") 'magit-status)
-(global-set-key (kbd "<f12> o") 'org-capture)
+(global-set-key (kbd "<f12> o c") 'org-capture)
 (global-set-key (kbd "<f12> s") 'shell)
 (global-set-key (kbd "<f12> v") 'visual-line-mode)
 (global-set-key (kbd "<f12> w") 'whitespace-mode)
@@ -107,11 +107,19 @@
 
 (global-set-key (kbd "<f12> f") 'set-frame-size-to-80-36)
 
-(global-set-key (kbd "M-/") 'hippie-expand)
+;; (global-set-key (kbd "M-/") 'hippie-expand)
+;; (global-set-key (kbd "TAB") 'smart-tab)
 (global-set-key (kbd "M-i") 'back-to-indentation)
 (global-set-key (kbd "M-m") 'iy-go-to-char)
 
 (global-set-key (kbd "C-@") 'er/expand-region)
-(global-set-key (kbd "<C-return>") 'open-line-below)
-(global-set-key (kbd "<C-S-return>") 'open-line-above)
+;; (global-set-key (kbd "<C-return>") 'open-line-below)
+;; (global-set-key (kbd "<C-S-return>") 'open-line-above)
 (global-set-key (kbd "M-`") 'other-frame)
+
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "<right>") 'next-buffer)
+(global-set-key (kbd "<left>") 'previous-buffer)
+(global-set-key (kbd "C-o") 'prelude-smart-open-line-above)
+(global-set-key (kbd "M-o") 'prelude-smart-open-line)

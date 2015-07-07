@@ -7,7 +7,7 @@
   "Hooks for Web mode."
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-markup-indent-offset 2)
-  (local-set-key (kbd "C-c C-e r") 'mc/mark-sgml-tag-pair)
+  ;; (local-set-key (kbd "C-c C-e r") 'mc/mark-sgml-tag-pair)
   (define-key web-mode-map (kbd "s-e") 'emmet-expand-line)
   (define-key web-mode-map (kbd "C-c t s") 'tagedit-forward-slurp-tag)
   (define-key web-mode-map (kbd "C-c t b") 'tagedit-forward-barf-tag)
