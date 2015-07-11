@@ -1,20 +1,26 @@
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
+;; Added by Package.el.	 This must come before configurations of
+;; installed packages.	Don't delete this line.	 If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
 (load-file "~/.emacs.d/prelude/init.el")
 
-(prelude-require-packages '(
-	auto-complete
-	scss-mode
-	smart-tab
-	rvm
-	js2-mode
-	js2-refactor
-	jasminejs-mode))
+(prelude-require-packages
+ '(auto-complete
+	 helm-projectile
+	 jasminejs-mode
+	 js2-mode
+	 js2-refactor
+	 org-plus-contrib
+	 projectile
+	 rvm
+	 scss-mode
+	 smart-tab
+	 helm))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -154,9 +160,9 @@ Including indent-buffer, which should not be called automatically on save."
 (setq auto-save-interval 0)
 
 (setq make-backup-files nil)
-;disable backup
+																				;disable backup
 (setq backup-inhibited t)
-;disable auto save
+																				;disable auto save
 (setq auto-save-default nil)
 
 (scroll-bar-mode -1)
@@ -185,15 +191,15 @@ Including indent-buffer, which should not be called automatically on save."
 ;; TODO make auto complete mode faster and find ways to choose options fast
 
 (defun my-electric-brace (arg)
-  "Automatically add a closing '}' for every '{' inserted."
-  (interactive "*P")
-  (let ((count (prefix-numeric-value arg)))
-    (self-insert-command count)
-    (save-excursion
-      (insert-char ?} count))))
+	"Automatically add a closing '}' for every '{' inserted."
+	(interactive "*P")
+	(let ((count (prefix-numeric-value arg)))
+		(self-insert-command count)
+		(save-excursion
+			(insert-char ?} count))))
 
 (defun my-css-mode-hook ()
-  (local-set-key (kbd "{") 'my-electric-brace))
+	(local-set-key (kbd "{") 'my-electric-brace))
 
 (add-hook 'css-mode-hook 'my-css-mode-hook)
 
@@ -212,6 +218,9 @@ Including indent-buffer, which should not be called automatically on save."
 ;; (global-set-key (kbd "<tab>") 'smart-tab)
 ;; (add-to-list 'ac-modes 'org-mode)
 
+
 ;; (load-file "~/.emacs.d/elisp/hanconvert.el")
 
 (require 'prelude-helm-everywhere)
+
+(global-set-key (kbd "M-SPC") nil)

@@ -1,3 +1,5 @@
+(require 'org-drill)
+
 ;; org-mode config
 (setq org-use-extra-keys t)
 
