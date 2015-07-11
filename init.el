@@ -223,4 +223,10 @@ Including indent-buffer, which should not be called automatically on save."
 
 (require 'prelude-helm-everywhere)
 
-(global-set-key (kbd "M-SPC") nil)
+(global-set-key (kbd "M-SPC") 'toggle-input-method)
+
+
+
+
+
+
