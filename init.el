@@ -20,6 +20,7 @@
 	 rvm
 	 scss-mode
 	 smart-tab
+	 web-mode
 	 helm))
 
 (custom-set-variables
@@ -225,8 +226,11 @@ Including indent-buffer, which should not be called automatically on save."
 
 (global-set-key (kbd "M-SPC") 'toggle-input-method)
 
+(require 'god-mode)
 
-
-
-
-
+;; bind Caps-Lock to M-x
+;; http://sachachua.com/wp/2008/08/04/emacs-caps-lock-as-m-x/
+;; of course, this disables normal Caps-Lock for *all* apps...
+(if (eq window-system 'x)
+    (shell-command "xmodmap -e 'clear Lock' -e 'keycode 66 = F13'"))
+(global-set-key [f13] 'god-local-mode)
