@@ -279,4 +279,7 @@ Including indent-buffer, which should not be called automatically on save."
 
 (add-to-list 'god-mod-alist '("h" . "s-"))
 
-
+(add-hook 'json-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)))
