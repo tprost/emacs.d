@@ -11,6 +11,8 @@
 
 (prelude-require-packages
  '(auto-complete
+	 clojure-mode
+	 cider
 	 helm-projectile
 	 jasminejs-mode
 	 js2-mode
@@ -283,3 +285,10 @@ Including indent-buffer, which should not be called automatically on save."
           (lambda ()
             (make-local-variable 'js-indent-level)
             (setq js-indent-level 2)))
+
+(add-to-list 'exec-path "~/bin")
+
+
+(setq ns-function-modifier 'hyper) 
+
+(prelude-global-mode -1)

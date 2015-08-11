@@ -104,6 +104,7 @@
 (global-set-key (kbd "<f12> w") 'whitespace-mode)
 (global-set-key (kbd "<f12> e") 'open-my-emacs-file)
 (global-set-key (kbd "<f12> j") 'open-my-japanese-file)
+(global-set-key (kbd "<f12> k k") 'open-my-japanese-file)
 
 (global-set-key (kbd "<f12> f") 'set-frame-size-to-80-36)
 
