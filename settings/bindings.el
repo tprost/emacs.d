@@ -124,3 +124,8 @@
 (global-set-key (kbd "<left>") 'previous-buffer)
 (global-set-key (kbd "C-o") 'prelude-smart-open-line-above)
 (global-set-key (kbd "M-o") 'prelude-smart-open-line)
+
+(global-set-key (kbd "C-c C-r") 'rename-buffer)
+
+(global-unset-key (kbd "<f2>"))
+(global-set-key (kbd "<f2>") 'shell)

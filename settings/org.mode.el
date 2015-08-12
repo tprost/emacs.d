@@ -6,6 +6,9 @@
 ;; (require 'org-drill)
 (setq org-drill-add-random-noise-to-intervals-p t)
 
+;; when you open an org file make it start with everything expanded
+(setq org-startup-folded 'all)
+
 (defun outline-forward-up ()
 	"Move cursor to next heading that is the same level as the current parent."
 	(interactive)

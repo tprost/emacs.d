@@ -6,8 +6,10 @@
 (package-initialize)
 
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-
+(setq projectile-keymap-prefix (kbd "C-x p"))
 (load-file "~/.emacs.d/prelude/init.el")
+
+
 
 (prelude-require-packages
  '(auto-complete
@@ -178,20 +180,6 @@ Including indent-buffer, which should not be called automatically on save."
 (setq ido-create-new-buffer 'always)
 
 (add-hook 'web-mode-hook 'emmet-mode)
-
-
-;; TODO go-to-next-empty-line
-;; TODO go-to-previous-empty-line
-;; TODO open-line-above
-;; TODO open-line-below
-;; TODO set key for indent-according-to-mode
-;; TODO ace jump mode
-;; TODO sort through prelude hotkeys
-;; TODO next-buffer and previous buffer to left/right arrow keys
-;; TODO make some yasnippets for swig blocks
-;; TODO defun iy-go-to-char M-m (remap M-m to M-i)
-;; TODO somehow make the bower lib directory accessible through projectile
-;; TODO make auto complete mode faster and find ways to choose options fast
 
 (defun my-electric-brace (arg)
 	"Automatically add a closing '}' for every '{' inserted."
