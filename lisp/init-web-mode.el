@@ -2,7 +2,6 @@
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.swig\\'" . web-mode))
 
-
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
   (setq web-mode-markup-indent-offset 2)
@@ -20,3 +19,6 @@
   (define-key web-mode-map (kbd "s-k") 'tagedit-kill-attribute))
 
 (add-hook 'web-mode-hook 'my-web-mode-hook)
+(add-hook 'web-mode-hook 'emmet-mode)
+
+(provide 'init-web-mode)

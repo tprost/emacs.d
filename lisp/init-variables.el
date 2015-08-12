@@ -1,14 +1,4 @@
 
-
-
-;; okay okay auto-save and backups
-(setq auto-save-default t)
-(setq make-backup-files t)
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
-
 ;; 
 (setq electric-indent-mode nil)
 
@@ -22,3 +12,5 @@
 
 ;; Enable transient mark mode
 (transient-mark-mode 1)
+
+(provide 'init-variables)

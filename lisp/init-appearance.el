@@ -24,3 +24,8 @@
 (global-hl-line-mode 0)
 
 (member "Ttyp0" (font-family-list))
+
+(scroll-bar-mode -1)
+(setq tool-bar-mode nil)
+
+(provide 'init-appearance)

@@ -129,3 +129,5 @@
 
 (global-unset-key (kbd "<f2>"))
 (global-set-key (kbd "<f2>") 'shell)
+
+(provide 'init-bindings)

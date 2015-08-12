@@ -1,3 +1,6 @@
+(setq js2-basic-offset 2)
+(setq js2-bounce-indent-p nil)
+
 ;; js2-mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
@@ -19,3 +22,5 @@
 (require 'jasminejs-mode)
 (setq jasminejs-snippet-path "~/.emacs.d/snippets/jasminejs-mode")
 (add-hook 'jasminejs-mode-hook (lambda () (yas-activate-extra-mode 'jasminejs-mode)))
+
+(provide 'init-js2-mode)

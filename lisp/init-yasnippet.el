@@ -9,3 +9,5 @@
 (yas/initialize)
 
 (define-key yas-minor-mode-map (kbd "<backtab>") 'yas-expand)
+
+(provide 'init-yasnippet)
