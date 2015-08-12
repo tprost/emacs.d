@@ -28,4 +28,7 @@
 (scroll-bar-mode -1)
 (setq tool-bar-mode nil)
 
+(load-theme 'wombat t)
+
 (provide 'init-appearance)
+

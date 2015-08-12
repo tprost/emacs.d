@@ -8,7 +8,6 @@
 (require 'init-prelude)
 
 ;; all the things
-
 (require 'init-appearance)
 (require 'init-auto-complete)
 (require 'init-backups)

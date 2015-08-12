@@ -1,5 +1,10 @@
+(disable-theme 'zenburn)
+(setq prelude-theme nil)
 
 (load-file "~/.emacs.d/prelude/init.el")
+
+(disable-theme 'zenburn)
+(setq prelude-theme nil)
 
 (prelude-require-packages
  '(auto-complete
@@ -24,3 +29,4 @@
 
 
 (provide 'init-prelude)
+
