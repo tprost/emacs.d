@@ -3,6 +3,4 @@
 ;; (global-set-key (kbd "<tab>") 'smart-tab)
 ;; (add-to-list 'ac-modes 'org-mode)
 
-
-
 (provide 'init-auto-complete)
