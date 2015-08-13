@@ -33,5 +33,7 @@
 ;; wombat theme
 (load-theme 'wombat t)
 
+(setq blink-cursor-blinks -1)
+
 (provide 'init-appearance)
 

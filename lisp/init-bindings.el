@@ -91,5 +91,8 @@
             (lambda ()
                   (interactive)
                   (join-line -1)))
- 
+
+(global-set-key (kbd "M-n") 'move-text-down)
+(global-set-key (kbd "M-p") 'move-text-up)
+
 (provide 'init-bindings)

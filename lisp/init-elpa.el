@@ -21,7 +21,8 @@
 		js2-mode
 		js2-refactor
 		json-mode
-		magit		
+		magit
+		move-text
 		org-plus-contrib
 		paredit
 		projectile
