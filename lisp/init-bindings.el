@@ -84,4 +84,7 @@
 
 (global-set-key (kbd "C-x C-r") 'rename-buffer)
 
+(global-set-key (kbd "C-,") 'toggle-kbd-macro-recording-on)
+(global-set-key (kbd "C-.") 'kmacro-end-and-call-macro)
+
 (provide 'init-bindings)
