@@ -12,4 +12,7 @@
 (global-set-key (kbd "C-h r") 'helm-info-emacs)
 (global-set-key (kbd "C-h C-l") 'helm-locate-library)
 
+(setq helm-source-header '((t (:background "#22083397778B" :foreground "white" :weight bold))))
+
 (provide 'init-helm)
+
