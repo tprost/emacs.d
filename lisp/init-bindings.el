@@ -1,3 +1,6 @@
+(require 'init-reset-bindings)
+
+
 (defun set-frame-size-to-80-36 ()
 	(interactive)
 	(when window-system (set-frame-size (selected-frame) 80 36)))
@@ -128,3 +131,5 @@
 
 
 (provide 'init-bindings)
+
+(global-unset-key (kbd "C-M-i"))
