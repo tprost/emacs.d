@@ -14,5 +14,8 @@
 
 (setq helm-source-header '((t (:background "#22083397778B" :foreground "white" :weight bold))))
 
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) 
+
+
 (provide 'init-helm)
 

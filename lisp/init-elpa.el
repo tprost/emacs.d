@@ -9,6 +9,7 @@
 
 (defvar my-packages
 	'(
+		ace-jump-mode
 		auto-complete
 		cider
 		clojure-mode

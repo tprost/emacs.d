@@ -7,6 +7,7 @@
 (require 'init-elpa)
 
 ;; all the things
+(require 'init-ace-jump-mode)
 (require 'init-appearance)
 (require 'init-auto-complete)
 (require 'init-backups)
@@ -32,3 +33,4 @@
 (require 'init-web-mode)
 (require 'init-yasnippet)
 (require 'init-zop-to-char)
+

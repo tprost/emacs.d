@@ -113,7 +113,7 @@
 ;; (global-set-key (kbd "M-/") 'hippie-expand)
 ;; (global-set-key (kbd "TAB") 'smart-tab)
 (global-set-key (kbd "M-i") 'back-to-indentation)
-(global-set-key (kbd "M-m") 'iy-go-to-char)
+(global-set-key (kbd "C-M-m") 'iy-go-to-char)
 
 (global-set-key (kbd "C-@") 'er/expand-region)
 ;; (global-set-key (kbd "<C-return>") 'open-line-below)
@@ -124,10 +124,10 @@
 (global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key (kbd "<right>") 'next-buffer)
 (global-set-key (kbd "<left>") 'previous-buffer)
-(global-set-key (kbd "C-o") 'prelude-smart-open-line-above)
-(global-set-key (kbd "M-o") 'prelude-smart-open-line)
+;; (global-set-key (kbd "C-o") 'prelude-smart-open-line-above)
+;; (global-set-key (kbd "M-o") 'prelude-smart-open-line)
 
-(global-set-key (kbd "C-c C-r") 'rename-buffer)
+(global-set-key (kbd "C-x C-r") 'rename-buffer)
 
 
 (provide 'init-bindings)
