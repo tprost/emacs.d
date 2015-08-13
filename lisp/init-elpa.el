@@ -14,6 +14,7 @@
 		cider
 		clojure-mode
 		expand-region
+		git-commit
 		god-mode
 		helm
 		helm-projectile
