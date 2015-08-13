@@ -87,4 +87,9 @@
 (global-set-key (kbd "C-,") 'toggle-kbd-macro-recording-on)
 (global-set-key (kbd "C-.") 'kmacro-end-and-call-macro)
 
+(global-set-key (kbd "M-j")
+            (lambda ()
+                  (interactive)
+                  (join-line -1)))
+ 
 (provide 'init-bindings)

@@ -1,4 +1,16 @@
+(defun skip-to-next-blank-line ()
+  (interactive)
+  (let ((inhibit-changing-match-data t))
+    (skip-syntax-forward " >")
+    (unless (search-forward-regexp "^\\s *$" nil t)
+      (goto-char (point-max)))))
 
+(defun skip-to-previous-blank-line ()
+  (interactive)
+  (let ((inhibit-changing-match-data t))
+    (skip-syntax-backward " >")
+    (unless (search-backward-regexp "^\\s *$" nil t)
+      (goto-char (point-min)))))
 
 (defun set-frame-size-to-80-36 ()
 	(interactive)
