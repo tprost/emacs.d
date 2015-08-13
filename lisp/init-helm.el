@@ -13,10 +13,15 @@
 (global-set-key (kbd "C-h C-l") 'helm-locate-library)
 
 ;; customize header face
-(set-face-attribute 'helm-source-header nil :background "midnight blue" :foreground "white")
+(set-face-attribute 'helm-source-header nil
+										:background "midnight blue"
+										:foreground "white"
+										:font 'unspecified
+										:family 'unspecified
+										:height 'unspecified
+										:weight 'unspecified)
 
 ;; tab for completion in find file
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) 
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
 
 (provide 'init-helm)
-
