@@ -43,4 +43,8 @@
 (add-hook 'comint-output-filter-functions
           'filter-non-sgr-control-sequences-in-output)
 
+(global-unset-key (kbd "<f2>"))
+(global-set-key (kbd "<f2>") 'shell)
+(global-set-key (kbd "C-x m") 'shell)
+
 (provide 'init-shell)

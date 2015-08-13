@@ -17,10 +17,10 @@
 
 (js2r-add-keybindings-with-prefix "C-c C-r")
 
-(add-to-list 'load-path "~/.emacs.d/jasminejs-mode")
+;; (add-to-list 'load-path "~/.emacs.d/jasminejs-mode")
 
-(require 'jasminejs-mode)
-(setq jasminejs-snippet-path "~/.emacs.d/snippets/jasminejs-mode")
-(add-hook 'jasminejs-mode-hook (lambda () (yas-activate-extra-mode 'jasminejs-mode)))
+;; (require 'jasminejs-mode)
+;; (setq jasminejs-snippet-path "~/.emacs.d/snippets/jasminejs-mode")
+;; (add-hook 'jasminejs-mode-hook (lambda () (yas-activate-extra-mode 'jasminejs-mode)))
 
 (provide 'init-js2-mode)

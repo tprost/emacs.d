@@ -25,9 +25,12 @@
 
 (member "Ttyp0" (font-family-list))
 
+;; take that menubars
 (scroll-bar-mode -1)
-(setq tool-bar-mode nil)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
 
+;; wombat theme
 (load-theme 'wombat t)
 
 (provide 'init-appearance)
