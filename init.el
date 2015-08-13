@@ -15,6 +15,7 @@
 (require 'init-auto-complete)
 (require 'init-backups)
 (require 'init-css-mode)
+(require 'init-dired)
 (require 'init-god-mode)
 (require 'init-helm)
 (require 'init-input)
