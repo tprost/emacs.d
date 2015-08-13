@@ -1,3 +1,49 @@
+
+
+(defun set-frame-size-to-80-36 ()
+	(interactive)
+	(when window-system (set-frame-size (selected-frame) 80 36)))
+
+(defun move-line-down ()
+	(interactive)
+	(let ((col (current-column)))
+		(save-excursion
+			(forward-line)
+			(transpose-lines 1))
+		(forward-line)
+		(move-to-column col)))
+
+(defun move-line-up ()
+	(interactive)
+	(let ((col (current-column)))
+		(save-excursion
+			(forward-line)
+			(transpose-lines -1))
+		(move-to-column col)))
+
+(defun open-line-below ()
+	(interactive)
+	(end-of-line)
+	(newline)
+	(indent-for-tab-command))
+
+(defun open-line-above ()
+	(interactive)
+	(beginning-of-line)
+	(newline)
+	(forward-line -1)
+	(indent-for-tab-command))
+
+(defun open-my-emacs-file ()
+	(interactive)
+	;;; Place your code below this line, but inside the bracket.
+	(find-file "~/.emacs.d/init.el")
+	)
+
+(defun open-my-japanese-file ()
+	(interactive)
+	(find-file "~/org/drill/japanese.org"))
+
 (defun tabify-buffer ()
 	(interactive)
 	(tabify (point-min) (point-max)))

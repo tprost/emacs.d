@@ -1,50 +1,5 @@
 (require 'init-reset-bindings)
 
-
-(defun set-frame-size-to-80-36 ()
-	(interactive)
-	(when window-system (set-frame-size (selected-frame) 80 36)))
-
-(defun move-line-down ()
-	(interactive)
-	(let ((col (current-column)))
-		(save-excursion
-			(forward-line)
-			(transpose-lines 1))
-		(forward-line)
-		(move-to-column col)))
-
-(defun move-line-up ()
-	(interactive)
-	(let ((col (current-column)))
-		(save-excursion
-			(forward-line)
-			(transpose-lines -1))
-		(move-to-column col)))
-
-(defun open-line-below ()
-	(interactive)
-	(end-of-line)
-	(newline)
-	(indent-for-tab-command))
-
-(defun open-line-above ()
-	(interactive)
-	(beginning-of-line)
-	(newline)
-	(forward-line -1)
-	(indent-for-tab-command))
-
-(defun open-my-emacs-file ()
-	(interactive)
-	;;; Place your code below this line, but inside the bracket.
-	(find-file "~/.emacs.d/init.el")
-	)
-
-(defun open-my-japanese-file ()
-	(interactive)
-	(find-file "~/org/drill/japanese.org"))
-
 ;; (dolist (key '("s-a" "s-b" "s-c" "s-d" "s-e" "s-f" "s-g"
 ;;								"s-h" "s-i" "s-j" "s-k" "s-l" "s-m" "s-n"
 ;;							 "s-o" "s-p" "s-q" "s-r" "s-t" "s-u" "s-v"
@@ -115,7 +70,7 @@
 (global-set-key (kbd "M-i") 'back-to-indentation)
 (global-set-key (kbd "C-M-m") 'iy-go-to-char)
 
-(global-set-key (kbd "C-@") 'er/expand-region)
+(global-set-key (kbd "C-z") 'er/expand-region)
 ;; (global-set-key (kbd "<C-return>") 'open-line-below)
 ;; (global-set-key (kbd "<C-S-return>") 'open-line-above)
 (global-set-key (kbd "M-`") 'other-frame)
@@ -129,7 +84,4 @@
 
 (global-set-key (kbd "C-x C-r") 'rename-buffer)
 
-
 (provide 'init-bindings)
-
-(global-unset-key (kbd "C-M-i"))
