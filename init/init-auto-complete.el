@@ -1,3 +1,5 @@
+(require-package 'auto-complete)
+
 (ac-config-default)
 (global-auto-complete-mode t)
 

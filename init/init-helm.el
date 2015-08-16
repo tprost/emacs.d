@@ -1,4 +1,4 @@
-(require 'helm-config)
+(require-package 'helm)
 
 ;; helm everywhere please
 (helm-mode 1)

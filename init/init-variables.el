@@ -1,5 +1,3 @@
-
-;; 
 (setq electric-indent-mode nil)
 
 ;; because other people hate spaces I guess
