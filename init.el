@@ -1,6 +1,12 @@
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 
+;; my own shit
+(require 'init-utils)
+
+;; bindings
+(require 'init-bindings)
+
 ;; basic config
 (require 'init-appearance)
 (require 'init-backups)
@@ -37,11 +43,6 @@
 ;; (require 'init-zop-to-char)
 ;; rvm
 
-;; my own shit
-(require 'init-utils)
-
-;; bindings
-(require 'init-bindings)
 
 ;; org 8.2.10 + org-drill 2.4.1 seems to be stable
 (require 'init-org-drill)
