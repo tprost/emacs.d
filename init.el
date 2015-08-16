@@ -5,6 +5,7 @@
 (require 'init-utils)
 
 ;; bindings
+(require 'init-reset-bindings)
 (require 'init-bindings)
 
 ;; basic config
@@ -14,10 +15,6 @@
 (require 'init-input)
 (require 'init-shell)
 (require 'init-variables)
-
-;; unset some bindings because I am OCD
-(require 'init-reset-bindings)
-
 
 ;; package stuff
 (require 'init-elpa)
