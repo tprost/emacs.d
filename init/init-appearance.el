@@ -8,20 +8,22 @@
 ;; set default font in initial window and for any new window
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
-  (when (member "Courier" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Courier-14"))
-    (add-to-list 'default-frame-alist '(font . "Courier-14"))))
+	(when (member "Courier" (font-family-list))
+		(add-to-list 'initial-frame-alist '(font . "Courier-18")))
+	(when (member "Monaco" (font-family-list))
+		(add-to-list 'initial-frame-alist '(font . "Monaco-14:antialias=none"))
+		(add-to-list 'default-frame-alist '(font . "Monaco-14:antialias=none"))))
  ((string-equal system-type "darwin") ; Mac OS X
-  (when (member "Monaco" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Monaco-18"))
-    (add-to-list 'default-frame-alist '(font . "Monaco-18"))))
+	(when (member "Monaco" (font-family-list))
+		(add-to-list 'initial-frame-alist '(font . "Monaco-18"))
+		(add-to-list 'default-frame-alist '(font . "Monaco-18"))))
  ((string-equal system-type "gnu/linux") ; linux
-  (when (member "Monaco" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Monaco-14:antialias=none"))
-    (add-to-list 'default-frame-alist '(font . "Monaco-14:antialias=none")))))
-;;  (when (member "Ttyp0" (font-family-list))
-;;    (add-to-list 'initial-frame-alist '(font . "Ttyp0-14:antialias=none"))
-;;    (add-to-list 'default-frame-alist '(font . "Ttyp0-14:antialias=none")))))
+	(when (member "Monaco" (font-family-list))
+		(add-to-list 'initial-frame-alist '(font . "Monaco-14:antialias=none"))
+		(add-to-list 'default-frame-alist '(font . "Monaco-14:antialias=none")))))
+;;	(when (member "Ttyp0" (font-family-list))
+;;		(add-to-list 'initial-frame-alist '(font . "Ttyp0-14:antialias=none"))
+;;		(add-to-list 'default-frame-alist '(font . "Ttyp0-14:antialias=none")))))
 
 ;; other things
 (blink-cursor-mode t)
@@ -38,6 +40,12 @@
 (load-theme 'wombat t)
 
 (setq blink-cursor-blinks -1)
+
+(defun what-face (pos)
+  (interactive "d")
+  (let ((face (or (get-char-property (point) 'read-face-name)
+                  (get-char-property (point) 'face))))
+    (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
 (provide 'init-appearance)
 
