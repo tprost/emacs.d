@@ -43,3 +43,26 @@
 
 ;; org 8.2.10 + org-drill 2.4.1 seems to be stable
 (require 'init-org-drill)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-drill-optimal-factor-matrix
+	 (quote
+		((4
+			(2.56 . 2.56))
+		 (5
+			(2.08 . 2.142))
+		 (1
+			(2.5 . 4.0))
+		 (3
+			(2.36 . 2.36)
+			(2.46 . 2.443)
+			(2.5 . 2.5))))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
