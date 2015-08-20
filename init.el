@@ -22,6 +22,8 @@
 ;; all the melpa-stable things
 (require 'init-ace-jump-mode)
 (require 'init-auto-complete)
+(require 'init-clojure-mode)
+(require 'init-cider)
 (require 'init-css-mode)
 (require 'init-helm)
 (require 'init-js2-mode)
@@ -30,6 +32,7 @@
 (require 'init-osx)
 (require 'init-paredit)
 (require 'init-projectile)
+(require 'init-python-mode)
 (require 'init-scss-mode)
 (require 'init-smart-mode-line)
 (require 'init-web-mode)

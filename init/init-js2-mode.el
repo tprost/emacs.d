@@ -18,4 +18,6 @@
 ;; (setq jasminejs-snippet-path "~/.emacs.d/snippets/jasminejs-mode")
 ;; (add-hook 'jasminejs-mode-hook (lambda () (yas-activate-extra-mode 'jasminejs-mode)))
 
+;; (set-face-attribute 'column-marker-1 nil :background "#111111")
+
 (provide 'init-js2-mode)
