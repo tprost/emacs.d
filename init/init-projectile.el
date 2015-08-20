@@ -1,10 +1,15 @@
-(require-package 'projectile)
-(require-package 'helm-projectile)
+(add-to-list 'load-path "~/.emacs.d/site-lisp/projectile")
 
-;; change the prefix for projectile commands
 (setq projectile-keymap-prefix (kbd "C-x p"))
 
+(require 'projectile)
+(require 'helm-projectile)
+;; (require-package 'projectile)
+;; (require-package 'helm-projectile)
+
+;; change the prefix for projectile commands
+
 (projectile-global-mode)
-;; (helm-projectile-on)
+(helm-projectile-on)
 
 (provide 'init-projectile)
