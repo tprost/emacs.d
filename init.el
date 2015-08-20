@@ -33,9 +33,11 @@
 (require 'init-paredit)
 (require 'init-projectile)
 (require 'init-python-mode)
+(require 'init-rvm)
 (require 'init-scss-mode)
 (require 'init-smart-mode-line)
 (require 'init-web-mode)
+
 
 ;; ;; (require 'init-yasnippet)
 ;; ;; (require 'init-god-mode)
