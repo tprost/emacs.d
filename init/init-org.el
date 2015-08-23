@@ -1,4 +1,4 @@
-(require-package 'org)
+;; (require-package 'org)
 
 (setq org-agenda-files (quote ("~/org/agenda.org")))
 (setq org-agenda-span (quote fortnight))
