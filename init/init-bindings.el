@@ -95,4 +95,10 @@
 ;; (global-set-key (kbd "M-n") 'move-text-down)
 ;; (global-set-key (kbd "M-p") 'move-text-up)
 
+
+(global-unset-key (kbd "M-i"))
+
+(global-set-key (kbd "M-i c") (lambda () (interactive) (set-input-method "chinese-py")))
+(global-set-key (kbd "M-i e") (lambda () (interactive) (set-input-method "ucs")))
+
 (provide 'init-bindings)

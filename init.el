@@ -1,4 +1,3 @@
-(add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 
 (setq custom-file "~/.emacs.d/custom.el")
@@ -42,6 +41,8 @@
 (require 'init-smart-mode-line)
 (require 'init-web-mode)
 
+(add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
+
 ;; ;; (require 'init-yasnippet)
 (require 'init-god-mode)
 ;; ;; (require 'init-org)
@@ -51,3 +52,6 @@
 (require 'init-org-drill)
 (require 'init-org)
 (require 'init-emms)
+
+(require 'init-hz2py)
+(require 'init-chinese-conv)

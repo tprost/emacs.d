@@ -46,24 +46,8 @@
 )
 
 (add-hook 'org-mode-hook 'my-org-mode-hook)
-(setq org-capture-templates
-			'(		;; ... other templates
 
-				("o" "Journal Entry"
-				 entry (file+datetree "~/org/journal.org")
-				 "* %?"
-				 :empty-lines 1)
+(load-file "~/org/capture-templates.el")
 
-				("j" "Japanese Drill"
-				 entry (file "~/org/drill/japanese.org")
-				 (file "~/.emacs.d/org/capture-templates/japanese-drill.org")
-				 :empty-lines 1)
-
-				("w" "Do The Work"
-				 entry (file+datetree "~/org/the-work.org")
-				 (file "~/.emacs.d/org/capture-templates/do-the-work.org")
-				 :empty-lines 1)
-
-				))
 
 (provide 'init-org)
