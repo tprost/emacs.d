@@ -7,3 +7,6 @@
 [submodule "site-lisp/god-mode"]
 	path = site-lisp/god-mode
 	url = https://github.com/chrisdone/god-mode
+[submodule "site-lisp/css-mode"]
+	path = site-lisp/css-mode
+	url = https://github.com/tprost/css-mode

@@ -1,8 +1,8 @@
-(require-package 'css-mode)
+(add-to-list 'load-path "~/.emacs.d/site-lisp/css-mode")
 
-(defun my-css-mode-hook ()
-     (local-set-key (kbd "{") 'my-electric-brace))
+(require 'css-mode)
 
-(add-hook 'css-mode-hook 'my-css-mode-hook)
+(setq css-indent-offset 2)
+
 
 (provide 'init-css-mode)
