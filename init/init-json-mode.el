@@ -1,5 +1,9 @@
 ;; (require-package 'json-mode)
 
+;; (add-to-list 'load-path "~/.emacs.d/site-lisp/json-mode.el")
+
+(load-file "~/.emacs.d/site-lisp/json-mode.el")
+
 (require 'json-mode)
 
 (add-hook 'json-mode-hook
