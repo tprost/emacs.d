@@ -10,3 +10,6 @@
 [submodule "site-lisp/css-mode"]
 	path = site-lisp/css-mode
 	url = https://github.com/tprost/css-mode
+[submodule "site-lisp/lookup"]
+	path = site-lisp/lookup
+	url = https://github.com/lookup2/lookup2
