@@ -29,6 +29,7 @@
 (require 'init-css-mode)
 (require 'init-emmet-mode)
 (require 'init-helm)
+(require 'init-jade-mode)
 (require 'init-js2-mode)
 (require 'init-json-mode)
 (require 'init-magit)
