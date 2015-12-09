@@ -57,4 +57,5 @@
 (require 'init-hz2py)
 (require 'init-chinese-conv)
 
-(require 'init-lookup)
+;; (require 'init-lookup)
+
