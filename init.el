@@ -33,6 +33,7 @@
 (require 'init-js2-mode)
 (require 'init-json-mode)
 (require 'init-magit)
+(require 'init-markdown-mode)
 (require 'init-osx)
 (require 'init-paredit)
 (require 'init-projectile)
