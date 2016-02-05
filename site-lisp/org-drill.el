@@ -1742,7 +1742,8 @@ Note: does not actually alter the item."
          (funcall reschedule-fn)
        (setq drill-answer nil))))
    (t
-    (org-drill-hide-subheadings-if 'org-drill-entry-p)
+    ;; (org-drill-hide-subheadings-if 'org-drill-entry-p)
+		(org-show-subtree)
     (org-drill-unhide-clozed-text)
     (org-preview-latex-fragment)
     (ignore-errors
