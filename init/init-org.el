@@ -1,25 +1,26 @@
-;; (require-package 'org)
-
+;; customizations
 (setq org-agenda-files (quote ("~/org/agenda.org")))
 (setq org-agenda-span (quote fortnight))
-
-
-;; org-mode config
 (setq org-use-extra-keys t)
-
-;; (require 'org-drill)
-
+(setq org-tags-column 0)
 
 ;; when you open an org file make it start with everything expanded
 (setq org-startup-folded 'all)
 
-(defun outline-forward-up ()
+(defun tp-outline-forward-up ()
 	"Move cursor to next heading that is the same level as the current parent."
 	(interactive)
 	(outline-up-heading 1)
 	(org-forward-heading-same-level 1))
 
-(defun my-org-mode-hook ()
+(defun tp-tag-as-drill ()
+	"Add `drill` tag to current org entry. "
+	(interactive)
+	(org-set-tags-to (cons "drill" (org-get-tags)))
+	)
+
+(defun tp-org-mode-hook ()
+	(visual-line-mode)
 	;; moving forwards and backwards like paredit
 	(local-set-key (kbd "C-M-f") 'org-forward-heading-same-level)
 	(local-set-key (kbd "C-M-b") 'org-backward-heading-same-level)
@@ -30,24 +31,23 @@
 
 	;; descending backwards and ascending forwards
 	(local-set-key (kbd "C-M-p") 'outline-previous-visible-heading)
-	(local-set-key (kbd "C-M-n") 'outline-forward-up)
+	(local-set-key (kbd "C-M-n") 'tp-outline-forward-up)
 
 	;; structure editing
 	(local-set-key (kbd "M-(") 'org-demote-subtree)
 	(local-set-key (kbd "M-)") 'org-promote-subtree)
 
-	;; promote/demote heading                            M-LEFT/RIGHT
-	;; promote/demote current subtree                    M-S-LEFT/RIGHT
+	;; promote/demote heading														 M-LEFT/RIGHT
+	;; promote/demote current subtree										 M-S-LEFT/RIGHT
 
 	(local-set-key (kbd "C-c d d") 'org-drill)
 	(local-set-key (kbd "C-c d r") 'org-drill-resume)
+	(local-set-key (kbd "C-c d t") 'tp-tag-as-drill)
 
+	)
 
-)
-
-(add-hook 'org-mode-hook 'my-org-mode-hook)
+(add-hook 'org-mode-hook 'tp-org-mode-hook)
 
 (load-file "~/org/capture-templates.el")
-
 
 (provide 'init-org)

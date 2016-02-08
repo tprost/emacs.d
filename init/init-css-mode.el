@@ -1,6 +1,6 @@
-(add-to-list 'load-path "~/.emacs.d/site-lisp/css-mode")
+;; (add-to-list 'load-path "~/.emacs.d/site-lisp/css-mode")
 
-(require 'css-mode)
+;; (require 'css-mode)
 
 (setq css-indent-offset 2)
 

@@ -1,6 +1,8 @@
+(require-package 'scss-mode)
+
 (require 'scss-mode)
 
-;; (require-package 'scss-mode)
+
 
 ;; (autoload 'scss-mode "scss-mode")
 

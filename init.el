@@ -1,3 +1,10 @@
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 
 (setq custom-file "~/.emacs.d/custom.el")
@@ -33,7 +40,8 @@
 (require 'init-js2-mode)
 (require 'init-json-mode)
 (require 'init-magit)
-(require 'init-markdown-mode)
+
+
 (require 'init-osx)
 (require 'init-paredit)
 (require 'init-projectile)
@@ -45,9 +53,11 @@
 
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
-;; ;; (require 'init-yasnippet)
+(require 'init-markdown-mode)
+
+;; (require 'init-yasnippet)
 (require 'init-god-mode)
-;; ;; (require 'init-org)
+;; (require 'init-org)
 ;; (require 'init-zop-to-char)
 
 ;; org 8.2.10 + org-drill 2.4.1 seems to be stable
@@ -57,6 +67,6 @@
 
 (require 'init-hz2py)
 (require 'init-chinese-conv)
-
+(require 'init-pinyin-convert)
 ;; (require 'init-lookup)
 
