@@ -19,3 +19,6 @@
 [submodule "site-lisp/pinyin-convert"]
 	path = site-lisp/pinyin-convert
 	url = https://github.com/tprost/pinyin-convert.el.git
+[submodule "site-lisp/xcss-mode"]
+	path = site-lisp/xcss-mode
+	url = https://github.com/tprost/xcss-mode.git
