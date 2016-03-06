@@ -70,3 +70,4 @@
 (require 'init-pinyin-convert)
 ;; (require 'init-lookup)
 
+(require 'init-cmake-mode)
