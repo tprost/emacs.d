@@ -70,7 +70,7 @@
 (global-set-key (kbd "M-i") 'back-to-indentation)
 (global-set-key (kbd "C-M-m") 'iy-go-to-char)
 
-(global-set-key (kbd "C-z") 'er/expand-region)
+;; (global-set-key (kbd "C-z") 'er/expand-region)
 ;; (global-set-key (kbd "<C-return>") 'open-line-below)
 ;; (global-set-key (kbd "<C-S-return>") 'open-line-above)
 (global-set-key (kbd "M-`") 'other-frame)

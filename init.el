@@ -56,7 +56,7 @@
 (require 'init-markdown-mode)
 
 ;; (require 'init-yasnippet)
-(require 'init-god-mode)
+;; (require 'init-god-mode)
 ;; (require 'init-org)
 ;; (require 'init-zop-to-char)
 
