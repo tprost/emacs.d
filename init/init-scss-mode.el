@@ -9,6 +9,6 @@
 
 ;; ;; (set-face-attribute 'scss-variable nil :foreground "orange")
 
-;; (setq scss-compile-at-save nil)
+(setq scss-compile-at-save nil)
 
 (provide 'init-scss-mode)
