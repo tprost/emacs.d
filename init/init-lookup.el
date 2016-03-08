@@ -5,8 +5,10 @@
 ;; (require 'support-ndweb)
 ;; (require 'ndweb)
 
-;; (setq lookup-search-agents
-;; 			'((ndeb "~/dict")))
+(setq lookup-search-agents
+      '((ndeb "~/dict/daijirin")))
+
+;; (load "lookup-autoloads")
 
 (global-set-key (kbd "<f9>") 'lookup-word)
 
