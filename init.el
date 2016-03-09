@@ -68,6 +68,5 @@
 (require 'init-hz2py)
 (require 'init-chinese-conv)
 (require 'init-pinyin-convert)
-(require 'init-lookup)
 
 (require 'init-cmake-mode)
