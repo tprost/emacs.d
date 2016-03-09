@@ -19,3 +19,6 @@
 [submodule "site-lisp/xcss-mode"]
 	path = site-lisp/xcss-mode
 	url = https://github.com/tprost/xcss-mode.git
+[submodule "site-lisp/goldendict"]
+	path = site-lisp/goldendict
+	url = https://github.com/tprost/goldendict.el

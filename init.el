@@ -70,3 +70,4 @@
 (require 'init-pinyin-convert)
 
 (require 'init-cmake-mode)
+(require 'init-goldendict)
