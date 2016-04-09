@@ -22,3 +22,6 @@
 [submodule "site-lisp/goldendict"]
 	path = site-lisp/goldendict
 	url = https://github.com/tprost/goldendict.el
+[submodule "site-lisp/sonic-pi"]
+	path = site-lisp/sonic-pi
+	url = https://github.com/repl-electric/sonic-pi.el
