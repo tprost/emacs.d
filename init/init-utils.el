@@ -128,5 +128,20 @@ Version 2015-01-26"
         (mapc
          (lambda (fPath) (let ((process-connection-type nil)) (start-process "" nil "xdg-open" fPath))) ξfile-list))))))
 
+(defun spinal-case-region (begin end)
+  "Convert region to spinal case."
+  (interactive "r")
+  (save-restriction
+    (narrow-to-region begin end)
+    (downcase-region (point-min) (point-max))
+    (goto-char (point-min))
+    (while (search-forward-regexp
+            " " (point-max) t)
+      (replace-match "-"))
+    (goto-char (point-min))
+    (while (search-forward-regexp
+            "_" (point-max) t)
+      (replace-match "-"))))
+
 (provide 'init-utils)
 
