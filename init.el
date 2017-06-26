@@ -74,15 +74,4 @@
 ;; (require 'init-goldendict)
 (put 'downcase-region 'disabled nil)
 
-;; (add-to-list 'load-path "~/.emacs.d/site-lisp/sonic-pi")
-;; (require 'sonic-pi)
-;; (setq sonic-pi-path "~/code/sonic-pi") ; Must end with "/"
-
-;; Optionally define a hook
-(add-hook 'sonic-pi-mode-hook
-          (lambda ()
-            ;; This setq can go here instead if you wish
-            (setq sonic-pi-path "~/code/sonic-pi")
-            (define-key ruby-mode-map "\C-c\C-b" 'sonic-pi-stop-all)))
-
 (require 'org-player) 
