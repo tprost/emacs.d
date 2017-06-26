@@ -117,8 +117,8 @@
 										 "<wheel-up>"))
 
 
-(dolist (k keys-to-reset)
-	(global-unset-key (kbd k)))
+;; (dolist (k keys-to-reset)
+;; 	(global-unset-key (kbd k)))
 
 ;; (global-unset-key (kbd "<S-dead-asciitilde> "))
 

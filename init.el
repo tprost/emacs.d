@@ -35,6 +35,7 @@
 (require 'init-cider)
 (require 'init-css-mode)
 (require 'init-emmet-mode)
+(require 'init-exec-path-from-shell)
 (require 'init-helm)
 (require 'init-jade-mode)
 (require 'init-js2-mode)
@@ -70,12 +71,12 @@
 (require 'init-pinyin-convert)
 
 (require 'init-cmake-mode)
-(require 'init-goldendict)
+;; (require 'init-goldendict)
 (put 'downcase-region 'disabled nil)
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/sonic-pi")
-(require 'sonic-pi)
-(setq sonic-pi-path "~/code/sonic-pi") ; Must end with "/"
+;; (add-to-list 'load-path "~/.emacs.d/site-lisp/sonic-pi")
+;; (require 'sonic-pi)
+;; (setq sonic-pi-path "~/code/sonic-pi") ; Must end with "/"
 
 ;; Optionally define a hook
 (add-hook 'sonic-pi-mode-hook
@@ -83,3 +84,5 @@
             ;; This setq can go here instead if you wish
             (setq sonic-pi-path "~/code/sonic-pi")
             (define-key ruby-mode-map "\C-c\C-b" 'sonic-pi-stop-all)))
+
+(require 'org-player) 

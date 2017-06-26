@@ -44,6 +44,8 @@
 	(local-set-key (kbd "C-c d r") 'org-drill-resume)
 	(local-set-key (kbd "C-c d t") 'tp-tag-as-drill)
 
+	(local-set-key (kbd "C-c b") 'org-player-start/stop)
+
 	)
 
 (add-hook 'org-mode-hook 'tp-org-mode-hook)

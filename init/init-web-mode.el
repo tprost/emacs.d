@@ -3,6 +3,7 @@
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.swig\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ascx\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
 
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
