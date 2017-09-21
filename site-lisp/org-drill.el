@@ -878,8 +878,8 @@ from the entry at point."
 
 
 (defun org-drill-early-interval-factor (optimal-factor
-                                                optimal-interval
-                                                days-ahead)
+                                        optimal-interval
+                                        days-ahead)
   "Arguments:
 - OPTIMAL-FACTOR: interval-factor if the item had been tested
 exactly when it was supposed to be.
@@ -891,8 +891,8 @@ Returns an adjusted optimal factor which should be used to
 calculate the next interval, instead of the optimal factor found
 in the matrix."
   (let ((delta-ofmax (* (1- optimal-factor)
-                    (/ (+ optimal-interval
-                          (* 0.6 optimal-interval) -1) (1- optimal-interval)))))
+                        (/ (+ optimal-interval
+                              (* 0.6 optimal-interval) -1) (1- optimal-interval)))))
     (- optimal-factor
        (* delta-ofmax (/ days-ahead (+ days-ahead (* 0.6 optimal-interval)))))))
 
@@ -1198,8 +1198,8 @@ See the documentation for `org-drill-get-item-data' for a description of these."
   "If DAYS-AHEAD is supplied it must be a positive integer. The
 item will be scheduled exactly this many days into the future."
   (let ((delta-days (- (time-to-days (current-time))
-                   (time-to-days (or (org-get-scheduled-time (point))
-                                     (current-time)))))
+                       (time-to-days (or (org-get-scheduled-time (point))
+                                         (current-time)))))
         (ofmatrix org-drill-optimal-factor-matrix)
         ;; Entries can have weights, 1 by default. Intervals are divided by the
         ;; item's weight, so an item with a weight of 2 will have all intervals
@@ -1409,7 +1409,7 @@ the current topic."
          (when (and (not (outline-invisible-p))
                     (> (org-current-level) drill-entry-level))
            (when (or (/= (org-current-level) (1+ drill-entry-level))
-                        (funcall test))
+                     (funcall test))
              (hide-subtree))
            (push (point) drill-sections)))
        "" 'tree))
@@ -1419,7 +1419,7 @@ the current topic."
 (defun org-drill-hide-all-subheadings-except (heading-list)
   (org-drill-hide-subheadings-if
    (lambda () (let ((drill-heading (org-get-heading t)))
-           (not (member drill-heading heading-list))))))
+                (not (member drill-heading heading-list))))))
 
 
 (defun org-drill-presentation-prompt (&rest fmt-and-args)
@@ -1743,7 +1743,7 @@ Note: does not actually alter the item."
        (setq drill-answer nil))))
    (t
     ;; (org-drill-hide-subheadings-if 'org-drill-entry-p)
-		(org-show-subtree)
+    (org-show-subtree)
     (org-drill-unhide-clozed-text)
     (org-preview-latex-fragment)
     (ignore-errors
@@ -1912,7 +1912,7 @@ the second to last, etc."
                       ;; org link, or if it occurs inside a LaTeX math
                       ;; fragment
                       (or (org-pos-in-regexp (match-beginning 0)
-                                         org-bracket-link-regexp 1)
+                                             org-bracket-link-regexp 1)
                           (org-inside-LaTeX-fragment-p)))
               (incf cnt)
               (if (= cnt to-hide)
@@ -2104,7 +2104,9 @@ See `org-drill' for more details."
         (org-narrow-to-subtree)
         (org-show-subtree)
         (org-cycle-hide-drawers 'all)
-
+        (if (re-search-forward
+             "file" nil t)
+            (org-open-at-point))
         (let ((presentation-fn
                (cdr (assoc card-type org-drill-card-type-alist))))
           (if (listp presentation-fn)
@@ -2416,7 +2418,7 @@ one of the following values:
          nil)
         ((and (org-entry-empty-p)
               (let* ((card-type (org-entry-get (point) "DRILL_CARD_TYPE" nil))
-                    (dat (cdr (assoc card-type org-drill-card-type-alist))))
+                     (dat (cdr (assoc card-type org-drill-card-type-alist))))
                 (or (null card-type)
                     (not (third dat)))))
          ;; body is empty, and this is not a card type where empty bodies are
@@ -2456,11 +2458,11 @@ one of the following values:
            (sym1 (if (oddp (floor scanned (* 50 meter-width))) ?| ?.))
            (sym2 (if (eql sym1 ?.) ?| ?.)))
       (message "Collecting due drill items:%4d %s%s"
-              collected
-              (make-string (% (ceiling scanned 50) meter-width)
-                           sym2)
-              (make-string (- meter-width (% (ceiling scanned 50) meter-width))
-                           sym1)))))
+               collected
+               (make-string (% (ceiling scanned 50) meter-width)
+                            sym2)
+               (make-string (- meter-width (% (ceiling scanned 50) meter-width))
+                            sym1)))))
 
 
 (defun org-drill (&optional scope drill-match resume-p)

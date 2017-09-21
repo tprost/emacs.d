@@ -34,6 +34,7 @@
 (require 'init-cider)
 (require 'init-css-mode)
 (require 'init-emmet-mode)
+(require 'init-exec-path-from-shell)
 (require 'init-helm)
 (require 'init-jade-mode)
 (require 'init-js2-mode)
@@ -69,10 +70,11 @@
 (require 'init-pinyin-convert)
 
 (require 'init-cmake-mode)
-(require 'init-goldendict)
+;; (require 'init-goldendict)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
-
 ;; TODO
 ;; super (alt) + f is format document
+
+(require 'org-player) 
