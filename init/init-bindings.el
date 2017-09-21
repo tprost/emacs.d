@@ -92,6 +92,8 @@
                   (interactive)
                   (join-line -1)))
 
+(global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
+
 ;; (global-set-key (kbd "M-n") 'move-text-down)
 ;; (global-set-key (kbd "M-p") 'move-text-up)
 

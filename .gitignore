@@ -25,3 +25,4 @@ snippets
 /server/server
 /custom.el
 .cask
+.cache

@@ -26,4 +26,7 @@
 
 ;; (set-face-attribute 'column-marker-1 nil :background "#111111")
 
+(setq js2-missing-semi-one-line-override t)
+(setq js2-strict-missing-semi-warning nil)
+
 (provide 'init-js2-mode)
