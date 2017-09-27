@@ -30,6 +30,7 @@
 ;; all the melpa-stable things
 (require 'init-ace-jump-mode)
 (require 'init-auto-complete)
+(require 'init-bongo)
 (require 'init-clojure-mode)
 (require 'init-cider)
 (require 'init-css-mode)
@@ -50,6 +51,8 @@
 (require 'init-scss-mode)
 (require 'init-smart-mode-line)
 (require 'init-web-mode)
+(require 'init-csharp-mode)
+(require 'init-omnisharp)
 
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
@@ -76,5 +79,41 @@
 
 ;; TODO
 ;; super (alt) + f is format document
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-(require 'org-player) 
+ (defun transpose-windows ()
+   "Transpose two windows.  If more or less than two windows are visible, error."
+   (interactive)
+   (unless (= 2 (count-windows))
+     (error "There are not 2 windows."))
+   (let* ((windows (window-list))
+          (w1 (car windows))
+          (w2 (nth 1 windows))
+          (w1b (window-buffer w1))
+          (w2b (window-buffer w2)))
+     (set-window-buffer w1 w2b)
+     (set-window-buffer w2 w1b)))
+
+
+;; TODO
+;; make a "copy current buffer name to clipboard"
+
+;; TODO
+;; yasnippet for a c sharp function
+;; yasnippet for a c sharp for each
+
+;; TODO
+;; flycheck should refresh when I switch back to a buffer
+
+;; TODO
+;; a way to quickly mark a for loop
+
+
+;; (require 'org-player) 
+
+
+;; TODO make csproj open in xml mode
+
+;; TODO hotkey for dired mode in Downloads folder
+
+

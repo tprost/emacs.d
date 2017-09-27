@@ -25,3 +25,10 @@
 [submodule "site-lisp/sonic-pi"]
 	path = site-lisp/sonic-pi
 	url = https://github.com/repl-electric/sonic-pi.el
+[submodule "site-lisp/omnisharp-emacs"]
+	path = site-lisp/omnisharp-emacs
+	url = https://github.com/OmniSharp/omnisharp-emacs
+  branch = beb40cf
+[submodule "site-lisp/dotnet.el"]
+	path = site-lisp/dotnet.el
+	url = https://github.com/julienXX/dotnet.el

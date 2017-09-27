@@ -1,10 +1,10 @@
 (require 'init-reset-bindings)
 
 ;; (dolist (key '("s-a" "s-b" "s-c" "s-d" "s-e" "s-f" "s-g"
-;;								"s-h" "s-i" "s-j" "s-k" "s-l" "s-m" "s-n"
-;;							 "s-o" "s-p" "s-q" "s-r" "s-t" "s-u" "s-v"
-;;							 "s-w" "s-x" "s-y" "s-z" "\e"))
-;;	 (global-set-key	(kbd key) nil))
+;;                "s-h" "s-i" "s-j" "s-k" "s-l" "s-m" "s-n"
+;;               "s-o" "s-p" "s-q" "s-r" "s-t" "s-u" "s-v"
+;;               "s-w" "s-x" "s-y" "s-z" "\e"))
+;;   (global-set-key  (kbd key) nil))
 
 ;; unbind super key
 (global-set-key (kbd "s-&") nil) ;; kill-this-buffer
@@ -88,7 +88,7 @@
 (global-set-key (kbd "C-.") 'kmacro-end-and-call-macro)
 
 (global-set-key (kbd "M-j")
-            (lambda ()
+                (lambda ()
                   (interactive)
                   (join-line -1)))
 
@@ -102,5 +102,19 @@
 
 (global-set-key (kbd "M-i c") (lambda () (interactive) (set-input-method "chinese-py")))
 (global-set-key (kbd "M-i e") (lambda () (interactive) (set-input-method "ucs")))
+
+(global-set-key (kbd "M-F") 'cleanup-buffer)
+
+(global-set-key (kbd "C-x w s r") 'split-window-right)
+(global-set-key (kbd "C-x w s l") 'split-window-left)
+(global-set-key (kbd "C-x w s b") 'split-window-below)
+(global-set-key (kbd "C-x w b") 'switch-to-buffer-other-window)
+(global-set-key (kbd "C-x w o") 'other-window)
+(global-set-key (kbd "C-x w d") 'dired-other-window)
+(global-set-key (kbd "C-x w 0") 'delete-window)
+(global-set-key (kbd "C-x w 1") 'delete-other-windows)
+(global-set-key (kbd "C-x w t") 'transpose-windows)
+
+(global-set-key (kbd "s-`") 'other-window)
 
 (provide 'init-bindings)
