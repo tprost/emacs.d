@@ -1,4 +1,5 @@
-(add-to-list 'load-path "~/.emacs.d/site-lisp/omnisharp-emacs")
+(require-package 'omnisharp)
+
 (require 'omnisharp)
 
 (setq omnisharp-server-executable-path "~/Downloads/omnisharp-osx/run")

@@ -18,9 +18,9 @@
 		(add-to-list 'initial-frame-alist '(font . "Monaco-18"))
 		(add-to-list 'default-frame-alist '(font . "Monaco-18"))))
  ((string-equal system-type "gnu/linux") ; linux
-	(when (member "Monaco" (font-family-list))
-		(add-to-list 'initial-frame-alist '(font . "Monaco-14:antialias=none"))
-		(add-to-list 'default-frame-alist '(font . "Monaco-14:antialias=none")))))
+	(when (member "Inconsolata" (font-family-list))
+		(add-to-list 'initial-frame-alist '(font . "Inconsolata-18:antialias=none"))
+		(add-to-list 'default-frame-alist '(font . "Inconsolata-18:antialias=none")))))
 ;;	(when (member "Ttyp0" (font-family-list))
 ;;		(add-to-list 'initial-frame-alist '(font . "Ttyp0-14:antialias=none"))
 ;;		(add-to-list 'default-frame-alist '(font . "Ttyp0-14:antialias=none")))))

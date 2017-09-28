@@ -66,7 +66,6 @@
 ;; org 8.2.10 + org-drill 2.4.1 seems to be stable
 (require 'init-org-drill)
 (require 'init-org)
-(require 'init-emms)
 
 (require 'init-hz2py)
 (require 'init-chinese-conv)
