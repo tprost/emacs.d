@@ -115,4 +115,26 @@
 
 ;; TODO hotkey for dired mode in Downloads folder
 
+;; TODO hotkey for creating a feature branch off of develop based on JIRA tag and name
 
+;; TODO include yaml mode
+;; TODO include csv-mode
+
+;; easier hotkeys for switch to wdired mode and out
+
+;; TODO make shell use up arrow key for previous command
+;; TODO find and remember command to start an additional shell
+;; TODO tab in shell mode should autocomplete
+
+;; TODO find and remember commands to resize frame
+
+;; require `ag`
+;; TODO I don't want to have to constantly be running `cleanup-buffer`
+
+
+(defun shell-with-name (name)
+  "Start a shell with a name that we get from the user."
+  (interactive "sEnter the name of the shell you want: ")
+  (shell name))
+
+(global-set-key (kbd "C-x M") 'shell-with-name)

@@ -108,6 +108,7 @@
 (global-set-key (kbd "C-x w s r") 'split-window-right)
 (global-set-key (kbd "C-x w s l") 'split-window-left)
 (global-set-key (kbd "C-x w s b") 'split-window-below)
+(global-set-key (kbd "C-x w s a") 'split-window-below)
 (global-set-key (kbd "C-x w b") 'switch-to-buffer-other-window)
 (global-set-key (kbd "C-x w o") 'other-window)
 (global-set-key (kbd "C-x w d") 'dired-other-window)

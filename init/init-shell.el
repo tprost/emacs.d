@@ -1,7 +1,11 @@
 (add-to-list 'exec-path "~/bin")
 
+(defun my-shell-mode-hook ()
+(auto-complete-mode)
+  )
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(add-hook 'shell-mode-hook 'my-shell-mode-hook)
 
 (defun preamble-regexp-alternatives (regexps)
   "Return the alternation of a list of regexps."
