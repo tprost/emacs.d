@@ -73,33 +73,14 @@
 
 (require 'init-cmake-mode)
 ;; (require 'init-goldendict)
-(put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
 ;; TODO
 ;; super (alt) + f is format document
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
- (defun transpose-windows ()
-   "Transpose two windows.  If more or less than two windows are visible, error."
-   (interactive)
-   (unless (= 2 (count-windows))
-     (error "There are not 2 windows."))
-   (let* ((windows (window-list))
-          (w1 (car windows))
-          (w2 (nth 1 windows))
-          (w1b (window-buffer w1))
-          (w2b (window-buffer w2)))
-     (set-window-buffer w1 w2b)
-     (set-window-buffer w2 w1b)))
-
-
-;; TODO
-;; make a "copy current buffer name to clipboard"
-
-;; TODO
-;; yasnippet for a c sharp function
-;; yasnippet for a c sharp for each
+(require 'init-windows)
+(require 'init-miscellaneous)
 
 ;; TODO
 ;; flycheck should refresh when I switch back to a buffer
@@ -138,3 +119,5 @@
   (shell name))
 
 (global-set-key (kbd "C-x M") 'shell-with-name)
+
+(put 'downcase-region 'disabled nil)

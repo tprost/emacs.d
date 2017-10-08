@@ -8,7 +8,7 @@
 (require-package 'helm-projectile)
 (require 'helm-projectile)
 ;; (require-package 'projectile)
-;; 
+;;
 
 ;; change the prefix for projectile commands
 
@@ -16,10 +16,16 @@
 (helm-projectile-on)
 
 (projectile-register-project-type 'dotnet '("NuGet.config")
-                  :compile "dotnet build"
-                  :test "dotnet test"
-                  :run "dotnet run"
-                  :test-suffix "Tests")
+                                  :compile "dotnet build"
+                                  :test "dotnet test"
+                                  :run "dotnet run"
+                                  :test-suffix "Tests")
+
+(projectile-register-project-type 'npm '("package.json")
+                                  :compile "npm install"
+                                  :test "npm test"
+                                  :run "npm start"
+                                  :test-suffix ".spec")
 
 ;; (projectile-run-test)
 
