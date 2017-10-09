@@ -82,17 +82,13 @@
 (require 'init-windows)
 (require 'init-miscellaneous)
 
-;; TODO
-;; flycheck should refresh when I switch back to a buffer
-
-;; TODO
-;; a way to quickly mark a for loop
+(require 'init-flycheck)
 
 
-;; (require 'org-player) 
-
-
-;; TODO make csproj open in xml mode
+;; TODO a way to quickly mark a for loop
+;; that's better than just expand region
+;; or C-M-h
+(global-set-key (kbd "C-@") 'er/expand-region)
 
 ;; TODO hotkey for dired mode in Downloads folder
 
