@@ -16,4 +16,11 @@
 (global-set-key (kbd "C-x M-w b b") 'copy-buffer-file-name-with-path)
 (global-set-key (kbd "C-x M-w b w") 'copy-buffer-file-name-without-path)
 
+;; TODO hotkey for dired mode in Downloads folder
+(defun dired-in-downloads-directory ()
+  (interactive)
+  (dired "~/Downloads"))
+
+(global-set-key (kbd "C-x D") 'dired-in-downloads-directory)
+
 (provide 'init-miscellaneous)

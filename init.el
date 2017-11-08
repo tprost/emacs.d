@@ -90,8 +90,6 @@
 ;; or C-M-h
 (global-set-key (kbd "C-@") 'er/expand-region)
 
-;; TODO hotkey for dired mode in Downloads folder
-
 ;; TODO hotkey for creating a feature branch off of develop based on JIRA tag and name
 
 ;; TODO include yaml mode
@@ -117,3 +115,5 @@
 (global-set-key (kbd "C-x M") 'shell-with-name)
 
 (put 'downcase-region 'disabled nil)
+
+(global-set-key (kbd "C-x f") 'fill-region)
