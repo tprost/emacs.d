@@ -117,3 +117,4 @@
 (put 'downcase-region 'disabled nil)
 
 (global-set-key (kbd "C-x f") 'fill-region)
+
