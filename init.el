@@ -84,6 +84,8 @@
 
 (require 'init-flycheck)
 
+(require 'init-string-inflection)
+
 
 ;; TODO a way to quickly mark a for loop
 ;; that's better than just expand region
