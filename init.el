@@ -29,7 +29,6 @@
 
 ;; all the melpa-stable things
 (require 'init-ace-jump-mode)
-(require 'init-auto-complete)
 (require 'init-bongo)
 (require 'init-clojure-mode)
 (require 'init-cider)
@@ -85,6 +84,8 @@
 (require 'init-flycheck)
 
 (require 'init-string-inflection)
+(require 'init-typescript-mode)
+(require 'init-company-mode)
 
 
 ;; TODO a way to quickly mark a for loop
@@ -119,4 +120,7 @@
 (put 'downcase-region 'disabled nil)
 
 (global-set-key (kbd "C-x f") 'fill-region)
+
+
+
 
