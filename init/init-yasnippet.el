@@ -5,7 +5,7 @@
 (yas-global-mode 1)
 
 (setq yas-snippet-dirs
-      '("~/.emacs.d/snippets" yas-installed-snippets-dir))
+      '("~/.emacs.d/snippets"))
 
 ;; (yas/initialize)
 
@@ -20,5 +20,4 @@
 ;; (define-key yas-minor-mode-map (kbd "C-x y") #'yas-expand)
 
 ;; (define-key yas-minor-mode-map (kbd "C-S-y") 'yas-expand)
-
 (provide 'init-yasnippet)

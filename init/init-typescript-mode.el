@@ -1,3 +1,4 @@
+(require-package 'typescript-mode)
 (require-package 'tide)
 
 (defun set-up-typescript-mode ()

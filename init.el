@@ -57,7 +57,7 @@
 
 (require 'init-markdown-mode)
 
-;; (require 'init-yasnippet)
+
 ;; (require 'init-god-mode)
 ;; (require 'init-org)
 ;; (require 'init-zop-to-char)
@@ -122,5 +122,5 @@
 (global-set-key (kbd "C-x f") 'fill-region)
 
 
-
+(require 'init-yasnippet)
 
