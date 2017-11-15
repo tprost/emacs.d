@@ -9,4 +9,7 @@
 
 (add-hook 'after-save-hook 'flycheck-all-buffers-in-project)
 
+(global-set-key (kbd "C-c n e") 'flycheck-next-error)  
+(global-set-key (kbd "C-c p e") 'flycheck-previous-error)
+
 (provide 'init-flycheck)
