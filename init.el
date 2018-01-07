@@ -57,6 +57,8 @@
 
 (require 'init-markdown-mode)
 
+(require 'init-haxe-mode)
+
 
 ;; (require 'init-god-mode)
 ;; (require 'init-org)
@@ -120,7 +122,6 @@
 (put 'downcase-region 'disabled nil)
 
 (global-set-key (kbd "C-x f") 'fill-region)
-
 
 (require 'init-yasnippet)
 
