@@ -47,5 +47,7 @@
                   (get-char-property (point) 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
+(set-face-attribute 'default nil :height 160)
+
 (provide 'init-appearance)
 
