@@ -48,7 +48,7 @@
 (require 'init-python-mode)
 (require 'init-rvm)
 (require 'init-scss-mode)
-(require 'init-smart-mode-line)
+(require 'init-powerline)
 (require 'init-web-mode)
 (require 'init-csharp-mode)
 (require 'init-omnisharp)
@@ -121,6 +121,6 @@
 
 (global-set-key (kbd "C-x f") 'fill-region)
 
-
 (require 'init-yasnippet)
 
+;; TODO write an smart import function

@@ -28,6 +28,7 @@
                                   :test-suffix ".spec")
 
 ;; (projectile-run-test)
+(global-set-key (kbd "C-c p t") 'projectile-test-project)
 
 ;; run a particular test
 ;; run namespace tests

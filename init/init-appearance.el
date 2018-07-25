@@ -19,8 +19,8 @@
 		(add-to-list 'default-frame-alist '(font . "Monaco-18"))))
  ((string-equal system-type "gnu/linux") ; linux
 	(when (member "Inconsolata" (font-family-list))
-		(add-to-list 'initial-frame-alist '(font . "Inconsolata-18:antialias=none"))
-		(add-to-list 'default-frame-alist '(font . "Inconsolata-18:antialias=none")))))
+		(add-to-list 'initial-frame-alist '(font . "Inconsolata-14:antialias=none"))
+		(add-to-list 'default-frame-alist '(font . "Inconsolata-14:antialias=none")))))
 ;;	(when (member "Ttyp0" (font-family-list))
 ;;		(add-to-list 'initial-frame-alist '(font . "Ttyp0-14:antialias=none"))
 ;;		(add-to-list 'default-frame-alist '(font . "Ttyp0-14:antialias=none")))))
@@ -47,7 +47,7 @@
                   (get-char-property (point) 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
-(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :height 150)
 
 (provide 'init-appearance)
 
