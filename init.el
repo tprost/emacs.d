@@ -57,6 +57,8 @@
 
 (require 'init-markdown-mode)
 
+(require 'init-haxe-mode)
+
 
 ;; (require 'init-god-mode)
 ;; (require 'init-org)
