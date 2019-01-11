@@ -1,11 +1,11 @@
-(require-package 'projectile)
+(straight-use-package 'projectile)
 
 ;; (add-to-list 'load-path "~/.emacs.d/site-lisp/projectile")
 
 (setq projectile-keymap-prefix (kbd "C-x p"))
 
 (require 'projectile)
-(require-package 'helm-projectile)
+(straight-use-package 'helm-projectile)
 (require 'helm-projectile)
 ;; (require-package 'projectile)
 ;;
