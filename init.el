@@ -37,72 +37,58 @@
 (require 'init-input)
 (require 'init-shell)
 (require 'init-variables)
+(require 'init-osx)
 
-;; ;; package stuff
-;; (require 'init-elpa)
-
-;; ;; all the melpa-stable things
+;; packages
 (require 'init-ace-jump-mode)
-;; (require 'init-bongo)
-;; (require 'init-clojure-mode)
-;; (require 'init-cider)
-;; (require 'init-css-mode)
-;; (require 'init-emmet-mode)
+(require 'init-company-mode)
 (require 'init-exec-path-from-shell)
 (require 'init-helm)
-;; (require 'init-jade-mode)
 (require 'init-js2-mode)
-;; (require 'init-json-mode)
 (require 'init-magit)
-
-
-;; (require 'init-osx)
-;; (require 'init-paredit)
+(require 'init-markdown-mode)
 (require 'init-projectile)
+(require 'init-typescript-mode)
+(require 'init-yaml-mode)
+
+;; (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+;; (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
+;; (put 'upcase-region 'disabled nil)
+
+;; (require 'init-bongo)
+;; (require 'init-chinese-conv)
+;; (require 'init-cider)
+;; (require 'init-clojure-mode)
+;; (require 'init-cmake-mode)
+;; (require 'init-csharp-mode)
+;; (require 'init-css-mode)
+;; (require 'init-emmet-mode)
+;; (require 'init-flycheck)
+;; (require 'init-god-mode)
+;; (require 'init-goldendict)
+;; (require 'init-haxe-mode)
+;; (require 'init-hz2py)
+;; (require 'init-jade-mode)
+;; (require 'init-json-mode)
+;; (require 'init-miscellaneous)
+;; (require 'init-omnisharp)
+;; (require 'init-org)
+;; (require 'init-org)
+;; (require 'init-org-drill)
+;; (require 'init-paredit)
+;; (require 'init-pinyin-convert)
+;; (require 'init-powerline)
 ;; (require 'init-python-mode)
 ;; (require 'init-rvm)
 ;; (require 'init-scss-mode)
-;; (require 'init-powerline)
+;; (require 'init-string-inflection)
 ;; (require 'init-web-mode)
-;; (require 'init-csharp-mode)
-;; (require 'init-omnisharp)
-
-;; (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
-
-(require 'init-markdown-mode)
-
-;; ;; (require 'init-haxe-mode)
-
-
-;; ;; (require 'init-god-mode)
-;; ;; (require 'init-org)
-;; ;; (require 'init-zop-to-char)
-
-;; ;; org 8.2.10 + org-drill 2.4.1 seems to be stable
-;; (require 'init-org-drill)
-;; (require 'init-org)
-
-;; (require 'init-hz2py)
-;; (require 'init-chinese-conv)
-;; (require 'init-pinyin-convert)
-
-;; (require 'init-cmake-mode)
-;; ;; (require 'init-goldendict)
-;; (put 'upcase-region 'disabled nil)
+;; (require 'init-windows)
+;; (require 'init-zop-to-char)
 
 ;; ;; TODO
+;; ;; org 8.2.10 + org-drill 2.4.1 seems to be stable
 ;; ;; super (alt) + f is format document
-;; (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-
-;; (require 'init-windows)
-;; (require 'init-miscellaneous)
-
-;; (require 'init-flycheck)
-
-;; (require 'init-string-inflection)
-(require 'init-typescript-mode)
-(require 'init-yaml-mode)
-;; (require 'init-company-mode)
 
 
 ;; ;; TODO a way to quickly mark a for loop

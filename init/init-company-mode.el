@@ -1,4 +1,4 @@
-(require-package 'company)
+(straight-use-package 'company)
 
 (setq company-dabbrev-downcase nil)
 (add-hook 'after-init-hook 'global-company-mode)
