@@ -101,6 +101,7 @@
 
 ;; (require 'init-string-inflection)
 (require 'init-typescript-mode)
+(require 'init-yaml-mode)
 ;; (require 'init-company-mode)
 
 
@@ -110,8 +111,6 @@
 ;; (global-set-key (kbd "C-@") 'er/expand-region)
 
 ;; ;; TODO hotkey for creating a feature branch off of develop based on JIRA tag and name
-
-;; ;; TODO include yaml mode
 ;; ;; TODO include csv-mode
 
 ;; ;; easier hotkeys for switch to wdired mode and out
