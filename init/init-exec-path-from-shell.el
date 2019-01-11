@@ -1,4 +1,4 @@
-(require-package 'exec-path-from-shell)
+(straight-use-package 'exec-path-from-shell)
 
 (exec-path-from-shell-initialize)
 

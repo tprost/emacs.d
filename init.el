@@ -48,10 +48,10 @@
 ;; (require 'init-cider)
 ;; (require 'init-css-mode)
 ;; (require 'init-emmet-mode)
-;; (require 'init-exec-path-from-shell)
+(require 'init-exec-path-from-shell)
 (require 'init-helm)
 ;; (require 'init-jade-mode)
-;; (require 'init-js2-mode)
+(require 'init-js2-mode)
 ;; (require 'init-json-mode)
 (require 'init-magit)
 
@@ -69,7 +69,7 @@
 
 ;; (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
-;; (require 'init-markdown-mode)
+(require 'init-markdown-mode)
 
 ;; ;; (require 'init-haxe-mode)
 
@@ -100,7 +100,7 @@
 ;; (require 'init-flycheck)
 
 ;; (require 'init-string-inflection)
-;; (require 'init-typescript-mode)
+(require 'init-typescript-mode)
 ;; (require 'init-company-mode)
 
 

@@ -1,4 +1,5 @@
 (straight-use-package 'helm)
+(straight-use-package 'helm-ag)
 
 ;; helm everywhere please
 (helm-mode 1)

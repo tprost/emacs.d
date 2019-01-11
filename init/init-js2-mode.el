@@ -1,4 +1,4 @@
-(require-package 'js2-mode)
+(straight-use-package 'js2-mode)
 
 (setq js2-basic-offset 2)
 (setq js2-bounce-indent-p nil)
