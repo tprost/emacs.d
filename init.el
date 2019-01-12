@@ -14,6 +14,8 @@
 
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 
+(require 'init-org)
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 

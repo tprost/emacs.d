@@ -1,3 +1,37 @@
+;; hack to make straight.el load newest org-mode
+(require 'subr-x)
+(straight-use-package 'git)
+
+(defun org-git-version ()
+  "The Git version of org-mode.
+Inserted by installing org-mode or when a release is made."
+  (require 'git)
+  (let ((git-repo (expand-file-name
+                   "straight/repos/org/" user-emacs-directory)))
+    (string-trim
+     (git-run "describe"
+              "--match=release\*"
+              "--abbrev=6"
+              "HEAD"))))
+
+(defun org-release ()
+  "The release version of org-mode.
+Inserted by installing org-mode or when a release is made."
+  (require 'git)
+  (let ((git-repo (expand-file-name
+                   "straight/repos/org/" user-emacs-directory)))
+    (string-trim
+     (string-remove-prefix
+      "release_"
+      (git-run "describe"
+               "--match=release\*"
+               "--abbrev=0"
+               "HEAD")))))
+
+(provide 'org-version)
+
+(straight-use-package 'org-plus-contrib)
+
 ;; customizations
 (setq org-agenda-files (quote ("~/org/agenda.org")))
 (setq org-agenda-span (quote fortnight))
@@ -52,5 +86,15 @@
 
 (if (file-readable-p "~/org/capture-templates.el")
     (load-file "~/org/capture-templates.el"))
+
+;; (straight-use-package 'org-drill)
+
+(straight-use-package
+ '(org-drill :type git :host github :repo "atomontage/org-drill"))
+
+(require 'org-drill)
+
+;; (setq org-drill-spaced-repetition-algorithm 'sm2)
+;; (setq org-drill-add-random-noise-to-intervals-p t)
 
 (provide 'init-org)
