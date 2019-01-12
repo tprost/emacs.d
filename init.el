@@ -1,8 +1,4 @@
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-
+;; bootstrap straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -15,8 +11,6 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
-
-;; (package-initialize)
 
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 
@@ -45,8 +39,10 @@
 (require 'init-exec-path-from-shell)
 (require 'init-helm)
 (require 'init-js2-mode)
+(require 'init-json-mode)
 (require 'init-magit)
 (require 'init-markdown-mode)
+(require 'init-miscellaneous)
 (require 'init-projectile)
 (require 'init-typescript-mode)
 (require 'init-yaml-mode)
@@ -69,8 +65,6 @@
 ;; (require 'init-haxe-mode)
 ;; (require 'init-hz2py)
 ;; (require 'init-jade-mode)
-;; (require 'init-json-mode)
-;; (require 'init-miscellaneous)
 ;; (require 'init-omnisharp)
 ;; (require 'init-org)
 ;; (require 'init-org)
@@ -106,10 +100,6 @@
 ;; ;; TODO tab in shell mode should autocomplete
 
 ;; ;; TODO find and remember commands to resize frame
-
-;; ;; require `ag`
-;; ;; TODO I don't want to have to constantly be running `cleanup-buffer`
-
 
 ;; (defun shell-with-name (name)
 ;;   "Start a shell with a name that we get from the user."

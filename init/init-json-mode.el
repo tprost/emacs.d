@@ -1,4 +1,4 @@
-;; (require-package 'json-mode)
+(straight-use-package 'json-mode)
 
 ;; (add-to-list 'load-path "~/.emacs.d/site-lisp/json-mode.el")
 
