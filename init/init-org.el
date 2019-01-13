@@ -90,7 +90,7 @@ Inserted by installing org-mode or when a release is made."
 ;; (straight-use-package 'org-drill)
 
 (straight-use-package
- '(org-drill :type git :host github :repo "atomontage/org-drill"))
+ '(org-drill :type git :host github :repo "hakanserce/org-drill"))
 
 (require 'org-drill)
 

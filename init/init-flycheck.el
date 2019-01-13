@@ -1,3 +1,5 @@
+(straight-use-package 'flycheck)
+
 (defun flycheck-all-buffers-in-project ()
   "Run flycheck on every buffer that has flycheck-mode enabled."
   (interactive)
