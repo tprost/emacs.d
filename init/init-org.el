@@ -89,10 +89,10 @@ Inserted by installing org-mode or when a release is made."
 
 ;; (straight-use-package 'org-drill)
 
-(straight-use-package
- '(org-drill :type git :host github :repo "hakanserce/org-drill"))
+;; (straight-use-package
+;;  '(org-drill :type git :host github :repo "hakanserce/org-drill"))
 
-(require 'org-drill)
+;; (require 'org-drill)
 
 ;; (setq org-drill-spaced-repetition-algorithm 'sm2)
 ;; (setq org-drill-add-random-noise-to-intervals-p t)

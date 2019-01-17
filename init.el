@@ -41,7 +41,7 @@
 (require 'init-dockerfile-mode)
 (require 'init-exec-path-from-shell)
 (require 'init-flycheck)
-(require 'init-gherkin-mode)
+(require 'init-feature-mode)
 (require 'init-go-mode)
 (require 'init-helm)
 (require 'init-js2-mode)
