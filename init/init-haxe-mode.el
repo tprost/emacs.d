@@ -1,4 +1,4 @@
-(require-package 'haxe-mode)
+(straight-use-package 'haxe-mode)
 
 (require 'haxe-mode)
 

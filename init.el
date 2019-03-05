@@ -43,6 +43,7 @@
 (require 'init-flycheck)
 (require 'init-feature-mode)
 (require 'init-go-mode)
+(require 'init-haxe-mode)
 (require 'init-helm)
 (require 'init-js2-mode)
 (require 'init-json-mode)
@@ -67,7 +68,7 @@
 ;; (require 'init-emmet-mode)
 ;; (require 'init-god-mode)
 ;; (require 'init-goldendict)
-;; (require 'init-haxe-mode)
+
 ;; (require 'init-hz2py)
 ;; (require 'init-jade-mode)
 ;; (require 'init-omnisharp)
@@ -120,3 +121,11 @@
 ;; (require 'init-yasnippet)
 
 ;; ;; TODO write an smart import function
+
+(straight-use-package 'jinja2-mode)
+(straight-use-package 'plantuml-mode)
+
+;; Enable plantuml-mode for PlantUML files
+(add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
+
+(straight-use-package 'make-mode)

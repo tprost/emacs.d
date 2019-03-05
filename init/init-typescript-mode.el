@@ -18,6 +18,7 @@
   (local-set-key (kbd "C-c r f") 'tide-refactor)
   (local-set-key (kbd "C-c f") 'tide-fix)
   (local-set-key (kbd "C-c r s") 'tide-rename-symbol)
+  (local-set-key (kbd "C-c C-j") 'tide-jump-to-definition)
   (local-set-key (kbd "C-c j d") 'tide-jump-to-definition)
   (local-set-key (kbd "C-c j i") 'tide-jump-to-implementation)
   (local-set-key (kbd "C-c n r") 'tide-find-next-reference))

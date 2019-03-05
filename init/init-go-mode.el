@@ -1,4 +1,6 @@
 (straight-use-package 'go-mode)
+(straight-use-package 'go-rename)
+(straight-use-package 'godoctor)
 (straight-use-package 'company-go)
 
 (setq gofmt-command "goimports")
