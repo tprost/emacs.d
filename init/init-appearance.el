@@ -36,8 +36,14 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
+(straight-use-package 'atom-one-dark-theme)
+(load-theme 'atom-one-dark t)
+
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+
 ;; wombat theme
-(load-theme 'wombat t)
+;; (load-theme 'wombat t)
 
 (setq blink-cursor-blinks -1)
 

@@ -129,3 +129,5 @@
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
 
 (straight-use-package 'make-mode)
+
+(straight-use-package 'restclient)
