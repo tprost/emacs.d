@@ -134,8 +134,10 @@
 
 
 
+(straight-use-package 'beacon)
+(beacon-mode 1)
 
-
+(straight-use-package 'crux)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
