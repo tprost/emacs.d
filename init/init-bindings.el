@@ -109,4 +109,6 @@
 (global-set-key (kbd "<f12> s") 'crux-find-shell-init-file)
 (global-set-key (kbd "C-c t") 'crux-visit-term-buffer)
 
+(global-set-key (kbd "s-`") 'other-frame)
+
 (provide 'init-bindings)

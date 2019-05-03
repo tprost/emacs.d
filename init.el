@@ -139,6 +139,8 @@
 
 (straight-use-package 'crux)
 
+(straight-use-package 'term-projectile)
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 (window-divider-mode -1)
