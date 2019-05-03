@@ -16,9 +16,6 @@
 
 (require 'init-org)
 
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file 'noerror)
-
 ;; my own shit
 (require 'init-utils)
 
@@ -131,3 +128,16 @@
 (straight-use-package 'make-mode)
 
 (straight-use-package 'restclient)
+
+(straight-use-package 'telephone-line)
+(telephone-line-mode 1)
+
+
+
+
+
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file 'noerror)
+(window-divider-mode -1)
+
