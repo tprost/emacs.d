@@ -59,7 +59,7 @@
 (global-set-key (kbd "<f12> o c") 'org-capture)
 (global-set-key (kbd "<f12> v") 'visual-line-mode)
 (global-set-key (kbd "<f12> w") 'whitespace-mode)
-(global-set-key (kbd "<f12> e") 'open-my-emacs-file)
+
 (global-set-key (kbd "<f12> j") 'open-my-japanese-file)
 (global-set-key (kbd "<f12> k k") 'open-my-japanese-file)
 
@@ -103,8 +103,10 @@
 (global-set-key (kbd "M-i c") (lambda () (interactive) (set-input-method "chinese-py")))
 (global-set-key (kbd "M-i e") (lambda () (interactive) (set-input-method "ucs")))
 
-(global-set-key (kbd "M-F") 'cleanup-buffer)
-
-
+(global-set-key (kbd "M-F") 'crux-cleanup-buffer-or-region)
+(global-set-key (kbd "C-^") 'crux-top-join-line)
+(global-set-key (kbd "<f12> e") 'crux-find-user-init-file)
+(global-set-key (kbd "<f12> s") 'crux-find-shell-init-file)
+(global-set-key (kbd "C-c t") 'crux-visit-term-buffer)
 
 (provide 'init-bindings)
