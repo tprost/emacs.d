@@ -53,7 +53,6 @@
 
 ;; (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 ;; (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
-;; (put 'upcase-region 'disabled nil)
 
 ;; (require 'init-bongo)
 ;; (require 'init-chinese-conv)
@@ -132,16 +131,33 @@
 (straight-use-package 'telephone-line)
 (telephone-line-mode 1)
 
-
-
 (straight-use-package 'beacon)
 (beacon-mode 1)
 
 (straight-use-package 'crux)
 
-(straight-use-package 'term-projectile)
-
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 (window-divider-mode -1)
 
+
+
+
+(straight-use-package 'prodigy)
+
+(prodigy-define-service
+  :name "Smart CMO Goconvey"
+  :command "goconvey"
+  :args '(".", "--excludedDirs=bin,cmd,deployment,documentation,tests")
+  :cwd "~/code/tripstack/smartcmo"
+  :stop-signal 'sigkill
+  :kill-process-buffer-on-stop t)
+
+
+(require 'init-lua-mode)
+
+(straight-use-package 'editorconfig)
+(editorconfig-mode 1)
+
+
+(put 'upcase-region 'disabled nil)
