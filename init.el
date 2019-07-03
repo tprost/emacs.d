@@ -35,6 +35,7 @@
 ;; packages
 (require 'init-ace-jump-mode)
 (require 'init-company-mode)
+(require 'init-csharp-mode)
 (require 'init-dockerfile-mode)
 (require 'init-exec-path-from-shell)
 (require 'init-flycheck)
@@ -161,3 +162,15 @@
 
 
 (put 'upcase-region 'disabled nil)
+
+(defun replace-last-sexp ()
+    (interactive)
+    (let ((value (eval (preceding-sexp))))
+      (kill-sexp -1)
+      (insert (format "%S" value))))
+
+
+(getenv "GOPATH")
+(setenv "GOPATH" "/Users/taylor.prost/code/go")
+(setenv "GOROOT" "/usr/local/go")
+
