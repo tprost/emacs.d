@@ -111,7 +111,6 @@
 
 ;; (global-set-key (kbd "C-x M") 'shell-with-name)
 
-;; (put 'downcase-region 'disabled nil)
 
 ;; (global-set-key (kbd "C-x f") 'fill-region)
 
@@ -174,3 +173,16 @@
 (setenv "GOPATH" "/Users/taylor.prost/code/go")
 (setenv "GOROOT" "/usr/local/go")
 
+(straight-use-package 'ansi-color)
+
+(defun endless/colorize-compilation ()
+  "Colorize from `compilation-filter-start' to `point'."
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region
+     compilation-filter-start (point))))
+
+(add-hook 'compilation-filter-hook
+          #'endless/colorize-compilation)
+
+(straight-use-package 'bongo)
+(put 'downcase-region 'disabled nil)

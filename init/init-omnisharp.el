@@ -1,5 +1,5 @@
 (require-package 'omnisharp)
-
+n
 (require 'omnisharp)
 
 (setq omnisharp-server-executable-path "~/Downloads/omnisharp-osx/run")

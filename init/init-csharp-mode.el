@@ -33,6 +33,7 @@
   (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
   (local-set-key (kbd "C-c r s") 'omnisharp-rename)
   (local-set-key (kbd "C-c j d") 'omnisharp-go-to-definition)
+    (local-set-key (kbd "C-c C-j") 'omnisharp-go-to-definition)
   (local-set-key (kbd "C-c C-c") 'recompile))
 
 (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t)
