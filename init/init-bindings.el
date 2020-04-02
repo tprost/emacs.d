@@ -41,9 +41,10 @@ modifier."
 
 (global-set-key (kbd "C-c e") 'crux-eval-and-replace)
 (global-set-key (kbd "C-x K") 'crux-delete-file-and-buffer)
-
 (global-set-key (kbd "C-c r") 'crux-rename-file-and-buffer)
 (global-set-key (kbd "C-x t") 'crux-visit-term-buffer)
+(global-set-key (kbd "C-x c") 'crux-create-scratch-buffer)
+(global-set-key (kbd "C-x !") 'crux-sudo-edit)
 
 (global-set-key (kbd "C-c TAB") 'crux-indent-rigidly-and-copy-to-clipboard)
 
@@ -56,6 +57,7 @@ modifier."
 (global-set-key (kbd "C-c l") 'crux-downcase-region)
 (global-set-key (kbd "C-c c") 'crux-capitalize-region)
 (global-set-key (kbd "C-c i") 'crux-ispell-word-then-abbrev)
+
 
 
 (global-unset-key (kbd "C-M-;"))

@@ -28,3 +28,4 @@ smex-items
 url
 /eshell/lastdir
 straight
+*.elc
