@@ -5,24 +5,25 @@
 ;; Disable the splash screen (to enable it agin, replace the t with 0)
 (setq inhibit-splash-screen 0)
 
-(set-frame-font "Monaco 12" nil t)
-
 ;; set default font in initial window and for any new window
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
-	(when (member "Courier" (font-family-list))
-		(add-to-list 'initial-frame-alist '(font . "Courier-18")))
-	(when (member "Monaco" (font-family-list))
-		(add-to-list 'initial-frame-alist '(font . "Monaco-14:antialias=none"))
-		(add-to-list 'default-frame-alist '(font . "Monaco-14:antialias=none"))))
+  (when (member "Courier" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Courier-18")))
+  (when (member "Monaco" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Monaco-14:antialias=none"))
+    (add-to-list 'default-frame-alist '(font . "Monaco-14:antialias=none"))))
  ((string-equal system-type "darwin") ; Mac OS X
-	(when (member "Monaco" (font-family-list))
-		(add-to-list 'initial-frame-alist '(font . "Monaco-18"))
-		(add-to-list 'default-frame-alist '(font . "Monaco-18"))))
+  (when (member "Monaco" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Monaco-18"))
+    (add-to-list 'default-frame-alist '(font . "Monaco-18"))))
  ((string-equal system-type "gnu/linux") ; linux
-	(when (member "Inconsolata" (font-family-list))
-		(add-to-list 'initial-frame-alist '(font . "Inconsolata-14:antialias=none"))
-		(add-to-list 'default-frame-alist '(font . "Inconsolata-14:antialias=none")))))
+    (when (member "Monaco" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Monaco-14"))
+    (add-to-list 'default-frame-alist '(font . "Monaco-14")))))
+
+;; (set-frame-font "Monaco 12" nil t)
+ 
 ;;	(when (member "Ttyp0" (font-family-list))
 ;;		(add-to-list 'initial-frame-alist '(font . "Ttyp0-14:antialias=none"))
 ;;		(add-to-list 'default-frame-alist '(font . "Ttyp0-14:antialias=none")))))
@@ -60,4 +61,3 @@
 (set-face-attribute 'default nil :height 150)
 
 (provide 'init-appearance)
-
