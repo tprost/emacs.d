@@ -33,7 +33,7 @@
 (require 'init-osx)
 
 ;; packages
-(require 'init-ace-jump-mode)
+(require 'init-avy-mode)
 (require 'init-company-mode)
 (require 'init-csharp-mode)
 (require 'init-dockerfile-mode)
