@@ -33,7 +33,7 @@
 (require 'init-osx)
 
 ;; packages
-(require 'init-avy-mode)
+(require 'init-avy)
 (require 'init-company-mode)
 (require 'init-csharp-mode)
 (require 'init-dockerfile-mode)
@@ -167,11 +167,8 @@
     (let ((value (eval (preceding-sexp))))
       (kill-sexp -1)
       (insert (format "%S" value))))
-
-
 (getenv "GOPATH")
-(setenv "GOPATH" "/Users/taylor.prost/code/go")
-(setenv "GOROOT" "/usr/local/go")
+
 
 (straight-use-package 'ansi-color)
 
