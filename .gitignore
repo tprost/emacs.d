@@ -29,3 +29,5 @@ url
 /eshell/lastdir
 straight
 *.elc
+.lsp*
+transient
