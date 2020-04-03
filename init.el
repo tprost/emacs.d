@@ -1,3 +1,4 @@
+
 ;; bootstrap straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -13,6 +14,19 @@
   (load bootstrap-file nil 'nomessage))
 
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
+
+(straight-use-package 'ansi-color)
+(straight-use-package 'beacon)
+(straight-use-package 'company-lsp)
+(straight-use-package 'crux)
+(straight-use-package 'editorconfig)
+(straight-use-package 'jinja2-mode)
+(straight-use-package 'lsp-mode)
+(straight-use-package 'make-mode)
+(straight-use-package 'plantuml-mode)
+(straight-use-package 'prodigy)
+(straight-use-package 'restclient)
+(straight-use-package 'telephone-line)
 
 (require 'init-org)
 
@@ -38,7 +52,6 @@
 (require 'init-csharp-mode)
 (require 'init-dockerfile-mode)
 (require 'init-exec-path-from-shell)
-(require 'init-flycheck)
 (require 'init-feature-mode)
 (require 'init-go-mode)
 (require 'init-haxe-mode)
@@ -52,134 +65,22 @@
 (require 'init-typescript-mode)
 (require 'init-yaml-mode)
 
-;; (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-;; (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
-
-;; (require 'init-bongo)
-;; (require 'init-chinese-conv)
-;; (require 'init-cider)
-;; (require 'init-clojure-mode)
-;; (require 'init-cmake-mode)
-;; (require 'init-csharp-mode)
-;; (require 'init-css-mode)
-;; (require 'init-emmet-mode)
-;; (require 'init-god-mode)
-;; (require 'init-goldendict)
-
-;; (require 'init-hz2py)
-;; (require 'init-jade-mode)
-;; (require 'init-omnisharp)
-;; (require 'init-org)
-;; (require 'init-org)
-;; (require 'init-org-drill)
-;; (require 'init-paredit)
-;; (require 'init-pinyin-convert)
-;; (require 'init-powerline)
-;; (require 'init-python-mode)
-;; (require 'init-rvm)
-;; (require 'init-scss-mode)
-;; (require 'init-string-inflection)
-;; (require 'init-web-mode)
-;; (require 'init-windows)
-;; (require 'init-zop-to-char)
-
-;; ;; TODO
-;; ;; org 8.2.10 + org-drill 2.4.1 seems to be stable
-;; ;; super (alt) + f is format document
-
-
-;; ;; TODO a way to quickly mark a for loop
-;; ;; that's better than just expand region
-;; ;; or C-M-h
-;; (global-set-key (kbd "C-@") 'er/expand-region)
-
-;; ;; TODO hotkey for creating a feature branch off of develop based on JIRA tag and name
-;; ;; TODO include csv-mode
-
-;; ;; easier hotkeys for switch to wdired mode and out
-
-;; ;; TODO make shell use up arrow key for previous command
-;; ;; TODO find and remember command to start an additional shell
-;; ;; TODO tab in shell mode should autocomplete
-
-;; ;; TODO find and remember commands to resize frame
-
-;; (defun shell-with-name (name)
-;;   "Start a shell with a name that we get from the user."
-;;   (interactive "sEnter the name of the shell you want: ")
-;;   (shell name))
-
-;; (global-set-key (kbd "C-x M") 'shell-with-name)
-
-
-;; (global-set-key (kbd "C-x f") 'fill-region)
-
-;; (require 'init-yasnippet)
-
-;; ;; TODO write an smart import function
-
-(straight-use-package 'jinja2-mode)
-(straight-use-package 'plantuml-mode)
-
-;; Enable plantuml-mode for PlantUML files
-(add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
-
-(straight-use-package 'make-mode)
-
-(straight-use-package 'restclient)
-
-(straight-use-package 'telephone-line)
 (telephone-line-mode 1)
-
-(straight-use-package 'beacon)
 (beacon-mode 1)
-
-(straight-use-package 'crux)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 (window-divider-mode -1)
 
-
-
-
-(straight-use-package 'prodigy)
-
-(prodigy-define-service
-  :name "Smart CMO Goconvey"
-  :command "goconvey"
-  :args '(".", "--excludedDirs=bin,cmd,deployment,documentation,tests")
-  :cwd "~/code/tripstack/smartcmo"
-  :stop-signal 'sigkill
-  :kill-process-buffer-on-stop t)
-
-
 (require 'init-lua-mode)
-
-(straight-use-package 'editorconfig)
-(editorconfig-mode 1)
-
 
 (put 'upcase-region 'disabled nil)
 
-(defun replace-last-sexp ()
-    (interactive)
-    (let ((value (eval (preceding-sexp))))
-      (kill-sexp -1)
-      (insert (format "%S" value))))
-(getenv "GOPATH")
+(require 'company-lsp)
 
+(setq lsp-keymap-prefix "C-c C-l")
 
-(straight-use-package 'ansi-color)
+(require 'lsp-mode)
+(add-hook 'lua-mode-hook #'lsp)
+(add-hook 'go-mode-hook #'lsp)
 
-(defun endless/colorize-compilation ()
-  "Colorize from `compilation-filter-start' to `point'."
-  (let ((inhibit-read-only t))
-    (ansi-color-apply-on-region
-     compilation-filter-start (point))))
-
-(add-hook 'compilation-filter-hook
-          #'endless/colorize-compilation)
-
-(straight-use-package 'bongo)
-(put 'downcase-region 'disabled nil)
