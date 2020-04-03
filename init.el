@@ -1,4 +1,3 @@
-
 ;; bootstrap straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -27,6 +26,10 @@
 (straight-use-package 'prodigy)
 (straight-use-package 'restclient)
 (straight-use-package 'telephone-line)
+(straight-use-package 'which-key)
+
+(require 'which-key)
+(which-key-mode)
 
 (require 'init-org)
 
@@ -76,11 +79,12 @@
 
 (put 'upcase-region 'disabled nil)
 
-(require 'company-lsp)
+(global-unset-key (kbd "C-z"))
 
-(setq lsp-keymap-prefix "C-c C-l")
+(setq lsp-keymap-prefix "C-c C-c")
 
 (require 'lsp-mode)
 (add-hook 'lua-mode-hook #'lsp)
 (add-hook 'go-mode-hook #'lsp)
 
+(require 'company-lsp)
