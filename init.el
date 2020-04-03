@@ -67,6 +67,7 @@
 (require 'init-projectile)
 (require 'init-typescript-mode)
 (require 'init-yaml-mode)
+(require 'init-yasnippet)
 
 (telephone-line-mode 1)
 (beacon-mode 1)
@@ -81,6 +82,7 @@
 
 (global-unset-key (kbd "C-z"))
 
+
 (setq lsp-keymap-prefix "C-c C-c")
 
 (require 'lsp-mode)
@@ -88,3 +90,6 @@
 (add-hook 'go-mode-hook #'lsp)
 
 (require 'company-lsp)
+(require 'company-yasnippet)
+
+(global-set-key (kbd "C-<tab>") 'company-yasnippet)

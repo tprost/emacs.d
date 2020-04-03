@@ -1,4 +1,4 @@
-(require-package 'yasnippet)
+(straight-use-package 'yasnippet)
 
 (require 'yasnippet)
 
