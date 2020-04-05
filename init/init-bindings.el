@@ -26,6 +26,7 @@ modifier."
 (global-set-key (kbd "C-k") 'crux-smart-kill-line)
 ;; (global-set-key (kbd "M-k") 'crux-smart-kill-line)
 (global-set-key (kbd "C-c k") 'crux-kill-whole-line)
+(global-set-key (kbd "M-k") 'crux-kill-whole-line)
 (global-set-key (kbd "C-S-k") 'crux-kill-line-backwards)
 (global-set-key (kbd "C-o") 'crux-smart-open-line)
 (global-set-key (kbd "C-S-o") 'crux-smart-open-line-above)
@@ -114,14 +115,14 @@ modifier."
 
 (global-set-key (kbd "<f5>") 'cleanup-buffer)
 
-(global-set-key (kbd "<f1> c") 'calendar)
-(global-set-key (kbd "<f1> g") 'magit-status)
-(global-set-key (kbd "<f1> o c") 'org-capture)
-(global-set-key (kbd "<f1> v") 'visual-line-mode)
-(global-set-key (kbd "<f1> w") 'whitespace-mode)
-(global-set-key (kbd "<f1> j") 'open-my-japanese-file)
-(global-set-key (kbd "<f1> k k") 'open-my-japanese-file)
-(global-set-key (kbd "<f1> f") 'set-frame-size-to-80-36)
+;; (global-set-key (kbd "<f1> c") 'calendar)
+;; (global-set-key (kbd "<f1> g") 'magit-status)
+;; (global-set-key (kbd "<f1> o c") 'org-capture)
+;; (global-set-key (kbd "<f1> v") 'visual-line-mode)
+;; (global-set-key (kbd "<f1> w") 'whitespace-mode)
+;; (global-set-key (kbd "<f1> j") 'open-my-japanese-file)
+;; (global-set-key (kbd "<f1> k k") 'open-my-japanese-file)
+;; (global-set-key (kbd "<f1> f") 'set-frame-size-to-80-36)
 
 (global-set-key (kbd "<f12> w") 'whitespace-mode)
 
@@ -166,5 +167,7 @@ modifier."
 (global-set-key (kbd "M-i e") (lambda () (interactive) (set-input-method "ucs")))
 
 (global-set-key (kbd "s-`") 'other-frame)
+
+(global-set-key (kbd "C-x f") 'helm-find-files)
 
 (provide 'init-bindings)

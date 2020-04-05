@@ -93,3 +93,34 @@
 (require 'company-yasnippet)
 
 (global-set-key (kbd "C-<tab>") 'company-yasnippet)
+
+(setq special-display-buffer-names
+      `(("*compilation*" . ((name . "*compilation*")
+                            ,@default-frame-alist
+                            (left . (- 1))
+                            (top . 0)))))
+
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 1)
+
+(straight-use-package 'direnv)
+(require 'direnv)
+
+(straight-use-package 'multiple-cursors)
+(require 'multiple-cursors)
+
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+(straight-use-package 'expand-region)
+(require 'expand-region)
+
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-t") 'set-mark-command)
+(global-set-key (kbd "C-z") 'undo)
+
+(global-set-key (kbd "M-A") 'beginning-of-buffer)
+(global-set-key (kbd "M-E") 'end-of-buffer)
+
+(global-set-key (kbd "<f1>") 'projectile-command-map)
+
+ 
