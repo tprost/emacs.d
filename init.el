@@ -128,3 +128,4 @@
 (direnv-mode)
 
 (require 'init-makefile-mode)
+(require 'init-cpp-mode)
