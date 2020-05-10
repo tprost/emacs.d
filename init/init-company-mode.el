@@ -7,5 +7,3 @@
 (add-to-list 'company-backends 'company-yasnippet t)
 
 (provide 'init-company-mode)
-
-

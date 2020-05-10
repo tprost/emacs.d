@@ -123,4 +123,8 @@
 
 (global-set-key (kbd "<f1>") 'projectile-command-map)
 
- 
+(straight-use-package 'gitlab-ci-mode)
+
+(direnv-mode)
+
+(require 'init-makefile-mode)

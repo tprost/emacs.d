@@ -1,0 +1,4 @@
+* TODO one keypress run the project tests with the default command
+* TODO take first error link in compilation buffer and visit it in code window/frame
+* TODO rebind lsp mode stuff... four keypresses is too many
+* TODO when running tests, do not move cursor to compilation window

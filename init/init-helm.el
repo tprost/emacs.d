@@ -25,4 +25,9 @@
 ;; tab for completion in find file
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
 
+(setq helm-split-window-inside-p t)
+
+(add-to-list 'same-window-buffer-names "*Compilation*")
+(add-to-list 'same-window-buffer-names "*ansi-term*")
+
 (provide 'init-helm)
