@@ -104,17 +104,6 @@ modifier."
 ;; (global-set-key (kbd "C-z c") 'tp-set-input-method-to-chinese)
 ;; (global-set-key (kbd "C-z m") 'tp-set-input-method-to-chinese)
 
-(global-unset-key (kbd "<f1>"))
-(global-unset-key (kbd "<f4>"))
-(global-unset-key (kbd "<f5>"))
-
-(global-set-key (kbd "<f4> e") 'crux-find-user-init-file)
-(global-set-key (kbd "<f4> s") 'crux-find-shell-init-file)
-(global-set-key (kbd "<f12> e") 'crux-find-user-init-file)
-(global-set-key (kbd "<f12> s") 'crux-find-shell-init-file)
-
-(global-set-key (kbd "<f5>") 'cleanup-buffer)
-
 ;; (global-set-key (kbd "<f1> c") 'calendar)
 ;; (global-set-key (kbd "<f1> g") 'magit-status)
 ;; (global-set-key (kbd "<f1> o c") 'org-capture)
@@ -123,8 +112,6 @@ modifier."
 ;; (global-set-key (kbd "<f1> j") 'open-my-japanese-file)
 ;; (global-set-key (kbd "<f1> k k") 'open-my-japanese-file)
 ;; (global-set-key (kbd "<f1> f") 'set-frame-size-to-80-36)
-
-(global-set-key (kbd "<f12> w") 'whitespace-mode)
 
 (global-set-key (kbd "C-x w") 'whitespace-mode)
 

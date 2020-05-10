@@ -121,11 +121,21 @@
 (global-set-key (kbd "M-A") 'beginning-of-buffer)
 (global-set-key (kbd "M-E") 'end-of-buffer)
 
-(global-set-key (kbd "<f1>") 'projectile-command-map)
+(global-unset-key (kbd "<f1>"))
+(global-unset-key (kbd "<f4>"))
+(global-unset-key (kbd "<f5>"))
+
+(global-set-key (kbd "<f1>") 'cleanup-buffer)
+(global-set-key (kbd "<f2>") 'projectile-commander)
+(global-set-key (kbd "<f5>") 'projectile-test-project)
+(global-set-key (kbd "<f6>") 'helm-make-projectile)
+(global-set-key (kbd "<f8>") 'crux-find-user-init-file)
+
+
 
 (straight-use-package 'gitlab-ci-mode)
 
 (direnv-mode)
 
-(require 'init-makefile-mode)
+(require 'init-makefile)
 (require 'init-cpp-mode)

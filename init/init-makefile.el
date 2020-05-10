@@ -16,4 +16,4 @@
 
 
 
-(provide 'init-makefile-mode)
+(provide 'init-makefile)
