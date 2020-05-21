@@ -1,6 +1,3 @@
-#include <string>
-#include <algorithm>
-
 (defun skip-to-next-blank-line ()
   (interactive)
   (let ((inhibit-changing-match-data t))
@@ -184,7 +181,7 @@ Version 2015-01-26"
 (defun tprost-open-init-directory ()
   "Go to my ~/.emacs.d/init."
   (interactive)
-  (dired (file-name-directory "~/.emacs.d/init/"))))
+  (dired (file-name-directory "~/.emacs.d/init/")))
 
 (defun find-my-lost-buffer (buffer-name-string list-of-buffers)
   "Recursive hunt for buffer in list of buffers."
@@ -231,6 +228,9 @@ Version 2015-01-26"
   (interactive)
   (set-frame-width (selected-frame) (+ 96 76))
   ;; (maximize-frame-vertically)
+  (set-frame-height (selected-frame) 50)
+  
+  ;; (maximize-frame-vertically)
   ;; (set-frame-position (selected-frame) (- (display-pixel-width) (frame-pixel-width)) 0)
   )
 
@@ -245,13 +245,17 @@ Version 2015-01-26"
   (tprost-resize-frame-for-coding-layout)
   (delete-other-windows)
   (split-window-horizontally)
-  (crux-swap-windows 1)
+  (crux-transpose-windows 1)
   (other-window 1)
   (tprost-find-pet-buffer "compile" "\*compilation" "make" 'compile nil)
-  (purpose-toggle-window-buffer-dedicated)
+  (purpose-toggle-window-purpose-dedicated)
   (other-window 1)
-  (enlarge-window-horizontally 10)
+  (enlarge-window-horizontally 12)
   (window-configuration-to-register ?c)
 )
+
+(straight-use-package 'frame-cmds)
+
+
 
 (provide 'init-utils)

@@ -65,6 +65,7 @@
 (require 'init-markdown-mode)
 (require 'init-miscellaneous)
 (require 'init-projectile)
+(require 'init-purpose)
 (require 'init-term-mode)
 (require 'init-typescript-mode)
 (require 'init-yaml-mode)
@@ -171,6 +172,3 @@
 
 (require 'ccls)
 
-
-(straight-use-package 'window-purpose)
-(purpose-mode)
