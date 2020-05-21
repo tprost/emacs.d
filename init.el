@@ -81,9 +81,8 @@
 (put 'upcase-region 'disabled nil)
 
 (global-unset-key (kbd "C-z"))
-
-
-(setq lsp-keymap-prefix "C-c C-c")
+(global-unset-key (kbd "C-x l"))
+(setq lsp-keymap-prefix "C-x l")
 
 (require 'lsp-mode)
 (add-hook 'lua-mode-hook #'lsp)
@@ -100,8 +99,8 @@
                             (left . (- 1))
                             (top . 0)))))
 
-  (setq company-idle-delay 0)
-  (setq company-minimum-prefix-length 1)
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 1)
 
 (straight-use-package 'direnv)
 (require 'direnv)
@@ -113,6 +112,26 @@
 
 (straight-use-package 'expand-region)
 (require 'expand-region)
+
+
+
+
+(straight-use-package 'gitlab-ci-mode)
+
+(direnv-mode)
+
+(require 'init-makefile)
+(require 'init-c++-mode)
+(global-set-key (kbd "C-<next>") 'end-of-buffer)
+(global-set-key (kbd "C-<prior>") 'beginning-of-buffer)
+(add-hook 'c++-mode-hook #'lsp)
+
+(straight-use-package 'ccls)
+(straight-use-package 'cpp-auto-include)
+
+(global-set-key (kbd "C-M-r") 'lsp-rename)
+(global-set-key (kbd "C-M-o") 'lsp-organize-imports)
+(global-set-key (kbd "C-M-c") 'crux-cleanup-buffer-or-region)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-t") 'set-mark-command)
@@ -126,16 +145,29 @@
 (global-unset-key (kbd "<f5>"))
 
 (global-set-key (kbd "<f1>") 'cleanup-buffer)
+(global-set-key (kbd "C-x c") 'crux-cleanup-buffer-or-region)
+
+(global-unset-key (kbd "C-x i"))
+(global-set-key (kbd "C-x C-i") 'tprost-open-init-file)
+(global-set-key (kbd "C-x i i") 'tprost-open-init-file)
+(global-set-key (kbd "C-x i I") 'tprost-open-init-file-for-major-mode)
+(global-set-key (kbd "C-x i f") 'tprost-find-emacsd-file)
+(global-set-key (kbd "C-x i d") 'tprost-open-init-directory)
+
+(global-set-key (kbd "C-x y y") 'company-yasnippet)
+(global-set-key (kbd "C-x y r") 'yas-reload-all)
+(global-set-key (kbd "C-x y s") 'tprost-open-snippets-directory-dwim)
+(global-set-key (kbd "C-x C-y") 'company-yasnippet)
+
 (global-set-key (kbd "<f2>") 'projectile-commander)
-(global-set-key (kbd "<f5>") 'projectile-test-project)
-(global-set-key (kbd "<f6>") 'helm-make-projectile)
+(global-set-key (kbd "<f3>") 'projectile-test-project)
+(global-set-key (kbd "<f4>") 'helm-make-projectile)
+(global-set-key (kbd "<f5>") 'crux-find-user-init-file)
 (global-set-key (kbd "<f8>") 'crux-find-user-init-file)
 
+(global-set-key (kbd "C-<down>") 'shrink-window-horizontally)
+(global-set-key (kbd "C-<up>") 'enlarge-window-horizontally)
+
+(require 'ccls)
 
 
-(straight-use-package 'gitlab-ci-mode)
-
-(direnv-mode)
-
-(require 'init-makefile)
-(require 'init-cpp-mode)
