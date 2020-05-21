@@ -1,7 +1,3 @@
 * TODO one keypress run the project tests with the default command
 * TODO take first error link in compilation buffer and visit it in code window/frame
-* TODO rebind lsp mode stuff... four keypresses is too many
-* TODO when running tests, do not move cursor to compilation window
-
-* TODO make f8 switch to a different frame, go to emacs.d, run projectile find file
 * TODO function to find all occurences of TODO in project

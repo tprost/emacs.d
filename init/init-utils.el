@@ -149,6 +149,10 @@ Version 2015-01-26"
       (kill-sexp -1)
       (insert (format "%S" value))))
 
+(defun tprost-helm-for-dir (project-dir)
+  (let ((default-directory project-dir))
+    (helm-projectile-find-file)))
+
 (defun tprost-open-snippets-dwim ()
     "Go to whatever snippets directory is most likely to be the one I want."
     (interactive)
@@ -157,28 +161,28 @@ Version 2015-01-26"
           (dired major-mode-snippet-directory)
         (dired (file-name-directory "~/.emacs.d/snippets/")))))
 
-(defun tprost-open-init-file ()
+(defun tprost-init-file ()
     "Go straight to my init file."
     (interactive)
     (find-file "~/.emacs.d/init.el"))
 
-(defun tprost-open-init-file-for-major-mode ()
+(defun tprost-init-todo-file ()
+    "Go straight to my init TODO file."
+    (interactive)
+    (find-file "~/.emacs.d/todo.org"))
+
+(defun tprost-init-file-for-major-mode ()
   "Go to init file for current major mode."
   (interactive)
   (let ((major-mode-init-file (concat (file-name-directory "~/.emacs.d/init/") "init-" (symbol-name major-mode) ".el")))
     (find-file major-mode-init-file)))
 
-
-(defun helm-for-dir (project-dir)
-  (let ((default-directory project-dir))
-    (helm-projectile-find-file)))
-
 (defun tprost-find-emacsd-file ()
   "Go to my .emacs.d and run helm-projectile-find-file."
   (interactive)
-  (helm-for-dir "~/.emacs.d"))
+  (tprost-helm-for-dir "~/.emacs.d"))
 
-(defun tprost-open-init-directory ()
+(defun tprost-init-directory ()
   "Go to my ~/.emacs.d/init."
   (interactive)
   (dired (file-name-directory "~/.emacs.d/init/")))
@@ -245,8 +249,6 @@ Version 2015-01-26"
   (tprost-resize-frame-for-coding-layout)
   (delete-other-windows)
   (split-window-horizontally)
-  (crux-transpose-windows 1)
-  (other-window 1)
   (tprost-find-pet-buffer "compile" "\*compilation" "make" 'compile nil)
   (purpose-toggle-window-purpose-dedicated)
   (other-window 1)

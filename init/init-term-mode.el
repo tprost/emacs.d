@@ -6,7 +6,8 @@
     (term-line-mode)))
 
 (defun tprost-term-mode-hook ()
-  ;; (local-set-key (kbd "<tab>") 'cpp-auto-include)
+  (local-set-key (kbd "C-x o") 'other-window)
+  
   )
 
 (add-hook 'term-mode-hook 'tprost-term-mode-hook)

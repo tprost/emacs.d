@@ -148,13 +148,21 @@
 
 (global-set-key (kbd "<f1>") 'cleanup-buffer)
 (global-set-key (kbd "C-x c") 'crux-cleanup-buffer-or-region)
+(global-set-key (kbd "C-x o") 'other-window)
 
 (global-unset-key (kbd "C-x i"))
-(global-set-key (kbd "C-x C-i") 'tprost-open-init-file)
-(global-set-key (kbd "C-x i i") 'tprost-open-init-file)
-(global-set-key (kbd "C-x i I") 'tprost-open-init-file-for-major-mode)
+(global-set-key (kbd "C-x C-i") 'tprost-init-file)
+(global-set-key (kbd "C-x i i") 'tprost-init-file)
+(global-set-key (kbd "C-x i I") 'tprost-init-file-for-major-mode)
 (global-set-key (kbd "C-x i f") 'tprost-find-emacsd-file)
-(global-set-key (kbd "C-x i d") 'tprost-open-init-directory)
+(global-set-key (kbd "C-x i d") 'tprost-init-directory)
+(global-set-key (kbd "C-x i t") 'tprost-init-todo-file)
+
+(global-set-key (kbd "C-x t") 'projectile-test-project)
+(global-set-key (kbd "C-x s") 'tprost-project-term)
+(global-set-key (kbd "C-x m") 'helm-make-projectile)
+(global-set-key (kbd "C-x L") 'tprost-project-layout)
+
 
 (global-set-key (kbd "C-x y y") 'company-yasnippet)
 (global-set-key (kbd "C-x y r") 'yas-reload-all)
