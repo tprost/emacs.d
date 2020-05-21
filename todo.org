@@ -5,6 +5,3 @@
 
 * TODO make f8 switch to a different frame, go to emacs.d, run projectile find file
 * TODO function to find all occurences of TODO in project
-
-
-* TODO in ansi term mode, make tab switch between char/line
