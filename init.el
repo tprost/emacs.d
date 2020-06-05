@@ -145,6 +145,7 @@
 (global-unset-key (kbd "<f1>"))
 (global-unset-key (kbd "<f4>"))
 (global-unset-key (kbd "<f5>"))
+(global-unset-key (kbd "C-x c"))
 
 (global-set-key (kbd "<f1>") 'cleanup-buffer)
 (global-set-key (kbd "C-x c") 'crux-cleanup-buffer-or-region)
@@ -178,5 +179,20 @@
 (global-set-key (kbd "C-<down>") 'shrink-window-horizontally)
 (global-set-key (kbd "C-<up>") 'enlarge-window-horizontally)
 
-(require 'ccls)
+(setq explicit-shell-file-name "/bin/bash")
 
+(global-unset-key (kbd "C-x C-f"))
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+(local-unset-key (kbd "C-x C-f"))
+
+(require 'ccls)
+(put 'downcase-region 'disabled nil)
+
+(straight-use-package 'org-drill)
+
+(require 'org-drill)
+
+(straight-use-package 'dic-lookup-w3m)
+
+(global-set-key (kbd "C-x @ @") (lambda()(interactive)(dic-lookup-w3m "jj-weblio")))
