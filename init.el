@@ -193,6 +193,27 @@
 
 (require 'org-drill)
 
-(straight-use-package 'dic-lookup-w3m)
+(straight-use-package 'xah-lookup)
 
-(global-set-key (kbd "C-x @ @") (lambda()(interactive)(dic-lookup-w3m "jj-weblio")))
+(require 'xah-lookup)
+
+(defun tprost-lookup-japanese-wiktionary (&optional @word)
+  "Lookup definition of current word or text selection in URL `https://ja.wiktionary.org/'
+Version 2017-02-09"
+  (interactive)
+  (xah-lookup-word-on-internet
+   @word
+   (get 'tprost-lookup-japanese-wiktionary 'xah-lookup-url )
+   (get 'tprost-lookup-japanese-wiktionary 'xah-lookup-browser-function )))
+
+(put 'tprost-lookup-japanese-wiktionary 'xah-lookup-url "https://ja.wiktionary.org/wiki/word02051")
+(put 'tprost-lookup-japanese-wiktionary 'xah-lookup-browser-function xah-lookup-browser-function)
+
+(defun tprost-parse-japanese-wiktionary (&optional @word)
+  "Hit https://ja.wiktionary.org and parse the contents"
+  
+(with-current-buffer (url-retrieve-synchronously "https://ja.wiktionary.org/wiki/test")
+  (prog1
+      (buffer-string)
+    (kill-buffer))))
+

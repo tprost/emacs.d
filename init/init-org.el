@@ -87,6 +87,14 @@ Inserted by installing org-mode or when a release is made."
 (if (file-readable-p "~/org/capture-templates.el")
     (load-file "~/org/capture-templates.el"))
 
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+         "* TODO %?\n  %i\n  %a")
+        ("l" "Journal" entry (file+datetree "~/org/journal.org")
+         "* %?\nEntered on %U\n  %i\n  %a")
+        ("j" "Japanese" entry (file "~/drill/japanese/drill.org")
+         (file "~/.emacs.d/drill/japanese.org"))))
+
 ;; (straight-use-package 'org-drill)
 
 ;; (straight-use-package
@@ -98,3 +106,4 @@ Inserted by installing org-mode or when a release is made."
 ;; (setq org-drill-add-random-noise-to-intervals-p t)
 
 (provide 'init-org)
+ 

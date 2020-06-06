@@ -31,3 +31,4 @@ straight
 *.elc
 .lsp*
 transient
+/persist/
