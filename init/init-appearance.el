@@ -6,13 +6,12 @@
 (setq inhibit-splash-screen 0)
 (add-to-list 'default-frame-alist
                        '(font . "Droid Sans:antialias=false"))
-(add-to-list 'default-frame-alist
-                       '(font . "Source Han Code JP:antialias=false"))
+;; (add-to-list 'default-frame-alist
+;;                        '(font . "Source Han Code JP:antialias=false"))
 (add-to-list 'default-frame-alist
                        '(font . "Monaco-14:antialias=false"))
 
-
-(defvar japanese-font (font-spec :family "Source Han Code JP" :antialias nil))
+(defvar japanese-font (font-spec :family "Source Han Code JP" :antialias nil :weight 'medium))
 
 ;; Set decent default fonts for Japanese and Chinese,
 ;; but *only* if in a graphical context.
@@ -22,57 +21,9 @@
   (set-fontset-font t 'chinese-gbk
                     ;; Noto Sans CJK: https://www.google.com/get/noto/help/cjk/
                     japanese-font)
-  (print "yay")
   (set-fontset-font t 'japanese-jisx0213.2004-1                    
                     japanese-font))
 
-;; (dolist (item '(("Source Han Code JP:antialias=false:hinting=false" . 1)
-;;                 ("Noto Sans:antialias=false" . 1)))
-;;   (add-to-list 'face-font-rescale-alist item))
-
-
-;; (defun update-current-frame-fontset-mac ()
-;;   "Update current frame fontset with Japanese font setting (macOS)"
-;;   (let* (;; Ascii font name (pick from (font-family-list))
-;;          (my-ascii-font "Menlo")
-;;          ;; Japanese font name (pick from (font-family-list))
-;;          (my-jp-font    "Droid Sans:antialias=false")
-;;          ;; Create :family-only font specifications (use later)
-;;          ;; #<font-spec nil nil Menlo nil nil nil nil nil nil nil nil nil nil>
-;;          (my-ascii-fontspec (font-spec :family my-ascii-font))
-;;          ;; #<font-spec nil nil Hiragino\ Maru\ Gothic\ ProN nil nil nil nil nil nil nil nil nil nil>
-;;          (my-jp-fontspec    (font-spec :family my-jp-font)))
-;;     ;;
-;;     ;; Return the value of FACE’s ATTRIBUTE on (current) FRAME.
-;;     ;; (face-attribute 'default :fontset) returns the current frame's fontset,
-;;     ;; which can be updated for some letters via set-fontset-font
-
-;;     ;; For these Japanese character sets, use my-jp-fontspec
-;;     (set-fontset-font (face-attribute 'default :fontset)
-;;                       'japanese-jisx0213.2004-1 my-jp-fontspec    nil 'append)
-;;     (set-fontset-font (face-attribute 'default :fontset)
-;;                       'japanese-jisx0213-2      my-jp-fontspec    nil 'append)
-;;     ;; For Half-sized katakana characters, use my-jp-fontspec
-;;     (set-fontset-font (face-attribute 'default :fontset)
-;;                       'katakana-jisx0201        my-jp-fontspec    nil 'append)
-;;     ;;
-;;     ;; For the characters in the range #x0080 - #x024F, use my-ascii-fontspec
-;;     ;; Latin with pronounciation annotations
-;;     (set-fontset-font (face-attribute 'default :fontset)
-;;                       '(#x0080 . #x024F)        my-ascii-fontspec nil 'append)
-;;     ;; For the characters in the range #x0370 - #x03FF, use my-ascii-fontspec
-;;     ;; Greek characters
-;;     (set-fontset-font (face-attribute 'default :fontset)
-;;                       '(#x0370 . #x03FF)        my-ascii-fontspec nil 'append)))
-
-;; (update-current-frame-fontset-mac)
-
-;; (set-frame-font "Monaco" nil)
-;; (set-frame-font "Source Han Code JP:antialias=false")
- 
-;;	(when (member "Ttyp0" (font-family-list))
-;;		(add-to-list 'initial-frame-alist '(font . "Ttyp0-14:antialias=none"))
-;;		(add-to-list 'default-frame-alist '(font . "Ttyp0-14:antialias=none")))))
 
 ;; other things
 (blink-cursor-mode t)
