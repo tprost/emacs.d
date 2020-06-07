@@ -1,7 +1,9 @@
+(re-search-forward "exact")
+
 (defun org-find-exact-headline-in-subtree (headline)
   ;; (org-narrow-to-subtree)
   (re-search-forward headline) ;; TODO regex?
-(deactivate-mark)
+  (deactivate-mark)
   )
 
 
@@ -48,9 +50,11 @@
 
 (defun tprost-jump-to-definition-tree ()
   (interactive)
-  (org-find-exact-headline-in-subtree "definitions")
-  ;; (if (org-find-exact-headline-in-subtree "definitions")
-  ;;     (goto-char (org-find-exact-headline-in-subtree "definitions")))
+
+  
+  (if (org-find-exact-headline-in-subtree "definitions")
+      (goto-char (org-find-exact-headline-in-subtree "definitions"))
+      (org-insert-subheading "definitions"))
     ;; (org-goto-exact-headline-in-subtree "definitions"))
     ;; (org-insert-heading-respect-content "definitions"))
   )
