@@ -217,3 +217,5 @@ Version 2017-02-09"
       (buffer-string)
     (kill-buffer))))
 
+
+(require 'init-org-drill)

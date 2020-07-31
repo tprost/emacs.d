@@ -67,3 +67,4 @@
     (tprost-jump-to-definition-tree)
     (mapcar (lambda (entry) (tprost-process-entry word entry)) entry)))
 
+(global-set-key (kbd "C-x @ j") 'tprost-lookup-and-insert-definition-tree)
