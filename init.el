@@ -124,69 +124,8 @@
 
 (require 'init-makefile)
 (require 'init-c++-mode)
-(global-set-key (kbd "C-<next>") 'end-of-buffer)
-(global-set-key (kbd "C-<prior>") 'beginning-of-buffer)
-(add-hook 'c++-mode-hook #'lsp)
 
-(straight-use-package 'ccls)
-(straight-use-package 'cpp-auto-include)
-
-(global-set-key (kbd "C-M-r") 'lsp-rename)
-(global-set-key (kbd "C-M-o") 'lsp-organize-imports)
-(global-set-key (kbd "C-M-c") 'crux-cleanup-buffer-or-region)
-
-(global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C-t") 'set-mark-command)
-(global-set-key (kbd "C-z") 'undo)
-
-(global-set-key (kbd "M-A") 'beginning-of-buffer)
-(global-set-key (kbd "M-E") 'end-of-buffer)
-
-(global-unset-key (kbd "<f1>"))
-(global-unset-key (kbd "<f4>"))
-(global-unset-key (kbd "<f5>"))
-(global-unset-key (kbd "C-x c"))
-
-(global-set-key (kbd "<f1>") 'cleanup-buffer)
-(global-set-key (kbd "C-x c") 'crux-cleanup-buffer-or-region)
-(global-set-key (kbd "C-x o") 'other-window)
-
-(global-unset-key (kbd "C-x i"))
-(global-set-key (kbd "C-x C-i") 'tprost-init-file)
-(global-set-key (kbd "C-x i i") 'tprost-init-file)
-(global-set-key (kbd "C-x i I") 'tprost-init-file-for-major-mode)
-(global-set-key (kbd "C-x i f") 'tprost-find-emacsd-file)
-(global-set-key (kbd "C-x i d") 'tprost-init-directory)
-(global-set-key (kbd "C-x i t") 'tprost-init-todo-file)
-
-(global-set-key (kbd "C-x t") 'projectile-test-project)
-(global-set-key (kbd "C-x s") 'tprost-project-term)
-(global-set-key (kbd "C-x m") 'helm-make-projectile)
-(global-set-key (kbd "C-x L") 'tprost-project-layout)
-
-
-(global-set-key (kbd "C-x y y") 'company-yasnippet)
-(global-set-key (kbd "C-x y r") 'yas-reload-all)
-(global-set-key (kbd "C-x y s") 'tprost-open-snippets-directory-dwim)
-(global-set-key (kbd "C-x C-y") 'company-yasnippet)
-
-(global-set-key (kbd "<f2>") 'projectile-commander)
-(global-set-key (kbd "<f3>") 'projectile-test-project)
-(global-set-key (kbd "<f4>") 'helm-make-projectile)
-(global-set-key (kbd "<f5>") 'crux-find-user-init-file)
-(global-set-key (kbd "<f8>") 'crux-find-user-init-file)
-
-(global-set-key (kbd "C-<down>") 'shrink-window-horizontally)
-(global-set-key (kbd "C-<up>") 'enlarge-window-horizontally)
-
-(setq explicit-shell-file-name "/bin/bash")
-
-(global-unset-key (kbd "C-x C-f"))
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-
-(local-unset-key (kbd "C-x C-f"))
-
-(require 'ccls)
+;; (require 'ccls)
 (put 'downcase-region 'disabled nil)
 
 (straight-use-package 'org-drill)
@@ -219,3 +158,19 @@ Version 2017-02-09"
 
 
 (require 'init-org-drill)
+
+(defun global-unset-all-super-key ()
+  "Will unset any single key in global keymap that has the super
+modifier."
+  (let ((km (current-global-map)))
+    (while km
+      (let ((maybe-event (and (listp (car km))
+                              (caar km))))
+        (if (and (eventp maybe-event) ; Also filters out maybe-event
+                                      ; when nil because (car km) was not a list.
+                 (memq 'super (event-modifiers maybe-event)))
+            (global-unset-key (vector maybe-event))))
+      (setq km (cdr km)))))
+
+(load "~/.emacs.d/tprost.el")
+(load "~/.emacs.d/global-bindings.el")
