@@ -1,4 +1,4 @@
-(re-search-forward "exact")
+;; (re-search-forward "exact")
 
 (defun org-find-exact-headline-in-subtree (headline)
   ;; (org-narrow-to-subtree)

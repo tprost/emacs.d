@@ -4,12 +4,18 @@
 
 ;; Disable the splash screen (to enable it agin, replace the t with 0)
 (setq inhibit-splash-screen 0)
-(add-to-list 'default-frame-alist
-                       '(font . "Droid Sans:antialias=false"))
+
+(set-frame-font "Monaco:size=18:antialias=false")
+(custom-set-faces
+ '(fixed-pitch ((t (:family "Monaco")))))
+(setq default-frame-alist nil)
+
 ;; (add-to-list 'default-frame-alist
-;;                        '(font . "Source Han Code JP:antialias=false"))
-(add-to-list 'default-frame-alist
-                       '(font . "Monaco-14:antialias=false"))
+;;                        '(font . "Droid Sans:antialias=false"))
+;; ;; (add-to-list 'default-frame-alist
+;; ;;                        '(font . "Source Han Code JP:antialias=false"))
+;; (add-to-list 'default-frame-alist
+;;                        '(font . "Monaco-14:antialias=false"))
 
 (defvar japanese-font (font-spec :family "Source Han Code JP" :antialias nil :weight 'medium))
 
@@ -29,7 +35,7 @@
 (blink-cursor-mode t)
 (global-hl-line-mode 0)
 
-(member "Ttyp0" (font-family-list))
+;; (member "Ttyp0" (font-family-list))
 
 ;; take that menubars
 (scroll-bar-mode -1)
