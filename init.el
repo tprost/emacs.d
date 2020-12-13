@@ -22,14 +22,17 @@
 (straight-use-package 'jinja2-mode)
 (straight-use-package 'lsp-mode)
 (straight-use-package 'make-mode)
-(straight-use-package 'plantuml-mode)
-(straight-use-package 'prodigy)
+(straight-use-package '(nano-emacs :type git :host github :repo "rougier/nano-emacs"))
+;; (straight-use-package 'plantuml-mode)
+;; (straight-use-package 'prodigy)
 (straight-use-package 'restclient)
-(straight-use-package 'telephone-line)
+;; (straight-use-package 'telephone-line)
 (straight-use-package 'which-key)
 
 (require 'which-key)
 (which-key-mode)
+
+(require 'init-appearance)
 
 (require 'init-org)
 
@@ -41,7 +44,7 @@
 (require 'init-bindings)
 
 ;; basic config
-(require 'init-appearance)
+;; (require 'init-appearance)
 (require 'init-backups)
 (require 'init-dired)
 (require 'init-input)
@@ -71,12 +74,11 @@
 (require 'init-yaml-mode)
 (require 'init-yasnippet)
 
-(telephone-line-mode 1)
+;; (telephone-line-mode 1)
 (beacon-mode 1)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
-(window-divider-mode -1)
 
 (require 'init-lua-mode)
 
@@ -184,3 +186,5 @@ modifier."
 (load "~/.emacs.d/tprost.el")
 (load "~/.emacs.d/global-bindings.el")
 (load "~/.emacs.d/dictionary-api.el")
+
+;; GNU Emacs
