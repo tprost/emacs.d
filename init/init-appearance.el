@@ -1,3 +1,5 @@
+(straight-use-package '(nano-emacs :type git :host github :repo "rougier/nano-emacs"))
+
 (load "~/.emacs.d/straight/repos/nano-emacs/nano-faces.el")
 (load "~/.emacs.d/straight/repos/nano-emacs/nano-theme.el")
 (load "~/.emacs.d/straight/repos/nano-emacs/nano-theme-dark.el")
