@@ -14,6 +14,7 @@
 
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 
+
 (straight-use-package 'ansi-color)
 (straight-use-package 'beacon)
 (straight-use-package 'company-lsp)
@@ -32,7 +33,7 @@
 (require 'which-key)
 (which-key-mode)
 
-(require 'init-appearance)
+
 
 (require 'init-org)
 
@@ -61,13 +62,12 @@
 (require 'init-feature-mode)
 (require 'init-go-mode)
 (require 'init-haxe-mode)
-(require 'init-helm)
+
 (require 'init-js2-mode)
 (require 'init-json-mode)
 (require 'init-magit)
 (require 'init-markdown-mode)
 (require 'init-miscellaneous)
-(require 'init-projectile)
 (require 'init-purpose)
 (require 'init-term-mode)
 (require 'init-typescript-mode)
@@ -187,4 +187,9 @@ modifier."
 (load "~/.emacs.d/global-bindings.el")
 (load "~/.emacs.d/dictionary-api.el")
 
+
+(require 'init-helm)
+(require 'init-projectile)
+
+(require 'init-appearance)
 ;; GNU Emacs
