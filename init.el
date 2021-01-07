@@ -134,10 +134,6 @@
 ;; (require 'ccls)
 (put 'downcase-region 'disabled nil)
 
-(straight-use-package 'org-drill)
-
-(require 'org-drill)
-
 (straight-use-package 'xah-lookup)
 
 (require 'xah-lookup)
@@ -193,6 +189,9 @@ modifier."
 
 ;; GNU Emacs
 
-;; (eval-after-load "term"
-;;   '(progn
-;;      (define-key term-raw-map (kbd "C-x") '(lookup-key global-map (kbd "C-x"))))
+(eval-after-load "term"
+  '(progn
+     (define-key term-raw-map (kbd "C-x") '(lookup-key global-map (kbd "C-x")))))
+
+
+(setq lsp-clients-lua-language-server-bin "~/.emacs.d/.cache/lsp/lua-language-server/bin/MacOS/lua-language-server")
