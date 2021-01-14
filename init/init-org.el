@@ -33,7 +33,10 @@ Inserted by installing org-mode or when a release is made."
 (straight-use-package 'org-plus-contrib)
 
 ;; customizations
-(setq org-agenda-files (quote ("~/org/agenda.org")))
+
+(setq org-agenda-files (list "~/taylor/journal/todo.org"
+                             "~/taylor/typing-adventure/todo.org"))
+
 (setq org-agenda-span (quote fortnight))
 (setq org-use-extra-keys t)
 (setq org-tags-column 0)
@@ -90,9 +93,9 @@ Inserted by installing org-mode or when a release is made."
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
          "* TODO %?\n  %i\n  %a")
-        ("l" "Journal" entry (file+datetree "~/org/journal.org")
+        ("l" "Journal" entry (file+datetree "~/taylor/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")
-        ("j" "Japanese" entry (file "~/drill/japanese/drill.org")
+        ("j" "Japanese" entry (file "~/taylor/drill/japanese/drill.org")
          (file "~/.emacs.d/drill/japanese.org"))))
 
 ;; (straight-use-package 'org-drill)

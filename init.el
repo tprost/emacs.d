@@ -195,3 +195,7 @@ modifier."
 
 
 (setq lsp-clients-lua-language-server-bin "~/.emacs.d/.cache/lsp/lua-language-server/bin/MacOS/lua-language-server")
+
+(straight-use-package 'jinja2-mode)
+
+(require 'jinja2-mode)
