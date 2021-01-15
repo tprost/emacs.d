@@ -35,6 +35,7 @@ Inserted by installing org-mode or when a release is made."
 ;; customizations
 
 (setq org-agenda-files (list "~/taylor/journal/todo.org"
+                             "~/taylor/drill/todo.org"
                              "~/taylor/typing-adventure/todo.org"))
 
 (setq org-agenda-span (quote fortnight))

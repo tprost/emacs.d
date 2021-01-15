@@ -199,3 +199,6 @@ modifier."
 (straight-use-package 'jinja2-mode)
 
 (require 'jinja2-mode)
+
+(straight-use-package 'direnv)
+(require 'direnv)
