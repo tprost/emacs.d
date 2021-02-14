@@ -34,9 +34,10 @@ Inserted by installing org-mode or when a release is made."
 
 ;; customizations
 
-(setq org-agenda-files (list "~/taylor/journal/todo.org"
-                             "~/taylor/drill/todo.org"
-                             "~/taylor/typing-adventure/todo.org"))
+(setq org-agenda-files (list "~/.emacs.d/todo.org"
+                             "~/org/journal/todo.org"
+                             "~/org/drill/todo.org"
+                             "~/personal/typing-adventure/todo.org"))
 
 (setq org-agenda-span (quote fortnight))
 (setq org-use-extra-keys t)

@@ -2,8 +2,6 @@
 
 ;; (add-to-list 'load-path "~/.emacs.d/site-lisp/projectile")
 
-(setq projectile-keymap-prefix (kbd "C-x p"))
-
 (require 'projectile)
 (straight-use-package 'helm-projectile)
 (require 'helm-projectile)
@@ -12,7 +10,7 @@
 
 ;; change the prefix for projectile commands
 
-(projectile-global-mode)
+(projectile-mode +1)
 (helm-projectile-on)
 
 (projectile-register-project-type 'dotnet '("NuGet.config")
@@ -38,13 +36,4 @@
 ;; watch tests
 
 (straight-use-package 'term-projectile)
-
-(define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
-
-(define-key projectile-mode-map (kbd "C-x p t") nil)
-(define-key projectile-mode-map (kbd "C-x p t n") 'term-projectile-create-new)
-(define-key projectile-mode-map (kbd "C-x p t b") 'term-projectile-backward)
-(define-key projectile-mode-map (kbd "C-x p t f") 'term-projectile-forward)
-(define-key projectile-mode-map (kbd "C-x p t s") 'term-projectile-switch-to)
-
 (provide 'init-projectile)

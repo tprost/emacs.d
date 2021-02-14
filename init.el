@@ -42,10 +42,6 @@
 ;; my own shit
 (require 'init-utils)
 
-;; bindings
-(require 'init-reset-bindings)
-(require 'init-bindings)
-
 ;; basic config
 ;; (require 'init-appearance)
 (require 'init-backups)
@@ -85,9 +81,6 @@
 
 (put 'upcase-region 'disabled nil)
 
-(global-unset-key (kbd "C-z"))
-(global-unset-key (kbd "C-x l"))
-(setq lsp-keymap-prefix "C-x l")
 
 (straight-use-package 'lsp-mode)
 (straight-use-package 'lsp-ui)
@@ -98,8 +91,6 @@
 
 ;; (require 'company-lsp)
 (require 'company-yasnippet)
-
-(global-set-key (kbd "C-<tab>") 'company-yasnippet)
 
 (setq special-display-buffer-names
       `(("*compilation*" . ((name . "*compilation*")
@@ -184,14 +175,9 @@ modifier."
         (fill-paragraph nil region)))
 
 (load "~/.emacs.d/tprost.el")
-(load "~/.emacs.d/global-bindings.el")
 (load "~/.emacs.d/dictionary-api.el")
 
 ;; GNU Emacs
-
-(eval-after-load "term"
-  '(progn
-     (define-key term-raw-map (kbd "C-x") '(lookup-key global-map (kbd "C-x")))))
 
 
 (setq lsp-clients-lua-language-server-bin "~/.emacs.d/.cache/lsp/lua-language-server/bin/MacOS/lua-language-server")
@@ -202,3 +188,29 @@ modifier."
 
 (straight-use-package 'direnv)
 (require 'direnv)
+
+
+(require 'init-reset-bindings)
+(load "~/.emacs.d/bindings.el")
+(require 'init-bindings)
+
+(straight-use-package 'auto-virtualenv)
+(straight-use-package 'virtualenv)
+(straight-use-package 'jedi)
+(straight-use-package 'company-jedi)
+
+(add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
+(defun tprost-python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+
+(add-hook 'python-mode-hook 'tprost-python-mode-hook)
+
+(defcustom projectile-project-root-functions
+  '(projectile-root-local
+    projectile-root-top-down
+    projectile-root-bottom-up    
+    projectile-root-top-down-recurring)
+  "A list of functions for finding project roots."
+  :group 'projectile
+  :type '(repeat function))
+
