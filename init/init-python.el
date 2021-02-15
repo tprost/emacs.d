@@ -1,17 +1,21 @@
 (straight-use-package 'pyvenv)
-(straight-use-package 'lsp-jedi)
+;; (straight-use-package 'lsp-jedi)
+(straight-use-package 'pyimport)
+(straight-use-package 'py-isort)
+(straight-use-package 'lsp-python-ms)
 
 (require 'python)
-(require 'lsp-jedi)
+;; (require 'lsp-jedi)
+
+
 ;; (straight-use-package
 
 ;; (straight-use-package
 ;;  '(py-autoflake :host github :repo "humitos/py-autoflake.el"
 ;;             :branch "master"))
-;; (straight-use-package 'pyimport)
-;; (straight-use-package 'py-isort)
 
-;; (defun tprost-python-mode-add-import (import)
+
+;; (defun my-python-mode-add-import (import)
 ;;   "Add python import to beginning of file."
 ;;   (interactive "sEnter your import statement: ")
 ;;   (save-excursion
@@ -19,23 +23,34 @@
 ;;     (insert import)
 ;;     (electric-newline-and-maybe-indent)
 ;;     (py-isort-buffer)))
+(require 'lsp-python-ms)
+(setq lsp-python-ms-auto-install-server t)
+(add-hook 'python-mode-hook #'lsp) ; or lsp-deferred
 
-(add-hook 'python-mode-hook #'lsp)
+ (add-to-list 'lsp-disabled-clients 'pyls)
+;; (add-to-list 'lsp-disabled-clients 'pyls)
+;; (add-to-list 'lsp-enabled-clients 'jedi)
 
-(add-to-list 'lsp-disabled-clients 'pyls)
-(add-to-list 'lsp-enabled-clients 'jedi)
-
-(defun tprost-python-send-statement ()
+(defun my-python-send-statement ()
   (interactive)
   (end-of-line)
   (set-mark (line-beginning-position))
   (call-interactively 'python-shell-send-region))
 
-(defun tprost-python-mode-hook ()
+(defun my-python-mode-hook ()
   (pyvenv-activate ".")
   (lsp)
   )
 
-(add-hook 'python-mode-hook 'tprost-python-mode-hook)
+(defun my-python-organize-imports ()
+  (interactive)
+  (pyimport-remove-unused)
+  ;; (pyimport-insert-missing)
+  (py-isort-buffer)
+  (whitespace-cleanup))
+
+(add-hook 'python-mode-hook 'my-python-mode-hook)
+
+(setq lsp-pyls-rename-backend "jedi")
 
 (provide 'init-python)

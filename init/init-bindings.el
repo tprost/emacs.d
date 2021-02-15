@@ -190,7 +190,9 @@ modifier."
 ;; (global-set-key (kbd "C-o") 'prelude-smart-open-line-above)
 ;; (global-set-key (kbd "M-o") 'prelude-smart-open-line)
 
-(global-set-key (kbd "C-x C-r") 'rename-buffer)
+(global-set-key (kbd "C-x <") 'previous-buffer)
+(global-set-key (kbd "C-x >") 'next-buffer)
+(global-set-key (kbd "C-x r") 'rename-buffer)
 
 (global-set-key (kbd "C-,") 'toggle-kbd-macro-recording-on)
 (global-set-key (kbd "C-.") 'kmacro-end-and-call-macro)
@@ -369,29 +371,46 @@ modifier."
   '(progn
      (define-key term-raw-map (kbd "C-x") '(lookup-key global-map (kbd "C-x")))))
 
-(setq projectile-keymap-prefix nil)
-(global-unset-key (kbd "C-x p"))
-(global-unset-key (kbd "C-x C-p"))
+;; PROJECTILE
+;; (setq projectile-keymap-prefix nil)
+;; (global-unset-key (kbd "C-x p"))
+;; (global-unset-key (kbd "C-x C-p"))
+(define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-x C-p") 'projectile-command-map)
 
-(global-set-key (kbd "C-x C-p t") 'projectile-test-project)
 
-(defun tprost-python-mode-bindings-hook ()
-  
-  )
-
-
-(define-key python-mode-map (kbd "C-c i") 'py-isort-buffer)
-(define-key python-mode-map (kbd "C-M-i") 'tprost-python-mode-add-import)
-(define-key python-mode-map (kbd "C-M-o") 'py-isort-buffer)
-(define-key python-mode-map (kbd "C-M-j") 'lsp-find-definition)
+;; (global-set-key (kbd "C-x C-p t") 'projectile-test-project)
+;; (global-set-key (kbd "C-x C-p t") 'projectile-toggle-between-implementation-and-test)
 
 ;; (define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
-(define-key projectile-mode-map (kbd "C-x C-p t") 'projectile-test-project)
-;; (define-key projectile-mode-map (kbd "C-x p t n") 'term-projectile-create-new)
+(define-key projectile-command-map (kbd "x") 'projectile-test-project)
+(define-key projectile-command-map (kbd "t") 'projectile-run-term)
+(define-key projectile-command-map (kbd "d") 'projectile-debug)
+(define-key projectile-command-map (kbd "d") 'projectile-debug)
+(define-key projectile-command-map (kbd "g") 'projectile-grep)
+(define-key projectile-command-map (kbd "o") 'projectile-toggle-between-implementation-and-test)
+;; (define-key projectile-mode-map (kbd "C-x C-p x") 'projectile-test-project)
+;; (define-key projectile-mode-map (kbd "C-x C-p t") 'projectile-run-term)
+;; (define-key projectile-mode-map (kbd "C-x C-p t n") 'term-projectile-create-new)
 ;; (define-key projectile-mode-map (kbd "C-x p t b") 'term-projectile-backward)
 ;; (define-key projectile-mode-map (kbd "C-x p t f") 'term-projectile-forward)
 ;; (define-key projectile-mode-map (kbd "C-x p t s") 'term-projectile-switch-to)
+
+;; python
+(define-key python-mode-map (kbd "C-c i") 'py-isort-buffer)
+(define-key python-mode-map (kbd "C-M-i") 'tprost-python-mode-add-import)
+(define-key python-mode-map (kbd "C-M-o") 'my-python-organize-imports)
+(define-key python-mode-map (kbd "C-M-j") 'lsp-find-definition)
+
+(global-set-key (kbd "C-M-/") 'next-error)
+
+
 (global-set-key (kbd "C-x D") 'dired-in-downloads-directory)
+
+(global-set-key (kbd "C-x M-w b b") 'my-copy-buffer-file-name-with-path)
+(global-set-key (kbd "C-x M-w b w") 'my-copy-buffer-file-name-without-path)
+
+(global-set-key (kbd "C-;") 'avy-goto-char)
+(global-set-key (kbd "C-:") 'avy-goto-line)
 
 (provide 'init-bindings)
