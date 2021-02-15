@@ -19,198 +19,192 @@
 (require 'init-appearance)
 (require 'init-company-mode)
 
-(straight-use-package 'ansi-color)
-(straight-use-package 'beacon)
-(straight-use-package 'crux)
-(straight-use-package 'editorconfig)
-(straight-use-package 'jinja2-mode)
-(straight-use-package 'make-mode)
+(require 'init-lsp-mode)
 
-;; (straight-use-package 'plantuml-mode)
-;; (straight-use-package 'prodigy)
-(straight-use-package 'restclient)
-;; (straight-use-package 'telephone-line)
-(straight-use-package 'which-key)
+(require 'init-python)
 
-(require 'which-key)
-(which-key-mode)
+;; (straight-use-package 'ansi-color)
+;; (straight-use-package 'beacon)
+;; (straight-use-package 'crux)
+;; (straight-use-package 'editorconfig)
+;; (straight-use-package 'jinja2-mode)
+;; (straight-use-package 'make-mode)
+
+;; ;; (straight-use-package 'plantuml-mode)
+;; ;; (straight-use-package 'prodigy)
+;; (straight-use-package 'restclient)
+;; ;; (straight-use-package 'telephone-line)
+;; (straight-use-package 'which-key)
+
+;; (require 'which-key)
+;; (which-key-mode)
 
 
 
-(require 'init-org)
+;; (require 'init-org)
 
 ;; my own shit
-(require 'init-utils)
+;; (require 'init-utils)
 
 ;; basic config
 ;; (require 'init-appearance)
-(require 'init-backups)
-(require 'init-dired)
-(require 'init-input)
-(require 'init-shell)
-(require 'init-variables)
-(require 'init-osx)
+;; (require 'init-backups)
+;; (require 'init-dired)
+;; (require 'init-input)
+;; (require 'init-shell)
+;; (require 'init-variables)
+;; (require 'init-osx)
 
 ;; packages
-(require 'init-avy)
-(require 'init-csharp-mode)
-(require 'init-dockerfile-mode)
-(require 'init-exec-path-from-shell)
-(require 'init-feature-mode)
-(require 'init-go-mode)
-(require 'init-haxe-mode)
+;; (require 'init-avy)
+;; (require 'init-csharp-mode)
+;; (require 'init-dockerfile-mode)
+;; (require 'init-exec-path-from-shell)
+;; (require 'init-feature-mode)
+;; (require 'init-go-mode)
+;; (require 'init-haxe-mode)
 
-(require 'init-js2-mode)
-(require 'init-json-mode)
-(require 'init-magit)
-(require 'init-markdown-mode)
-(require 'init-miscellaneous)
-(require 'init-purpose)
-(require 'init-term-mode)
-(require 'init-typescript-mode)
-(require 'init-yaml-mode)
-(require 'init-yasnippet)
+;; (require 'init-js2-mode)
+;; (require 'init-json-mode)
+;; (require 'init-magit)
+;; (require 'init-markdown-mode)
+;; (require 'init-miscellaneous)
+;; (require 'init-purpose)
+;; (require 'init-term-mode)
+;; (require 'init-typescript-mode)
+;; (require 'init-yaml-mode)
+;; (require 'init-yasnippet)
 
 ;; (telephone-line-mode 1)
-(beacon-mode 1)
+;; (beacon-mode 1)
 
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file 'noerror)
+;; (setq custom-file "~/.emacs.d/custom.el")
+;; (load custom-file 'noerror)
 
-(require 'init-lua-mode)
+;; (require 'init-lua-mode)
 
-(put 'upcase-region 'disabled nil)
+;; (put 'upcase-region 'disabled nil)
 
+;; ;; (require 'company-lsp)
+;; (require 'company-yasnippet)
 
-(straight-use-package 'lsp-mode)
-(straight-use-package 'lsp-ui)
-(require 'lsp-mode)
-(add-hook 'lua-mode-hook #'lsp)
-(add-hook 'go-mode-hook #'lsp)
-(add-hook 'csharp-mode-hook #'lsp)
+;; (setq special-display-buffer-names
+;;       `(("*compilation*" . ((name . "*compilation*")
+;;                             ,@default-frame-alist
+;;                             (left . (- 1))
+;;                             (top . 0)))))
 
-;; (require 'company-lsp)
-(require 'company-yasnippet)
+;; (setq company-idle-delay 0)
+;; (setq company-minimum-prefix-length 1)
 
-(setq special-display-buffer-names
-      `(("*compilation*" . ((name . "*compilation*")
-                            ,@default-frame-alist
-                            (left . (- 1))
-                            (top . 0)))))
+;; (straight-use-package 'direnv)
+;; (require 'direnv)
 
-(setq company-idle-delay 0)
-(setq company-minimum-prefix-length 1)
+;; (straight-use-package 'multiple-cursors)
+;; (require 'multiple-cursors)
 
-(straight-use-package 'direnv)
-(require 'direnv)
+;; (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-(straight-use-package 'multiple-cursors)
-(require 'multiple-cursors)
-
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-(straight-use-package 'expand-region)
-(require 'expand-region)
+;; (straight-use-package 'expand-region)
+;; (require 'expand-region)
 
 
 
 
-(straight-use-package 'gitlab-ci-mode)
+;; (straight-use-package 'gitlab-ci-mode)
 
-(direnv-mode)
+;; (direnv-mode)
 
-(require 'init-makefile)
-(require 'init-c++-mode)
+;; (require 'init-makefile)
+;; (require 'init-c++-mode)
 
-;; (require 'ccls)
-(put 'downcase-region 'disabled nil)
+;; ;; (require 'ccls)
+;; (put 'downcase-region 'disabled nil)
 
-(straight-use-package 'xah-lookup)
+;; (straight-use-package 'xah-lookup)
 
-(require 'xah-lookup)
+;; (require 'xah-lookup)
 
-(defun tprost-lookup-japanese-wiktionary (&optional @word)
-  "Lookup definition of current word or text selection in URL `https://ja.wiktionary.org/'
-Version 2017-02-09"
-  (interactive)
-  (xah-lookup-word-on-internet
-   @word
-   (get 'tprost-lookup-japanese-wiktionary 'xah-lookup-url )
-   (get 'tprost-lookup-japanese-wiktionary 'xah-lookup-browser-function )))
+;; (defun tprost-lookup-japanese-wiktionary (&optional @word)
+;;   "Lookup definition of current word or text selection in URL `https://ja.wiktionary.org/'
+;; Version 2017-02-09"
+;;   (interactive)
+;;   (xah-lookup-word-on-internet
+;;    @word
+;;    (get 'tprost-lookup-japanese-wiktionary 'xah-lookup-url )
+;;    (get 'tprost-lookup-japanese-wiktionary 'xah-lookup-browser-function )))
 
-(put 'tprost-lookup-japanese-wiktionary 'xah-lookup-url "https://ja.wiktionary.org/wiki/word02051")
-(put 'tprost-lookup-japanese-wiktionary 'xah-lookup-browser-function xah-lookup-browser-function)
+;; (put 'tprost-lookup-japanese-wiktionary 'xah-lookup-url "https://ja.wiktionary.org/wiki/word02051")
+;; (put 'tprost-lookup-japanese-wiktionary 'xah-lookup-browser-function xah-lookup-browser-function)
 
-(defun tprost-parse-japanese-wiktionary (&optional @word)
-  "Hit https://ja.wiktionary.org and parse the contents"
+;; (defun tprost-parse-japanese-wiktionary (&optional @word)
+;;   "Hit https://ja.wiktionary.org and parse the contents"
   
-(with-current-buffer (url-retrieve-synchronously "https://ja.wiktionary.org/wiki/test")
-  (prog1
-      (buffer-string)
-    (kill-buffer))))
+;; (with-current-buffer (url-retrieve-synchronously "https://ja.wiktionary.org/wiki/test")
+;;   (prog1
+;;       (buffer-string)
+;;     (kill-buffer))))
 
 
-(require 'init-org-drill)
+;; (require 'init-org-drill)
 
-(defun global-unset-all-super-key ()
-  "Will unset any single key in global keymap that has the super
-modifier."
-  (let ((km (current-global-map)))
-    (while km
-      (let ((maybe-event (and (listp (car km))
-                              (caar km))))
-        (if (and (eventp maybe-event) ; Also filters out maybe-event
-                                      ; when nil because (car km) was not a list.
-                 (memq 'super (event-modifiers maybe-event)))
-            (global-unset-key (vector maybe-event))))
-      (setq km (cdr km)))))
-
- ;;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph    
-    (defun unfill-paragraph (&optional region)
-      "Takes a multi-line paragraph and makes it into a single line of text."
-      (interactive (progn (barf-if-buffer-read-only) '(t)))
-      (let ((fill-column (point-max))
-            ;; This would override `fill-column' if it's an integer.
-            (emacs-lisp-docstring-fill-column t))
-        (fill-paragraph nil region)))
-
-(load "~/.emacs.d/tprost.el")
-(load "~/.emacs.d/dictionary-api.el")
-
-;; GNU Emacs
+;; (load "~/.emacs.d/tprost.el")
+;; (load "~/.emacs.d/dictionary-api.el")
+;; ;; GNU Emac
 
 
-(setq lsp-clients-lua-language-server-bin "~/.emacs.d/.cache/lsp/lua-language-server/bin/MacOS/lua-language-server")
+;; (setq lsp-clients-lua-language-server-bin "~/.emacs.d/.cache/lsp/lua-language-server/bin/MacOS/lua-language-server")
 
-(straight-use-package 'jinja2-mode)
+;; (straight-use-package 'jinja2-mode)
 
-(require 'jinja2-mode)
+;; (require 'jinja2-mode)
 
-(straight-use-package 'direnv)
-(require 'direnv)
+;; (straight-use-package 'direnv)
+;; (require 'direnv)
 
 
+;; (add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
+
+;; ;; (add-hook 'python-mode-hook 'tprost-python-mode-hook)
+
+;; (setq projectile-project-root-functions  '(projectile-root-local
+;;     projectile-root-top-down
+;;     projectile-root-bottom-up    
+;;     projectile-root-top-down-recurring))
+
+;; (straight-use-package
+;;  '(yasnippet-snippets :host github :repo "tprost/yasnippet-snippets"
+;;             :branch "main"))
+
+;; (straight-use-package
+;;  '(py-autoflake :host github :repo "humitos/py-autoflake.el"
+;;             :branch "master"))
+;; (straight-use-package 'pyimport)
+;; (straight-use-package 'py-isort)
+
+
+;; (defun tprost-python-mode-add-import (import)
+;;   "Add python import to beginning of file."
+;;   (interactive "sEnter your import statement: ")
+;;   (save-excursion
+;;     (beginning-of-buffer)
+;;     (insert import)
+;;     (electric-newline-and-maybe-indent)
+;;     (py-isort-buffer)))
+
+;; ;; (require 'yasnippet-snippets)
+
+;; (require 'python)
+
+;; (elpy-enable)
+
+;; (lsp-define-stdio-client lsp-python "python"
+;;                            #'projectile-project-root
 (require 'init-reset-bindings)
 (load "~/.emacs.d/bindings.el")
 (require 'init-bindings)
 
-(straight-use-package 'auto-virtualenv)
-(straight-use-package 'virtualenv)
-(straight-use-package 'jedi)
-(straight-use-package 'company-jedi)
+;;                            '("pyls"))
+ 
 
-(add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
-(defun tprost-python-mode-hook ()
-  (add-to-list 'company-backends 'company-jedi))
-
-(add-hook 'python-mode-hook 'tprost-python-mode-hook)
-
-(defcustom projectile-project-root-functions
-  '(projectile-root-local
-    projectile-root-top-down
-    projectile-root-bottom-up    
-    projectile-root-top-down-recurring)
-  "A list of functions for finding project roots."
-  :group 'projectile
-  :type '(repeat function))
 

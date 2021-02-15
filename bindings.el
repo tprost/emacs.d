@@ -1,5 +1,28 @@
 ;; ** Executing
 
+
+(defun global-unset-all-super-key ()
+  "Will unset any single key in global keymap that has the super
+modifier."
+  (let ((km (current-global-map)))
+    (while km
+      (let ((maybe-event (and (listp (car km))
+                              (caar km))))
+        (if (and (eventp maybe-event) ; Also filters out maybe-event
+                                      ; when nil because (car km) was not a list.
+                 (memq 'super (event-modifiers maybe-event)))
+            (global-unset-key (vector maybe-event))))
+      (setq km (cdr km)))))
+
+ ;;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph    
+    (defun unfill-paragraph (&optional region)
+      "Takes a multi-line paragraph and makes it into a single line of text."
+      (interactive (progn (barf-if-buffer-read-only) '(t)))
+      (let ((fill-column (point-max))
+            ;; This would override `fill-column' if it's an integer.
+            (emacs-lisp-docstring-fill-column t))
+        (fill-paragraph nil region)))
+
 ;; | C-x !       | go to important file prefix   |
 ;; | C-x 1       | search for ~/.emacs.d file    |
 ;; | C-x <tab>   | ?                             |
@@ -31,7 +54,7 @@
 ;; |-------------+--------------|
 ;; | C-x p r     | restclient   |
 
-(global-unset-all-super-key)
+;; (global-unset-all-super-key)
 
 ;; (global-unset-key (kbd "ESC"))
 ;; (global-set-key (kbd "ESC") 'keyboard-quit)
@@ -328,7 +351,12 @@
 
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-x l"))
-(setq lsp-keymap-prefix "C-x l")
+
+
+(global-set-key (kbd "C-x l") 'lsp)
+(setq lsp-keymap-prefix "C-x C-l")
+(define-key lsp-mode-map (kbd "C-x C-l") lsp-command-map)
+
 (global-set-key (kbd "C-<tab>") 'company-yasnippet)
 
 
@@ -342,6 +370,16 @@
 (define-key projectile-mode-map (kbd "C-x C-p") 'projectile-command-map)
 
 (global-set-key (kbd "C-x C-p t") 'projectile-test-project)
+
+(defun tprost-python-mode-bindings-hook ()
+  
+  )
+
+
+(define-key python-mode-map (kbd "C-c i") 'py-isort-buffer)
+(define-key python-mode-map (kbd "C-M-i") 'tprost-python-mode-add-import)
+(define-key python-mode-map (kbd "C-M-o") 'py-isort-buffer)
+(define-key python-mode-map (kbd "C-M-j") 'lsp-find-definition)
 
 ;; (define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
 (define-key projectile-mode-map (kbd "C-x C-p t") 'projectile-test-project)

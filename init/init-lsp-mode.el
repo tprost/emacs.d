@@ -1,4 +1,16 @@
 (straight-use-package 'lsp-mode)
+(straight-use-package 'lsp-ui)
+(straight-use-package 'helm-lsp)
+(straight-use-package 'company-lsp)
+
+(require 'lsp-mode)
+(require 'company-lsp)
+
+(push 'company-lsp company-backends)
+
+;; (add-hook 'lua-mode-hook #'lsp)
+;; (add-hook 'go-mode-hook #'lsp)
+;; (add-hook 'csharp-mode-hook #'lsp)
 
 (global-unset-key (kbd "C-x l"))
 (setq lsp-keymap-prefix "C-x l")
