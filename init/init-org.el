@@ -2,6 +2,8 @@
 (require 'subr-x)
 (straight-use-package 'git)
 
+(require 'init-org-drill)
+
 (defun org-git-version ()
   "The Git version of org-mode.
 Inserted by installing org-mode or when a release is made."

@@ -137,3 +137,37 @@ With prefix arg, find the previous file."
 
 (straight-use-package 'frame-cmds)
 
+
+;; ;; (require 'ccls)
+;; (put 'downcase-region 'disabled nil)
+
+;; (straight-use-package 'xah-lookup)
+
+;; (require 'xah-lookup)
+
+;; (defun tprost-lookup-japanese-wiktionary (&optional @word)
+;;   "Lookup definition of current word or text selection in URL `https://ja.wiktionary.org/'
+;; Version 2017-02-09"
+;;   (interactive)
+;;   (xah-lookup-word-on-internet
+;;    @word
+;;    (get 'tprost-lookup-japanese-wiktionary 'xah-lookup-url )
+;;    (get 'tprost-lookup-japanese-wiktionary 'xah-lookup-browser-function )))
+
+;; (put 'tprost-lookup-japanese-wiktionary 'xah-lookup-url "https://ja.wiktionary.org/wiki/word02051")
+;; (put 'tprost-lookup-japanese-wiktionary 'xah-lookup-browser-function xah-lookup-browser-function)
+
+;; (defun tprost-parse-japanese-wiktionary (&optional @word)
+;;   "Hit https://ja.wiktionary.org and parse the contents"
+  
+;; (with-current-buffer (url-retrieve-synchronously "https://ja.wiktionary.org/wiki/test")
+;;   (prog1
+;;       (buffer-string)
+;;     (kill-buffer))))
+
+
+
+
+;; (load "~/.emacs.d/tprost.el")
+;; (load "~/.emacs.d/dictionary-api.el")
+;; ;; GNU Emac
