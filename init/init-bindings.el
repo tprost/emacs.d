@@ -398,7 +398,7 @@ modifier."
 
 ;; python
 (define-key python-mode-map (kbd "C-c i") 'py-isort-buffer)
-(define-key python-mode-map (kbd "C-M-i") 'tprost-python-mode-add-import)
+(define-key python-mode-map (kbd "C-M-i") 'my-python-mode-add-import)
 (define-key python-mode-map (kbd "C-M-o") 'my-python-organize-imports)
 (define-key python-mode-map (kbd "C-M-j") 'lsp-find-definition)
 

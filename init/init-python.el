@@ -15,14 +15,14 @@
 ;;             :branch "master"))
 
 
-;; (defun my-python-mode-add-import (import)
-;;   "Add python import to beginning of file."
-;;   (interactive "sEnter your import statement: ")
-;;   (save-excursion
-;;     (beginning-of-buffer)
-;;     (insert import)
-;;     (electric-newline-and-maybe-indent)
-;;     (py-isort-buffer)))
+(defun my-python-mode-add-import (import)
+  "Add python import to beginning of file."
+  (interactive "sEnter your import statement: ")
+  (save-excursion
+    (beginning-of-buffer)
+    (insert import)
+    (electric-newline-and-maybe-indent)))
+
 (require 'lsp-python-ms)
 (setq lsp-python-ms-auto-install-server t)
 (add-hook 'python-mode-hook #'lsp) ; or lsp-deferred
@@ -38,13 +38,16 @@
   (call-interactively 'python-shell-send-region))
 
 (defun my-python-mode-hook ()
-  (pyvenv-activate ".")
-  (lsp)
+  ;; (pyvenv-activate ".")
+  ;; (setq lsp-python-ms-extra-paths '((projectile--directory-p)))
+  ;; (message (lsp-workspace-root))
+  ;; (lsp)
   )
 
 (defun my-python-organize-imports ()
   (interactive)
   (pyimport-remove-unused)
+  
   ;; (pyimport-insert-missing)
   (py-isort-buffer)
   (whitespace-cleanup))
