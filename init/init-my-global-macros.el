@@ -1,47 +1,47 @@
-(defun skip-to-next-blank-line ()
+(defun my-skip-to-next-blank-line ()
   (interactive)
   (let ((inhibit-changing-match-data t))
     (skip-syntax-forward " >")
     (unless (search-forward-regexp "^\\s *$" nil t)
       (goto-char (point-max)))))
 
-(defun skip-to-previous-blank-line ()
+(defun my-skip-to-previous-blank-line ()
   (interactive)
   (let ((inhibit-changing-match-data t))
     (skip-syntax-backward " >")
     (unless (search-backward-regexp "^\\s *$" nil t)
       (goto-char (point-min)))))
 
-(defun set-frame-size-to-80-36 ()
+(defun my-set-frame-size-to-80-36 ()
   (interactive)
   (when window-system (set-frame-size (selected-frame) 80 36)))
 
-(defun open-line-below ()
+(defun my-open-line-below ()
   (interactive)
   (end-of-line)
   (newline)
   (indent-for-tab-command))
 
-(defun open-line-above ()
+(defun my-open-line-above ()
   (interactive)
   (beginning-of-line)
   (newline)
   (forward-line -1)
   (indent-for-tab-command))
 
-(defun tabify-buffer ()
+(defun my-tabify-buffer ()
   (interactive)
   (tabify (point-min) (point-max)))
 
-(defun untabify-buffer ()
+(defun my-untabify-buffer ()
   (interactive)
   (untabify (point-min) (point-max)))
 
-(defun indent-buffer ()
+(defun my-indent-buffer ()
   (interactive)
   (indent-region (point-min) (point-max)))
 
-(defun cleanup-buffer ()
+(defun my-cleanup-buffer ()
   "Perform a bunch of operations on the whitespace content of a buffer.
 Including indent-buffer, which should not be called automatically on save."
   (interactive)
@@ -51,7 +51,7 @@ Including indent-buffer, which should not be called automatically on save."
 
 
 ;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
-(defun rename-file-and-buffer (new-name)
+(defun my-rename-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
   (interactive "sNew name: ")
   (let ((name (buffer-name))
@@ -75,21 +75,21 @@ Including indent-buffer, which should not be called automatically on save."
       (insert-char ?} count))))
 
 
-(defun toggle-kbd-macro-recording-on ()
+(defun my-toggle-kbd-macro-recording-on ()
   "One-key keyboard macros: turn recording on."
   (interactive)
   (define-key global-map (this-command-keys)
     'toggle-kbd-macro-recording-off)
   (start-kbd-macro nil))
 
-(defun toggle-kbd-macro-recording-off ()
+(defun my-toggle-kbd-macro-recording-off ()
   "One-key keyboard macros: turn recording off."
   (interactive)
   (define-key global-map (this-command-keys)
     'toggle-kbd-macro-recording-on)
   (end-kbd-macro))
 
-(defun xah-open-in-external-app ()
+(defun my-xah-open-in-external-app ()
   "Open the current file or dired marked files in external app.
 The app is chosen from your OS's preference.
 
@@ -118,7 +118,7 @@ Version 2015-01-26"
         (mapc
          (lambda (fPath) (let ((process-connection-type nil)) (start-process "" nil "xdg-open" fPath))) ξfile-list))))))
 
-(defun spinal-case-region (begin end)
+(defun my-spinal-case-region (begin end)
   "Convert region to spinal case."
   (interactive "r")
   (save-restriction
@@ -133,13 +133,13 @@ Version 2015-01-26"
             "_" (point-max) t)
       (replace-match "-"))))
 
-(defun replace-last-sexp ()
+(defun my-replace-last-sexp ()
     (interactive)
     (let ((value (eval (preceding-sexp))))
       (kill-sexp -1)
       (insert (format "%S" value))))
 
-(defun find-my-lost-buffer (buffer-name-string list-of-buffers)
+(defun my-find-my-lost-buffer (buffer-name-string list-of-buffers)
   "Recursive hunt for buffer in list of buffers."
   (if (null list-of-buffers)
       'nil
@@ -149,12 +149,32 @@ Version 2015-01-26"
       (find-my-lost-buffer buffer-name-string
                            (cdr list-of-buffers)))))
 
-(defun ask-how (prompt how)
+(defun my-ask-how (prompt how)
   "Get from minibuffer how exact command string the user would like to run."
   (let ((answer (read-from-minibuffer (concat "Run " prompt " like : ") (concat how " "))))
     (if (null answer)
         how
       answer)))
 
+(defun my-copy-buffer-file-name-with-path ()
+  "Copy the full path of the current buffer."
+  (interactive)
+  (kill-new
+   (buffer-file-name
+    (window-buffer (minibuffer-selected-window)))))
 
-(provide 'init-utils)
+(defun my-copy-buffer-file-name-without-path ()
+  "Copy the full path of the current buffer."
+  (interactive)
+  (kill-new
+   (file-name-nondirecotry
+    (buffer-file-name
+     (window-buffer (minibuffer-selected-window))))))
+
+;; TODO hotkey for dired mode in Downloads folder
+(defun my-dired-in-downloads-directory ()
+  (interactive)
+  (dired "~/Downloads"))
+
+
+(provide 'init-my-global-macros)

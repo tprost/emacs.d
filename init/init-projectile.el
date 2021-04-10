@@ -25,6 +25,13 @@
                                   :run "npm start"
                                   :test-suffix ".spec")
 
+;; so that I can have multiple projects in a single repo
+;; if I want
+(setq projectile-project-root-functions  '(projectile-root-local
+    projectile-root-top-down
+    projectile-root-bottom-up    
+    projectile-root-top-down-recurring))
+
 ;; (projectile-run-test)
 ;; (global-set-key (kbd "C-c p t") 'projectile-test-project)
 

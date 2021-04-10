@@ -14,6 +14,8 @@
 (advice-add #'lua-calculate-indentation-block-modifier
             :around #'rgc-lua-at-most-one-indent)
 
+;; (setq lsp-clients-lua-language-server-bin "~/.emacs.d/.cache/lsp/lua-language-server/bin/MacOS/lua-language-server")
+
 ;; (defun lua-busted-fuckups-fix ()
 ;;   (save-excursion
 ;;     (lua-forward-line-skip-blanks 'back)

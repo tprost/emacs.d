@@ -1,3 +1,5 @@
+(straight-use-package 'ansi-color)
+(straight-use-package 'beacon)
 (straight-use-package '(nano-emacs :type git :host github :repo "rougier/nano-emacs"))
 
 (load "~/.emacs.d/straight/repos/nano-emacs/nano-faces.el")
@@ -39,5 +41,7 @@
 
 (set-face-background 'vertical-border nano-color-background)
 (set-face-foreground 'vertical-border (face-background 'vertical-border))
+
+(beacon-mode 1)
 
 (provide 'init-appearance)

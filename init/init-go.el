@@ -17,5 +17,5 @@
 
 
 
-(provide 'init-go-mode)
+(provide 'init-go)
 
