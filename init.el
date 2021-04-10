@@ -73,4 +73,8 @@
 (require 'init-my-global-macros)
 (require 'init-bindings)
 
+(straight-use-package 'cider)
+(straight-use-package 'clojure-mode)
+(straight-use-package 'haxe-mode)
+
 (load-file (expand-file-name "tprost.el" user-emacs-directory))

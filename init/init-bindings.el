@@ -366,11 +366,6 @@ modifier."
 
 (global-set-key (kbd "C-<tab>") 'company-yasnippet)
 
-
-(eval-after-load "term"
-  '(progn
-     (define-key term-raw-map (kbd "C-x") '(lookup-key global-map (kbd "C-x")))))
-
 ;; PROJECTILE
 ;; (setq projectile-keymap-prefix nil)
 ;; (global-unset-key (kbd "C-x p"))
