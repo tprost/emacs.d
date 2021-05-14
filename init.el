@@ -15,9 +15,6 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 
-(require 'init-appearance)
-(require 'init-backups)
-
 (straight-use-package 'crux)
 (straight-use-package 'editorconfig)
 (straight-use-package 'jinja2-mode)
@@ -53,7 +50,7 @@
 (require 'init-markdown-mode)
 (require 'init-yaml-mode)
 
-(require 'init-yasnippet)
+;; (require 'init-yasnippet)
 
 ;; (straight-use-package 'direnv)
 ;; (require 'direnv)
@@ -78,3 +75,54 @@
 (straight-use-package 'haxe-mode)
 
 (load-file (expand-file-name "tprost.el" user-emacs-directory))
+
+(require 'init-appearance)
+(require 'init-backups)
+
+(straight-use-package 'exec-path-from-shell)
+
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
+(straight-use-package 'feature-mode)
+
+(straight-use-package 'pyenv-mode)
+;; (straight-use-package 'virtualenv)
+;; (straight-use-package 'auto-virtualenv)
+
+;; (defun projectile-pyenv-mode-set ()
+;;   "Set pyenv version matching project name."
+;;   (let ((project (projectile-project-name)))
+;;     (if (member project (pyenv-mode-versions))
+;;         (pyenv-mode-set project)
+;;       (pyenv-mode-unset))))
+
+;; (add-hook 'projectile-after-switch-project-hook 'projectile-pyenv-mode-set)
+
+;; (require 'auto-virtualenv)
+;; (add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
+
+;; (straight-use-package 'virtualenvwrapper)
+;; (require 'virtualenvwrapper)
+;; (venv-initialize-interactive-shells) ;; if you want interactive shell support
+;; (venv-initialize-eshell) ;; if you want eshell support
+;; note that setting `venv-location` is not necessary if you
+;; use the default location (`~/.virtualenvs`), or if the
+;; the environment variable `WORKON_HOME` points to the right place
+;; (setq venv-location "/path/to/your/virtualenvs/")
+
+;; (setq venv-dirlookup-names '(".venv" "pyenv" ".virtual"))
+
+ (defun pyvenv-autoload ()
+    (require 'projectile)
+    (let* ((pdir (projectile-project-root)) (pfile (concat pdir ".venv")))
+      (if (file-exists-p pfile)
+          (pyvenv-workon (with-temp-buffer
+                           (insert-file-contents pfile)
+                           (nth 0 (split-string (buffer-string))))))))
+  (add-hook 'python-mode-hook 'pyvenv-autoload)
+
+
+(straight-use-package 'pony-mode)
+
+(require 'pony-mode)
