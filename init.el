@@ -126,27 +126,31 @@
 (straight-use-package 'pony-mode)
 (straight-use-package 'vterm)
 
-(defun projectile-run-vterm-dwim (command)
+(defun projectile-run-vterm-dwim (commands &optional name)
  "Create project level vterm and run given command. If buffer with name
   that matches command already, switch to existing buffer."
   (interactive "sCommand: ")
   (let* ((project (projectile-acquire-root))
-         (buffer-name (projectile-generate-process-name command nil)))
+         (buffer-name (projectile-generate-process-name (or name commands) nil)))
     (unless (buffer-live-p (get-buffer buffer-name))
       (unless (require 'vterm nil 'noerror)
         (error "Package 'vterm' is not available"))
       (projectile-with-default-dir project
         (vterm buffer-name)
-        (vterm-send-string command)
-        (vterm-send-return)
-        ))
-    (switch-to-buffer buffer-name)
-    ))
+        (cond ((stringp commands)
+               (vterm-send-string commands)
+               (vterm-send-return))         
+              ((listp commands)
+               (dolist (command commands v)
+                 (vterm-send-string command)
+                 (vterm-send-return))))))                 
+    (switch-to-buffer buffer-name)))
 
 (defun my-fire-up-django-project ()
   "Set up terminals with appropriate commands for a Django project."
-  (interactive)
-  (projectile-run-vterm)
-  (projectile-run-vterm (concat (projectile-project-name) "-docker-compose")))
+  (interactive)  
+  (projectile-run-vterm-dwim "docker-compose up")
+  (projectile-run-vterm-dwim
+   '("source .venv/bin/activate" "python manage.py runserver") "runserver"))
 
 (require 'pony-mode)
