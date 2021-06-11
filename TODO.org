@@ -1,3 +1,12 @@
+* TODO find a way to organize and run processes and set up shells per project
+* TODO set up agenda/todo to find todos from code projects and wiki repo
+* TODO set up a nice home screen with drill?
+* TODO how do we organize various scripts for local dev? Makefile?
+
+* TODO automatically invoke lsp-mode for Python files and projects
+* TODO make sure virtual environment is used for commands in Python projects with .venv?
+
+
 
 
 * DONE fix C-x C-f
@@ -27,3 +36,5 @@ obal-set-key (kbd "C-@") 'er/expand-region)
 
 * TODO better org mode colors/syntax highlighting
 * TODO C-M-q in org mode should fill paragraph I guess?
+
+
