@@ -87,7 +87,7 @@
 (straight-use-package 'feature-mode)
 
 (straight-use-package 'pyenv-mode)
-;; (straight-use-package 'virtualenv)
+;; (straight-use-package 'virtualenv)ost
 ;; (straight-use-package 'auto-virtualenv)
 
 ;; (defun projectile-pyenv-mode-set ()
@@ -124,5 +124,10 @@
 
 
 (straight-use-package 'pony-mode)
+(straight-use-package 'vterm)
+
+(defun my-fire-up-django-project ()
+  "Set up terminals with appropriate commands for a Django project."
+  (interactive))
 
 (require 'pony-mode)

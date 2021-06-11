@@ -379,7 +379,8 @@ modifier."
 
 ;; (define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
 (define-key projectile-command-map (kbd "x") 'projectile-test-project)
-(define-key projectile-command-map (kbd "t") 'projectile-run-term)
+(define-key projectile-command-map (kbd "t") 'projectile-run-vterm)
+(define-key projectile-command-map (kbd "v") 'projectile-run-vterm)
 (define-key projectile-command-map (kbd "d") 'projectile-debug)
 (define-key projectile-command-map (kbd "d") 'projectile-debug)
 (define-key projectile-command-map (kbd "g") 'projectile-grep)
