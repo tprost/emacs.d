@@ -133,10 +133,14 @@ With prefix arg, find the previous file."
   (tprost-open-computer-science-drill-directory)
   (find-file "algorithms.org")
   (org-drill 'directory))
-  
 
-(straight-use-package 'frame-cmds)
+(defun my-org-drill ()
+  (interactive)  
+  (org-drill (file-expand-wildcards "~/org/drill/**/*.org")))
 
+(defun my-org-drill-resume ()
+  (interactive)  
+  (org-drill-resume))
 
 ;; ;; (require 'ccls)
 ;; (put 'downcase-region 'disabled nil)

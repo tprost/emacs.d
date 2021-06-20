@@ -68,7 +68,6 @@
 ;; (direnv-mode)
 (require 'init-avy)
 (require 'init-my-global-macros)
-(require 'init-bindings)
 
 (straight-use-package 'cider)
 (straight-use-package 'clojure-mode)
@@ -154,3 +153,5 @@
    '("source .venv/bin/activate" "python manage.py runserver") "runserver"))
 
 (require 'pony-mode)
+
+(load-file (expand-file-name "bindings.el" user-emacs-directory))
