@@ -36,10 +36,16 @@ Inserted by installing org-mode or when a release is made."
 
 ;; customizations
 
-(setq org-agenda-files (list "~/.emacs.d/todo.org"
-                             "~/org/journal/todo.org"
-                             "~/org/drill/todo.org"
-                             "~/personal/typing-adventure/todo.org"))
+(setq my-org-todo-files (file-expand-wildcards "~/org/*/*todo.org"))
+(setq my-personal-development-todo-files (file-expand-wildcards "~/dev/personal/*/*todo.org"))
+(setq my-work-development-todo-files (file-expand-wildcards "~/dev/work/*/*todo.org"))
+(setq my-emacs-todo-file "~/.emacs.d/*todo.org")
+
+(setq org-agenda-files (append my-org-todo-files
+                               my-personal-development-todo-files
+                               my-work-development-todo-files (list my-emacs-todo-file)))
+
+
 
 (setq org-agenda-span (quote fortnight))
 (setq org-use-extra-keys t)
@@ -85,9 +91,9 @@ Inserted by installing org-mode or when a release is made."
   (local-set-key (kbd "C-c d r") 'org-drill-resume)
   (local-set-key (kbd "C-c d t") 'tp-tag-as-drill)
 
-	(local-set-key (kbd "C-c b") 'org-player-start/stop)
+  (local-set-key (kbd "C-c b") 'org-player-start/stop)
 
-	)
+  )
 
 (add-hook 'org-mode-hook 'tp-org-mode-hook)
 
@@ -113,4 +119,3 @@ Inserted by installing org-mode or when a release is made."
 ;; (setq org-drill-add-random-noise-to-intervals-p t)
 
 (provide 'init-org)
- 
