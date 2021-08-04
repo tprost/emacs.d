@@ -14,28 +14,94 @@
                '(left-fringe    . 1)
                '(right-fringe   . 1)
                '(tool-bar-lines . 0)
-               '(menu-bar-lines . 0)))) 
+               '(menu-bar-lines . 0))))
+
+
+(setq-default fill-column 80)
+
+(setq-default display-fill-column-indicator-character ?⬝)
 
 (set-face-attribute 'default nil :font (reverse "61 agiL onoM orPatamgarP"))
 (require 'darktooth-theme)
 
 (load-theme 'darktooth t)
 
-;; (straight-use-package
-;;   '(nano-emacs :type git :host github :repo "rougier/nano-emacs"))
 
-;; (setq nano-font-family-monospaced (reverse "agiL onoM orPatamgarP"))
-;; (setq nano-font-size 15)
+(face-attribute 'mode-line :background)
+(face-attribute 'mode-line :foreground)
+(face-attribute 'default :background)
 
-;; (require 'nano-base-colors)
-;; (require 'nano-faces)
-;; (require 'nano-theme)
-;; (require 'nano-layout)
-;; (require 'nano-modeline)
-;; (require 'nano-theme-dark)
+(setq header-line-format mode-line-format)
+(setq-default header-line-format mode-line-format)
+(setq-default mode-line-format " ")
 
-;; (nano-faces)
-;; (nano-theme)
+(setq window-header-line-height 40)
+(setq window-divider-default-places 'right-only)
+
+(setq scroll-margin 6)
+;; (setq x-underline-at-descent-line t)
+
+(setq window-divider-default-right-width 24)
+(face-attribute 'default :background)
+
+(window-divider-mode 1)
+
+(set-face-attribute 'window-divider nil
+                      :foreground "#282828" :background "#282828")
+(set-face-attribute 'window-divider-first-pixel nil
+                      :foreground "#282828")
+(set-face-attribute 'window-divider-last-pixel nil
+                      :foreground "#282828")
+
+(set-face-attribute 'header-line nil
+                    :background (face-attribute 'mode-line :background)
+                    :height 160
+                    ;; :foreground "white"
+                    ;; :box '(:line-width 3)
+                    :box nil
+                    :box '( :line-width 4 :color "#1D2021")
+                    :overline nil
+                    :underline nil)
+
+(set-face-attribute 'mode-line nil
+                    ;; :background "#565063"
+                    ;; :foreground "white"
+                    :height 0.1
+                    :box nil
+                    :overline nil
+                    :underline nil)
+(set-face-attribute 'mode-line-inactive nil
+                    ;; :background "#565063"
+                    ;; :foreground "white"
+                    :box '(:line-width 4 :color "#565063")
+                    :overline nil
+                    :underline nil)
+
+(add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
+
+(custom-set-faces
+ 
+'(fill-column-indicator ((t (:inherit shadow :stipple nil :foreground "gray40"
+:inverse-video nil :box nil :strike-through nil :overline nil :underline nil
+:slant normal :weight normal)))))
+
+(defface echo-area
+  '((t :foreground "white"
+       :background "black"
+       :inherit default       
+       :overline nil
+                    :underline nil
+       ))
+  "Face for function parameters."
+  :group 'basic-faces )
+
+;; (dolist
+;;     (buf (list " *Minibuf-0*" " *Minibuf-1*" " *Echo Area 0*" " *Echo Area 1*" "*Quail Completions*"))
+;;   (when (get-buffer buf)
+;;     (with-current-buffer buf
+      
+;;       (setq-local face-remapping-alist '((default default))))))
+                         
 
 (menu-bar-mode -1)
 (tool-bar-mode 0)
@@ -84,7 +150,6 @@
 
 ;; (scroll-bar-mode 0)
 ;; (fringe-mode 0)
-(window-divider-mode -1)
 
 ;; (set-face-background 'vertical-border nano-color-background)
 ;; (set-face-foreground 'vertical-border (face-background 'vertical-border))
