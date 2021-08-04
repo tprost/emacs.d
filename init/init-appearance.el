@@ -53,16 +53,9 @@
 (set-face-attribute 'window-divider-last-pixel nil
                       :foreground "#282828")
 
-(set-face-attribute 'magit-header-line nil
-                    :overline nil
-                    :underline nil
-                      :foreground "black" :background "dark orange"
-                      :box nil
-                      :box '( :line-width 4 :color "dark orange")
-                      )
-
 (set-face-attribute 'header-line nil                    
                     :height 160
+                    :background "#1D2021"
                     ;; :foreground "white"
                     ;; :box '(:line-width 3)
                     :box nil
@@ -163,5 +156,13 @@
 ;; (set-face-foreground 'vertical-border (face-background 'vertical-border))
 
 (beacon-mode 1)
+
+(set-face-attribute 'magit-header-line nil
+                    :overline nil
+                    :underline nil
+                      :foreground "black" :background "dark orange"
+                      :box nil
+                      :box '( :line-width 4 :color "dark orange")
+                      )
 
 (provide 'init-appearance)

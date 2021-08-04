@@ -157,3 +157,6 @@
 (load-file (expand-file-name "bindings.el" user-emacs-directory))
 
 (straight-use-package 'haskell-mode)
+
+
+(straight-use-package 'evil)
