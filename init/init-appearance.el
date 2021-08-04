@@ -33,7 +33,7 @@
 
 (setq header-line-format mode-line-format)
 (setq-default header-line-format mode-line-format)
-(setq-default mode-line-format " ")
+(setq-default mode-line-format nil)
 
 (setq window-header-line-height 40)
 (setq window-divider-default-places 'right-only)
@@ -53,8 +53,15 @@
 (set-face-attribute 'window-divider-last-pixel nil
                       :foreground "#282828")
 
-(set-face-attribute 'header-line nil
-                    :background (face-attribute 'mode-line :background)
+(set-face-attribute 'magit-header-line nil
+                    :overline nil
+                    :underline nil
+                      :foreground "black" :background "dark orange"
+                      :box nil
+                      :box '( :line-width 4 :color "dark orange")
+                      )
+
+(set-face-attribute 'header-line nil                    
                     :height 160
                     ;; :foreground "white"
                     ;; :box '(:line-width 3)
@@ -63,19 +70,20 @@
                     :overline nil
                     :underline nil)
 
-(set-face-attribute 'mode-line nil
-                    ;; :background "#565063"
-                    ;; :foreground "white"
-                    :height 0.1
-                    :box nil
-                    :overline nil
-                    :underline nil)
-(set-face-attribute 'mode-line-inactive nil
-                    ;; :background "#565063"
-                    ;; :foreground "white"
-                    :box '(:line-width 4 :color "#565063")
-                    :overline nil
-                    :underline nil)
+;; (set-face-attribute 'mode-line nil
+;;                     ;; :background "#565063"
+;;                     ;; :foreground "white"
+;;                     :height 0.1
+;;                     :box nil
+;;                     :overline nil
+;;                     :underline nil)
+;; (set-face-attribute 'mode-line-inactive nil
+;;                     ;; :background "#565063"
+;;                     ;; :foreground "white"
+;;                     :box '(:line-width 4 :color "#565063")
+;;                     :overline nil
+;;                     :underline nil)
+
 
 (add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
 
