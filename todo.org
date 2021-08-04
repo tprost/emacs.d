@@ -38,3 +38,14 @@ obal-set-key (kbd "C-@") 'er/expand-region)
 * TODO C-M-q in org mode should fill paragraph I guess?
 
 
+* TODO make-frame hotkey
+
+* clojure
+** TODO install clj-refactor
+** TODO try lsp mode for clojure
+** TODO find a way to rename a namespace?
+** TODO find a way to move a function to a different namespace?
+
+* golang
+** TODO fix lsp mode so it starts automatically
+** TODO fix the goddamn C-M-j binding 

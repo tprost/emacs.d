@@ -39,11 +39,16 @@ Inserted by installing org-mode or when a release is made."
 (setq my-org-todo-files (file-expand-wildcards "~/org/*/*todo.org"))
 (setq my-personal-development-todo-files (file-expand-wildcards "~/dev/personal/*/*todo.org"))
 (setq my-work-development-todo-files (file-expand-wildcards "~/dev/work/*/*todo.org"))
-(setq my-emacs-todo-file "~/.emacs.d/*todo.org")
+(setq my-emacs-todo-files (file-expand-wildcards "~/.emacs.d/*todo.org"))
+(setq my-playbook-todo-files (file-expand-wildcards "~/.playbook/*todo.org"))
+(setq my-dotfiles-todo-files (file-expand-wildcards "~/.dotfiles/*todo.org"))
 
 (setq org-agenda-files (append my-org-todo-files
                                my-personal-development-todo-files
-                               my-work-development-todo-files (list my-emacs-todo-file)))
+                               my-work-development-todo-files
+                               my-emacs-todo-files
+                               my-dotfiles-todo-files
+                               my-playbook-todo-files))
 
 
 

@@ -155,3 +155,5 @@
 (require 'pony-mode)
 
 (load-file (expand-file-name "bindings.el" user-emacs-directory))
+
+(straight-use-package 'haskell-mode)
