@@ -306,9 +306,14 @@ modifier."
 (global-set-key (kbd "C-x C-o c") 'org-capture)
 (global-set-key (kbd "C-x C-o d") 'org-drill)
 
+
 ;; (global-set-key (kbd "C-x i") 'my-org-drill)
 ;; (global-set-key (kbd "C-x C-i r") 'my-org-drill-resume)
 ;; (global-set-key (kbd "C-x r") 'my-org-drill)
+
+(global-set-key (kbd "C-x i") 'my-org-drill)
+;; (global-set-key (kbd "C-x C-i r") 'my-org-drill-resume)
+(global-set-key (kbd "C-x r") 'my-org-drill)
 
 ;; file prefix
 (global-unset-key (kbd "C-x C-f"))
