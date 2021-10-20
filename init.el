@@ -20,6 +20,7 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 
+(straight-use-package 'dash)
 (straight-use-package 'crux)
 (straight-use-package 'editorconfig)
 (straight-use-package 'jinja2-mode)
@@ -193,3 +194,4 @@
         (message "Region not active")))
 
 
+(straight-use-package 'glsl-mode)
