@@ -1,3 +1,476 @@
+(require 'expand-region)
+(straight-use-package 'whole-line-or-region)
+
+(require 'whole-line-or-region)
+
+(whole-line-or-region-global-mode t)
+
+(defvar monster-mode-map (make-sparse-keymap)
+  "The keymap for monster-mode.")
+
+(defun my-scroll-8-lines-down ()
+  (interactive)
+  (scroll-down-line 8))
+
+(defun my-scroll-8-lines-up ()
+  (interactive)
+  (scroll-up-line 8))
+
+;; a
+(define-key monster-mode-map (kbd "a") 'backward-paragraph)
+(global-set-key (kbd "C-a") 'crux-move-beginning-of-line)
+(global-set-key (kbd "M-a") 'beginning-of-line)
+(global-set-key (kbd "C-M-a") 'beginning-of-line)
+
+;; A
+(define-key monster-mode-map (kbd "A") 'beginning-of-buffer)
+;; (global-set-key (kbd "C-S-a") 'my-beginning-of-code)
+;; (global-set-key (kbd "M-S-a") 'my-beginning-of-text)
+(global-set-key (kbd "C-M-S-a") 'beginning-of-buffer)
+
+;; b
+(define-key monster-mode-map (kbd "b") 'backward-paragraph)
+(global-set-key (kbd "C-b") 'backward-char)
+(global-set-key (kbd "M-b") 'backward-word)
+(global-set-key (kbd "C-M-b") 'backward-sentence)
+
+;; B
+(define-key monster-mode-map (kbd "B") 'backward-sexp)
+(global-set-key (kbd "C-S-b") 'backward-symbol)
+;; (global-set-key (kbd "M-S-b") 'backward-sexp)
+(global-set-key (kbd "C-M-S-b") 'backward-sexp)
+
+;; c
+;; reserved for custom "major mode" commands
+;; TODO monster c should map to C-c
+
+;; C
+
+;; d
+(define-key monster-mode-map (kbd "d") 'kill-paragraph)
+(global-set-key (kbd "C-d") 'delete-char)
+(global-set-key (kbd "M-d") 'kill-word)
+(global-set-key (kbd "C-M-d") 'kill-sentence)
+
+;; D
+(define-key monster-mode-map (kbd "D") 'backward-kill-sexp)
+;; (global-set-key (kbd "C-S-d") 'my-backward-kill-symbol)
+;; (global-set-key (kbd "M-S-d") 'my-backward-kill-?)
+(global-set-key (kbd "C-M-S-d") backward-kill-sexp)
+;; (define-key monster-mode-map (kbd "C-M-d") 'zap-to-char)
+;; (define-key monster-mode-map (kbd "C-M-S-d") 'zap-backwards-to-char)
+
+;; e
+(define-key monster-mode-map (kbd "e") 'forward-paragraph)
+;; (global-set-key (kbd "C-e") 'crux-end-of-line)
+(global-set-key (kbd "C-e") 'end-of-line)
+(global-set-key (kbd "M-e") 'end-of-line)
+;; (global-set-key (kbd "C-M-e") 'my-second-to-last-end-of-paragraph)
+
+;; E
+(define-key monster-mode-map (kbd "E") 'end-of-buffer)
+;; (global-set-key (kbd "C-S-e") 'my-end-of-code)
+;; (global-set-key (kbd "M-S-e") 'my-end-of-text)
+;; (global-set-key (kbd "C-M-S-e") 'end-of-buffer)
+
+;; f
+(define-key monster-mode-map (kbd "f") 'forward-sentence)
+(global-set-key (kbd "C-f") 'forward-char)
+(global-set-key (kbd "M-f") 'forward-word)
+;; (global-set-key (kbd "C-M-f") 'forward-phrase)
+(global-set-key (kbd "C-M-f") 'forward-sentence)
+
+;; F
+(define-key monster-mode-map (kbd "F") 'forward-sexp)
+(global-set-key (kbd "C-S-f") 'forward-symbol)
+(global-set-key (kbd "M-S-f") 'forward-sexp)
+(global-set-key (kbd "C-M-S-f") 'end-of-defun)
+
+;; g
+(define-key monster-mode-map (kbd "g") 'keyboard-quit)
+
+;; G
+;; what could go here?
+;; maybe resetting windows or something?
+
+;; h
+(define-key monster-mode-map (kbd "h") 'help-map)
+
+;; H
+(define-key monster-mode-map (kbd "H") 'describe-key)
+
+;; i
+(define-key monster-mode-map (kbd "i") 'monster-mode)
+
+;; I
+;; what could go here?
+;; maybe open up my bindings files?
+
+;; j
+(define-prefix-command 'my-avy-map)
+(define-key monster-mode-map (kbd "j") 'avy-goto-char)
+(global-set-key (kbd "C-j") 'my-avy-map)
+(global-set-key (kbd "C-j c") 'avy-goto-char)
+(global-set-key (kbd "C-j 2") 'avy-goto-char-2)
+(global-set-key (kbd "C-j j") 'avy-goto-char)
+(global-set-key (kbd "C-j a") 'avy-goto-char-2-above)
+(global-set-key (kbd "C-j e") 'avy-goto-char-2-below)
+(global-set-key (kbd "C-j b") 'avy-goto-char-2-above)
+(global-set-key (kbd "C-j f") 'avy-goto-char-2-below)
+(global-set-key (kbd "C-j l") 'avy-goto-char-in-line)
+(global-set-key (kbd "C-j w") 'avy-goto-word-1)
+(global-set-key (kbd "C-j C-w 0") 'avy-goto-word-0)
+(global-set-key (kbd "C-j C-w 1") 'avy-goto-word-1)
+
+(define-prefix-command 'my-micro-avy-map)
+(global-set-key (kbd "M-j") 'my-micro-avy-map)
+(global-set-key (kbd "M-j c") 'avy-goto-char)
+(global-set-key (kbd "M-j l") 'avy-goto-line)
+(global-set-key (kbd "M-j a") 'avy-goto-line-above)
+(global-set-key (kbd "M-j e") 'avy-goto-line-below)
+(global-set-key (kbd "M-j b") 'avy-goto-word-0-above)
+(global-set-key (kbd "M-j f") 'avy-goto-word-0-below)
+(global-set-key (kbd "M-j w") 'avy-goto-word-0)
+
+(define-prefix-command 'my-macro-avy-map)
+(global-set-key (kbd "C-M-j") 'my-macro-avy-map)
+(global-set-key (kbd "C-M-j l") 'avy-goto-line)
+(global-set-key (kbd "C-M-j a") 'avy-goto-line-above)
+(global-set-key (kbd "C-M-j e") 'avy-goto-line-below)
+
+;; J
+(define-key monster-mode-map (kbd "J") 'forward-sexp)
+(global-set-key (kbd "C-S-j") 'forward-symbol)
+(global-set-key (kbd "M-S-j") 'forward-sexp)
+(global-set-key (kbd "C-M-S-j") 'end-of-defun)
+
+;; k
+(define-key monster-mode-map (kbd "k") 'crux-smart-kill-line)
+(global-set-key (kbd "C-k") 'crux-smart-kill-line)
+(global-set-key (kbd "M-k") 'kill-word)
+(global-set-key (kbd "C-M-k") 'kill-sentence)
+
+;; K
+(define-key monster-mode-map (kbd "K") 'kill-buffer)
+;; (global-set-key (kbd "C-S-k") ')
+;; (global-set-key (kbd "M-S-k") 'kill-word)
+;; (global-set-key (kbd "C-M-S-k") 'kill-sentence)
+
+;; l
+(define-key monster-mode-map (kbd "l") 'recenter-top-bottom)
+(global-set-key (kbd "C-l") 'recenter)
+(global-set-key (kbd "M-l") 'recenter)
+(global-set-key (kbd "C-M-l") 'recenter)
+
+;; L
+(define-key monster-mode-map (kbd "L") 'recenter)
+(global-set-key (kbd "C-S-l") 'scroll-bottom-line-to-top)
+(global-set-key (kbd "M-S-l") 'scroll-top-line-to-bottom)
+
+;; m
+(define-prefix-command 'my-mark-map)
+(define-key monster-mode-map (kbd "m") 'er/expand-region)
+(define-key monster-mode-map (kbd "C-m") 'my-mark-map)
+(define-key monster-mode-map (kbd "C-m l") 'my-mark-current-line)
+(define-key monster-mode-map (kbd "C-m f") 'er/mark-defun)
+(define-key monster-mode-map (kbd "C-m w") 'er/mark-word)
+(define-key monster-mode-map (kbd "C-m p") 'er/mark-paragraph)
+(define-key monster-mode-map (kbd "C-m c") 'er/mark-comment)
+(define-key monster-mode-map (kbd "C-m e") 'er/mark-email)
+(define-key monster-mode-map (kbd "C-m s") 'er/mark-symbol)
+(define-key monster-mode-map (kbd "C-m n") 'er/mark-sentence)
+(define-key monster-mode-map (kbd "C-m b") 'mark-whole-buffer)
+
+(define-key monster-mode-map (kbd "C-m f") (define-prefix-command 'my-mark-feature-map))
+(define-key monster-mode-map (kbd "C-m f s") 'er/mark-feature-scenario)
+(define-key monster-mode-map (kbd "C-m f p") 'er/mark-feature-step)
+
+;; M
+(define-key monster-mode-map (kbd "M") 'mc/mark-all-dwim)
+(define-prefix-command 'my-mc-map)
+(global-set-key (kbd "C-S-m") 'my-mc-map)
+(global-set-key (kbd "C-S-m r") 'mc/mark-all-in-region)
+(global-set-key (kbd "C-S-m l") 'mc/edit-beginnings-of-lines)
+(global-set-key (kbd "C-S-m m") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-S-m n") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-S-m p") 'mc/mark-previous-like-this)
+
+;; n
+(define-key monster-mode-map (kbd "n") 'forward-paragraph)
+
+;; o
+(define-key monster-mode-map (kbd "o") 'er/expand-region)
+(define-key monster-mode-map (kbd "O") 'er/contract-region)
+(global-set-key (kbd "C-o") 'er/expand-region)
+(global-set-key (kbd "C-S-o") 'er/contract-region)
+
+;; p
+(define-key monster-mode-map (kbd "p") 'backward-paragraph)
+
+;; q
+(define-key monster-mode-map (kbd "q") 'projectile-map)
+(define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
+
+;; r
+(define-key monster-mode-map (kbd "r") 'isearch-backward)
+
+;; s
+(define-key monster-mode-map (kbd "s") 'isearch-forward)
+
+;; t
+;; what do we use t for?
+
+;; u
+
+;; v
+(define-key monster-mode-map (kbd "v") 'scroll-up)
+(global-set-key (kbd "C-v") 'my-scroll-8-lines-up)
+(global-set-key (kbd "M-v") 'scroll-up) ;; a lot somehow?
+(global-set-key (kbd "C-M-v") 'scroll-line-up)
+;; (evil-global-set-key 'normal (kbd "C-M-v") 'evil-scroll-line-to-bottom)
+
+;; V
+(define-key monster-mode-map (kbd "V") 'scroll-down)
+(global-set-key (kbd "C-S-v") 'my-scroll-8-lines-down)
+(global-set-key (kbd "M-S-v") 'scroll-page-down)
+(global-set-key (kbd "C-M-S-v") 'scroll-line-down)
+
+;; w
+(define-key monster-mode-map (kbd "w") 'kill-ring-save)
+
+;; x
+
+;; y
+(define-key monster-mode-map (kbd "y") 'yank)
+
+;; z
+(global-set-key (kbd "C-z") 'monster-mode)
+
+
+(define-key monster-mode-map (kbd "/") 'undo)
+
+
+
+
+
+;; (define-key monster-mode-maps (kbd "C-g") 'evil-normal-state)
+
+
+
+
+(define-key monster-mode-map (kbd "%") 'query-replace)
+
+;; evil-search-forward?
+
+
+
+(define-key monster-mode-map (kbd "<backspace>") 'backward-delete-char-untabify)
+(define-key monster-mode-map (kbd "C-<backspace>") 'backward-kill-word)
+(define-key monster-mode-map (kbd "M-<backspace>") 'backward-kill-sexp)
+
+(define-key monster-mode-map (kbd "(") 'kmacro-start-macro-or-insert-counter)
+(define-key monster-mode-map (kbd ")") 'kmacro-end-macro)
+;;(define-key monster-mode-map (kbd "#") 'evil-record-macro)
+
+(define-key monster-mode-map (kbd "SPC") 'set-mark-command)
+
+
+
+
+;; (Require 'multiple-cursors)
+
+;; ;; evil shell command
+;; (evil-global-set-key 'normal (kbd "!") 'er/edit-lines)
+;; (evil-global-set-key 'normal (kbd "!") 'er/edit-lines)
+
+;; (setq evil-respect-visual-line-mode nil)
+
+;; ;; (global-set-key (kbd "m") '(self-insert-command (char "m")))
+;; ;; (evil-global-set-key 'normal (kbd "") 'evil-scroll-line-down)
+
+
+
+
+;;   ;; (evil-global-set-key state (kbd "C-n") 'next-
+
+;;   ;; TODO copy and paste line below
+
+;;   (evil-global-set-key state (kbd "p") 'evil-previous-line)
+  
+(define-minor-mode monster-mode
+  "Toggle Monster mode"
+  :init-value nil
+  :lighter " Monster"
+  :keymap monster-mode-map
+  (progn
+    (message "asdasdasda")
+    (if monster-mode
+      (set-cursor-color "green")
+      (set-cursor-color "white"))
+    (if monster-mode
+      (message "monster-mode activated")
+      (message "monster-mode deactivated"))))
+    
+
+
+(defun my-mark-current-line ()
+  "Select the current line and move the cursor by ARG lines IF
+no region is selected.
+
+If a region is already selected when calling this command, only move
+the cursor by ARG lines."
+  (interactive)
+  (my-mark-current-line-and-forward-line 0)
+  (end-of-line))
+
+
+
+(defun my-mark-current-line-and-forward-line (arg)
+  "Select the current line and move the cursor by ARG lines IF
+no region is selected.
+
+If a region is already selected when calling this command, only move
+the cursor by ARG lines."
+  (interactive "p")
+  (when (not (use-region-p))
+    (forward-line 0)
+    (set-mark-command nil))
+  (forward-line arg))
+
+;; (setq evil-move-beyond-eol 't)
+
+;; ;; (setq evil-default-state 'emacs)
+;; ;; https://evil.readthedocs.io/en/latest/overview.html
+
+;; ;; TODO evil-forward-word-start?
+;; (dolist (state (list 'normal 'visual))
+
+;;   (evil-global-set-key state (kbd "f") 'forward-char)
+;;   (evil-global-set-key state (kbd "C-f") 'forward-word)
+;;   (evil-global-set-key state (kbd "M-f") 'forward-paragraph)
+;;   (evil-global-set-key state (kbd "C-M-f") 'end-of-buffer)
+;;   (evil-global-set-key state (kbd "S-f") 'forward-symbol)
+;;   (evil-global-set-key state (kbd "F") 'forward-symbol)
+;;   (evil-global-set-key state (kbd "C-S-f") 'forward-sexp)
+;;   (evil-global-set-key state (kbd "M-S-f") 'forward-sexp)
+;;   (evil-global-set-key state (kbd "C-M-S-f") 'forward-sexp)
+  
+;;   (evil-global-set-key state (kbd "b") 'backward-char)
+;;   (evil-global-set-key state (kbd "C-b") 'backward-word)
+;;   (evil-global-set-key state (kbd "M-b") 'backward-paragraph)
+;;   (evil-global-set-key state (kbd "C-M-b") 'end-of-buffer)
+;;   (evil-global-set-key state (kbd "S-b") 'backward-symbol)
+;;   (evil-global-set-key state (kbd "B") 'backward-symbol)
+;;   (evil-global-set-key state (kbd "C-S-b") 'backward-sexp)
+;;   (evil-global-set-key state (kbd "M-S-b") 'backward-sexp)
+;;   (evil-global-set-key state (kbd "C-M-S-b") 'backward-sexp)
+;;   (evil-global-set-key state (kbd "n") 'evil-next-line)
+;;   ;; (evil-global-set-key state (kbd "C-n") 'next-
+
+;;   ;; TODO copy and paste line below
+
+;;   (evil-global-set-key state (kbd "p") 'evil-previous-line)
+
+;;   (evil-global-set-key state (kbd "e") 'move-end-of-line)
+;;   (evil-global-set-key state (kbd "a") 'crux-move-beginning-of-line))
+
+
+;; (evil-global-set-key 'normal (kbd "i") 'evil-emacs-state)
+;; (evil-global-set-key 'emacs (kbd "C-g") 'evil-normal-state)
+
+;; (evil-global-set-key 'normal (kbd "k") 'crux-smart-kill-line)
+;; (evil-global-set-key 'normal (kbd "y") 'yank)
+;; (evil-global-set-key 'normal (kbd "w") 'kill-ring-save)
+
+;; ;; evil-search-forward?
+;; (evil-global-set-key 'normal (kbd "s") 'isearch-forward)
+;; (evil-global-set-key 'normal (kbd "r") 'isearch-backward)
+
+;; (evil-global-set-key 'normal (kbd "d") 'delete-char)
+;; (evil-global-set-key 'normal (kbd "C-d") 'kill-word)
+;; (evil-global-set-key 'normal (kbd "M-d") 'kill-sexp)
+;; (evil-global-set-key 'normal (kbd "C-M-d") 'zap-to-char)
+
+;; (evil-global-set-key 'normal (kbd "<backspace>") 'backward-delete-char-untabify)
+;; (evil-global-set-key 'normal (kbd "C-<backspace>") 'backward-kill-word)
+;; (evil-global-set-key 'normal (kbd "M-<backspace>") 'backward-kill-sexp)
+
+;; (evil-global-set-key 'normal (kbd "j") 'avy-goto-char)
+;; (evil-global-set-key 'normal (kbd "C-j") 'avy-goto-word-0)
+;; (evil-global-set-key 'normal (kbd "C-S-j") 'avy-goto-word-1)
+;; (evil-global-set-key 'normal (kbd "M-j") 'avy-goto-line)
+
+;; (evil-global-set-key 'normal (kbd "(") 'kmacro-start-macro-or-insert-counter)
+;; (evil-global-set-key 'normal (kbd ")") 'kmacro-end-macro)
+;; (evil-global-set-key 'normal (kbd "#") 'evil-record-macro)
+
+;; (evil-global-set-key 'normal (kbd "SPC") 'set-mark-command)
+
+;; (evil-global-set-key 'normal (kbd "v") 'my-scroll-8-lines-down)
+;; (evil-global-set-key 'normal (kbd "C-v") 'evil-scroll-down)
+;; (evil-global-set-key 'normal (kbd "M-v") 'evil-scroll-page-down)
+;; (evil-global-set-key 'normal (kbd "C-M-v") 'evil-scroll-line-down)
+
+;; (define-prefix-command 'my-mark-map)
+;; (evil-global-set-key 'normal (kbd "m") 'my-mark-map)
+;; (evil-global-set-key 'normal (kbd "m l") 'my-mark-current-line)
+;; (evil-global-set-key 'normal (kbd "m f") 'er/mark-defun)
+;; (evil-global-set-key 'normal (kbd "m w") 'er/mark-word)
+;; (evil-global-set-key 'normal (kbd "m p") 'er/mark-paragraph)
+;; (evil-global-set-key 'normal (kbd "m c") 'er/mark-comment)
+;; (evil-global-set-key 'normal (kbd "m e") 'er/mark-email)
+;; (evil-global-set-key 'normal (kbd "m s") 'er/mark-symbol)
+;; (evil-global-set-key 'normal (kbd "m n") 'er/mark-sentence)
+;; (evil-global-set-key 'normal (kbd "m b") 'mark-whole-buffer)
+
+;; (evil-global-set-key 'normal (kbd "m f") (define-prefix-command 'my-mark-feature-map))
+;; (evil-global-set-key 'normal (kbd "m f s") 'er/mark-feature-scenario)
+;; (evil-global-set-key 'normal (kbd "m f p") 'er/mark-feature-step)
+
+
+;; (require 'multiple-cursors)
+
+;; ;; evil shell command
+;; (evil-global-set-key 'normal (kbd "!") 'er/edit-lines)
+;; (evil-global-set-key 'normal (kbd "!") 'er/edit-lines)
+
+;; (setq evil-respect-visual-line-mode nil)
+
+;; ;; (global-set-key (kbd "m") '(self-insert-command (char "m")))
+;; ;; (evil-global-set-key 'normal (kbd "") 'evil-scroll-line-down)
+
+
+;; ;; (evil-global-set-key 'normal (kbd "C-M-v") 'evil-scroll-line-to-bottom)
+
+;; (defun my-scroll-8-lines-down ()
+;;   (interactive)
+;;   (evil-scroll-line-down 8))
+
+;; (defun my-scroll-8-lines-up ()
+;;   (interactive)
+;;   (evil-scroll-line-up 8))
+
+;; (evil-global-set-key 'normal (kbd "S-v") 'my-scroll-8-lines-up)
+;; (evil-global-set-key 'normal (kbd "C-S-v") 'evil-scroll-up)
+;; (evil-global-set-key 'normal (kbd "M-S-v") 'evil-scroll-page-up)
+;; (evil-global-set-key 'normal (kbd "C-M-S-v") 'evil-scroll-line-up)
+
+;; (evil-global-set-key 'normal (kbd "l") 'recenter-top-bottom)
+;; (evil-global-set-key 'normal (kbd "C-l") 'evil-scroll-line-to-top)
+;; (evil-global-set-key 'normal (kbd "M-l") 'evil-scroll-line-to-bottom)
+
+;; (evil-global-set-key 'normal (kbd "S-l") 'recenter)
+;; (evil-global-set-key 'normal (kbd "C-S-l") 'evil-scroll-bottom-line-to-top)
+;; (evil-global-set-key 'normal (kbd "M-S-l") 'evil-scroll-top-line-to-bottom)
+
+
+
+;; evil-repeat
+
+
+
+
+
 ;; ** Executing
 
 ;; keys on macosx
@@ -27,6 +500,8 @@ modifier."
             ;; This would override `fill-column' if it's an integer.
             (emacs-lisp-docstring-fill-column t))
         (fill-paragraph nil region)))
+
+
 
 ;; | C-x !       | go to important file prefix   |
 ;; | C-x 1       | search for ~/.emacs.d file    |
@@ -175,7 +650,7 @@ modifier."
 ;; (global-set-key (kbd "M-/") 'hippie-expand)
 ;; (global-set-key (kbd "TAB") 'smart-tab)
 (global-set-key (kbd "M-i") 'back-to-indentation)
-(global-set-key (kbd "C-M-m") 'iy-go-to-char)
+(global-set-key (kbd "C-C-S-m") 'iy-go-to-char)
 
 (global-set-key (kbd "C-m") 'set-mark-command)
 (global-set-key (kbd "C-=") 'set-mark-command)
@@ -220,19 +695,12 @@ modifier."
 (global-set-key (kbd "M-A") 'beginning-of-buffer)
 (global-set-key (kbd "M-E") 'end-of-buffer)
 
-
-(add-hook 'c++-mode-hook #'lsp)
-
-(straight-use-package 'ccls)
-(straight-use-package 'cpp-auto-include)
-
 (global-set-key (kbd "C-M-r") 'lsp-rename)
 (global-set-key (kbd "C-M-o") 'lsp-organize-imports)
 (global-set-key (kbd "C-M-c") 'crux-cleanup-buffer-or-region)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-t") 'set-mark-command)
-(global-set-key (kbd "C-z") 'undo)
 
 (global-unset-key (kbd "<f1>"))
 (global-unset-key (kbd "<f4>"))
@@ -246,8 +714,6 @@ modifier."
 
 (global-set-key (kbd "C-<down>") 'shrink-window-horizontally)
 (global-set-key (kbd "C-<up>") 'enlarge-window-horizontally)
-
-(setq explicit-shell-file-name "/bin/bash")
 
 
 
@@ -368,7 +834,6 @@ modifier."
 (global-set-key (kbd "C-x C-b w") 'erase-buffer)
 (global-set-key (kbd "C-x C-b c") 'cleanup-buffer)
 
-(global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-x l"))
 
 
@@ -382,7 +847,6 @@ modifier."
 ;; (setq projectile-keymap-prefix nil)
 ;; (global-unset-key (kbd "C-x p"))
 ;; (global-unset-key (kbd "C-x C-p"))
-(define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-x C-p") 'projectile-command-map)
 
 

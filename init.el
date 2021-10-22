@@ -12,11 +12,6 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package 'evil)
-(require 'evil)
-(evil-mode 1)
-(setq evil-default-state 'emacs)
-
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 
@@ -27,6 +22,9 @@
 (straight-use-package 'make-mode)
 (straight-use-package 'restclient)
 (straight-use-package 'avy)
+
+(straight-use-package 'expand-region)
+(straight-use-package 'multiple-cursors)
 
 (require 'init-helm)
 (require 'init-projectile)
@@ -193,5 +191,8 @@
               (pop-to-buffer b))
         (message "Region not active")))
 
+(setq explicit-shell-file-name "/bin/bash")
 
 (straight-use-package 'glsl-mode)
+
+(put 'downcase-region 'disabled nil)
