@@ -1,20 +1,10 @@
 (require 'expand-region)
-(straight-use-package 'whole-line-or-region)
+(require 'which-key)
+(which-key-mode)
 
 (require 'whole-line-or-region)
 
 (whole-line-or-region-global-mode t)
-
-(defvar monster-mode-map (make-sparse-keymap)
-  "The keymap for monster-mode.")
-
-(defun my-scroll-8-lines-down ()
-  (interactive)
-  (scroll-down-line 8))
-
-(defun my-scroll-8-lines-up ()
-  (interactive)
-  (scroll-up-line 8))
 
 ;; a
 (define-key monster-mode-map (kbd "a") 'backward-paragraph)
@@ -197,6 +187,10 @@
 
 ;; n
 (define-key monster-mode-map (kbd "n") 'forward-paragraph)
+;; (global-set-key (kbd "C-n") 'next-line)
+;; (global-set-key (kbd "M-n") '
+
+;; N
 
 ;; o
 (define-key monster-mode-map (kbd "o") 'er/expand-region)
@@ -204,23 +198,44 @@
 (global-set-key (kbd "C-o") 'er/expand-region)
 (global-set-key (kbd "C-S-o") 'er/contract-region)
 
+;; O
+
 ;; p
 (define-key monster-mode-map (kbd "p") 'backward-paragraph)
 
+;; P
+
 ;; q
-(define-key monster-mode-map (kbd "q") 'projectile-map)
+(define-key monster-mode-map (kbd "q") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
+
+;; Q
 
 ;; r
 (define-key monster-mode-map (kbd "r") 'isearch-backward)
 
+;; R
+
 ;; s
 (define-key monster-mode-map (kbd "s") 'isearch-forward)
 
+;; S
+
 ;; t
 ;; what do we use t for?
+(define-prefix-command 'my-editing-map)
+(define-key my-editing-map (kbd "d") 'downcase-dwim)
+(define-key my-editing-map (kbd "u") 'upcase-dwim)
+(define-key my-editing-map (kbd "o") 'crux-smart-open-line)
+(define-key my-editing-map (kbd "a") 'crux-smart-open-line-above)
+(define-key monster-mode-map (kbd "t") 'my-editing-map)
+(global-set-key (kbd "C-t") 'my-editing-map)
+
+;; T
 
 ;; u
+
+;; U
 
 ;; v
 (define-key monster-mode-map (kbd "v") 'scroll-up)
@@ -239,18 +254,104 @@
 (define-key monster-mode-map (kbd "w") 'kill-ring-save)
 
 ;; x
+(define-prefix-command 'my-micro-x-map)
+(define-key my-micro-x-map (kbd "b") 'switch-to-buffer)
+(define-key my-micro-x-map (kbd "d") 'dired)
+(define-key my-micro-x-map (kbd "g") 'magit)
+(define-key my-micro-x-map (kbd "s") 'save-buffer)
+(define-key my-micro-x-map (kbd "o") 'my-open-line-below)
+(define-key my-micro-x-map (kbd "O") 'my-open-line-above)
+(define-key my-micro-x-map (kbd "c") 'crux-capitalize-region)
+(define-key my-micro-x-map (kbd "x") 'eval-defun)
+(define-key my-micro-x-map (kbd "") 'eval-defun)
+
+(defhydra hydra-text-scale (global-map "C-x t")
+  "text scale"
+  ("i" text-scale-increase "increase")
+  ("d" text-scale-decrease "decrease"))
+
+(defhydra hydra-window-management (global-map "C-x w")
+  "window"
+  ("f" hydra-frame-management/body "frame")
+  ("r" split-window-right "right")
+  ("b" split-window-below "below")
+  ("v" split-window-vertically "vertically")
+  ("0" zero-window "nuke")
+  ("1" delete-other-windows "delete")
+  ("s" crux-swap-windows "swap")
+  ("2" double-window "double")
+  ("m" maximize-window "maximize")
+  ("o" other-window "other")
+  ("b" switch-to-buffer-other-window "switch")
+  ("h" split-window-horizontally "horizontally"))
+
+(defhydra hydra-frame-management (global-map "C-x f")
+  "frame"
+  ("w" hydra-window-management/body "window")
+  ("n" make-frame "make-frame")  
+  ("d" dired-other-frame "dired-other-frame")    
+  ("o" other-frame "other-frame")
+  ("d" delete-frame "delete-frame")  
+  ("S" shrink-frame "shrink-frame")
+  ("s" shrink-frame-horizontally "shrink-frame-horizontally")
+  ("E" enlarge-frame "enlarge-frame")
+  ("e" enlarge-frame-horizontally "enlarge-frame-horizontally")
+  ("b" switch-to-buffer-other-frame "switch-to-buffer-other-frame"))
+
+;; ;; buffer prefix
+;; (global-unset-key (kbd "C-x C-b"))
+(define-key my-micro-x-map (kbd "C-b r") 'rename-buffer)
+(define-key my-micro-x-map (kbd "C-b p") 'previous-buffer)
+(define-key my-micro-x-map (kbd "C-b n") 'next-buffer)
+(define-key my-micro-x-map (kbd "C-b v") 'revert-buffer)
+(define-key my-micro-x-map (kbd "C-b e") 'end-of-buffer)
+(define-key my-micro-x-map (kbd "C-b b") 'beginning-of-buffer)
+(define-key my-micro-x-map (kbd "C-b w") 'erase-buffer)
+(define-key my-micro-x-map (kbd "C-b c") 'cleanup-buffer)
+
+(define-key monster-mode-map (kbd "x") 'my-micro-x-map)
+(global-set-key (kbd "C-x") 'my-micro-x-map)
+
+
+;; X
 
 ;; y
 (define-key monster-mode-map (kbd "y") 'yank)
 
+;; Y
+
 ;; z
 (global-set-key (kbd "C-z") 'monster-mode)
+
+;; Z
 
 
 (define-key monster-mode-map (kbd "/") 'undo)
 
+(define-key monster-mode-map (kbd "!") 'eval-defun)
 
 
+
+;; (define-key monster-mode-map (kbd "[") 'my-open-line-above)
+;; (define-key monster-mode-map (kbd "{") 'my-open-line-above)
+;; (define-key monster-mode-map (kbd "]") 'crux-smart-open-line)
+;; (define-key monster-mode-map (kbd "}") 'crux-smart-open-line)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;; recursive edit?
 
 
 ;; (define-key monster-mode-maps (kbd "C-g") 'evil-normal-state)
@@ -261,6 +362,8 @@
 (define-key monster-mode-map (kbd "%") 'query-replace)
 
 ;; evil-search-forward?
+
+
 
 
 
@@ -296,46 +399,11 @@
 ;;   ;; TODO copy and paste line below
 
 ;;   (evil-global-set-key state (kbd "p") 'evil-previous-line)
-  
-(define-minor-mode monster-mode
-  "Toggle Monster mode"
-  :init-value nil
-  :lighter " Monster"
-  :keymap monster-mode-map
-  (progn
-    (message "asdasdasda")
-    (if monster-mode
-      (set-cursor-color "green")
-      (set-cursor-color "white"))
-    (if monster-mode
-      (message "monster-mode activated")
-      (message "monster-mode deactivated"))))
+ 
     
 
 
-(defun my-mark-current-line ()
-  "Select the current line and move the cursor by ARG lines IF
-no region is selected.
 
-If a region is already selected when calling this command, only move
-the cursor by ARG lines."
-  (interactive)
-  (my-mark-current-line-and-forward-line 0)
-  (end-of-line))
-
-
-
-(defun my-mark-current-line-and-forward-line (arg)
-  "Select the current line and move the cursor by ARG lines IF
-no region is selected.
-
-If a region is already selected when calling this command, only move
-the cursor by ARG lines."
-  (interactive "p")
-  (when (not (use-region-p))
-    (forward-line 0)
-    (set-mark-command nil))
-  (forward-line arg))
 
 ;; (setq evil-move-beyond-eol 't)
 
@@ -539,70 +607,70 @@ modifier."
 ;; (global-unset-key (kbd "ESC"))
 ;; (global-set-key (kbd "ESC") 'keyboard-quit)
 
-(global-set-key (kbd "C-m") 'set-mark-command)
-(global-set-key (kbd "C-.") 'kmacro-end-or-call-macro)
-(global-set-key (kbd "C-_") 'keyboard-quit)
+;; (global-set-key (kbd "C-m") 'set-mark-command)
+;; (global-set-key (kbd "C-.") 'kmacro-end-or-call-macro)
+;; (global-set-key (kbd "C-_") 'keyboard-quit)
 
 
 
-;; killing things
-(global-set-key (kbd "C-k") 'crux-smart-kill-line)
-(global-set-key (kbd "C-S-K") 'crux-kill-whole-line)
-(global-set-key (kbd "M-k") 'tprost-kill-to-end-of-buffer)
-(global-set-key (kbd "M-S-k") 'tprost-kill-to-end-of-buffer)
+;; ;; killing things
+;; (global-set-key (kbd "C-k") 'crux-smart-kill-line)
+;; (global-set-key (kbd "C-S-K") 'crux-kill-whole-line)
+;; (global-set-key (kbd "M-k") 'tprost-kill-to-end-of-buffer)
+;; (global-set-key (kbd "M-S-k") 'tprost-kill-to-end-of-buffer)
 
-(global-set-key (kbd "C-S-<backspace>") 'crux-kill-line-backwards)
-(global-set-key (kbd "M-S-<backspace>") 'tprost-kill-to-beginning-of-buffer)
+;; (global-set-key (kbd "C-S-<backspace>") 'crux-kill-line-backwards)
+;; (global-set-key (kbd "M-S-<backspace>") 'tprost-kill-to-beginning-of-buffer)
 
-;; kill buffer backwards
-(global-set-key (kbd "M-S-<backspace>") 'crux-kill-line-backwards)
-;; crux-kill-and-join-forward
-;; (global-set-key (kbd "C-M-;") 'comment-dwim)
-;; (global-set-key (kbd "C-M-; k") 'comment-kill)
-;; (global-set-key (kbd "C-M-; C-M-k") 'comment-kill)
+;; ;; kill buffer backwards
+;; (global-set-key (kbd "M-S-<backspace>") 'crux-kill-line-backwards)
+;; ;; crux-kill-and-join-forward
+;; ;; (global-set-key (kbd "C-M-;") 'comment-dwim)
+;; ;; (global-set-key (kbd "C-M-; k") 'comment-kill)
+;; ;; (global-set-key (kbd "C-M-; C-M-k") 'comment-kill)
 
-;; kill from point to end of buffer
+;; ;; kill from point to end of buffer
 
 
 
 ;; (global-set-key (kbd "M-k") 'crux-smart-kill-line)
 
-(global-set-key (kbd "C-o") 'crux-smart-open-line)
-(global-set-key (kbd "C-S-o") 'crux-smart-open-line-above)
+;; (global-set-key (kbd "C-o") 'crux-smart-open-line)
+;; (global-set-key (kbd "C-S-o") 'crux-smart-open-line-above)
 
-(global-set-key (kbd "C-a") 'crux-move-beginning-of-line)
+;; (global-set-key (kbd "C-a") 'crux-move-beginning-of-line)
 
-(global-unset-key (kbd "C-c n"))
-(global-set-key (kbd "C-c n") 'crux-cleanup-buffer-or-region)
-(global-set-key (kbd "C-c f") 'crux-recentf-find-file)
-(global-set-key (kbd "C-c d") 'crux-duplicate-current-line-or-region)
-(global-set-key (kbd "C-c M-d") 'crux-duplicate-and-comment-current-line-or-region)
-(global-set-key (kbd "C-c e") 'crux-eval-and-replace)
+;; (global-unset-key (kbd "C-c n"))
+;; (global-set-key (kbd "C-c n") 'crux-cleanup-buffer-or-region)
+;; (global-set-key (kbd "C-c f") 'crux-recentf-find-file)
+;; (global-set-key (kbd "C-c d") 'crux-duplicate-current-line-or-region)
+;; (global-set-key (kbd "C-c M-d") 'crux-duplicate-and-comment-current-line-or-region)
+;; (global-set-key (kbd "C-c e") 'crux-eval-and-replace)
 
-(global-set-key (kbd "C-c e") 'crux-eval-and-replace)
-(global-set-key (kbd "C-c r") 'crux-rename-file-and-buffer)
+;; (global-set-key (kbd "C-c e") 'crux-eval-and-replace)
+;; (global-set-key (kbd "C-c r") 'crux-rename-file-and-buffer)
 
-(global-set-key (kbd "C-c TAB") 'crux-indent-rigidly-and-copy-to-clipboard)
+;; (global-set-key (kbd "C-c TAB") 'crux-indent-rigidly-and-copy-to-clipboard)
 
-;; (global-set-key (kbd "C-M z") 'crux-indent-defun)
+;; ;; (global-set-key (kbd "C-M z") 'crux-indent-defun)
 
-;; (global-set-key (kbd "C-c i") 'crux-find-user-init-file)
+;; ;; (global-set-key (kbd "C-c i") 'crux-find-user-init-file)
 
-(global-set-key (kbd "C-^") 'crux-top-join-line)
-(global-set-key (kbd "C-c u") 'crux-upcase-region)
-(global-set-key (kbd "C-c l") 'crux-downcase-region)
-(global-set-key (kbd "C-c c") 'crux-capitalize-region)
-(global-set-key (kbd "C-c i") 'crux-ispell-word-then-abbrev)
+;; (global-set-key (kbd "C-^") 'crux-top-join-line)
+;; (global-set-key (kbd "C-c u") 'crux-upcase-region)
+;; (global-set-key (kbd "C-c l") 'crux-downcase-region)
+;; (global-set-key (kbd "C-c c") 'crux-capitalize-region)
+;; (global-set-key (kbd "C-c i") 'crux-ispell-word-then-abbrev)
 
 
 
-(global-unset-key (kbd "C-M-;"))
+;; (global-unset-key (kbd "C-M-;"))
 
-(global-set-key (kbd "C-M-; ;") 'comment-dwim)
-(global-set-key (kbd "C-M-; C-M-;") 'comment-dwim)
+;; (global-set-key (kbd "C-M-; ;") 'comment-dwim)
+;; (global-set-key (kbd "C-M-; C-M-;") 'comment-dwim)
 
-(global-set-key (kbd "C-M-; l") 'comment-line)
-(global-set-key (kbd "C-M-; C-M-l") 'comment-line)
+;; (global-set-key (kbd "C-M-; l") 'comment-line)
+;; (global-set-key (kbd "C-M-; C-M-l") 'comment-line)
 
 ;; C-+             text-scale-increase
 ;; C-,             toggle-kbd-macro-recording-on
@@ -645,15 +713,14 @@ modifier."
 ;; (global-set-key (kbd "<f1> k k") 'open-my-japanese-file)
 ;; (global-set-key (kbd "<f1> f") 'set-frame-size-to-80-36)
 
-
-
 ;; (global-set-key (kbd "M-/") 'hippie-expand)
 ;; (global-set-key (kbd "TAB") 'smart-tab)
-(global-set-key (kbd "M-i") 'back-to-indentation)
-(global-set-key (kbd "C-C-S-m") 'iy-go-to-char)
 
-(global-set-key (kbd "C-m") 'set-mark-command)
-(global-set-key (kbd "C-=") 'set-mark-command)
+;; (global-set-key (kbd "M-i") 'back-to-indentation)
+;; (global-set-key (kbd "C-C-S-m") 'iy-go-to-char)
+
+;; (global-set-key (kbd "C-m") 'set-mark-command)
+;; (global-set-key (kbd "C-=") 'set-mark-command)
 
 ;; (global-set-key (kbd "C-z") 'er/expand-region)
 ;; (global-set-key (kbd "<C-return>") 'open-line-below)
@@ -665,55 +732,55 @@ modifier."
 ;; (global-set-key (kbd "C-o") 'prelude-smart-open-line-above)
 ;; (global-set-key (kbd "M-o") 'prelude-smart-open-line)
 
-(global-set-key (kbd "C-x <") 'previous-buffer)
-(global-set-key (kbd "C-x >") 'next-buffer)
-(global-set-key (kbd "C-x r") 'rename-buffer)
+;; (global-set-key (kbd "C-x <") 'previous-buffer)
+;; (global-set-key (kbd "C-x >") 'next-buffer)
+;; (global-set-key (kbd "C-x r") 'rename-buffer)
 
-(global-set-key (kbd "C-,") 'toggle-kbd-macro-recording-on)
-(global-set-key (kbd "C-.") 'kmacro-end-and-call-macro)
+;; (global-set-key (kbd "C-,") 'toggle-kbd-macro-recording-on)
+;; (global-set-key (kbd "C-.") 'kmacro-end-and-call-macro)
 
-(global-set-key (kbd "M-j")
-                (lambda ()
-                  (interactive)
-                  (join-line -1)))
+;; (global-set-key (kbd "M-j")
+;;                 (lambda ()
+;;                   (interactive)
+;;                   (join-line -1)))
 
-(global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
+;; (global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
 
 ;; (global-set-key (kbd "M-n") 'move-text-down)
 ;; (global-set-key (kbd "M-p") 'move-text-up)
 
-(global-unset-key (kbd "M-i"))
+;; (global-unset-key (kbd "M-i"))
 
-(global-set-key (kbd "M-i c") (lambda () (interactive) (set-input-method "chinese-py")))
-(global-set-key (kbd "M-i e") (lambda () (interactive) (set-input-method "ucs")))
+;; (global-set-key (kbd "M-i c") (lambda () (interactive) (set-input-method "chinese-py")))
+;; (global-set-key (kbd "M-i e") (lambda () (interactive) (set-input-method "ucs")))
 
-(global-set-key (kbd "s-`") 'other-frame)
+;; (global-set-key (kbd "s-`") 'other-frame)
 
-(global-set-key (kbd "C-<next>") 'end-of-buffer)
-(global-set-key (kbd "C-<prior>") 'beginning-of-buffer)
+;; (global-set-key (kbd "C-<next>") 'end-of-buffer)
+;; (global-set-key (kbd "C-<prior>") 'beginning-of-buffer)
 
-(global-set-key (kbd "M-A") 'beginning-of-buffer)
-(global-set-key (kbd "M-E") 'end-of-buffer)
+;; (global-set-key (kbd "M-A") 'beginning-of-buffer)
+;; (global-set-key (kbd "M-E") 'end-of-buffer)
 
-(global-set-key (kbd "C-M-r") 'lsp-rename)
-(global-set-key (kbd "C-M-o") 'lsp-organize-imports)
-(global-set-key (kbd "C-M-c") 'crux-cleanup-buffer-or-region)
+;; (global-set-key (kbd "C-M-r") 'lsp-rename)
+;; (global-set-key (kbd "C-M-o") 'lsp-organize-imports)
+;; (global-set-key (kbd "C-M-c") 'crux-cleanup-buffer-or-region)
 
-(global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C-t") 'set-mark-command)
+;; (global-set-key (kbd "C-=") 'er/expand-region)
+;; (global-set-key (kbd "C-t") 'set-mark-command)
 
-(global-unset-key (kbd "<f1>"))
-(global-unset-key (kbd "<f4>"))
-(global-unset-key (kbd "<f5>"))
-(global-set-key (kbd "<f1>") 'cleanup-buffer)
-(global-set-key (kbd "<f2>") 'projectile-commander)
-(global-set-key (kbd "<f3>") 'projectile-test-project)
-(global-set-key (kbd "<f4>") 'helm-make-projectile)
-(global-set-key (kbd "<f5>") 'crux-find-user-init-file)
-(global-set-key (kbd "<f8>") 'crux-find-user-init-file)
+;; (global-unset-key (kbd "<f1>"))
+;; (global-unset-key (kbd "<f4>"))
+;; (global-unset-key (kbd "<f5>"))
+;; (global-set-key (kbd "<f1>") 'cleanup-buffer)
+;; (global-set-key (kbd "<f2>") 'projectile-commander)
+;; (global-set-key (kbd "<f3>") 'projectile-test-project)
+;; (global-set-key (kbd "<f4>") 'helm-make-projectile)
+;; (global-set-key (kbd "<f5>") 'crux-find-user-init-file)
+;; (global-set-key (kbd "<f8>") 'crux-find-user-init-file)
 
-(global-set-key (kbd "C-<down>") 'shrink-window-horizontally)
-(global-set-key (kbd "C-<up>") 'enlarge-window-horizontally)
+;; (global-set-key (kbd "C-<down>") 'shrink-window-horizontally)
+;; (global-set-key (kbd "C-<up>") 'enlarge-window-horizontally)
 
 
 
@@ -725,11 +792,11 @@ modifier."
 ;; (global-set-key (kbd "C-x i f") 'tprost-find-emacsd-file)
 ;; (global-set-key (kbd "C-x i d") 'tprost-init-directory)
 ;; (global-set-key (kbd "C-x i t") 'tprost-init-todo-file)
-(global-unset-key (kbd "C-x c"))
-(global-set-key (kbd "C-x c") 'crux-cleanup-buffer-or-region)
-(global-set-key (kbd "C-x d") 'dired)
-;; (global-set-key (kbd "C-x e") 'kmacro-end-and-call-macro)
-(global-set-key (kbd "C-x f") 'helm-find-files)
+;; (global-unset-key (kbd "C-x c"))
+;; (global-set-key (kbd "C-x c") 'crux-cleanup-buffer-or-region)
+;; (global-set-key (kbd "C-x d") 'dired)
+;; ;; (global-set-key (kbd "C-x e") 'kmacro-end-and-call-macro)
+;; (global-set-key (kbd "C-x f") 'helm-find-files)
 ;; (global-set-key (kbd "C-x g") 'magit-status)
 ;; (global-set-key (kbd "C-x h") ') ;; TODO
 ;; (global-set-key (kbd "C-x i") ') ;; TODO
@@ -740,18 +807,18 @@ modifier."
 ;; (global-set-key (kbd "C-x n") ') ;; TODO
 ;; (global-set-key (kbd "C-x o") 'other-window) ;; TODO
 ;; (global-set-key (kbd "C-x o") 'other-window) ;; TODO
-(global-set-key (kbd "C-x p") 'helm-projectile-switch-project)
-;; (global-set-key (kbd "C-x q") ') ;; TODO
-;; (global-set-key (kbd "C-x r") ') ;; TODO
-(global-set-key (kbd "C-x s") 'save-buffer)
-(global-set-key (kbd "C-x t") 'crux-visit-term-buffer)
-;; (global-set-key (kbd "C-x u") ') ;; TODO
-;; (global-set-key (kbd "C-x v") ') ;; TODO
-(global-set-key (kbd "C-x w") 'whitespace-mode)
-(global-set-key (kbd "C-x y") 'company-yasnippet)
-;; (global-set-key (kbd "C-x z") ') ;; TODO
+;; (global-set-key (kbd "C-x p") 'helm-projectile-switch-project)
+;; ;; (global-set-key (kbd "C-x q") ') ;; TODO
+;; ;; (global-set-key (kbd "C-x r") ') ;; TODO
+;; (global-set-key (kbd "C-x s") 'save-buffer)
+;; (global-set-key (kbd "C-x t") 'crux-visit-term-buffer)
+;; ;; (global-set-key (kbd "C-x u") ') ;; TODO
+;; ;; (global-set-key (kbd "C-x v") ') ;; TODO
+;; (global-set-key (kbd "C-x w") 'whitespace-mode)
+;; (global-set-key (kbd "C-x y") 'company-yasnippet)
+;; ;; (global-set-key (kbd "C-x z") ') ;; TODO
 
-(global-set-key (kbd "C-x L") 'tprost-project-layout)
+;; (global-set-key (kbd "C-x L") 'tprost-project-layout)
 ;; (global-set-key (kbd "C-x S-E") 'eval-last-sexp)
 
 
@@ -760,127 +827,116 @@ modifier."
 
 
 ;; yasnippet prefix
-(global-unset-key (kbd "C-x y"))
-(global-unset-key (kbd "C-x C-y"))
-(global-set-key (kbd "C-x C-y y") 'company-yasnippet)
-(global-set-key (kbd "C-x C-y r") 'yas-reload-all)
-(global-set-key (kbd "C-x C-y s") 'tprost-open-snippets-directory-dwim)
+;; (global-unset-key (kbd "C-x y"))
+;; (global-unset-key (kbd "C-x C-y"))
+;; (global-set-key (kbd "C-x C-y y") 'company-yasnippet)
+;; (global-set-key (kbd "C-x C-y r") 'yas-reload-all)
+;; (global-set-key (kbd "C-x C-y s") 'tprost-open-snippets-directory-dwim)
 
-(global-unset-key (kbd "C-x C-o"))
-(global-set-key (kbd "C-x C-o a") 'org-agenda)
-(global-set-key (kbd "C-x C-o t") 'org-todo-list)
-(global-set-key (kbd "C-x C-o c") 'org-capture)
-(global-set-key (kbd "C-x C-o d") 'org-drill)
+;; (global-unset-key (kbd "C-x C-o"))
+;; (global-set-key (kbd "C-x C-o a") 'org-agenda)
+;; (global-set-key (kbd "C-x C-o t") 'org-todo-list)
+;; (global-set-key (kbd "C-x C-o c") 'org-capture)
+;; (global-set-key (kbd "C-x C-o d") 'org-drill)
 
+
+;; ;; (global-set-key (kbd "C-x i") 'my-org-drill)
+;; ;; (global-set-key (kbd "C-x C-i r") 'my-org-drill-resume)
+;; ;; (global-set-key (kbd "C-x r") 'my-org-drill)
 
 ;; (global-set-key (kbd "C-x i") 'my-org-drill)
-;; (global-set-key (kbd "C-x C-i r") 'my-org-drill-resume)
+;; ;; (global-set-key (kbd "C-x C-i r") 'my-org-drill-resume)
 ;; (global-set-key (kbd "C-x r") 'my-org-drill)
 
-(global-set-key (kbd "C-x i") 'my-org-drill)
-;; (global-set-key (kbd "C-x C-i r") 'my-org-drill-resume)
-(global-set-key (kbd "C-x r") 'my-org-drill)
+;; ;; file prefix
+;; (global-unset-key (kbd "C-x C-f"))
+;; (global-set-key (kbd "C-x f") 'helm-find-files)
+;; (global-set-key (kbd "C-x C-f f") 'helm-find-files)
+;; (global-set-key (kbd "C-x C-f r") 'crux-rename-file-and-buffer)
+;; (global-set-key (kbd "C-x C-f k") 'crux-delete-file-and-buffer)
 
-;; file prefix
-(global-unset-key (kbd "C-x C-f"))
-(global-set-key (kbd "C-x f") 'helm-find-files)
-(global-set-key (kbd "C-x C-f f") 'helm-find-files)
-(global-set-key (kbd "C-x C-f r") 'crux-rename-file-and-buffer)
-(global-set-key (kbd "C-x C-f k") 'crux-delete-file-and-buffer)
+;; ;; custom global shit prefix
+;; (global-unset-key (kbd "C-x C-c"))
+;; (global-set-key (kbd "C-x C-c e") 'tprost-find-emacsd-file)
+;; (global-set-key (kbd "C-x C-c C-e e") 'tprost-find-emacsd-file)
+;; (global-set-key (kbd "C-x C-c C-e i") 'tprost-init-file)
+;; (global-set-key (kbd "C-x C-c C-e t") 'tprost-init-todo-file)
 
-;; custom global shit prefix
-(global-unset-key (kbd "C-x C-c"))
-(global-set-key (kbd "C-x C-c e") 'tprost-find-emacsd-file)
-(global-set-key (kbd "C-x C-c C-e e") 'tprost-find-emacsd-file)
-(global-set-key (kbd "C-x C-c C-e i") 'tprost-init-file)
-(global-set-key (kbd "C-x C-c C-e t") 'tprost-init-todo-file)
+;; (global-set-key (kbd "C-x C-c C-p d") 'tprost-project-drill)
+;; (global-set-key (kbd "C-x C-c C-p j") 'tprost-project-journal)
+;; (global-set-key (kbd "C-x C-c C-p w") 'tprost-project-wiki)
 
-(global-set-key (kbd "C-x C-c C-p d") 'tprost-project-drill)
-(global-set-key (kbd "C-x C-c C-p j") 'tprost-project-journal)
-(global-set-key (kbd "C-x C-c C-p w") 'tprost-project-wiki)
+;; (global-set-key (kbd "C-x C-c j") 'tprost-open-my-japanese-file)
+;; (global-set-key (kbd "C-x C-c c") 'tprost-open-computer-science-drill-directory)
+;; (global-set-key (kbd "C-x C-c d") 'org-drill)
+;; (global-set-key (kbd "C-x C-c C-d j") 'tprost-drill-japanese)
+;; (global-set-key (kbd "C-x C-c C-d c") 'tprost-drill-computer-science)
 
-(global-set-key (kbd "C-x C-c j") 'tprost-open-my-japanese-file)
-(global-set-key (kbd "C-x C-c c") 'tprost-open-computer-science-drill-directory)
-(global-set-key (kbd "C-x C-c d") 'org-drill)
-(global-set-key (kbd "C-x C-c C-d j") 'tprost-drill-japanese)
-(global-set-key (kbd "C-x C-c C-d c") 'tprost-drill-computer-science)
+;; ;; (global-set-key (kbd "C-x C-c C-d j") 'tprost-drill-)
 
-;; (global-set-key (kbd "C-x C-c C-d j") 'tprost-drill-)
-
-(global-unset-key (kbd "C-x C-d"))
-(global-set-key (kbd "C-x C-d j") 'tprost-open-my-japanese-file)
-(global-set-key (kbd "C-x C-d c") 'tprost-open-computer-science-drill-directory)
-(global-set-key (kbd "C-x C-d C-o d") 'tprost-drill) ;; TODO
-(global-set-key (kbd "C-x C-d C-d") 'tprost-drill) ;; TODO
+;; (global-unset-key (kbd "C-x C-d"))
+;; (global-set-key (kbd "C-x C-d j") 'tprost-open-my-japanese-file)
+;; (global-set-key (kbd "C-x C-d c") 'tprost-open-computer-science-drill-directory)
+;; (global-set-key (kbd "C-x C-d C-o d") 'tprost-drill) ;; TODO
+;; (global-set-key (kbd "C-x C-d C-d") 'tprost-drill) ;; TODO
 
 
-;; window prefix
-(global-unset-key (kbd "C-x C-w"))
-(global-set-key (kbd "C-x C-w o") 'other-window)
-(global-set-key (kbd "C-x C-w 1") 'delete-other-windows)
-(global-set-key (kbd "C-x C-w 0") 'delete-window)
+;; ;; window prefix
+;; (global-unset-key (kbd "C-x C-w"))
+;; (global-set-key (kbd "C-x C-w o") 'other-window)
+;; (global-set-key (kbd "C-x C-w 1") 'delete-other-windows)
+;; (global-set-key (kbd "C-x C-w 0") 'delete-window)
 
-(global-set-key (kbd "C-x o") 'org-agenda)
-(global-set-key (kbd "C-x 1") 'cleanup-buffer)
+;; (global-set-key (kbd "C-x o") 'org-agenda)
+;; (global-set-key (kbd "C-x 1") 'cleanup-buffer)
 
-;; buffer prefix
-(global-unset-key (kbd "C-x C-b"))
-(global-set-key (kbd "C-x C-b r") 'rename-buffer)
-(global-set-key (kbd "C-x C-b p") 'previous-buffer)
-(global-set-key (kbd "C-x C-b n") 'next-buffer)
-(global-set-key (kbd "C-x C-b v") 'revert-buffer)
-(global-set-key (kbd "C-x C-b e") 'end-of-buffer)
-(global-set-key (kbd "C-x C-b b") 'beginning-of-buffer)
-(global-set-key (kbd "C-x C-b w") 'erase-buffer)
-(global-set-key (kbd "C-x C-b c") 'cleanup-buffer)
-
-(global-unset-key (kbd "C-x l"))
+;; (global-unset-key (kbd "C-x l"))
 
 
-(global-set-key (kbd "C-x l") 'lsp)
-(setq lsp-keymap-prefix "C-x C-l")
-(define-key lsp-mode-map (kbd "C-x C-l") lsp-command-map)
+;; (global-set-key (kbd "C-x l") 'lsp)
+;; (setq lsp-keymap-prefix "C-x C-l")
+;; (define-key lsp-mode-map (kbd "C-x C-l") lsp-command-map)
 
-(global-set-key (kbd "C-<tab>") 'company-yasnippet)
+;; (global-set-key (kbd "C-<tab>") 'company-yasnippet)
 
-;; PROJECTILE
-;; (setq projectile-keymap-prefix nil)
-;; (global-unset-key (kbd "C-x p"))
-;; (global-unset-key (kbd "C-x C-p"))
-(define-key projectile-mode-map (kbd "C-x C-p") 'projectile-command-map)
-
-
-;; (global-set-key (kbd "C-x C-p t") 'projectile-test-project)
-;; (global-set-key (kbd "C-x C-p t") 'projectile-toggle-between-implementation-and-test)
-
-;; (define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
-(define-key projectile-command-map (kbd "x") 'projectile-test-project)
-(define-key projectile-command-map (kbd "t") 'projectile-run-vterm)
-(define-key projectile-command-map (kbd "v") 'projectile-run-vterm)
-(define-key projectile-command-map (kbd "d") 'projectile-debug)
-(define-key projectile-command-map (kbd "d") 'projectile-debug)
-(define-key projectile-command-map (kbd "g") 'projectile-grep)
-(define-key projectile-command-map (kbd "o") 'projectile-toggle-between-implementation-and-test)
-;; (define-key projectile-mode-map (kbd "C-x C-p x") 'projectile-test-project)
-;; (define-key projectile-mode-map (kbd "C-x C-p t") 'projectile-run-term)
-;; (define-key projectile-mode-map (kbd "C-x C-p t n") 'term-projectile-create-new)
-;; (define-key projectile-mode-map (kbd "C-x p t b") 'term-projectile-backward)
-;; (define-key projectile-mode-map (kbd "C-x p t f") 'term-projectile-forward)
-;; (define-key projectile-mode-map (kbd "C-x p t s") 'term-projectile-switch-to)
-
-;; python
-(define-key python-mode-map (kbd "C-c i") 'py-isort-buffer)
-(define-key python-mode-map (kbd "C-M-i") 'my-python-mode-add-import)
-(define-key python-mode-map (kbd "C-M-o") 'my-python-organize-imports)
-(define-key python-mode-map (kbd "C-M-j") 'lsp-find-definition)
-
-(global-set-key (kbd "C-M-/") 'next-error)
+;; ;; PROJECTILE
+;; ;; (setq projectile-keymap-prefix nil)
+;; ;; (global-unset-key (kbd "C-x p"))
+;; ;; (global-unset-key (kbd "C-x C-p"))
+;; (define-key projectile-mode-map (kbd "C-x C-p") 'projectile-command-map)
 
 
-(global-set-key (kbd "C-x D") 'dired-in-downloads-directory)
+;; ;; (global-set-key (kbd "C-x C-p t") 'projectile-test-project)
+;; ;; (global-set-key (kbd "C-x C-p t") 'projectile-toggle-between-implementation-and-test)
 
-(global-set-key (kbd "C-x M-w b b") 'my-copy-buffer-file-name-with-path)
-(global-set-key (kbd "C-x M-w b w") 'my-copy-buffer-file-name-without-path)
+;; ;; (define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
+;; (define-key projectile-command-map (kbd "x") 'projectile-test-project)
+;; (define-key projectile-command-map (kbd "t") 'projectile-run-vterm)
+;; (define-key projectile-command-map (kbd "v") 'projectile-run-vterm)
+;; (define-key projectile-command-map (kbd "d") 'projectile-debug)
+;; (define-key projectile-command-map (kbd "d") 'projectile-debug)
+;; (define-key projectile-command-map (kbd "g") 'projectile-grep)
+;; (define-key projectile-command-map (kbd "o") 'projectile-toggle-between-implementation-and-test)
+;; ;; (define-key projectile-mode-map (kbd "C-x C-p x") 'projectile-test-project)
+;; ;; (define-key projectile-mode-map (kbd "C-x C-p t") 'projectile-run-term)
+;; ;; (define-key projectile-mode-map (kbd "C-x C-p t n") 'term-projectile-create-new)
+;; ;; (define-key projectile-mode-map (kbd "C-x p t b") 'term-projectile-backward)
+;; ;; (define-key projectile-mode-map (kbd "C-x p t f") 'term-projectile-forward)
+;; ;; (define-key projectile-mode-map (kbd "C-x p t s") 'term-projectile-switch-to)
 
-(global-set-key (kbd "C-;") 'avy-goto-char)
-(global-set-key (kbd "C-:") 'avy-goto-line)
+;; ;; python
+;; (define-key python-mode-map (kbd "C-c i") 'py-isort-buffer)
+;; (define-key python-mode-map (kbd "C-M-i") 'my-python-mode-add-import)
+;; (define-key python-mode-map (kbd "C-M-o") 'my-python-organize-imports)
+;; (define-key python-mode-map (kbd "C-M-j") 'lsp-find-definition)
+
+;; (global-set-key (kbd "C-M-/") 'next-error)
+
+
+;; (global-set-key (kbd "C-x D") 'dired-in-downloads-directory)
+
+;; (global-set-key (kbd "C-x M-w b b") 'my-copy-buffer-file-name-with-path)
+;; (global-set-key (kbd "C-x M-w b w") 'my-copy-buffer-file-name-without-path)
+
+;; (global-set-key (kbd "C-;") 'avy-goto-char)
+;; (global-set-key (kbd "C-:") 'avy-goto-line)

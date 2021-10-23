@@ -78,6 +78,7 @@
 (straight-use-package 'haxe-mode)
 
 (load-file (expand-file-name "tprost.el" user-emacs-directory))
+(load-file (expand-file-name "monster.el" user-emacs-directory))
 
 (require 'init-appearance)
 (require 'init-backups)
@@ -158,6 +159,9 @@
 
 (require 'pony-mode)
 
+(straight-use-package 'whole-line-or-region)
+(straight-use-package 'which-key)
+
 (load-file (expand-file-name "bindings.el" user-emacs-directory))
 
 (straight-use-package 'haskell-mode)
@@ -196,3 +200,6 @@
 (straight-use-package 'glsl-mode)
 
 (put 'downcase-region 'disabled nil)
+
+(straight-use-package 'hydra)
+(straight-use-package 'frame-cmds)
