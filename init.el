@@ -22,6 +22,7 @@
 (straight-use-package 'make-mode)
 (straight-use-package 'restclient)
 (straight-use-package 'avy)
+(straight-use-package 'hydra)
 
 (straight-use-package 'expand-region)
 (straight-use-package 'multiple-cursors)
@@ -79,6 +80,8 @@
 
 (load-file (expand-file-name "tprost.el" user-emacs-directory))
 (load-file (expand-file-name "monster.el" user-emacs-directory))
+(load-file (expand-file-name "editing.el" user-emacs-directory))
+
 
 (require 'init-appearance)
 (require 'init-backups)
@@ -162,8 +165,6 @@
 (straight-use-package 'whole-line-or-region)
 (straight-use-package 'which-key)
 
-(load-file (expand-file-name "bindings.el" user-emacs-directory))
-
 (straight-use-package 'haskell-mode)
 
 (straight-use-package 'lsp-haskell)
@@ -201,5 +202,13 @@
 
 (put 'downcase-region 'disabled nil)
 
-(straight-use-package 'hydra)
 (straight-use-package 'frame-cmds)
+
+(add-to-list 'load-path "~/.emacs.d/settings")
+
+(require 'editing)
+(require 'bindings)
+
+;; (load-file (expand-file-name "bindings.el" user-emacs-directory))
+
+;; (global-set-key (kbd "M-`") 'other-window)
