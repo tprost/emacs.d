@@ -224,8 +224,11 @@ Version 2015-01-26"
 
 (provide 'editing)
 
-
-(defalias 'my-eval-dwim 'eval-defun)
+(defun my-eval-dwim (beginning end)
+  (interactive "r")    
+  (if (use-region-p)
+      (eval-region beginning end)
+      (eval-defun nil)))
 
 (defalias 'my-indent-dwim 'indent-for-tab-command)
 

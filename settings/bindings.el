@@ -184,9 +184,10 @@
 (define-key monster-mode-map (kbd "M") 'mc/mark-all-dwim)
 (define-prefix-command 'my-mc-map)
 (global-set-key (kbd "C-S-m") 'my-mc-map)
+(global-set-key (kbd "C-S-m a") 'mc/mark-all-dwim)
 (global-set-key (kbd "C-S-m r") 'mc/mark-all-in-region)
 (global-set-key (kbd "C-S-m l") 'mc/edit-beginnings-of-lines)
-(global-set-key (kbd "C-S-m m") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-S-m m") 'mc/mark-all-dwim)
 (global-set-key (kbd "C-S-m n") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-S-m p") 'mc/mark-previous-like-this)
 
@@ -282,65 +283,78 @@
 
 
 ;; x
-(define-prefix-command 'my-micro-x-map)
-(define-key monster-mode-map (kbd "x") 'my-micro-x-map)
-(global-set-key (kbd "C-x") 'my-micro-x-map)
+(define-prefix-command 'my-x-map)
+(define-key monster-mode-map (kbd "x") 'my-x-map)
+(global-set-key (kbd "C-x") 'my-x-map)
 
-(define-key my-micro-x-map (kbd "b") 'helm-mini)
-(define-key my-micro-x-map (kbd "C-b b") 'beginning-of-buffer)
-(define-key my-micro-x-map (kbd "C-b c") 'cleanup-buffer)
-(define-key my-micro-x-map (kbd "C-b d") 'crux-delete-file-and-buffer)
-(define-key my-micro-x-map (kbd "C-b e") 'end-of-buffer)
-(define-key my-micro-x-map (kbd "C-b k") 'kill-buffer)
-(define-key my-micro-x-map (kbd "C-b m") 'mark-whole-buffer)
-(define-key my-micro-x-map (kbd "C-b n") 'next-buffer)
-(define-key my-micro-x-map (kbd "C-b p") 'previous-buffer)
-(define-key my-micro-x-map (kbd "C-b r") 'rename-buffer)
-(define-key my-micro-x-map (kbd "C-b v") 'revert-buffer)
-(define-key my-micro-x-map (kbd "C-b w") 'erase-buffer)
+(define-key 'my-x-map (kbd "b") 'helm-mini)
+(define-key 'my-x-map (kbd "C-b b") 'beginning-of-buffer)
+(define-key 'my-x-map (kbd "C-b c") 'cleanup-buffer)
+(define-key 'my-x-map (kbd "C-b d") 'crux-delete-file-and-buffer)
+(define-key 'my-x-map (kbd "C-b e") 'end-of-buffer)
+(define-key 'my-x-map (kbd "C-b k") 'kill-buffer)
+(define-key 'my-x-map (kbd "C-b m") 'mark-whole-buffer)
+(define-key 'my-x-map (kbd "C-b n") 'next-buffer)
+(define-key 'my-x-map (kbd "C-b p") 'previous-buffer)
+(define-key 'my-x-map (kbd "C-b r") 'rename-buffer)
+(define-key 'my-x-map (kbd "C-b v") 'revert-buffer)
+(define-key 'my-x-map (kbd "C-b w") 'erase-buffer)
 
-(define-key my-micro-x-map (kbd "c") 'crux-capitalize-region)
-(define-key my-micro-x-map (kbd "d") 'dired)
-(define-key my-micro-x-map (kbd "D") 'crux-recentf-find-directory)
+(define-key 'my-x-map (kbd "c") 'crux-capitalize-region)
+(define-key 'my-x-map (kbd "d") 'dired)
+(define-key 'my-x-map (kbd "D") 'crux-recentf-find-directory)
 
-(define-key my-micro-x-map (kbd "f") 'helm-find-files)
-(define-key my-micro-x-map (kbd "C-f") 'helm-find-files)
-(define-key my-micro-x-map (kbd "F") 'crux-recentf-find-file)
+(define-key 'my-x-map (kbd "f") 'helm-find-files)
+(define-key 'my-x-map (kbd "C-f") 'helm-find-files)
+(define-key 'my-x-map (kbd "F") 'crux-recentf-find-file)
 
-(define-key my-micro-x-map (kbd "g") 'magit)
-(define-key my-micro-x-map (kbd "h") 'mark-whole-buffer)
+(define-key 'my-x-map (kbd "g") 'magit)
+(define-key 'my-x-map (kbd "h") 'mark-whole-buffer)
 
-(define-key my-micro-x-map (kbd "k") 'kmacro-start-macro)
-(define-key my-micro-x-map (kbd "K") 'helm-execute-kmacro)
+(define-key 'my-x-map (kbd "k") 'kmacro-start-macro)
+(define-key 'my-x-map (kbd "K") 'helm-execute-kmacro)
 
-(define-key my-micro-x-map (kbd "C-k h") 'helm-execute-kmacro)
-(define-key my-micro-x-map (kbd "C-k x") 'kmacro-call-macro)
-(define-key my-micro-x-map (kbd "C-k c") 'kmacro-insert-counter)
-(define-key my-micro-x-map (kbd "C-k C-c s") 'kmacro-set-counter)
-(define-key my-micro-x-map (kbd "C-k C-c a") 'kmacro-add-counter)
-(define-key my-micro-x-map (kbd "C-k C-c f") 'kmacro-set-format)
-(define-key my-micro-x-map (kbd "C-k C-c i") 'kmacro-insert-counter)
-(define-key my-micro-x-map (kbd "C-k s") 'kmacro-start-macro)
-(define-key my-micro-x-map (kbd "C-k e") 'kmacro-end-or-call-macro-repeat)
-(define-key my-micro-x-map (kbd "C-k n") 'kmacro-cycle-ring-next)
-(define-key my-micro-x-map (kbd "C-k p") 'kmacro-cycle-ring-previous)
-(define-key my-micro-x-map (kbd "C-k b") 'kmacro-name-last-macro)
-(define-key my-micro-x-map (kbd "C-k l") 'insert-kbd-macro)
-(define-key my-micro-x-map (kbd "C-k i") 'kmacro-insert-counter)
-(define-key my-micro-x-map (kbd "C-k b") 'kmacro-bind-to-key)
-(define-key my-micro-x-map (kbd "C-k r") 'kmacro-to-register)
-
+(define-key 'my-x-map (kbd "C-k h") 'helm-execute-kmacro)
+(define-key 'my-x-map (kbd "C-k x") 'kmacro-call-macro)
+(define-key 'my-x-map (kbd "C-k c") 'kmacro-insert-counter)
+(define-key 'my-x-map (kbd "C-k C-c s") 'kmacro-set-counter)
+(define-key 'my-x-map (kbd "C-k C-c a") 'kmacro-add-counter)
+(define-key 'my-x-map (kbd "C-k C-c f") 'kmacro-set-format)
+(define-key 'my-x-map (kbd "C-k C-c i") 'kmacro-insert-counter)
+(define-key 'my-x-map (kbd "C-k s") 'kmacro-start-macro)
+(define-key 'my-x-map (kbd "C-k e") 'kmacro-end-or-call-macro-repeat)
+(define-key 'my-x-map (kbd "C-k n") 'kmacro-cycle-ring-next)
+(define-key 'my-x-map (kbd "C-k p") 'kmacro-cycle-ring-previous)
+(define-key 'my-x-map (kbd "C-k b") 'kmacro-name-last-macro)
+(define-key 'my-x-map (kbd "C-k l") 'insert-kbd-macro)
+(define-key 'my-x-map (kbd "C-k i") 'kmacro-insert-counter)
+(define-key 'my-x-map (kbd "C-k b") 'kmacro-bind-to-key)
+(define-key 'my-x-map (kbd "C-k r") 'kmacro-to-register)
 ;; kmacro-start-macro-or-insert-counter
 
+(define-key 'my-x-map (kbd "l") 'lsp)
+(define-key lsp-command-map (kbd "r") 'lsp-rename)
+(define-key lsp-command-map (kbd "o") 'lsp-organize-imports)
+(define-key 'my-x-map (kbd "C-l") lsp-command-map)
 
 
+;; ;; ;; (global-set-key (kbd "C-M-c") 'crux-cleanup-buffer-or-region)
 
-(define-key my-micro-x-map (kbd "o") 'crux-other-window-or-switch-buffer)
+;; (global-set-key (kbd "C-x l") 'lsp)
+;; (setq lsp-keymap-prefix "C-x C-l")
+;; (define-key lsp-mode-map (kbd "C-x C-l") lsp-command-map)
 
-(define-key my-micro-x-map (kbd "s") 'save-buffer)
-(define-key my-micro-x-map (kbd "C-s") 'save-buffer)
+(define-key 'my-x-map (kbd "o") 'crux-other-window-or-switch-buffer)
+(define-key 'my-x-map (kbd "p") 'projectile-switch-project)
+(define-key 'my-x-map (kbd "C-p") 'projectile-command-map)
 
-(define-key my-micro-x-map (kbd "x") 'eval-defun)
+
+(define-key 'my-x-map (kbd "s") 'save-buffer)
+(define-key 'my-x-map (kbd "C-s") 'save-buffer)
+
+(define-key 'my-x-map (kbd "x") 'eval-defun)
+
+(define-key 'my-x-map (kbd "y") 'yasnippet)
 
 (defhydra hydra-text-scale (global-map "C-x t")
   "text scale"
@@ -408,6 +422,8 @@
 (define-key monster-mode-map (kbd "y") 'yank)
 
 ;; Y
+(define-key monster-mode-map (kbd "Y") 'yasnippet)
+(global-set-key (kbd "C-S-y") 'yasnippet)
 
 ;; z
 (global-set-key (kbd "C-z") 'monster-mode)
@@ -438,38 +454,7 @@
 (define-key monster-mode-map (kbd "SPC") 'set-mark-command)
 (global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
 
-
-
-
-
-;; ;; ;; ------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-;; ;; ;; recursive edit?
-
-
-;; ;; ;; (define-key monster-mode-maps (kbd "C-g") 'evil-normal-state)
-
-
-
-
 (define-key monster-mode-map (kbd "%") 'query-replace)
-
-;; ;; ;; evil-search-forward?
-
-
-
-
 
 (define-key monster-mode-map (kbd "<backspace>") 'backward-kill-paragraph)
 ;; (define-key monster-mode-map (kbd "C-<backspace>") 'backward-kill-word)
@@ -480,6 +465,7 @@
 ;; ;; (define-key monster-mode-map (kbd ")") 'kmacro-end-macro)
 ;; ;; ;;(define-key monster-mode-map (kbd "#") 'evil-record-macro)
 
+(global-set-key (kbd "C-;") 'whole-line-or-region-comment-dwim-2)
 
 ;; ;; ;; (Require 'multiple-cursors)
 
@@ -832,10 +818,6 @@
 ;; ;; ;; (global-set-key (kbd "M-A") 'beginning-of-buffer)
 ;; ;; ;; (global-set-key (kbd "M-E") 'end-of-buffer)
 
-;; ;; ;; (global-set-key (kbd "C-M-r") 'lsp-rename)
-;; ;; ;; (global-set-key (kbd "C-M-o") 'lsp-organize-imports)
-;; ;; ;; (global-set-key (kbd "C-M-c") 'crux-cleanup-buffer-or-region)
-
 ;; ;; ;; (global-set-key (kbd "C-=") 'er/expand-region)
 ;; ;; ;; (global-set-key (kbd "C-t") 'set-mark-command)
 
@@ -961,11 +943,6 @@
 ;; ;; ;; (global-set-key (kbd "C-x 1") 'cleanup-buffer)
 
 ;; ;; ;; (global-unset-key (kbd "C-x l"))
-
-
-;; ;; ;; (global-set-key (kbd "C-x l") 'lsp)
-;; ;; ;; (setq lsp-keymap-prefix "C-x C-l")
-;; ;; ;; (define-key lsp-mode-map (kbd "C-x C-l") lsp-command-map)
 
 ;; ;; ;; (global-set-key (kbd "C-<tab>") 'company-yasnippet)
 
