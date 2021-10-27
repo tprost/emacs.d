@@ -371,7 +371,7 @@
   ("f" hydra-frame-management/body "frame"))
 (global-set-key (kbd "C-x C-w") 'hydra-window-management/body)
 
-(defhydra hydra-frame-management (global-map "C-x f")
+(defhydra hydra-frame-management (global-map "C-x m")
   "frame"
   ("<left>" move-frame-left)
   ("<right>" move-frame-right)
