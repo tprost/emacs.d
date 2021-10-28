@@ -23,7 +23,7 @@
 
 (setq-default display-fill-column-indicator-character ?⬝)
 
-(set-face-attribute 'default nil :font (reverse "61 agiL onoM orPatamgarP"))
+(set-face-attribute 'default nil :font (reverse "22 agiL onoM orPatamgarP"))
 (require 'darktooth-theme)
 
 (load-theme 'darktooth t)
@@ -51,8 +51,7 @@
 (set-face-attribute 'window-divider-last-pixel nil
                       :foreground "#282828")
 
-(set-face-attribute 'header-line nil                    
-                    :height 160
+(set-face-attribute 'header-line nil                                        
                     :background "#1D2021"
                     ;; :foreground "white"
                     ;; :box '(:line-width 3)

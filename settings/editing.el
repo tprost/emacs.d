@@ -238,3 +238,6 @@ Version 2015-01-26"
       (kill-region beginning end)
       (crux-kill-whole-line)))
 
+(defun my-new-vterm ()
+  (interactive)
+  (vterm t))

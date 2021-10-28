@@ -214,6 +214,23 @@
 ;; q
 (define-key monster-mode-map (kbd "q") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
+;; (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
+;; (define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
+(define-key projectile-command-map (kbd "x") 'projectile-test-project)
+(define-key projectile-command-map (kbd "t") 'projectile-run-vterm)
+(define-key projectile-command-map (kbd "T") 'projectile-run-vterm-dwim)
+;; (define-key projectile-command-map (kbd "v") 'projectile-run-vterm)
+;; (define-key projectile-command-map (kbd "d") 'projectile-debug)
+;; (define-key projectile-command-map (kbd "d") 'projectile-debug)
+;; (define-key projectile-command-map (kbd "g") 'projectile-grep)
+;; (define-key projectile-command-map (kbd "o") 'projectile-toggle-between-implementation-and-test)
+;; (define-key projectile-mode-map (kbd "C-x C-p x") 'projectile-test-project)
+;; (define-key projectile-mode-map (kbd "C-x C-p t") 'projectile-run-term)
+;; (define-key projectile-mode-map (kbd "C-x C-p t n") 'term-projectile-create-new)
+;; (define-key projectile-mode-map (kbd "C-x p t b") 'term-projectile-backward)
+;; (define-key projectile-mode-map (kbd "C-x p t f") 'term-projectile-forward)
+;; (define-key projectile-mode-map (kbd "C-x p t s") 'term-projectile-switch-to)
+
 
 ;; Q
 
@@ -352,6 +369,9 @@
 (define-key 'my-x-map (kbd "s") 'save-buffer)
 (define-key 'my-x-map (kbd "C-s") 'save-buffer)
 
+(define-key 'my-x-map (kbd "t") 'my-new-vterm)
+;; (define-key 'my-x-map (kbd "T") 'projectile-run-vterm-dwim)
+
 (define-key 'my-x-map (kbd "x") 'eval-defun)
 
 (define-key 'my-x-map (kbd "y") 'yasnippet)
@@ -385,7 +405,7 @@
   ("f" hydra-frame-management/body "frame"))
 (global-set-key (kbd "C-x C-w") 'hydra-window-management/body)
 
-(defhydra hydra-frame-management (global-map "C-x m")
+(defhydra hydra-frame-management (global-map "C-x F")
   "frame"
   ("<left>" move-frame-left)
   ("<right>" move-frame-right)
@@ -955,21 +975,6 @@
 
 ;; ;; ;; ;; (global-set-key (kbd "C-x C-p t") 'projectile-test-project)
 ;; ;; ;; ;; (global-set-key (kbd "C-x C-p t") 'projectile-toggle-between-implementation-and-test)
-
-;; ;; ;; ;; (define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
-;; ;; ;; (define-key projectile-command-map (kbd "x") 'projectile-test-project)
-;; ;; ;; (define-key projectile-command-map (kbd "t") 'projectile-run-vterm)
-;; ;; ;; (define-key projectile-command-map (kbd "v") 'projectile-run-vterm)
-;; ;; ;; (define-key projectile-command-map (kbd "d") 'projectile-debug)
-;; ;; ;; (define-key projectile-command-map (kbd "d") 'projectile-debug)
-;; ;; ;; (define-key projectile-command-map (kbd "g") 'projectile-grep)
-;; ;; ;; (define-key projectile-command-map (kbd "o") 'projectile-toggle-between-implementation-and-test)
-;; ;; ;; ;; (define-key projectile-mode-map (kbd "C-x C-p x") 'projectile-test-project)
-;; ;; ;; ;; (define-key projectile-mode-map (kbd "C-x C-p t") 'projectile-run-term)
-;; ;; ;; ;; (define-key projectile-mode-map (kbd "C-x C-p t n") 'term-projectile-create-new)
-;; ;; ;; ;; (define-key projectile-mode-map (kbd "C-x p t b") 'term-projectile-backward)
-;; ;; ;; ;; (define-key projectile-mode-map (kbd "C-x p t f") 'term-projectile-forward)
-;; ;; ;; ;; (define-key projectile-mode-map (kbd "C-x p t s") 'term-projectile-switch-to)
 
 ;; ;; ;; ;; python
 ;; ;; ;; (define-key python-mode-map (kbd "C-c i") 'py-isort-buffer)
