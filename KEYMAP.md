@@ -1,36 +1,36 @@
-# Keymap Overview
+# Mnemonic Emacs
 
-On Mac OSX, the "control" key is `C`, the "option" key is `M` and the "command" key is `s`.
+Let's combine the efficiency of Vim-style hotkeys with mnemonic hotkeys and the  customizability and extensibility of Emacs. 
 
-## Basic Navivation
-
-`C-f`
-`C-b`
-`C-p`
-`C-n`
-`C-a`
-`C-e`
-`M-f`
-`M-b`
-`M-e` go to end of the "sentence" (depends on the major mode I guess)
-`M-a` go to beginning of the "sentence" (depends on the major mode I guess)
-
-`M-p` ? five lines maybe?
-`M-n` ? five lines maybe?
-
-`C-/` undo
-`C-SPC` set-mark-command
-
-`<TAB>` auto complete (depends on major mode/context)
-
-`C-x p ` 
-`C-h b`
-
-C-x p p         helm-projectile-switch-project
-C-x p f         helm-projectile-find-file
+The idea of having a "normal" mode and an "insert" mode is very helpful! But I don't want to learn all the Vim hotkeys or anything, and therefore using Evil mode seems like overkilll. 
 
 
-This is a sentence. This is another sentence.
+## Core Ideas
 
+Commands mapped to C-<key> should be micro-level commands and they should work in both insert mode and normal mode. This way they are in your muscle memory in either mode, and they are usable in either mode.
 
-C-x should always be executing something
+## Some keys are simple commands.
+
+k       -> Perform command
+C-k     -> Perform command at a micro level
+M-k     -> Perform command at a micro level but a bit more macro
+C-M-k   -> Perform command at a micro level but significantly more macro
+
+K       -> Perform a related but different command, often more macro
+C-S-k   -> Perform a related but different command at a more micro level
+C-M-S-k -> Perform a related but different command at a more macro level
+
+## Some keys are "hydras" or "prefix maps", or a combination of the two, and they open up pandoras box into a variety of possible commands
+
+m       -> DWIM command
+M       -> DWIM related but different command
+
+C-m a   -> Perform micro subaction of m command 
+C-m b   -> Perform micro subaction of m command 
+C-m c   -> Perform micro subaction of m command 
+
+M-m a   -> Perform related but different command subaction
+M-m b
+M-m c
+
+C-M a   -> 

@@ -33,10 +33,6 @@
 (face-attribute 'mode-line :foreground)
 (face-attribute 'default :background)
 
-(setq header-line-format mode-line-format)
-(setq-default header-line-format mode-line-format)
-(setq-default mode-line-format nil)
-
 (setq window-header-line-height 40)
 (setq window-divider-default-places 'right-only)
 
@@ -55,8 +51,7 @@
 (set-face-attribute 'window-divider-last-pixel nil
                       :foreground "#282828")
 
-(set-face-attribute 'header-line nil                    
-                    :height 160
+(set-face-attribute 'header-line nil                                        
                     :background "#1D2021"
                     ;; :foreground "white"
                     ;; :box '(:line-width 3)
@@ -421,4 +416,16 @@ Each composition must be supported by the font."
                       :box '( :line-width 4 :color "dark orange")
                       )
 
+
+(setq-default mode-line-format nil)
+(setq-default header-line-format (list "%e"  mode-line-modified " " "%l" " " mode-line-buffer-identification ))
+
+(set-cursor-color "white")
+;; ("%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification mode-line-buffer-identification "   " mode-line-position
+;;  (vc-mode vc-mode)
+;;  "  " mode-line-modes mode-line-misc-info mode-line-end-spaces)
+
 (provide 'init-appearance)
+
+(setq split-height-threshold 30)
+(setq split-width-threshold nil)

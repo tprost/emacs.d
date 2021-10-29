@@ -12,11 +12,6 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package 'evil)
-(require 'evil)
-(evil-mode 1)
-(setq evil-default-state 'emacs)
-
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 
@@ -27,6 +22,10 @@
 (straight-use-package 'make-mode)
 (straight-use-package 'restclient)
 (straight-use-package 'avy)
+(straight-use-package 'hydra)
+
+(straight-use-package 'expand-region)
+(straight-use-package 'multiple-cursors)
 
 (require 'init-helm)
 (require 'init-projectile)
@@ -80,6 +79,9 @@
 (straight-use-package 'haxe-mode)
 
 (load-file (expand-file-name "tprost.el" user-emacs-directory))
+(load-file (expand-file-name "monster.el" user-emacs-directory))
+(load-file (expand-file-name "editing.el" user-emacs-directory))
+
 
 (require 'init-appearance)
 (require 'init-backups)
@@ -160,7 +162,8 @@
 
 (require 'pony-mode)
 
-(load-file (expand-file-name "bindings.el" user-emacs-directory))
+(straight-use-package 'whole-line-or-region)
+(straight-use-package 'which-key)
 
 (straight-use-package 'haskell-mode)
 
@@ -193,5 +196,19 @@
               (pop-to-buffer b))
         (message "Region not active")))
 
+(setq explicit-shell-file-name "/bin/bash")
 
 (straight-use-package 'glsl-mode)
+
+(put 'downcase-region 'disabled nil)
+
+(straight-use-package 'frame-cmds)
+
+(add-to-list 'load-path "~/.emacs.d/settings")
+
+(require 'editing)
+(require 'bindings)
+
+;; (load-file (expand-file-name "bindings.el" user-emacs-directory))
+
+;; (global-set-key (kbd "M-`") 'other-window)
