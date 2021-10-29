@@ -23,7 +23,7 @@
 
 (setq-default display-fill-column-indicator-character ?⬝)
 
-(set-face-attribute 'default nil :font (reverse "22 agiL onoM orPatamgarP"))
+(set-face-attribute 'default nil :font (reverse "61 agiL onoM orPatamgarP"))
 (require 'darktooth-theme)
 
 (load-theme 'darktooth t)
@@ -426,3 +426,6 @@ Each composition must be supported by the font."
 ;;  "  " mode-line-modes mode-line-misc-info mode-line-end-spaces)
 
 (provide 'init-appearance)
+
+(setq split-height-threshold 30)
+(setq split-width-threshold nil)
