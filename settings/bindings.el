@@ -365,7 +365,14 @@
 ;; (setq lsp-keymap-prefix "C-x C-l")
 ;; (define-key lsp-mode-map (kbd "C-x C-l") lsp-command-map)
 
-(define-key 'my-x-map (kbd "o") 'crux-other-window-or-switch-buffer)
+;; (define-key 'my-x-map (kbd "o") 'crux-other-window-or-switch-buffer)
+(define-key 'my-x-map (kbd "o") #'org-agenda)
+(define-key 'my-x-map (kbd "C-o a") #'org-agenda)
+(define-key 'my-x-map (kbd "C-o l") #'org-store-link)
+(define-key 'my-x-map (kbd "C-o c") #'org-capture)
+
+
+
 (define-key 'my-x-map (kbd "p") 'projectile-switch-project)
 (define-key 'my-x-map (kbd "C-p") 'projectile-command-map)
 
@@ -1089,8 +1096,7 @@
 (evil-define-key 'normal org-mode-map (kbd "c") my-org-mode-prefix-map)
 (evil-define-key 'normal org-mode-map (kbd "C-c") my-org-mode-prefix-map)
 
-(defun my-org-mode-bindings ()
-  (local-set-key 
+
 
 
 (provide 'bindings)
