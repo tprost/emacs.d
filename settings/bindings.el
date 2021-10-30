@@ -321,7 +321,7 @@
 (define-key 'my-x-map (kbd "C-b v") 'revert-buffer)
 (define-key 'my-x-map (kbd "C-b w") 'erase-buffer)
 
-(define-key 'my-x-map (kbd "c") 'crux-capitalize-region)
+(define-key 'my-x-map (kbd "c") 'crux-cleanup-buffer-or-region)
 (define-key 'my-x-map (kbd "d") 'dired)
 (define-key 'my-x-map (kbd "D") 'crux-recentf-find-directory)
 
@@ -1021,8 +1021,10 @@
 
 (define-key my-org-mode-prefix-map (kbd "i") 'org-meta-return)
 (define-key my-org-mode-prefix-map (kbd "C-i") 'org-insert-heading-respect-content)
-(define-key my-org-mode-prefix-map (kbd "t") 'org-insert-todo-heading)
-(define-key my-org-mode-prefix-map (kbd "C-t") 'org-insert-todo-heading-respect-content)
+;; (define-key my-org-mode-prefix-map (kbd "t") 'org-insert-todo-heading)
+;; (define-key my-org-mode-prefix-map (kbd "C-t") 'org-insert-todo-heading-respect-content)
+
+(define-key my-org-mode-prefix-map (kbd "t") 'org-todo)
 
 (define-key my-org-mode-prefix-map (kbd "p") #'org-do-promote)
 (define-key my-org-mode-prefix-map (kbd "M-p") #'org-do-demote)
@@ -1063,16 +1065,13 @@
 
 ;; TODO hyperlinks
 
-
-
-
-
 (define-key org-mode-map (kbd "C-m o") #'org-mark-subtree)
 
 (define-key org-mode-map (kbd "C-o") #'org-cycle)
 (define-key org-mode-map (kbd "C-y") #'org-yank)
 (define-key org-mode-map (kbd "M-o") #'outline-show-all)
-(define-key org-mode-map (kbd "C-c") #'org-mode-map)
+(define-key org-mode-map (kbd "C-c") my-org-mode-prefix-map)
+(define-key org-mode-map (kbd "C-x c") #'my-org-sort-and-organize-todo-file)
 
 (evil-define-key 'normal org-mode-map (kbd "F") 'org-forward-heading-same-level)
 (evil-define-key 'normal org-mode-map (kbd "B") 'org-backward-heading-same-level)

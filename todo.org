@@ -1,8 +1,10 @@
 #+CATEGORY: Emacs
 
-* TODO fix color scheme for org mode (why is it all red)
+* TODO magit commit mode should automatically be in insert mode
+* TODO emacs org todo capture
 * TODO bindings for opening .emacs.d and related files?
 * TODO move line up/down
+* TODO cleanup file structure in .emacs.d
 
 * TODO find a way to organize and run processes and set up shells per project
 * TODO set up a nice home screen with drill?
@@ -30,16 +32,6 @@ what about the single keystrokes in normal state?
 * TODO easier hotkeys for switch to wdired mode and out
 
 * TODO make shell use up arrow key for previous command
-* TODO a way to quickly mark a for loop
-
-(use-local-map local-monster-mode-map)
-** test
-that's better than just expand region
-or C-M-h
-obal-set-key (kbd "C-@") 'er/expand-region)
-** test
-asdasdasd
-
 * TODO find and remember command to start an additional shell
 * TODO tab in shell mode should autocomplete
 
@@ -51,6 +43,19 @@ asdasdasd
 * golang
 ** DONE fix lsp mode so it starts automatically
 ** DONE fix the goddamn C-M-j binding 
+* DONE dedicated cleanup buffer DWIM key (org mode todo files run my macro)
+* DONE fix color scheme for org mode (why is it all red)
+* DONE a way to quickly mark a for loop
+
+(use-local-map local-monster-mode-map)
+** test
+that's better than just expand region
+or C-M-h
+global-set-key (kbd "C-@") 'er/expand-region)
+*** level three
+** test
+asdasdasd
+
 * DONE macro to sort and file todo file?
 * DONE evil mode on... editable buffers?
 * DONE todo agenda broken down by file?
