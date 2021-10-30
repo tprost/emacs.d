@@ -12,9 +12,9 @@ Commands mapped to C-<key> should be micro-level commands and they should work i
 ## Some keys are simple commands.
 
 k       -> Perform command
-C-k     -> Perform command at a micro level
-M-k     -> Perform command at a micro level but a bit more macro
-C-M-k   -> Perform command at a micro level but significantly more macro
+C-k     -> Perform command at a micro level 
+M-k     -> Perform command at a micro level but with a twist (often the C command reversed) 
+C-M-k   -> Perform command at a micro level but with a twist
 
 K       -> Perform a related but different command, often more macro
 C-S-k   -> Perform a related but different command at a more micro level

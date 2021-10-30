@@ -9,15 +9,9 @@
 
 
 
-* DONE fix C-x C-f
 * TODO one keypress run the project tests with the default command
 * TODO take first error link in compilation buffer and visit it in code window/frame
 * TODO function to find all occurences of TODO in project
-
-* TODO a way to quickly mark a for loop
-that's better than just expand region
-or C-M-h
-obal-set-key (kbd "C-@") 'er/expand-region)
 
 * TODO hotkey for creating a feature branch off of develop based on JIRA tag and name
 * TODO include csv-mode
@@ -25,27 +19,30 @@ obal-set-key (kbd "C-@") 'er/expand-region)
 * TODO easier hotkeys for switch to wdired mode and out
 
 * TODO make shell use up arrow key for previous command
+* TODO a way to quickly mark a for loop
+
+(use-local-map local-monster-mode-map)
+** test
+that's better than just expand region
+or C-M-h
+obal-set-key (kbd "C-@") 'er/expand-region)
+** test
+asdasdasd
+
 * TODO find and remember command to start an additional shell
 * TODO tab in shell mode should autocomplete
 
-* TODO find and remember commands to resize frame
 * TODO dired mode color coding filenames?
 
-* DONE C-x w hotkeys
-* TODO dedicated restclient buffer for project
+* TODO dedicated restclient buffer for project (.restclient)
 
-* TODO better org mode colors/syntax highlighting
-* TODO C-M-q in org mode should fill paragraph I guess?
-
-
-* TODO make-frame hotkey
-
-* clojure
-** TODO install clj-refactor
-** TODO try lsp mode for clojure
-** TODO find a way to rename a namespace?
-** TODO find a way to move a function to a different namespace?
+* TODO better org mode colors/syntax highlighting 
 
 * golang
-** TODO fix lsp mode so it starts automatically
-** TODO fix the goddamn C-M-j binding 
+** DONE fix lsp mode so it starts automatically
+** DONE fix the goddamn C-M-j binding 
+* DONE fix C-x C-f
+* DONE find and remember commands to resize frame
+* DONE C-x w hotkeys
+* DONE make-frame hotkey
+
