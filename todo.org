@@ -1,9 +1,20 @@
+#+CATEGORY: Emacs
+
+* TODO fix color scheme for org mode (why is it all red)
+* TODO bindings for opening .emacs.d and related files?
+* TODO move line up/down
+
 * TODO find a way to organize and run processes and set up shells per project
-* TODO set up agenda/todo to find todos from code projects and wiki repo
 * TODO set up a nice home screen with drill?
 * TODO how do we organize various scripts for local dev? Makefile?
 
 * TODO automatically invoke lsp-mode for Python files and projects
+* TODO lsp bindings?
+what lsp prefix do I use?
+what about the single keystrokes in normal state?
+
+* TODO mark buffer should have a binding that isn't c-c h
+
 * TODO make sure virtual environment is used for commands in Python projects with .venv?
 
 
@@ -13,7 +24,7 @@
 * TODO take first error link in compilation buffer and visit it in code window/frame
 * TODO function to find all occurences of TODO in project
 
-* TODO hotkey for creating a feature branch off of develop based on JIRA tag and name
+* TODO hotkey for creating a feature branch off of develop based on JIRA tag and name?
 * TODO include csv-mode
 
 * TODO easier hotkeys for switch to wdired mode and out
@@ -35,12 +46,15 @@ asdasdasd
 * TODO dired mode color coding filenames?
 
 * TODO dedicated restclient buffer for project (.restclient)
-
-* TODO better org mode colors/syntax highlighting 
+.restclient files should automatically start into restclient mode
 
 * golang
 ** DONE fix lsp mode so it starts automatically
 ** DONE fix the goddamn C-M-j binding 
+* DONE macro to sort and file todo file?
+* DONE evil mode on... editable buffers?
+* DONE todo agenda broken down by file?
+* DONE set up agenda/todo to find todos from code projects and wiki repo
 * DONE fix C-x C-f
 * DONE find and remember commands to resize frame
 * DONE C-x w hotkeys

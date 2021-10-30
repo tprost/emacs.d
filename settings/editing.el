@@ -241,3 +241,12 @@ Version 2015-01-26"
 (defun my-new-vterm ()
   (interactive)
   (vterm t))
+
+(defun my-new-vterm ()
+  (interactive)
+  (vterm t))
+
+(defun my-org-sort-and-organize-todo-file ()
+  (interactive)
+  (mark-whole-buffer)
+  (org-sort-entries nil ?o))

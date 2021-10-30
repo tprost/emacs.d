@@ -1041,6 +1041,7 @@
 (define-key my-org-mode-prefix-map (kbd "r") #'org-refile)
 
 (define-key my-org-mode-prefix-map (kbd "^") #'org-sort)
+(define-key my-org-mode-prefix-map (kbd "C-^") #'my-org-sort-and-organize-todo-file)
 
 (define-key my-org-mode-prefix-map (kbd "n s") #'org-narrow-to-subtree)
 (define-key my-org-mode-prefix-map (kbd "n b") #'org-narrow-to-block)
@@ -1071,9 +1072,8 @@
 (define-key org-mode-map (kbd "C-o") #'org-cycle)
 (define-key org-mode-map (kbd "C-y") #'org-yank)
 (define-key org-mode-map (kbd "M-o") #'outline-show-all)
+(define-key org-mode-map (kbd "C-c") #'org-mode-map)
 
-;; (global-set-key (kbd "C-x C-o t") #'my-org-todo-list)
-;; (evil-define-key nil org-mode-map "C-c" 'my-org-mode-map)
 (evil-define-key 'normal org-mode-map (kbd "F") 'org-forward-heading-same-level)
 (evil-define-key 'normal org-mode-map (kbd "B") 'org-backward-heading-same-level)
 (evil-define-key 'normal org-mode-map (kbd "N") 'org-next-visible-heading)
@@ -1096,7 +1096,6 @@
 (evil-define-key 'normal org-mode-map (kbd "c") my-org-mode-prefix-map)
 (evil-define-key 'normal org-mode-map (kbd "C-c") my-org-mode-prefix-map)
 
-
-
+(evil-mode 1)
 
 (provide 'bindings)
