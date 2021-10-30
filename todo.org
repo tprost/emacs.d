@@ -1,6 +1,6 @@
 #+CATEGORY: Emacs
 
-* TODO magit commit mode should automatically be in insert mode
+* DONE magit commit mode should automatically be in insert mode
 * TODO emacs org todo capture
 * TODO bindings for opening .emacs.d and related files?
 * TODO move line up/down
