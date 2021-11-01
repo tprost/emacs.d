@@ -313,7 +313,7 @@
 (define-key 'my-x-map (kbd "C-b c") 'cleanup-buffer)
 (define-key 'my-x-map (kbd "C-b d") 'crux-delete-file-and-buffer)
 (define-key 'my-x-map (kbd "C-b e") 'end-of-buffer)
-(define-key 'my-x-map (kbd "C-b k") 'kill-buffer)
+(define-key 'my-x-map (kbd "C-b k") 'kill-current-buffer)
 (define-key 'my-x-map (kbd "C-b m") 'mark-whole-buffer)
 (define-key 'my-x-map (kbd "C-b n") 'next-buffer)
 (define-key 'my-x-map (kbd "C-b p") 'previous-buffer)
@@ -1065,7 +1065,7 @@
 
 ;; TODO hyperlinks
 
-(define-key org-mode-map (kbd "C-m o") #'org-mark-subtree)
+;; (define-key org-mode-map (kbd "C-m o") #'org-mark-subtree)
 
 (define-key org-mode-map (kbd "C-o") #'org-cycle)
 (define-key org-mode-map (kbd "C-y") #'org-yank)
