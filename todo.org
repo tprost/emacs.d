@@ -1,8 +1,15 @@
 #+CATEGORY: Emacs
 
+* Haskell Mode
+** TODO Haskell mode bindings
+** TODO emacs functions for Haskell refactor tool thing
+** DONE projectile stack test binding just for Haskell projects?
+
 * TODO [#A] lsp bindings?
 what lsp prefix do I use?
 what about the single keystrokes in normal state?
+
+* DONE fix text size for both Mac and linux at the same time
 
 * TODO work through the rest of org mode functions and bindings
 ** TODO org priority functions
@@ -13,11 +20,6 @@ what about the single keystrokes in normal state?
 * TODO cleanup file structure in .emacs.d
 
 * TODO find a way to organize and run processes and set up shells per project
-* Haskell Mode
-** TODO Haskell mode bindings
-** TODO emacs functions for Haskell refactor tool thing
-** TODO projectile stack test binding just for Haskell projects?
-
 * TODO set up a nice home screen with drill?
 * TODO how do we organize various scripts for local dev? Makefile?
 

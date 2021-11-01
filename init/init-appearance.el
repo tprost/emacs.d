@@ -23,7 +23,12 @@
 
 (setq-default display-fill-column-indicator-character ?⬝)
 
-(set-face-attribute 'default nil :font (reverse "61 agiL onoM orPatamgarP"))
+(set-face-attribute 'default nil :font (reverse "81 agiL onoM orPatamgarP"))
+(if (eq system-type 'darwin)
+    (set-face-attribute 'default nil :font (reverse "61 agiL onoM orPatamgarP"))  
+)
+
+
 (require 'darktooth-theme)
 
 (load-theme 'darktooth t)
