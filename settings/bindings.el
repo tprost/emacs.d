@@ -1,7 +1,3 @@
-(straight-use-package 'evil)
-
-(require 'evil-repeat)
-(require 'evil-core)
 
 ;; ;; keys on macosx
 (setq mac-command-modifier 'super)
@@ -194,7 +190,7 @@
 (global-set-key (kbd "C-S-m p") 'mc/mark-previous-like-this)
 
 ;; n
-(evil-global-set-key 'normal  (kbd "n") 'forward-paragraph)
+(evil-global-set-key 'normal (kbd "n") 'forward-paragraph)
 ;; (global-set-key (kbd "C-n") 'next-line)
 ;; (global-set-key (kbd "M-n") '
 
@@ -288,17 +284,23 @@
 ;; U
 
 ;; v
-(evil-global-set-key 'normal  (kbd "v") 'scroll-up)
-(global-set-key (kbd "C-v") 'my-scroll-8-lines-up)
-(global-set-key (kbd "M-v") 'scroll-up) ;; a lot somehow?
-(global-set-key (kbd "C-M-v") 'scroll-line-up)
+;; (evil-global-set-key 'normal  (kbd "v") 'scroll-up)
+(evil-global-set-key nil (kbd "C-v") 'scroll-up)
+(evil-global-set-key nil (kbd "M-v") 'scroll-down)
+
+(evil-global-set-key 'insert  (kbd "C-v") 'my-scroll-8-lines-up)
+(evil-global-set-key 'insert  (kbd "M-v") 'my-scroll-8-lines-down)
+
+;; (global-set-key (kbd "C-v") 'my-scroll-8-lines-up)
+;; (global-set-key (kbd "M-v") 'scroll-up) ;; a lot somehow?
+;; (global-set-key (kbd "C-M-v") 'scroll-line-up)
 ;; (evil-global-set-key 'normal (kbd "C-M-v") 'evil-scroll-line-to-bottom)
 
 ;; V
-(evil-global-set-key 'normal  (kbd "V") 'scroll-down)
-(global-set-key (kbd "C-S-v") 'my-scroll-8-lines-down)
-(global-set-key (kbd "M-S-v") 'scroll-page-down)
-(global-set-key (kbd "C-M-S-v") 'scroll-line-down)
+;; (evil-global-set-key 'normal  (kbd "V") 'scroll-down)
+;; (global-set-key (kbd "C-S-v") 'my-scroll-8-lines-down)
+;; (global-set-key (kbd "M-S-v") 'scroll-page-down)
+;; (global-set-key (kbd "C-M-S-v") 'scroll-line-down)
 
 ;; ;; w
 (evil-global-set-key 'normal  (kbd "w") 'whole-line-or-region-kill-ring-save)
@@ -398,7 +400,7 @@
   ("<right>" windmove-right)
   ("<down>" windmove-down)
   ("<up>" windmove-up)
-  ("0" zero-window "nuke")
+  ("0" delete-window "nuke")
   ("1" delete-other-windows "delete")
   ("2" double-window "double")
   ("b" split-window-below "below")
@@ -1094,7 +1096,5 @@
 
 (evil-define-key 'normal org-mode-map (kbd "c") my-org-mode-prefix-map)
 (evil-define-key 'normal org-mode-map (kbd "C-c") my-org-mode-prefix-map)
-
-(evil-mode 1)
 
 (provide 'bindings)

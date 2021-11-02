@@ -10,6 +10,8 @@
 (require 'whole-line-or-region)
 (require 'hydra)
 
+(define-key input-decode-map [?\C-m] [C-m])
+
 (whole-line-or-region-global-mode t)
 
 ;; a
@@ -165,20 +167,20 @@
 ;; m
 (define-prefix-command 'my-mark-map)
 (define-key monster-mode-map (kbd "m") 'er/expand-region)
-(define-key monster-mode-map (kbd "C-m") 'my-mark-map)
-(define-key monster-mode-map (kbd "C-m l") 'my-mark-current-line)
-(define-key monster-mode-map (kbd "C-m f") 'er/mark-defun)
-(define-key monster-mode-map (kbd "C-m w") 'er/mark-word)
-(define-key monster-mode-map (kbd "C-m p") 'er/mark-paragraph)
-(define-key monster-mode-map (kbd "C-m c") 'er/mark-comment)
-(define-key monster-mode-map (kbd "C-m e") 'er/mark-email)
-(define-key monster-mode-map (kbd "C-m s") 'er/mark-symbol)
-(define-key monster-mode-map (kbd "C-m n") 'er/mark-sentence)
-(define-key monster-mode-map (kbd "C-m b") 'mark-whole-buffer)
+(define-key monster-mode-map (kbd "<C-m>") 'my-mark-map)
+(define-key monster-mode-map (kbd "<C-m> l") 'my-mark-current-line)
+(define-key monster-mode-map (kbd "<C-m> f") 'er/mark-defun)
+(define-key monster-mode-map (kbd "<C-m> w") 'er/mark-word)
+(define-key monster-mode-map (kbd "<C-m> p") 'er/mark-paragraph)
+(define-key monster-mode-map (kbd "<C-m> c") 'er/mark-comment)
+(define-key monster-mode-map (kbd "<C-m> e") 'er/mark-email)
+(define-key monster-mode-map (kbd "<C-m> s") 'er/mark-symbol)
+(define-key monster-mode-map (kbd "<C-m> n") 'er/mark-sentence)
+(define-key monster-mode-map (kbd "<C-m> b") 'mark-whole-buffer)
 
-(define-key monster-mode-map (kbd "C-m f") (define-prefix-command 'my-mark-feature-map))
-(define-key monster-mode-map (kbd "C-m f s") 'er/mark-feature-scenario)
-(define-key monster-mode-map (kbd "C-m f p") 'er/mark-feature-step)
+(define-key monster-mode-map (kbd "<C-m> f") (define-prefix-command 'my-mark-feature-map))
+(define-key monster-mode-map (kbd "<C-m> f s") 'er/mark-feature-scenario)
+(define-key monster-mode-map (kbd "<C-m> f p") 'er/mark-feature-step)
 
 ;; M
 (define-key monster-mode-map (kbd "M") 'mc/mark-all-dwim)
@@ -371,7 +373,7 @@
   ("f" hydra-frame-management/body "frame"))
 (global-set-key (kbd "C-x C-w") 'hydra-window-management/body)
 
-(defhydra hydra-frame-management (global-map "C-x f")
+(defhydra hydra-frame-management (global-map "C-x <C-m>")
   "frame"
   ("<left>" move-frame-left)
   ("<right>" move-frame-right)
@@ -679,7 +681,7 @@
 ;; ;; ;; (global-unset-key (kbd "ESC"))
 ;; ;; ;; (global-set-key (kbd "ESC") 'keyboard-quit)
 
-;; ;; ;; (global-set-key (kbd "C-m") 'set-mark-command)
+;; ;; ;; (global-set-key (kbd "<C-m>") 'set-mark-command)
 ;; ;; ;; (global-set-key (kbd "C-.") 'kmacro-end-or-call-macro)
 ;; ;; ;; (global-set-key (kbd "C-_") 'keyboard-quit)
 
@@ -791,7 +793,7 @@
 ;; ;; ;; (global-set-key (kbd "M-i") 'back-to-indentation)
 ;; ;; ;; (global-set-key (kbd "C-C-S-m") 'iy-go-to-char)
 
-;; ;; ;; (global-set-key (kbd "C-m") 'set-mark-command)
+;; ;; ;; (global-set-key (kbd "<C-m>") 'set-mark-command)
 ;; ;; ;; (global-set-key (kbd "C-=") 'set-mark-command)
 
 ;; ;; ;; (global-set-key (kbd "C-z") 'er/expand-region)
@@ -1010,5 +1012,11 @@
 
 ;; ;; ;; (global-set-key (kbd "C-;") 'avy-goto-char)
 ;; ;; ;; (global-set-key (kbd "C-:") 'avy-goto-line)
+
+
+(global-set-key (kbd "C-x |") 'my-toggle-window-split)
+(define-key haskell-stack-mode-map (kbd "C-q x") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'normal haskell-stack-mode-map (kbd "1") 'my-projectile-run-stack-testing-vterm)
+
 
 (provide 'bindings)

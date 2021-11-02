@@ -1,5 +1,9 @@
 #+CATEGORY: Emacs
 
+* trim whitespace/blank lines function
+* quick jump to project todo.org file
+* q key should kill buffer in normal mode
+
 * Haskell Mode
 ** TODO Haskell mode bindings
 ** TODO emacs functions for Haskell refactor tool thing

@@ -206,7 +206,12 @@
 
 (add-to-list 'load-path "~/.emacs.d/settings")
 
+(require 'setup-evil)
+
 (require 'editing)
+(require 'stack)
+
+
 (require 'bindings)
 
 ;; (load-file (expand-file-name "bindings.el" user-emacs-directory))

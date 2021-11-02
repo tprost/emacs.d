@@ -43,13 +43,33 @@
       (select-window first-win)
       (if this-win-2nd (other-window 1))))))
 
-(global-set-key (kbd "C-x |") 'my-toggle-window-split)
-
 (defun haskell-project-bindings ()
   (if (eq (projectile-project-type) 'haskell-stack)
-      (local-set-key (kbd "C-q X") 'my-projectile-run-stack-testing-vterm)
-      (local-set-key (kbd "<f1>") 'my-projectile-run-stack-testing-vterm)
+      (haskell-stack-mode)
+      ;; (local-set-key (kbd "C-q X") 'my-projectile-run-stack-testing-vterm)
+      ;; (local-set-key (kbd "<f1>") 'my-projectile-run-stack-testing-vterm)
     ))
 
+
+
+(defvar haskell-stack-mode-map (make-sparse-keymap)
+  "The keymap for haskell-stack-mode.")
+
+
+
+(define-minor-mode haskell-stack-mode
+  "Toggle Haskell-Stack mode"
+  :init-value nil
+  :lighter " Haskell-Stack"
+  :keymap haskell-stack-mode-map
+  :after-hook 'haskell-stack-mode-hook
+  (progn    
+    ;; (if haskell-stack-mode
+    ;;   (set-cursor-color "green")
+    ;;   (set-cursor-color "white"))
+    (if haskell-stack-mode
+      (message "haskell-stack-mode activated")
+      (message "haskell-stack-mode deactivated"))))
+  
 (add-hook 'projectile-mode-hook #'haskell-project-bindings)
           
