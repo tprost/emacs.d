@@ -10,7 +10,7 @@
 (require 'whole-line-or-region)
 (require 'hydra)
 
-(define-key input-decode-map [?\C-m] [C-m])
+
 
 (whole-line-or-region-global-mode t)
 
@@ -265,7 +265,7 @@
 ;; u
 
 ;; U
-
+n
 ;; v
 (define-key monster-mode-map (kbd "v") 'scroll-up)
 (global-set-key (kbd "C-v") 'my-scroll-8-lines-up)
@@ -1014,7 +1014,7 @@
 ;; ;; ;; (global-set-key (kbd "C-:") 'avy-goto-line)
 
 
-(global-set-key (kbd "C-x |") 'my-toggle-window-split)
+
 (define-key haskell-stack-mode-map (kbd "C-q x") 'my-projectile-run-stack-testing-vterm)
 (evil-define-key 'normal haskell-stack-mode-map (kbd "1") 'my-projectile-run-stack-testing-vterm)
 

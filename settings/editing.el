@@ -222,8 +222,6 @@ Version 2015-01-26"
   (interactive)
   (dired "~/Downloads"))
 
-(provide 'editing)
-
 (defun my-eval-dwim (beginning end)
   (interactive "r")    
   (if (use-region-p)
@@ -250,3 +248,5 @@ Version 2015-01-26"
   (interactive)
   (mark-whole-buffer)
   (org-sort-entries nil ?o))
+
+(provide 'editing)

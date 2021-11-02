@@ -13,6 +13,8 @@
 
 (whole-line-or-region-global-mode t)
 
+(define-key input-decode-map [?\C-m] [C-m])
+
 ;; a
 (evil-global-set-key 'normal (kbd "a") 'backward-paragraph)
                     
@@ -163,20 +165,20 @@
 ;; m
 (define-prefix-command 'my-mark-map)
 (evil-global-set-key 'normal  (kbd "m") 'er/expand-region)
-(evil-global-set-key 'normal  (kbd "C-m") 'my-mark-map)
-(evil-global-set-key 'normal  (kbd "C-m l") 'my-mark-current-line)
-(evil-global-set-key 'normal  (kbd "C-m f") 'er/mark-defun)
-(evil-global-set-key 'normal  (kbd "C-m w") 'er/mark-word)
-(evil-global-set-key 'normal  (kbd "C-m p") 'er/mark-paragraph)
-(evil-global-set-key 'normal  (kbd "C-m c") 'er/mark-comment)
-(evil-global-set-key 'normal  (kbd "C-m e") 'er/mark-email)
-(evil-global-set-key 'normal  (kbd "C-m s") 'er/mark-symbol)
-(evil-global-set-key 'normal  (kbd "C-m n") 'er/mark-sentence)
-(evil-global-set-key 'normal  (kbd "C-m b") 'mark-whole-buffer)
+(evil-global-set-key 'normal  (kbd "<C-m>") 'my-mark-map)
+(evil-global-set-key 'normal  (kbd "<C-m> l") 'my-mark-current-line)
+(evil-global-set-key 'normal  (kbd "<C-m> f") 'er/mark-defun)
+(evil-global-set-key 'normal  (kbd "<C-m> w") 'er/mark-word)
+(evil-global-set-key 'normal  (kbd "<C-m> p") 'er/mark-paragraph)
+(evil-global-set-key 'normal  (kbd "<C-m> c") 'er/mark-comment)
+(evil-global-set-key 'normal  (kbd "<C-m> e") 'er/mark-email)
+(evil-global-set-key 'normal  (kbd "<C-m> s") 'er/mark-symbol)
+(evil-global-set-key 'normal  (kbd "<C-m> n") 'er/mark-sentence)
+(evil-global-set-key 'normal  (kbd "<C-m> b") 'mark-whole-buffer)
 
-(evil-global-set-key 'normal  (kbd "C-m f") (define-prefix-command 'my-mark-feature-map))
-(evil-global-set-key 'normal  (kbd "C-m f s") 'er/mark-feature-scenario)
-(evil-global-set-key 'normal  (kbd "C-m f p") 'er/mark-feature-step)
+(evil-global-set-key 'normal  (kbd "<C-m> f") (define-prefix-command 'my-mark-feature-map))
+(evil-global-set-key 'normal  (kbd "<C-m> f s") 'er/mark-feature-scenario)
+(evil-global-set-key 'normal  (kbd "<C-m> f p") 'er/mark-feature-step)
 
 ;; M
 (evil-global-set-key 'normal  (kbd "M") 'mc/mark-all-dwim)
@@ -211,10 +213,11 @@
 (evil-global-set-key 'normal  (kbd "p") 'backward-paragraph)
 
 ;; P
+(evil-global-set-key 'normal (kbd "P") 'projectile-command-map)
 
 ;; q
-(evil-global-set-key 'normal  (kbd "q") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
+(evil-global-set-key 'normal (kbd "q") 'kill-current-buffer)
+;; (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
 ;; (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
 ;; (define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
 (define-key projectile-command-map (kbd "x") 'projectile-test-project)
@@ -249,14 +252,23 @@
 
 ;; t
 ;; t is for typing!
+
 (define-prefix-command 'my-editing-map)
 (evil-global-set-key 'normal  (kbd "t") 'my-editing-map)
 (global-set-key (kbd "C-t") 'my-editing-map)
+
+(defhydra hydra-move-text (global-map "C-t N")
+  "text scale"
+  ("n" move-text-down "down")
+  ("p" move-text-up "up"))
+
 (define-key my-editing-map (kbd "c") 'crux-capitalize-region)
 (define-key my-editing-map (kbd "d") 'downcase-dwim)
 (define-key my-editing-map (kbd "u") 'upcase-dwim)
 (define-key my-editing-map (kbd "?") 'crux-ispell-word-then-abbrev) ;; TODO fix ispell
 (define-key my-editing-map (kbd "o") 'my-open-line-below)
+(define-key my-editing-map (kbd "p") 'hydra-move-text/move-text-up)
+(define-key my-editing-map (kbd "n") 'hydra-move-text/move-text-down)
 (define-key my-editing-map (kbd "^") 'crux-top-join-line)
 (define-key my-editing-map (kbd "C-o") 'my-open-line-below-and-move)
 (define-key my-editing-map (kbd "O") 'my-open-line-above)
@@ -285,8 +297,8 @@
 
 ;; v
 ;; (evil-global-set-key 'normal  (kbd "v") 'scroll-up)
-(evil-global-set-key nil (kbd "C-v") 'scroll-up)
-(evil-global-set-key nil (kbd "M-v") 'scroll-down)
+(evil-global-set-key 'normal (kbd "C-v") 'scroll-up)
+(evil-global-set-key 'normal (kbd "M-v") 'scroll-down)
 
 (evil-global-set-key 'insert  (kbd "C-v") 'my-scroll-8-lines-up)
 (evil-global-set-key 'insert  (kbd "M-v") 'my-scroll-8-lines-down)
@@ -698,7 +710,7 @@
 ;; ;; ;; (global-unset-key (kbd "ESC"))
 ;; ;; ;; (global-set-key (kbd "ESC") 'keyboard-quit)
 
-;; ;; ;; (global-set-key (kbd "C-m") 'set-mark-command)
+;; ;; ;; (global-set-key (kbd "<C-m>") 'set-mark-command)
 ;; ;; ;; (global-set-key (kbd "C-.") 'kmacro-end-or-call-macro)
 ;; ;; ;; (global-set-key (kbd "C-_") 'keyboard-quit)
 
@@ -810,7 +822,7 @@
 ;; ;; ;; (global-set-key (kbd "M-i") 'back-to-indentation)
 ;; ;; ;; (global-set-key (kbd "C-C-S-m") 'iy-go-to-char)
 
-;; ;; ;; (global-set-key (kbd "C-m") 'set-mark-command)
+;; ;; ;; (global-set-key (kbd "<C-m>") 'set-mark-command)
 ;; ;; ;; (global-set-key (kbd "C-=") 'set-mark-command)
 
 ;; ;; ;; (global-set-key (kbd "C-z") 'er/expand-region)
@@ -1067,7 +1079,7 @@
 
 ;; TODO hyperlinks
 
-;; (define-key org-mode-map (kbd "C-m o") #'org-mark-subtree)
+;; (define-key org-mode-map (kbd "<C-m> o") #'org-mark-subtree)
 
 (define-key org-mode-map (kbd "C-o") #'org-cycle)
 (define-key org-mode-map (kbd "C-y") #'org-yank)
@@ -1096,5 +1108,14 @@
 
 (evil-define-key 'normal org-mode-map (kbd "c") my-org-mode-prefix-map)
 (evil-define-key 'normal org-mode-map (kbd "C-c") my-org-mode-prefix-map)
+
+
+(evil-define-key 'normal 'haskell-stack-mode (kbd "<f1>") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'normal 'haskell-stack-mode (kbd "1") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'normal 'haskell-stack-mode (kbd "P x") 'my-projectile-run-stack-testing-vterm)
+
+(global-set-key (kbd "C-x |") 'my-toggle-window-split)
+
+
 
 (provide 'bindings)

@@ -6,3 +6,5 @@
 (evil-mode 1)
 
 (setq evil-move-beyond-eol t)
+
+(provide 'setup-evil)

@@ -26,6 +26,8 @@
 
 (straight-use-package 'expand-region)
 (straight-use-package 'multiple-cursors)
+(straight-use-package 'move-text)
+
 
 (require 'init-helm)
 (require 'init-projectile)
@@ -79,7 +81,6 @@
 (straight-use-package 'haxe-mode)
 
 (load-file (expand-file-name "tprost.el" user-emacs-directory))
-(load-file (expand-file-name "monster.el" user-emacs-directory))
 (load-file (expand-file-name "editing.el" user-emacs-directory))
 
 

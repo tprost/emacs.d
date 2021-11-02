@@ -44,7 +44,8 @@
       (if this-win-2nd (other-window 1))))))
 
 (defun haskell-project-bindings ()
-  (if (eq (projectile-project-type) 'haskell-stack)
+  (message "running haskell project bindings")
+  (if (eq (projectile-detect-project-type) 'haskell-stack)
       (haskell-stack-mode)
       ;; (local-set-key (kbd "C-q X") 'my-projectile-run-stack-testing-vterm)
       ;; (local-set-key (kbd "<f1>") 'my-projectile-run-stack-testing-vterm)
@@ -71,5 +72,6 @@
       (message "haskell-stack-mode activated")
       (message "haskell-stack-mode deactivated"))))
   
-(add-hook 'projectile-mode-hook #'haskell-project-bindings)
+(add-hook 'interactive-haskell-mode-hook #'haskell-project-bindings)
           
+(provide 'stack)

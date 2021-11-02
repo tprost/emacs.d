@@ -80,6 +80,8 @@ Inserted by installing org-mode or when a release is made."
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
          "* TODO %?\n  %i\n  %a")
+        ("e" "Emacs Todo" entry (file "~/.emacs.d/todo.org")
+         "* TODO %?")
         ("l" "Journal" entry (file+datetree "~/taylor/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")
         ("j" "Japanese" entry (file "~/taylor/drill/japanese/drill.org")
