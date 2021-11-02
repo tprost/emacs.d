@@ -34,7 +34,6 @@
 (require 'init-company-mode)
 (require 'init-lsp-mode)
 (require 'init-magit)
-(require 'init-org)
 
 (require 'init-dired)
 (require 'init-term-mode)
@@ -208,6 +207,7 @@
 (add-to-list 'load-path "~/.emacs.d/settings")
 
 (require 'setup-evil)
+(require 'setup-org)
 
 (require 'editing)
 (require 'stack)
@@ -215,6 +215,6 @@
 
 (require 'bindings)
 
-;; (load-file (expand-file-name "bindings.el" user-emacs-directory))
+(load-file (expand-file-name "custom.el" user-emacs-directory))
 
 ;; (global-set-key (kbd "M-`") 'other-window)
