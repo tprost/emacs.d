@@ -249,4 +249,12 @@ Version 2015-01-26"
   (mark-whole-buffer)
   (org-sort-entries nil ?o))
 
+(defun my-jump-to-project-todo-file ()
+  (interactive)
+  (find-file (concat (projectile-project-root) "todo.org")))
+
+(defun my-emacs-todo-file ()
+  (interactive)
+  (find-file "~/.emacs.d/todo.org"))
+
 (provide 'editing)

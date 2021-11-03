@@ -1,8 +1,5 @@
 #+CATEGORY: Emacs
 
-* TODO trim whitespace/blank lines function
-* TODO quick jump to project todo.org file
-* TODO quick jump to emacs todo.org file
 * TODO [#A] lsp bindings?
 what lsp prefix do I use?
 what about the single keystrokes in normal state?
@@ -46,6 +43,14 @@ what about the single keystrokes in normal state?
 * TODO sort out the differences between C-x C-o, C-x o, x o, x C-o
 * TODO clean up buffer keybinding
 with appropriate function for my todo files
+* TODO fix evil mode for dired mode
+* TODO open project todo file fn+binding
+* TODO faster input mode... rebind RET?
+* TODO transpose windows binding
+* TODO switch to test file fn+binding
+* TODO yasnippet for Haskell
+* TODO emacs lisp yasnippets... at least defun
+* TODO quick jump to emacs bindings.el, settings.el, emacs find file
 * Haskell Mode
 ** TODO Haskell mode bindings
 ** TODO emacs functions for Haskell refactor tool thing
@@ -54,6 +59,9 @@ with appropriate function for my todo files
 * golang
 ** DONE fix lsp mode so it starts automatically
 ** DONE fix the goddamn C-M-j binding 
+* DONE trim whitespace/blank lines function
+* DONE quick jump to project todo.org file
+* DONE quick jump to emacs todo.org file
 * DONE move line up/down
 * DONE emacs org todo capture
 * DONE q key should kill buffer in normal mode
@@ -82,4 +90,3 @@ asdasdasd
 * DONE find and remember commands to resize frame
 * DONE C-x w hotkeys
 * DONE make-frame hotkey
-* TODO fix evil mode for dired mode

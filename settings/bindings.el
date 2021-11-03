@@ -221,8 +221,9 @@
 ;; (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
 ;; (define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
 (define-key projectile-command-map (kbd "x") 'projectile-test-project)
-(define-key projectile-command-map (kbd "t") 'projectile-run-vterm)
-(define-key projectile-command-map (kbd "T") 'projectile-run-vterm-dwim)
+(define-key projectile-command-map (kbd "v") 'projectile-run-vterm)
+(define-key projectile-command-map (kbd "V") 'projectile-run-vterm-dwim)
+(define-key projectile-command-map (kbd "t") 'my-jump-to-project-todo-file)
 ;; (define-key projectile-command-map (kbd "v") 'projectile-run-vterm)
 ;; (define-key projectile-command-map (kbd "d") 'projectile-debug)
 ;; (define-key projectile-command-map (kbd "d") 'projectile-debug)
@@ -265,7 +266,8 @@
 (define-key my-editing-map (kbd "c") 'crux-capitalize-region)
 (define-key my-editing-map (kbd "d") 'downcase-dwim)
 (define-key my-editing-map (kbd "u") 'upcase-dwim)
-(define-key my-editing-map (kbd "?") 'crux-ispell-word-then-abbrev) ;; TODO fix ispell
+ ;; TODO fix ispell and bind to something else
+(define-key my-editing-map (kbd "?") 'crux-ispell-word-then-abbrev)
 (define-key my-editing-map (kbd "o") 'my-open-line-below)
 (define-key my-editing-map (kbd "p") 'hydra-move-text/move-text-up)
 (define-key my-editing-map (kbd "n") 'hydra-move-text/move-text-down)
@@ -275,7 +277,10 @@
 (define-key my-editing-map (kbd "C-S-o") 'my-open-line-above-and-move)
 (define-key my-editing-map (kbd "s") 'sort-lines)
 (define-key my-editing-map (kbd "&") 'crux-duplicate-current-line-or-region)
+(define-key my-editing-map (kbd "l") 'delete-blank-lines)
+(define-key my-editing-map (kbd "w") 'fixup-whitespace)
 ;; (define-key my-editing-map (kbd "&") 'crux-duplicate-and-comment-current-line-or-region)
+;; fixup-whitespace
 
 ;; T
 ;; https://emacsredux.com/blog/2016/01/31/use-tab-to-indent-or-complete/
@@ -447,6 +452,16 @@
   ("q" nil)
   ("s" shrink-frame-horizontally "shrink-frame-horizontally")
   ("w" hydra-window-management/body "window"))
+
+(define-prefix-command 'my-emacs-d-map)
+(define-key my-emacs-d-map (kbd "t") #'my-emacs-todo-file)
+(define-key my-x-map (kbd "e") my-emacs-d-map)
+;; (evil-global-set-key 'normal  (kbd "m") 'er/expand-region)
+;; (evil-global-set-key 'normal  (kbd "<C-m>") 'my-mark-map)
+;; (evil-global-set-key 'normal  (kbd "<C-m> l") 'my-mark-current-line)
+;; (evil-global-set-key 'normal  (kbd "<C-m> f") 'er/mark-defun)
+;; (evil-global-set-key 'normal  (kbd "<C-m> w") 'er/mark-word)-
+
 
 ;; X
 (evil-global-set-key 'normal  (kbd "X") 'my-eval-dwim) ;; eval dwim
@@ -1109,8 +1124,11 @@
 (evil-define-key 'normal org-mode-map (kbd "c") my-org-mode-prefix-map)
 (evil-define-key 'normal org-mode-map (kbd "C-c") my-org-mode-prefix-map)
 
+(global-unset-key (kbd "<f1>"))
 
-(evil-define-key 'normal 'haskell-stack-mode (kbd "<f1>") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key nil 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'insert 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'normal 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
 (evil-define-key 'normal 'haskell-stack-mode (kbd "1") 'my-projectile-run-stack-testing-vterm)
 (evil-define-key 'normal 'haskell-stack-mode (kbd "P x") 'my-projectile-run-stack-testing-vterm)
 
