@@ -257,4 +257,16 @@ Version 2015-01-26"
   (interactive)
   (find-file "~/.emacs.d/todo.org"))
 
+(defun my-emacs-init-file ()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
+(defun my-emacs-bindings-file ()
+  (interactive)
+  (find-file "~/.emacs.d/settings/bindings.el"))
+
+(defun my-emacs-projectile-find-file ()
+  (interactive)
+  (projectile-find-file-in-directory "~/.emacs.d"))
+
 (provide 'editing)

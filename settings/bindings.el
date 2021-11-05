@@ -167,9 +167,7 @@
 (global-set-key (kbd "C-M-l") 'recenter)
 
 ;; L
-(evil-global-set-key 'monster  (kbd "L") 'recenter)
-(global-set-key (kbd "C-S-l") 'scroll-bottom-line-to-top)
-(global-set-key (kbd "M-S-l") 'scroll-top-line-to-bottom)
+(evil-global-set-key 'monster (kbd "L") 'lsp-keymap-prefix)
 
 ;; m
 (evil-global-set-key 'monster  (kbd "m") 'set-mark-command)
@@ -353,6 +351,11 @@
 (define-key 'my-x-map (kbd "d") 'dired)
 (define-key 'my-x-map (kbd "D") 'crux-recentf-find-directory)
 
+(define-key 'my-x-map (kbd "e") 'my-emacs-init-file)
+(define-key 'my-x-map (kbd "C-e t") 'my-emacs-todo-file)
+(define-key 'my-x-map (kbd "C-e b") 'my-emacs-bindings-file)
+(define-key 'my-x-map (kbd "C-e f") 'my-emacs-projectile-find-file)
+
 (define-key 'my-x-map (kbd "f") 'helm-find-files)
 (define-key 'my-x-map (kbd "C-f") 'helm-find-files)
 (define-key 'my-x-map (kbd "F") 'crux-recentf-find-file)
@@ -385,7 +388,6 @@
 (define-key lsp-command-map (kbd "r") 'lsp-rename)
 (define-key lsp-command-map (kbd "o") 'lsp-organize-imports)
 (define-key 'my-x-map (kbd "C-l") lsp-command-map)
-
 
 ;; ;; ;; (global-set-key (kbd "C-M-c") 'crux-cleanup-buffer-or-region)
 
@@ -426,6 +428,7 @@
   ("<right>" windmove-right)
   ("<down>" windmove-down)
   ("<up>" windmove-up)
+  ("|" my-toggle-window-split)
   ("0" delete-window "nuke")
   ("1" delete-other-windows "delete")
   ("2" double-window "double")
@@ -439,7 +442,7 @@
   ("q" nil)
   ("r" split-window-right "right")
   ("s" crux-swap-windows "swap")
-  ("t" crux-transpose-windows "transpose")
+  ("t" crux-transpose-windows "transpose") 
   ("v" split-window-vertically "vertically")
   ("f" hydra-frame-management/body "frame"))
 (global-set-key (kbd "C-x C-w") 'hydra-window-management/body)
@@ -533,6 +536,189 @@
 ;; ;; ;;(evil-global-set-key 'monster  (kbd "#") 'evil-record-macro)
 
 (global-set-key (kbd "C-;") 'whole-line-or-region-comment-dwim-2)
+
+(global-set-key (kbd "C-x C-o l") #'org-store-link)
+(global-set-key (kbd "C-x C-o a") #'org-agenda)
+(global-set-key (kbd "C-x C-o c") #'org-capture)
+
+(define-prefix-command 'my-org-mode-prefix-map)
+(define-key my-org-mode-prefix-map (kbd "o a") 'outline-show-all)
+(define-key my-org-mode-prefix-map (kbd "o b") 'org-tree-to-indirect-buffer)
+(define-key my-org-mode-prefix-map (kbd "o c") 'outline-show-children)
+(define-key my-org-mode-prefix-map (kbd "o g") 'org-global-cycle)
+(define-key my-org-mode-prefix-map (kbd "o k") 'outline-show-branches)
+(define-key my-org-mode-prefix-map (kbd "o o") 'org-cycle)
+(define-key my-org-mode-prefix-map (kbd "o r") 'org-reveal)
+(define-key my-org-mode-prefix-map (kbd "o s") 'org-set-startup-visibility)
+(define-key my-org-mode-prefix-map (kbd "o w") 'org-copy-visible)
+
+(define-key my-org-mode-prefix-map (kbd "i") 'org-meta-return)
+(define-key my-org-mode-prefix-map (kbd "C-i") 'org-insert-heading-respect-content)
+;; (define-key my-org-mode-prefix-map (kbd "t") 'org-insert-todo-heading)
+;; (define-key my-org-mode-prefix-map (kbd "C-t") 'org-insert-todo-heading-respect-content)
+
+(define-key my-org-mode-prefix-map (kbd "t") 'org-todo)
+
+(define-key my-org-mode-prefix-map (kbd "p") #'org-do-promote)
+(define-key my-org-mode-prefix-map (kbd "M-p") #'org-do-demote)
+(define-key my-org-mode-prefix-map (kbd "d") #'org-do-demote)
+
+(define-key my-org-mode-prefix-map (kbd "P") #'org-promote-subtree)
+(define-key my-org-mode-prefix-map (kbd "D") #'org-demote-subtree)
+
+(define-key my-org-mode-prefix-map (kbd "u") #'org-move-subtree-up)
+(define-key my-org-mode-prefix-map (kbd "d") #'org-move-subtree-down)
+
+(define-key my-org-mode-prefix-map (kbd "m") #'org-mark-subtree)
+(define-key my-org-mode-prefix-map (kbd "k") #'org-cut-subtree)
+
+(define-key my-org-mode-prefix-map (kbd "&") #'org-clone-subtree-with-time-shift)
+(define-key my-org-mode-prefix-map (kbd "r") #'org-refile)
+
+(define-key my-org-mode-prefix-map (kbd "^") #'org-sort)
+(define-key my-org-mode-prefix-map (kbd "C-^") #'my-org-sort-and-organize-todo-file)
+
+(define-key my-org-mode-prefix-map (kbd "n s") #'org-narrow-to-subtree)
+(define-key my-org-mode-prefix-map (kbd "n b") #'org-narrow-to-block)
+(define-key my-org-mode-prefix-map (kbd "n w") #'widen)
+(define-key my-org-mode-prefix-map (kbd "*") #'org-toggle-heading)
+
+(define-key my-org-mode-prefix-map (kbd "/") #'org-sparse-tree)
+
+;; org-occur
+;; next-error
+;; previous-error
+
+;; TODO lists https://orgmode.org/manual/Plain-Lists.html
+
+(define-key my-org-mode-prefix-map (kbd ";") #'org-insert-drawer)
+(define-key my-org-mode-prefix-map (kbd "M-;") #'org-insert-property-drawer)
+
+;; TODO tables
+
+;; TODO hyperlinks
+
+;; (define-key org-mode-map (kbd "<C-m> o") #'org-mark-subtree)
+
+(define-key org-mode-map (kbd "C-o") #'org-cycle)
+(define-key org-mode-map (kbd "C-y") #'org-yank)
+(define-key org-mode-map (kbd "M-o") #'outline-show-all)
+(define-key org-mode-map (kbd "C-c") my-org-mode-prefix-map)
+(define-key org-mode-map (kbd "C-x c") #'my-org-sort-and-organize-todo-file)
+
+(evil-define-key 'monster org-mode-map (kbd "F") 'org-forward-heading-same-level)
+(evil-define-key 'monster org-mode-map (kbd "B") 'org-backward-heading-same-level)
+(evil-define-key 'monster org-mode-map (kbd "N") 'org-next-visible-heading)
+(evil-define-key 'monster org-mode-map (kbd "P") 'org-previous-visible-heading)
+(evil-define-key 'monster org-mode-map (kbd "U") 'outline-up-heading)
+(evil-define-key 'monster org-mode-map (kbd "J") 'org-goto)
+(evil-define-key 'monster org-mode-map (kbd "K") 'org-cut-subtree)
+(evil-define-key 'monster org-mode-map (kbd "W") 'org-copy-subtree)
+(evil-define-key 'monster org-mode-map (kbd "Y") 'org-paste-subtree)
+;; avy-org-goto-heading-timer
+(evil-define-key 'monster org-mode-map (kbd "o") 'org-cycle)
+
+
+
+;; (evil-define-key 'monster org-mode-map (kbd "J") ')
+
+
+
+
+(evil-define-key 'monster org-mode-map (kbd "c") my-org-mode-prefix-map)
+(evil-define-key 'monster org-mode-map (kbd "C-c") my-org-mode-prefix-map)
+
+(global-unset-key (kbd "<f1>"))
+
+(evil-define-key nil 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'insert 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'monster 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'monster 'haskell-stack-mode (kbd "1") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'monster 'haskell-stack-mode (kbd "P x") 'my-projectile-run-stack-testing-vterm)
+
+;; (defun my-little-message ()
+;;   (interactive)
+;;   (popup-menu (lookup-key (current-local-map) (kbd "C-c"))))
+
+;; (defun my-one-time-haskell-mode-c ()
+;;   (interactive)  
+;;   (which-key-show-full-keymap (lookup-key (current-local-map) (kbd "C-c"))))
+
+;; (haskell-mode-map)
+;; (evil-define-key 'monster 'haskell-stack-mode (kbd "C") '(lookup-key (current-local-map) (kbd "C-c")))
+;; (evil-define-key 'monster 'haskell-stack-mode (kbd "C") 'my-one-time-haskell-mode-c)
+;; (evil-define-key 'monster 'haskell-stack-mode (kbd "C") 'helm-M-x)
+
+(evil-define-key nil haskell-mode-map (kbd "C-c r") 'projectile-replace)
+;; (evil-define-key nil haskell-mode-map (kbd "C-c R") 'projectile-replace)
+
+;; (evil-define-key 'monster 'haskell-mode (kbd "D") 'helm-M-x)
+
+;;   ---             -------
+
+;; C-c !           Prefix Command
+
+;; C-c ! C-c       flycheck-compile
+;; C-c ! C-w       flycheck-copy-errors-as-kill
+;; C-c ! ?         flycheck-describe-checker
+;; C-c ! C         flycheck-clear
+;; C-c ! H         display-local-help
+;; C-c ! V         flycheck-version
+;; C-c ! c         flycheck-buffer
+;; C-c ! e         flycheck-explain-error-at-point
+;; C-c ! h         flycheck-display-error-at-point
+;; C-c ! i         flycheck-manual
+;; C-c ! l         flycheck-list-errors
+;; C-c ! n         flycheck-next-error
+;; C-c ! p         flycheck-previous-error
+;; C-c ! s         flycheck-select-checker
+;; C-c ! v         flycheck-verify-setup
+;; C-c ! x         flycheck-disable-checker
+
+;; 
+;; `interactive-haskell-mode' Minor Mode Bindings Starting With C-c:
+;; key             binding
+;; ---             -------
+
+;; C-c C-b         haskell-interactive-switch
+;; C-c C-c         haskell-process-cabal-build
+;; C-c TAB         haskell-process-do-info
+;; C-c C-k         haskell-interactive-mode-clear
+;; C-c C-l         haskell-process-load-file
+;; C-c C-r         haskell-process-reload
+;; C-c C-t         haskell-process-do-type
+;; C-c C-v         haskell-cabal-visit-file
+;; C-c C-x         haskell-process-cabal
+;; C-c C-z         haskell-interactive-switch
+
+;; 
+;; Major Mode Bindings Starting With C-c:
+;; key             binding
+;; ---             -------
+
+;; C-c C-s         haskell-mode-toggle-scc-at-point
+;; C-c C-,         haskell-mode-format-imports
+
+;; 
+;; Global Bindings Starting With C-c:
+;; key             binding
+;; ---             -------
+
+;; C-c ESC         Prefix Command
+
+;; C-c M-g         magit-file-dispatch
+
+
+
+
+(setq evil-default-state 'normal)
+
+
+
+;; (evil-set-initial-state 'magit-mode 'insert)
+;; (evil-set-initial-state 'magit-status-mode 'insert)
+
+(provide 'bindings)
 
 ;; ;; ;; (Require 'multiple-cursors)
 
@@ -1039,111 +1225,3 @@
 
 ;; ;; ;; (global-set-key (kbd "C-;") 'avy-goto-char)
 ;; ;; ;; (global-set-key (kbd "C-:") 'avy-goto-line)
-
-(global-set-key (kbd "C-x C-o l") #'org-store-link)
-(global-set-key (kbd "C-x C-o a") #'org-agenda)
-(global-set-key (kbd "C-x C-o c") #'org-capture)
-
-(define-prefix-command 'my-org-mode-prefix-map)
-(define-key my-org-mode-prefix-map (kbd "o a") 'outline-show-all)
-(define-key my-org-mode-prefix-map (kbd "o b") 'org-tree-to-indirect-buffer)
-(define-key my-org-mode-prefix-map (kbd "o c") 'outline-show-children)
-(define-key my-org-mode-prefix-map (kbd "o g") 'org-global-cycle)
-(define-key my-org-mode-prefix-map (kbd "o k") 'outline-show-branches)
-(define-key my-org-mode-prefix-map (kbd "o o") 'org-cycle)
-(define-key my-org-mode-prefix-map (kbd "o r") 'org-reveal)
-(define-key my-org-mode-prefix-map (kbd "o s") 'org-set-startup-visibility)
-(define-key my-org-mode-prefix-map (kbd "o w") 'org-copy-visible)
-
-(define-key my-org-mode-prefix-map (kbd "i") 'org-meta-return)
-(define-key my-org-mode-prefix-map (kbd "C-i") 'org-insert-heading-respect-content)
-;; (define-key my-org-mode-prefix-map (kbd "t") 'org-insert-todo-heading)
-;; (define-key my-org-mode-prefix-map (kbd "C-t") 'org-insert-todo-heading-respect-content)
-
-(define-key my-org-mode-prefix-map (kbd "t") 'org-todo)
-
-(define-key my-org-mode-prefix-map (kbd "p") #'org-do-promote)
-(define-key my-org-mode-prefix-map (kbd "M-p") #'org-do-demote)
-(define-key my-org-mode-prefix-map (kbd "d") #'org-do-demote)
-
-(define-key my-org-mode-prefix-map (kbd "P") #'org-promote-subtree)
-(define-key my-org-mode-prefix-map (kbd "D") #'org-demote-subtree)
-
-(define-key my-org-mode-prefix-map (kbd "u") #'org-move-subtree-up)
-(define-key my-org-mode-prefix-map (kbd "d") #'org-move-subtree-down)
-
-(define-key my-org-mode-prefix-map (kbd "m") #'org-mark-subtree)
-(define-key my-org-mode-prefix-map (kbd "k") #'org-cut-subtree)
-
-(define-key my-org-mode-prefix-map (kbd "&") #'org-clone-subtree-with-time-shift)
-(define-key my-org-mode-prefix-map (kbd "r") #'org-refile)
-
-(define-key my-org-mode-prefix-map (kbd "^") #'org-sort)
-(define-key my-org-mode-prefix-map (kbd "C-^") #'my-org-sort-and-organize-todo-file)
-
-(define-key my-org-mode-prefix-map (kbd "n s") #'org-narrow-to-subtree)
-(define-key my-org-mode-prefix-map (kbd "n b") #'org-narrow-to-block)
-(define-key my-org-mode-prefix-map (kbd "n w") #'widen)
-(define-key my-org-mode-prefix-map (kbd "*") #'org-toggle-heading)
-
-(define-key my-org-mode-prefix-map (kbd "/") #'org-sparse-tree)
-
-;; org-occur
-;; next-error
-;; previous-error
-
-;; TODO lists https://orgmode.org/manual/Plain-Lists.html
-
-(define-key my-org-mode-prefix-map (kbd ";") #'org-insert-drawer)
-(define-key my-org-mode-prefix-map (kbd "M-;") #'org-insert-property-drawer)
-
-;; TODO tables
-
-;; TODO hyperlinks
-
-;; (define-key org-mode-map (kbd "<C-m> o") #'org-mark-subtree)
-
-(define-key org-mode-map (kbd "C-o") #'org-cycle)
-(define-key org-mode-map (kbd "C-y") #'org-yank)
-(define-key org-mode-map (kbd "M-o") #'outline-show-all)
-(define-key org-mode-map (kbd "C-c") my-org-mode-prefix-map)
-(define-key org-mode-map (kbd "C-x c") #'my-org-sort-and-organize-todo-file)
-
-(evil-define-key 'monster org-mode-map (kbd "F") 'org-forward-heading-same-level)
-(evil-define-key 'monster org-mode-map (kbd "B") 'org-backward-heading-same-level)
-(evil-define-key 'monster org-mode-map (kbd "N") 'org-next-visible-heading)
-(evil-define-key 'monster org-mode-map (kbd "P") 'org-previous-visible-heading)
-(evil-define-key 'monster org-mode-map (kbd "U") 'outline-up-heading)
-(evil-define-key 'monster org-mode-map (kbd "J") 'org-goto)
-(evil-define-key 'monster org-mode-map (kbd "K") 'org-cut-subtree)
-(evil-define-key 'monster org-mode-map (kbd "W") 'org-copy-subtree)
-(evil-define-key 'monster org-mode-map (kbd "Y") 'org-paste-subtree)
-;; avy-org-goto-heading-timer
-(evil-define-key 'monster org-mode-map (kbd "o") 'org-cycle)
-
-
-
-;; (evil-define-key 'monster org-mode-map (kbd "J") ')
-
-
-
-
-(evil-define-key 'monster org-mode-map (kbd "c") my-org-mode-prefix-map)
-(evil-define-key 'monster org-mode-map (kbd "C-c") my-org-mode-prefix-map)
-
-(global-unset-key (kbd "<f1>"))
-
-(evil-define-key nil 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
-(evil-define-key 'insert 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
-(evil-define-key 'monster 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
-(evil-define-key 'monster 'haskell-stack-mode (kbd "1") 'my-projectile-run-stack-testing-vterm)
-(evil-define-key 'monster 'haskell-stack-mode (kbd "P x") 'my-projectile-run-stack-testing-vterm)
-
-(global-set-key (kbd "C-x |") 'my-toggle-window-split)
-
-(setq evil-default-state 'normal)
-
-;; (evil-set-initial-state 'magit-mode 'insert)
-;; (evil-set-initial-state 'magit-status-mode 'insert)
-
-(provide 'bindings)
