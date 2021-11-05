@@ -1136,6 +1136,6 @@
 
 (setq evil-default-state 'emacs)
 
-(evil-set-initial-state 'magit-mode 'normal)
+(evil-set-initial-state 'magit-mode 'insert)
 
 (provide 'bindings)
