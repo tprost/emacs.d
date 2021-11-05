@@ -1,8 +1,12 @@
 #+CATEGORY: Emacs
 
 * TODO [#A] yasnippet for Haskell
-* TODO work through the rest of org mode functions and bindings
-** TODO org priority functions
+* TODO [#A] setup flycheck and keybindings
+* TODO [#A] Haskell mode bindings :haskell:
+* TODO [#A] emacs functions for Haskell refactor tool thing* TODO work through the rest of org mode functions and bindings :haskell:
+
+* TODO org priority functions
+
 * TODO make sure projectile doesn't search through a million unnecessary lisp files
 * TODO cleanup file structure in .emacs.d
 
@@ -42,10 +46,8 @@ with appropriate function for my todo files
 * TODO faster input mode... rebind RET?
 * TODO better switch to test file function (for Haskell?)
 * TODO emacs lisp yasnippets... at least defun
-* TODO [#B] setup flycheck and keybindings
-* Haskell Mode
-** TODO [#A] Haskell mode bindings
-** TODO [#A] emacs functions for Haskell refactor tool thing
+* TODO figure out what "todo order" is in org mode
+
 ** DONE projectile stack test binding just for Haskell projects?
 
 * golang
@@ -93,4 +95,4 @@ asdasdasd
 * DONE find and remember commands to resize frame
 * DONE C-x w hotkeys
 * DONE make-frame hotkey
-* TODO figure out what "todo order" is in org mode
+* TODO better org mode tag color

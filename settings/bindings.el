@@ -170,21 +170,21 @@
 (evil-global-set-key 'monster (kbd "L") 'lsp-keymap-prefix)
 
 ;; m
-(evil-global-set-key 'monster  (kbd "m") 'set-mark-command)
+(evil-global-set-key 'monster (kbd "m") 'set-mark-command)
 (define-prefix-command 'my-mark-map)
 (global-set-key (kbd "<C-m>") 'my-mark-map)
-(define-key my-mark-map (kbd "<C-m> l") 'my-mark-curbrent-line)
-(define-key my-mark-map (kbd "<C-m> f") 'er/mark-defun)
-(define-key my-mark-map (kbd "<C-m> w") 'er/mark-word)
-(define-key my-mark-map (kbd "<C-m> p") 'er/mark-paragraph)
-(define-key my-mark-map (kbd "<C-m> c") 'er/mark-comment)
-(define-key my-mark-map (kbd "<C-m> e") 'er/mark-email)
-(define-key my-mark-map (kbd "<C-m> s") 'er/mark-symbol)
-(define-key my-mark-map (kbd "<C-m> n") 'er/mark-sentience)
-(define-key my-mark-map (kbd "<C-m> b") 'mark-whole-buffer)
-(define-key my-mark-map (kbd "<C-m> f") (define-prefix-command 'my-mark-feature-map))
-(define-key my-mark-map (kbd "<C-m> f s") 'er/mark-feature-scenario)
-(define-key my-mark-map (kbd "<C-m> f p") 'er/mark-feature-step)
+(define-key my-mark-map (kbd "l") 'my-mark-curbrent-line)
+(define-key my-mark-map (kbd "f") 'er/mark-defun
+(define-key my-mark-map (kbd "w") 'er/mark-word
+(define-key my-mark-map (kbd "p") 'er/mark-paragraph
+(define-key my-mark-map (kbd "c") 'er/mark-comment
+(define-key my-mark-map (kbd "e") 'er/mark-email
+(define-key my-mark-map (kbd "s") 'er/mark-symbol
+(define-key my-mark-map (kbd "n") 'er/mark-sentience
+(define-key my-mark-map (kbd "b") 'mark-whole-buffer
+(define-key my-mark-map (kbd "f") (define-prefix-command 'my-mark-feature-map)
+(define-key my-mark-map (kbd "f s") 'er/mark-feature-scenario
+(define-key my-mark-map (kbd "f p") 'er/mark-feature-step)
 
 ;; M
 (evil-global-set-key 'monster  (kbd "M") 'mc/mark-all-dwim)
@@ -361,7 +361,8 @@
 (define-key 'my-x-map (kbd "F") 'crux-recentf-find-file)
 
 (define-key 'my-x-map (kbd "g") 'magit)
-(define-key 'my-x-map (kbd "h") 'mark-whole-buffer)
+
+(define-key 'my-x-map (kbd "h") 'info-emacs-manual)
 
 (define-key 'my-x-map (kbd "k") 'kmacro-start-macro)
 (define-key 'my-x-map (kbd "K") 'helm-execute-kmacro)
@@ -638,7 +639,7 @@
 
 ;; (defun my-little-message ()
 ;;   (interactive)
-;;   (popup-menu (lookup-key (current-local-map) (kbd "C-c"))))
+;;   (popup-menu (lookup-key (current-local-map) (kbd "C-c"q)))
 
 ;; (defun my-one-time-haskell-mode-c ()
 ;;   (interactive)  
