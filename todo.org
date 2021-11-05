@@ -1,11 +1,12 @@
 #+CATEGORY: Emacs
 
-* TODO [#A] yasnippet for Haskell
+* TODO [#A] yasnippet for Haskell :haskell: :yasnippet:
 * TODO [#A] setup flycheck and keybindings
 * TODO [#A] Haskell mode bindings :haskell:
-* TODO [#A] emacs functions for Haskell refactor tool thing* TODO work through the rest of org mode functions and bindings :haskell:
+* TODO [#A] emacs functions for Haskell refactor tool thing :haskell:
+* TODO work through the rest of org mode functions and bindings :org:
 
-* TODO org priority functions
+* TODO org priority functions :org:
 
 * TODO make sure projectile doesn't search through a million unnecessary lisp files
 * TODO cleanup file structure in .emacs.d
@@ -15,11 +16,11 @@
 * TODO how do we organize various scripts for local dev? Makefile?
 
 * TODO automatically invoke lsp-mode for Python files and projects
-* TODO mark buffer should have a binding that isn't c-c h
+* DONE mark buffer should have a binding that isn't c-c h
 
 * TODO make sure virtual environment is used for commands in Python projects with .venv?
 
-* TODO org mode specific ligatures for todo items?
+* TODO org mode specific ligatures for todo items? :org:
 
 * TODO one keypress run the project tests with the default command
 * TODO take first error link in compilation buffer and visit it in code window/frame
@@ -46,7 +47,7 @@ with appropriate function for my todo files
 * TODO faster input mode... rebind RET?
 * TODO better switch to test file function (for Haskell?)
 * TODO emacs lisp yasnippets... at least defun
-* TODO figure out what "todo order" is in org mode
+* TODO figure out what "todo order" is in org mode :org:
 
 ** DONE projectile stack test binding just for Haskell projects?
 
@@ -95,4 +96,4 @@ asdasdasd
 * DONE find and remember commands to resize frame
 * DONE C-x w hotkeys
 * DONE make-frame hotkey
-* TODO better org mode tag color
+* TODO better org mode tag color :org:

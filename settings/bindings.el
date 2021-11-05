@@ -173,18 +173,18 @@
 (evil-global-set-key 'monster (kbd "m") 'set-mark-command)
 (define-prefix-command 'my-mark-map)
 (global-set-key (kbd "<C-m>") 'my-mark-map)
-(define-key my-mark-map (kbd "l") 'my-mark-curbrent-line)
-(define-key my-mark-map (kbd "f") 'er/mark-defun
-(define-key my-mark-map (kbd "w") 'er/mark-word
-(define-key my-mark-map (kbd "p") 'er/mark-paragraph
-(define-key my-mark-map (kbd "c") 'er/mark-comment
-(define-key my-mark-map (kbd "e") 'er/mark-email
-(define-key my-mark-map (kbd "s") 'er/mark-symbol
-(define-key my-mark-map (kbd "n") 'er/mark-sentience
-(define-key my-mark-map (kbd "b") 'mark-whole-buffer
-(define-key my-mark-map (kbd "f") (define-prefix-command 'my-mark-feature-map)
-(define-key my-mark-map (kbd "f s") 'er/mark-feature-scenario
-(define-key my-mark-map (kbd "f p") 'er/mark-feature-step)
+(define-key my-mark-map (kbd "w") 'er/mark-word)
+(define-key my-mark-map (kbd "s") 'er/mark-sentence)
+(define-key my-mark-map (kbd "p") 'er/mark-paragraph)
+(define-key my-mark-map (kbd "l") 'my-mark-current-line)
+(define-key my-mark-map (kbd "c") 'er/mark-comment)
+(define-key my-mark-map (kbd "f") 'er/mark-defun)
+(define-key my-mark-map (kbd "e") 'er/mark-email)
+(define-key my-mark-map (kbd "m") 'er/mark-symbol)
+(define-key my-mark-map (kbd "b") 'mark-whole-buffer)
+;; (define-key my-mark-map (kbd "f") (define-prefix-command 'my-mark-feature-map))
+;; (define-key my-mark-map (kbd "f s") 'er/mark-feature-scenario)
+;; (define-key my-mark-map (kbd "f p") 'er/mark-feature-step)
 
 ;; M
 (evil-global-set-key 'monster  (kbd "M") 'mc/mark-all-dwim)
