@@ -4,10 +4,11 @@
 what lsp prefix do I use?
 what about the single keystrokes in normal state?
 
+* TODO [#A] bindings for opening .emacs.d and related files?
+* TODO [#A] quick jump to emacs bindings.el, settings.el, emacs find file
 * TODO work through the rest of org mode functions and bindings
 ** TODO org priority functions
 * TODO make sure projectile doesn't search through a million unnecessary lisp files
-* TODO bindings for opening .emacs.d and related files?
 * TODO cleanup file structure in .emacs.d
 
 * TODO find a way to organize and run processes and set up shells per project
@@ -43,14 +44,12 @@ what about the single keystrokes in normal state?
 * TODO sort out the differences between C-x C-o, C-x o, x o, x C-o
 * TODO clean up buffer keybinding
 with appropriate function for my todo files
-* TODO fix evil mode for dired mode
-* TODO open project todo file fn+binding
+* TODO [#A] fix evil mode for dired mode
 * TODO faster input mode... rebind RET?
-* TODO transpose windows binding
-* TODO switch to test file fn+binding
+* TODO better switch to test file function (for Haskell?)
 * TODO yasnippet for Haskell
 * TODO emacs lisp yasnippets... at least defun
-* TODO quick jump to emacs bindings.el, settings.el, emacs find file
+* TODO [#A] fix region highlight and cursor for evil normal mode
 * Haskell Mode
 ** TODO Haskell mode bindings
 ** TODO emacs functions for Haskell refactor tool thing
@@ -59,6 +58,9 @@ with appropriate function for my todo files
 * golang
 ** DONE fix lsp mode so it starts automatically
 ** DONE fix the goddamn C-M-j binding 
+* DONE open project todo file fn+binding
+* DONE transpose windows binding
+* DONE switch to test file binding
 * DONE trim whitespace/blank lines function
 * DONE quick jump to project todo.org file
 * DONE quick jump to emacs todo.org file

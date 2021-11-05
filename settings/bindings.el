@@ -16,26 +16,26 @@
 (define-key input-decode-map [?\C-m] [C-m])
 
 ;; a
-(evil-global-set-key 'normal (kbd "a") 'backward-paragraph)
+(evil-global-set-key 'emacs (kbd "a") 'backward-paragraph)
                     
 (global-set-key (kbd "C-a") 'crux-move-beginning-of-line)
 (global-set-key (kbd "M-a") 'beginning-of-line)
 (global-set-key (kbd "C-M-a") 'beginning-of-line)
 
 ;; A
-(evil-global-set-key 'normal  (kbd "A") 'beginning-of-buffer)
-;; (global-set-key (kbd "C-S-a") 'my-beginning-of-code)
+(evil-global-set-key 'emacs  (kbd "A") 'beginning-of-buffer)
+;; (global-set-key (kbdi "C-S-a") 'my-beginning-of-code)
 ;; (global-set-key (kbd "M-S-a") 'my-beginning-of-text)
 (global-set-key (kbd "C-M-S-a") 'beginning-of-buffer)
 
 ;; b
-(evil-global-set-key 'normal  (kbd "b") 'backward-paragraph)
+(evil-global-set-key 'emacs  (kbd "b") 'backward-paragraph)
 (global-set-key (kbd "C-b") 'backward-char)
 (global-set-key (kbd "M-b") 'backward-word)
 (global-set-key (kbd "C-M-b") 'backward-sentence)
 
 ;; B
-(evil-global-set-key 'normal  (kbd "B") 'backward-sexp)
+(evil-global-set-key 'emacs  (kbd "B") 'backward-sexp)
 (global-set-key (kbd "C-S-b") 'backward-symbol)
 ;; (global-set-key (kbd "M-S-b") 'backward-sexp)
 (global-set-key (kbd "C-M-S-b") 'backward-sexp)
@@ -47,60 +47,60 @@
 ;; C
 
 ;; d
-(evil-global-set-key 'normal  (kbd "d") 'kill-paragraph)
+(evil-global-set-key 'emacs  (kbd "d") 'kill-paragraph)
 (global-set-key (kbd "C-d") 'delete-char)
 (global-set-key (kbd "M-d") 'kill-word)
 (global-set-key (kbd "C-M-d") 'kill-sentence)
 
 ;; D
-(evil-global-set-key 'normal  (kbd "D") 'backward-kill-sexp)
+(evil-global-set-key 'emacs  (kbd "D") 'backward-kill-sexp)
 ;; (global-set-key (kbd "C-S-d") 'my-backward-kill-symbol)
 ;; (global-set-key (kbd "M-S-d") 'my-backward-kill-?)
 (global-set-key (kbd "C-M-S-d") 'backward-kill-sexp)
-;; (evil-global-set-key 'normal  (kbd "C-M-d") 'zap-to-char)
-;; (evil-global-set-key 'normal  (kbd "C-M-S-d") 'zap-backwards-to-char)
+;; (evil-global-set-key 'emacs  (kbd "C-M-d") 'zap-to-char)
+;; (evil-global-set-key 'emacs  (kbd "C-M-S-d") 'zap-backwards-to-char)
 
 ;; e
-(evil-global-set-key 'normal  (kbd "e") 'forward-paragraph)
+(evil-global-set-key 'emacs  (kbd "e") 'forward-paragraph)
 ;; (global-set-key (kbd "C-e") 'crux-end-of-line)
 (global-set-key (kbd "C-e") 'end-of-line)
 (global-set-key (kbd "M-e") 'end-of-line)
 ;; (global-set-key (kbd "C-M-e") 'my-second-to-last-end-of-paragraph)
 
 ;; E
-(evil-global-set-key 'normal  (kbd "E") 'end-of-buffer)
+(evil-global-set-key 'emacs  (kbd "E") 'end-of-buffer)
 ;; (global-set-key (kbd "C-S-e") 'my-end-of-code)
 ;; (global-set-key (kbd "M-S-e") 'my-end-of-text)
 ;; (global-set-key (kbd "C-M-S-e") 'end-of-buffer)
 
 ;; f
-(evil-global-set-key 'normal  (kbd "f") 'forward-sentence)
+(evil-global-set-key 'emacs  (kbd "f") 'forward-sentence)
 (global-set-key (kbd "C-f") 'forward-char)
 (global-set-key (kbd "M-f") 'forward-word)
 ;; (global-set-key (kbd "C-M-f") 'forward-phrase)
 (global-set-key (kbd "C-M-f") 'forward-sentence)
 
 ;; F
-(evil-global-set-key 'normal  (kbd "F") 'forward-sexp)
+(evil-global-set-key 'emacs  (kbd "F") 'forward-sexp)
 (global-set-key (kbd "C-S-f") 'forward-symbol)
 (global-set-key (kbd "M-S-f") 'forward-sexp)
 (global-set-key (kbd "C-M-S-f") 'end-of-defun)
 
 ;; g
-(evil-global-set-key 'normal  (kbd "g") 'keyboard-quit)
+(evil-global-set-key 'emacs  (kbd "g") 'keyboard-quit)
 
 ;; G
 ;; what could go here?
 ;; maybe resetting windows or something?
 
 ;; h
-(evil-global-set-key 'normal  (kbd "h") 'help-map)
+(evil-global-set-key 'emacs  (kbd "h") 'help-map)
 
 ;; H
-(evil-global-set-key 'normal  (kbd "H") 'describe-key)
+(evil-global-set-key 'emacs  (kbd "H") 'describe-key)
 
 ;; i
-(evil-global-set-key 'normal  (kbd "i") 'evil-insert-state)
+(evil-global-set-key 'emacs  (kbd "i") 'evil-insert-state)
 
 ;; I
 ;; what could go here?
@@ -108,7 +108,7 @@
 
 ;; j
 (define-prefix-command 'my-avy-map)
-(evil-global-set-key 'normal  (kbd "j") 'avy-goto-char)
+(evil-global-set-key 'emacs  (kbd "j") 'avy-goto-char)
 (global-set-key (kbd "C-j") 'my-avy-map)
 (global-set-key (kbd "C-j c") 'avy-goto-char)
 (global-set-key (kbd "C-j 2") 'avy-goto-char-2)
@@ -141,47 +141,46 @@
 ;; J
 
 ;; k
-(evil-global-set-key 'normal  (kbd "k") 'my-major-kill-dwim)
+(evil-global-set-key 'emacs  (kbd "k") 'my-major-kill-dwim)
 (global-set-key (kbd "C-k") 'crux-kill-and-join-forward)
 (global-set-key (kbd "M-k") 'crux-smart-kill-line)
 
 ;; K
-(evil-global-set-key 'normal  (kbd "K") 'crux-kill-line-backwards)
+(evil-global-set-key 'emacs  (kbd "K") 'crux-kill-line-backwards)
 (global-set-key (kbd "C-S-k") 'crux-kill-line-backwards)
 ;; (global-set-key (kbd "M-S-k") 'kill-word)
 ;; (global-set-key (kbd "C-M-S-k") 'kill-sentence)
 
 ;; l
-(evil-global-set-key 'normal  (kbd "l") 'recenter-top-bottom)
+(evil-global-set-key 'emacs  (kbd "l") 'recenter-top-bottom)
 (global-set-key (kbd "C-l") 'recenter)
 (global-set-key (kbd "M-l") 'recenter)
 (global-set-key (kbd "C-M-l") 'recenter)
 
 ;; L
-(evil-global-set-key 'normal  (kbd "L") 'recenter)
+(evil-global-set-key 'emacs  (kbd "L") 'recenter)
 (global-set-key (kbd "C-S-l") 'scroll-bottom-line-to-top)
 (global-set-key (kbd "M-S-l") 'scroll-top-line-to-bottom)
 
 ;; m
+(evil-global-set-key 'emacs  (kbd "m") 'set-mark-command)
 (define-prefix-command 'my-mark-map)
-(evil-global-set-key 'normal  (kbd "m") 'er/expand-region)
-(evil-global-set-key 'normal  (kbd "<C-m>") 'my-mark-map)
-(evil-global-set-key 'normal  (kbd "<C-m> l") 'my-mark-current-line)
-(evil-global-set-key 'normal  (kbd "<C-m> f") 'er/mark-defun)
-(evil-global-set-key 'normal  (kbd "<C-m> w") 'er/mark-word)
-(evil-global-set-key 'normal  (kbd "<C-m> p") 'er/mark-paragraph)
-(evil-global-set-key 'normal  (kbd "<C-m> c") 'er/mark-comment)
-(evil-global-set-key 'normal  (kbd "<C-m> e") 'er/mark-email)
-(evil-global-set-key 'normal  (kbd "<C-m> s") 'er/mark-symbol)
-(evil-global-set-key 'normal  (kbd "<C-m> n") 'er/mark-sentence)
-(evil-global-set-key 'normal  (kbd "<C-m> b") 'mark-whole-buffer)
-
-(evil-global-set-key 'normal  (kbd "<C-m> f") (define-prefix-command 'my-mark-feature-map))
-(evil-global-set-key 'normal  (kbd "<C-m> f s") 'er/mark-feature-scenario)
-(evil-global-set-key 'normal  (kbd "<C-m> f p") 'er/mark-feature-step)
+(global-set-key (kbd "<C-m>") 'my-mark-map)
+(define-key my-mark-map (kbd "<C-m> l") 'my-mark-curbrent-line)
+(define-key my-mark-map (kbd "<C-m> f") 'er/mark-defun)
+(define-key my-mark-map (kbd "<C-m> w") 'er/mark-word)
+(define-key my-mark-map (kbd "<C-m> p") 'er/mark-paragraph)
+(define-key my-mark-map (kbd "<C-m> c") 'er/mark-comment)
+(define-key my-mark-map (kbd "<C-m> e") 'er/mark-email)
+(define-key my-mark-map (kbd "<C-m> s") 'er/mark-symbol)
+(define-key my-mark-map (kbd "<C-m> n") 'er/mark-sentience)
+(define-key my-mark-map (kbd "<C-m> b") 'mark-whole-buffer)
+(define-key my-mark-map (kbd "<C-m> f") (define-prefix-command 'my-mark-feature-map))
+(define-key my-mark-map (kbd "<C-m> f s") 'er/mark-feature-scenario)
+(define-key my-mark-map (kbd "<C-m> f p") 'er/mark-feature-step)
 
 ;; M
-(evil-global-set-key 'normal  (kbd "M") 'mc/mark-all-dwim)
+(evil-global-set-key 'emacs  (kbd "M") 'mc/mark-all-dwim)
 (define-prefix-command 'my-mc-map)
 (global-set-key (kbd "C-S-m") 'my-mc-map)
 (global-set-key (kbd "C-S-m a") 'mc/mark-all-dwim)
@@ -192,7 +191,7 @@
 (global-set-key (kbd "C-S-m p") 'mc/mark-previous-like-this)
 
 ;; n
-(evil-global-set-key 'normal (kbd "n") 'forward-paragraph)
+(evil-global-set-key 'emacs (kbd "n") 'forward-paragraph)
 ;; (global-set-key (kbd "C-n") 'next-line)
 ;; (global-set-key (kbd "M-n") '
 
@@ -203,24 +202,25 @@
 (global-unset-key (kbd "C-o"))
 
 ;; O
-(evil-global-set-key 'normal  (kbd "O") 'er/expand-region)
-(evil-global-set-key 'normal  (kbd "M-S-o") 'er/contract-region)
+(evil-global-set-key 'emacs  (kbd "O") 'er/expand-region)
+(evil-global-set-key 'emacs  (kbd "M-S-o") 'er/contract-region)
 (global-set-key (kbd "C-S-o") 'er/expand-region)
 (global-set-key (kbd "C-M-S-o") 'er/contract-region)
 
 
 ;; p
-(evil-global-set-key 'normal  (kbd "p") 'backward-paragraph)
+(evil-global-set-key 'emacs  (kbd "p") 'backward-paragraph)
 
 ;; P
-(evil-global-set-key 'normal (kbd "P") 'projectile-command-map)
+(evil-global-set-key 'emacs (kbd "P") 'projectile-command-map)
 
 ;; q
-(evil-global-set-key 'normal (kbd "q") 'kill-current-buffer)
+(evil-global-set-key 'emacs (kbd "q") 'kill-current-buffer)
 ;; (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
 ;; (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
 ;; (define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
 (define-key projectile-command-map (kbd "x") 'projectile-test-project)
+(define-key projectile-command-map (kbd "1") 'projectile-find-test-file)
 (define-key projectile-command-map (kbd "v") 'projectile-run-vterm)
 (define-key projectile-command-map (kbd "V") 'projectile-run-vterm-dwim)
 (define-key projectile-command-map (kbd "t") 'my-jump-to-project-todo-file)
@@ -240,12 +240,12 @@
 ;; Q
 
 ;; r
-(evil-global-set-key 'normal  (kbd "r") 'isearch-backward)
+(evil-global-set-key 'emacs  (kbd "r") 'isearch-backward)
 
 ;; R
 
 ;; s
-(evil-global-set-key 'normal  (kbd "s") 'isearch-forward)
+(evil-global-set-key 'emacs  (kbd "s") 'isearch-forward)
 ;; (global-set-key (kbd "C-s") 'isearch-forward)
 (global-set-key (kbd "M-s") 'isearch-forward-regexp)
 
@@ -255,7 +255,7 @@
 ;; t is for typing!
 
 (define-prefix-command 'my-editing-map)
-(evil-global-set-key 'normal  (kbd "t") 'my-editing-map)
+(evil-global-set-key 'emacs  (kbd "t") 'my-editing-map)
 (global-set-key (kbd "C-t") 'my-editing-map)
 
 (defhydra hydra-move-text (global-map "C-t N")
@@ -285,7 +285,7 @@
 ;; T
 ;; https://emacsredux.com/blog/2016/01/31/use-tab-to-indent-or-complete/
 (define-prefix-command 'my-indenting-map)
-(evil-global-set-key 'normal  (kbd "T") 'my-indent-dwim)
+(evil-global-set-key 'emacs  (kbd "T") 'my-indent-dwim)
 (global-set-key (kbd "C-S-t") 'my-indenting-map)
 (define-key my-indenting-map (kbd "f") 'crux-indent-defun)
 (define-key my-indenting-map (kbd "t") 'my-indent-dwim)
@@ -301,9 +301,9 @@
 ;; U
 
 ;; v
-;; (evil-global-set-key 'normal  (kbd "v") 'scroll-up)
-(evil-global-set-key 'normal (kbd "C-v") 'scroll-up)
-(evil-global-set-key 'normal (kbd "M-v") 'scroll-down)
+;; (evil-global-set-key 'emacs  (kbd "v") 'scroll-up)
+(evil-global-set-key 'emacs (kbd "C-v") 'scroll-up)
+(evil-global-set-key 'emacs (kbd "M-v") 'scroll-down)
 
 (evil-global-set-key 'insert  (kbd "C-v") 'my-scroll-8-lines-up)
 (evil-global-set-key 'insert  (kbd "M-v") 'my-scroll-8-lines-down)
@@ -311,20 +311,20 @@
 ;; (global-set-key (kbd "C-v") 'my-scroll-8-lines-up)
 ;; (global-set-key (kbd "M-v") 'scroll-up) ;; a lot somehow?
 ;; (global-set-key (kbd "C-M-v") 'scroll-line-up)
-;; (evil-global-set-key 'normal (kbd "C-M-v") 'evil-scroll-line-to-bottom)
+;; (evil-global-set-key 'emacs (kbd "C-M-v") 'evil-scroll-line-to-bottom)
 
 ;; V
-;; (evil-global-set-key 'normal  (kbd "V") 'scroll-down)
+;; (evil-global-set-key 'emacs  (kbd "V") 'scroll-down)
 ;; (global-set-key (kbd "C-S-v") 'my-scroll-8-lines-down)
 ;; (global-set-key (kbd "M-S-v") 'scroll-page-down)
 ;; (global-set-key (kbd "C-M-S-v") 'scroll-line-down)
 
 ;; ;; w
-(evil-global-set-key 'normal  (kbd "w") 'whole-line-or-region-kill-ring-save)
+(evil-global-set-key 'emacs  (kbd "w") 'whole-line-or-region-kill-ring-save)
 
 ;; x
 (define-prefix-command 'my-x-map)
-(evil-global-set-key 'normal  (kbd "x") 'my-x-map)
+(evil-global-set-key 'emacs  (kbd "x") 'my-x-map)
 (global-set-key (kbd "C-x") 'my-x-map)
 
 (define-key 'my-x-map (kbd "b") 'helm-mini)
@@ -456,15 +456,15 @@
 (define-prefix-command 'my-emacs-d-map)
 (define-key my-emacs-d-map (kbd "t") #'my-emacs-todo-file)
 (define-key my-x-map (kbd "e") my-emacs-d-map)
-;; (evil-global-set-key 'normal  (kbd "m") 'er/expand-region)
-;; (evil-global-set-key 'normal  (kbd "<C-m>") 'my-mark-map)
-;; (evil-global-set-key 'normal  (kbd "<C-m> l") 'my-mark-current-line)
-;; (evil-global-set-key 'normal  (kbd "<C-m> f") 'er/mark-defun)
-;; (evil-global-set-key 'normal  (kbd "<C-m> w") 'er/mark-word)-
+;; (evil-global-set-key 'emacs  (kbd "m") 'er/expand-region)
+;; (evil-global-set-key 'emacs  (kbd "<C-m>") 'my-mark-map)
+;; (evil-global-set-key 'emacs  (kbd "<C-m> l") 'my-mark-current-line)
+;; (evil-global-set-key 'emacs  (kbd "<C-m> f") 'er/mark-defun)
+;; (evil-global-set-key 'emacs  (kbd "<C-m> w") 'er/mark-word)-
 
 
 ;; X
-(evil-global-set-key 'normal  (kbd "X") 'my-eval-dwim) ;; eval dwim
+(evil-global-set-key 'emacs  (kbd "X") 'my-eval-dwim) ;; eval dwim
 (define-prefix-command 'my-eval-map)
 (global-set-key (kbd "C-S-x") 'my-eval-map)
 (define-key my-eval-map (kbd "x") 'my-eval-dwim) ;; eval dwim
@@ -479,10 +479,10 @@
 (global-set-key (kbd "C-<return>") 'my-eval-dwim)
 
 ;; y
-(evil-global-set-key 'normal  (kbd "y") 'yank)
+(evil-global-set-key 'emacs  (kbd "y") 'yank)
 
 ;; Y
-(evil-global-set-key 'normal  (kbd "Y") 'yasnippet)
+(evil-global-set-key 'emacs  (kbd "Y") 'yasnippet)
 (global-set-key (kbd "C-S-y") 'yasnippet)
 
 ;; z
@@ -491,18 +491,18 @@
 ;; Z
 
 
-(evil-global-set-key 'normal  (kbd "/") 'undo)
+(evil-global-set-key 'emacs  (kbd "/") 'undo)
 
-;; (evil-global-set-key 'normal  (kbd "!") 'eval-defun)
+;; (evil-global-set-key 'emacs  (kbd "!") 'eval-defun)
 
 
 
-;; (evil-global-set-key 'normal  (kbd "[") 'my-open-line-above)
-;; ;; (evil-global-set-key 'normal  (kbd "{") 'my-open-line-above)
+;; (evil-global-set-key 'emacs  (kbd "[") 'my-open-line-above)
+;; ;; (evil-global-set-key 'emacs  (kbd "{") 'my-open-line-above)
 
-;; ;; (evil-global-set-key 'normal  (kbd "}") 'crux-smart-open-line)
+;; ;; (evil-global-set-key 'emacs  (kbd "}") 'crux-smart-open-line)
 
-;; (evil-global-set-key 'normal  (kbd "]") 'crux-smart-open-line)
+;; (evil-global-set-key 'emacs  (kbd "]") 'crux-smart-open-line)
 
 ;; 
 ;; C-[ is interpreted at a very early stage as the ASCII control character ESC (see 21.7.1 - Keyboard Events). This code is spread out all other the place as the prefix for longer sequences. There is a reason for that: ESC is actually the meta prefix (see meta-prefix-char), and all bindings that read M-something will translate to a sequence that starts with ESC. Thus, changing the global map won't be enough: you need first to change meta-prefix-char, then to remap ESC to your new meta-prefix-char in each and every map that uses M- before you can safely map C-[1.
@@ -511,32 +511,32 @@
 ;; (global-set-key (kbd "C-]") 'my-open-line-below)
 
 
-(evil-global-set-key 'normal  (kbd "SPC") 'set-mark-command)
+(evil-global-set-key 'emacs  (kbd "SPC") 'set-mark-command)
 (global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
 
-(evil-global-set-key 'normal  (kbd "%") 'query-replace)
+(evil-global-set-key 'emacs  (kbd "%") 'query-replace)
 
-(evil-global-set-key 'normal  (kbd "<backspace>") 'backward-delete-char)
-;; (evil-global-set-key 'normal  (kbd "C-<backspace>") 'backward-kill-word)
-;; (evil-global-set-key 'normal  (kbd "M-<backspace>") 'crux-kill-line-backwards)
+(evil-global-set-key 'emacs  (kbd "<backspace>") 'backward-delete-char)
+;; (evil-global-set-key 'emacs  (kbd "C-<backspace>") 'backward-kill-word)
+;; (evil-global-set-key 'emacs  (kbd "M-<backspace>") 'crux-kill-line-backwards)
 (global-set-key (kbd "C-M-<backspace>") 'backward-kill-sentence)
 
-;; ;; (evil-global-set-key 'normal  (kbd "(") 'kmacro-start-macro-or-insert-counter)
-;; ;; (evil-global-set-key 'normal  (kbd ")") 'kmacro-end-macro)
-;; ;; ;;(evil-global-set-key 'normal  (kbd "#") 'evil-record-macro)
+;; ;; (evil-global-set-key 'emacs  (kbd "(") 'kmacro-start-macro-or-insert-counter)
+;; ;; (evil-global-set-key 'emacs  (kbd ")") 'kmacro-end-macro)
+;; ;; ;;(evil-global-set-key 'emacs  (kbd "#") 'evil-record-macro)
 
 (global-set-key (kbd "C-;") 'whole-line-or-region-comment-dwim-2)
 
 ;; ;; ;; (Require 'multiple-cursors)
 
 ;; ;; ;; ;; evil shell command
-;; ;; ;; (evil-global-set-key 'normal (kbd "!") 'er/edit-lines)
-;; ;; ;; (evil-global-set-key 'normal (kbd "!") 'er/edit-lines)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "!") 'er/edit-lines)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "!") 'er/edit-lines)
 
 ;; ;; ;; (setq evil-respect-visual-line-mode nil)
 
 ;; ;; ;; ;; (global-set-key (kbd "m") '(self-insert-command (char "m")))
-;; ;; ;; ;; (evil-global-set-key 'normal (kbd "") 'evil-scroll-line-down)
+;; ;; ;; ;; (evil-global-set-key 'emacs (kbd "") 'evil-scroll-line-down)
 
 
 
@@ -558,7 +558,7 @@
 ;; ;; ;; ;; https://evil.readthedocs.io/en/latest/overview.html
 
 ;; ;; ;; ;; TODO evil-forward-word-start?
-;; ;; ;; (dolist (state (list 'normal 'visual))
+;; ;; ;; (dolist (state (list 'emacs 'visual))
 
 ;; ;; ;;   (evil-global-set-key state (kbd "f") 'forward-char)
 ;; ;; ;;   (evil-global-set-key state (kbd "C-f") 'forward-word)
@@ -590,72 +590,72 @@
 ;; ;; ;;   (evil-global-set-key state (kbd "a") 'crux-move-beginning-of-line))
 
 
-;; ;; ;; (evil-global-set-key 'normal (kbd "i") 'evil-emacs-state)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "i") 'evil-emacs-state)
 ;; ;; ;; (evil-global-set-key 'emacs (kbd "C-g") 'evil-normal-state)
 
-;; ;; ;; (evil-global-set-key 'normal (kbd "k") 'crux-smart-kill-line)
-;; ;; ;; (evil-global-set-key 'normal (kbd "y") 'yank)
-;; ;; ;; (evil-global-set-key 'normal (kbd "w") 'kill-ring-save)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "k") 'crux-smart-kill-line)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "y") 'yank)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "w") 'kill-ring-save)
 
 ;; ;; ;; ;; evil-search-forward?
-;; ;; ;; (evil-global-set-key 'normal (kbd "s") 'isearch-forward)
-;; ;; ;; (evil-global-set-key 'normal (kbd "r") 'isearch-backward)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "s") 'isearch-forward)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "r") 'isearch-backward)
 
-;; ;; ;; (evil-global-set-key 'normal (kbd "d") 'delete-char)
-;; ;; ;; (evil-global-set-key 'normal (kbd "C-d") 'kill-word)
-;; ;; ;; (evil-global-set-key 'normal (kbd "M-d") 'kill-sexp)
-;; ;; ;; (evil-global-set-key 'normal (kbd "C-M-d") 'zap-to-char)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "d") 'delete-char)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "C-d") 'kill-word)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "M-d") 'kill-sexp)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "C-M-d") 'zap-to-char)
 
-;; ;; ;; (evil-global-set-key 'normal (kbd "<backspace>") 'backward-delete-char-untabify)
-;; ;; ;; (evil-global-set-key 'normal (kbd "C-<backspace>") 'backward-kill-word)
-;; ;; ;; (evil-global-set-key 'normal (kbd "M-<backspace>") 'backward-kill-sexp)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "<backspace>") 'backward-delete-char-untabify)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "C-<backspace>") 'backward-kill-word)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "M-<backspace>") 'backward-kill-sexp)
 
-;; ;; ;; (evil-global-set-key 'normal (kbd "j") 'avy-goto-char)
-;; ;; ;; (evil-global-set-key 'normal (kbd "C-j") 'avy-goto-word-0)
-;; ;; ;; (evil-global-set-key 'normal (kbd "C-S-j") 'avy-goto-word-1)
-;; ;; ;; (evil-global-set-key 'normal (kbd "M-j") 'avy-goto-line)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "j") 'avy-goto-char)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "C-j") 'avy-goto-word-0)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "C-S-j") 'avy-goto-word-1)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "M-j") 'avy-goto-line)
 
-;; ;; ;; (evil-global-set-key 'normal (kbd "(") 'kmacro-start-macro-or-insert-counter)
-;; ;; ;; (evil-global-set-key 'normal (kbd ")") 'kmacro-end-macro)
-;; ;; ;; (evil-global-set-key 'normal (kbd "#") 'evil-record-macro)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "(") 'kmacro-start-macro-or-insert-counter)
+;; ;; ;; (evil-global-set-key 'emacs (kbd ")") 'kmacro-end-macro)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "#") 'evil-record-macro)
 
-;; ;; ;; (evil-global-set-key 'normal (kbd "SPC") 'set-mark-command)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "SPC") 'set-mark-command)
 
-;; ;; ;; (evil-global-set-key 'normal (kbd "v") 'my-scroll-8-lines-down)
-;; ;; ;; (evil-global-set-key 'normal (kbd "C-v") 'evil-scroll-down)
-;; ;; ;; (evil-global-set-key 'normal (kbd "M-v") 'evil-scroll-page-down)
-;; ;; ;; (evil-global-set-key 'normal (kbd "C-M-v") 'evil-scroll-line-down)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "v") 'my-scroll-8-lines-down)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "C-v") 'evil-scroll-down)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "M-v") 'evil-scroll-page-down)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "C-M-v") 'evil-scroll-line-down)
 
 ;; ;; ;; (define-prefix-command 'my-mark-map)
-;; ;; ;; (evil-global-set-key 'normal (kbd "m") 'my-mark-map)
-;; ;; ;; (evil-global-set-key 'normal (kbd "m l") 'my-mark-current-line)
-;; ;; ;; (evil-global-set-key 'normal (kbd "m f") 'er/mark-defun)
-;; ;; ;; (evil-global-set-key 'normal (kbd "m w") 'er/mark-word)
-;; ;; ;; (evil-global-set-key 'normal (kbd "m p") 'er/mark-paragraph)
-;; ;; ;; (evil-global-set-key 'normal (kbd "m c") 'er/mark-comment)
-;; ;; ;; (evil-global-set-key 'normal (kbd "m e") 'er/mark-email)
-;; ;; ;; (evil-global-set-key 'normal (kbd "m s") 'er/mark-symbol)
-;; ;; ;; (evil-global-set-key 'normal (kbd "m n") 'er/mark-sentence)
-;; ;; ;; (evil-global-set-key 'normal (kbd "m b") 'mark-whole-buffer)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "m") 'my-mark-map)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "m l") 'my-mark-current-line)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "m f") 'er/mark-defun)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "m w") 'er/mark-word)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "m p") 'er/mark-paragraph)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "m c") 'er/mark-comment)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "m e") 'er/mark-email)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "m s") 'er/mark-symbol)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "m n") 'er/mark-sentence)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "m b") 'mark-whole-buffer)
 
-;; ;; ;; (evil-global-set-key 'normal (kbd "m f") (define-prefix-command 'my-mark-feature-map))
-;; ;; ;; (evil-global-set-key 'normal (kbd "m f s") 'er/mark-feature-scenario)
-;; ;; ;; (evil-global-set-key 'normal (kbd "m f p") 'er/mark-feature-step)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "m f") (define-prefix-command 'my-mark-feature-map))
+;; ;; ;; (evil-global-set-key 'emacs (kbd "m f s") 'er/mark-feature-scenario)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "m f p") 'er/mark-feature-step)
 
 
 ;; ;; ;; (require 'multiple-cursors)
 
 ;; ;; ;; ;; evil shell command
-;; ;; ;; (evil-global-set-key 'normal (kbd "!") 'er/edit-lines)
-;; ;; ;; (evil-global-set-key 'normal (kbd "!") 'er/edit-lines)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "!") 'er/edit-lines)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "!") 'er/edit-lines)
 
 ;; ;; ;; (setq evil-respect-visual-line-mode nil)
 
 ;; ;; ;; ;; (global-set-key (kbd "m") '(self-insert-command (char "m")))
-;; ;; ;; ;; (evil-global-set-key 'normal (kbd "") 'evil-scroll-line-down)
+;; ;; ;; ;; (evil-global-set-key 'emacs (kbd "") 'evil-scroll-line-down)
 
 
-;; ;; ;; ;; (evil-global-set-key 'normal (kbd "C-M-v") 'evil-scroll-line-to-bottom)
+;; ;; ;; ;; (evil-global-set-key 'emacs (kbd "C-M-v") 'evil-scroll-line-to-bottom)
 
 ;; ;; ;; (defun my-scroll-8-lines-down ()
 ;; ;; ;;   (interactive)
@@ -665,18 +665,18 @@
 ;; ;; ;;   (interactive)
 ;; ;; ;;   (evil-scroll-line-up 8))
 
-;; ;; ;; (evil-global-set-key 'normal (kbd "S-v") 'my-scroll-8-lines-up)
-;; ;; ;; (evil-global-set-key 'normal (kbd "C-S-v") 'evil-scroll-up)
-;; ;; ;; (evil-global-set-key 'normal (kbd "M-S-v") 'evil-scroll-page-up)
-;; ;; ;; (evil-global-set-key 'normal (kbd "C-M-S-v") 'evil-scroll-line-up)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "S-v") 'my-scroll-8-lines-up)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "C-S-v") 'evil-scroll-up)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "M-S-v") 'evil-scroll-page-up)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "C-M-S-v") 'evil-scroll-line-up)
 
-;; ;; ;; (evil-global-set-key 'normal (kbd "l") 'recenter-top-bottom)
-;; ;; ;; (evil-global-set-key 'normal (kbd "C-l") 'evil-scroll-line-to-top)
-;; ;; ;; (evil-global-set-key 'normal (kbd "M-l") 'evil-scroll-line-to-bottom)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "l") 'recenter-top-bottom)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "C-l") 'evil-scroll-line-to-top)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "M-l") 'evil-scroll-line-to-bottom)
 
-;; ;; ;; (evil-global-set-key 'normal (kbd "S-l") 'recenter)
-;; ;; ;; (evil-global-set-key 'normal (kbd "C-S-l") 'evil-scroll-bottom-line-to-top)
-;; ;; ;; (evil-global-set-key 'normal (kbd "M-S-l") 'evil-scroll-top-line-to-bottom)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "S-l") 'recenter)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "C-S-l") 'evil-scroll-bottom-line-to-top)
+;; ;; ;; (evil-global-set-key 'emacs (kbd "M-S-l") 'evil-scroll-top-line-to-bottom)
 
 
 
@@ -1102,38 +1102,38 @@
 (define-key org-mode-map (kbd "C-c") my-org-mode-prefix-map)
 (define-key org-mode-map (kbd "C-x c") #'my-org-sort-and-organize-todo-file)
 
-(evil-define-key 'normal org-mode-map (kbd "F") 'org-forward-heading-same-level)
-(evil-define-key 'normal org-mode-map (kbd "B") 'org-backward-heading-same-level)
-(evil-define-key 'normal org-mode-map (kbd "N") 'org-next-visible-heading)
-(evil-define-key 'normal org-mode-map (kbd "P") 'org-previous-visible-heading)
-(evil-define-key 'normal org-mode-map (kbd "U") 'outline-up-heading)
-(evil-define-key 'normal org-mode-map (kbd "J") 'org-goto)
-(evil-define-key 'normal org-mode-map (kbd "K") 'org-cut-subtree)
-(evil-define-key 'normal org-mode-map (kbd "W") 'org-copy-subtree)
-(evil-define-key 'normal org-mode-map (kbd "Y") 'org-paste-subtree)
+(evil-define-key 'emacs org-mode-map (kbd "F") 'org-forward-heading-same-level)
+(evil-define-key 'emacs org-mode-map (kbd "B") 'org-backward-heading-same-level)
+(evil-define-key 'emacs org-mode-map (kbd "N") 'org-next-visible-heading)
+(evil-define-key 'emacs org-mode-map (kbd "P") 'org-previous-visible-heading)
+(evil-define-key 'emacs org-mode-map (kbd "U") 'outline-up-heading)
+(evil-define-key 'emacs org-mode-map (kbd "J") 'org-goto)
+(evil-define-key 'emacs org-mode-map (kbd "K") 'org-cut-subtree)
+(evil-define-key 'emacs org-mode-map (kbd "W") 'org-copy-subtree)
+(evil-define-key 'emacs org-mode-map (kbd "Y") 'org-paste-subtree)
 ;; avy-org-goto-heading-timer
-(evil-define-key 'normal org-mode-map (kbd "o") 'org-cycle)
+(evil-define-key 'emacs org-mode-map (kbd "o") 'org-cycle)
 
 
 
-;; (evil-define-key 'normal org-mode-map (kbd "J") ')
+;; (evil-define-key 'emacs org-mode-map (kbd "J") ')
 
 
 
 
-(evil-define-key 'normal org-mode-map (kbd "c") my-org-mode-prefix-map)
-(evil-define-key 'normal org-mode-map (kbd "C-c") my-org-mode-prefix-map)
+(evil-define-key 'emacs org-mode-map (kbd "c") my-org-mode-prefix-map)
+(evil-define-key 'emacs org-mode-map (kbd "C-c") my-org-mode-prefix-map)
 
 (global-unset-key (kbd "<f1>"))
 
 (evil-define-key nil 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
 (evil-define-key 'insert 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
-(evil-define-key 'normal 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
-(evil-define-key 'normal 'haskell-stack-mode (kbd "1") 'my-projectile-run-stack-testing-vterm)
-(evil-define-key 'normal 'haskell-stack-mode (kbd "P x") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'emacs 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'emacs 'haskell-stack-mode (kbd "1") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'emacs 'haskell-stack-mode (kbd "P x") 'my-projectile-run-stack-testing-vterm)
 
 (global-set-key (kbd "C-x |") 'my-toggle-window-split)
 
-
+(setq evil-default-state 'emacs)
 
 (provide 'bindings)
