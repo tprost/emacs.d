@@ -27,6 +27,14 @@
               (pop-to-buffer b))
         (message "Region not active")))
 
+(defun my-haskell-hs-hide-all ()
+  (interactive)
+  (my-haskell-hs-open-all)
+  (haskell-hide-toggle-all))
 
+(defun my-haskell-hs-show-all ()
+  (interactive)
+  (hs-minor-mode -1)
+  (hs-minor-mode 1))
 
 (provide 'setup-haskell-mode)

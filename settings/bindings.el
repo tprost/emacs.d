@@ -323,13 +323,12 @@
 ;; U
 
 ;; v
-;; (evil-global-set-key 'monster  (kbd "v") 'scroll-up)
+(evil-global-set-key 'monster (kbd "v") 'recenter)
 (evil-global-set-key 'monster (kbd "C-v") 'scroll-up)
 (evil-global-set-key 'monster (kbd "M-v") 'scroll-down)
-
 (evil-global-set-key 'insert  (kbd "C-v") 'my-scroll-8-lines-up)
 (evil-global-set-key 'insert  (kbd "M-v") 'my-scroll-8-lines-down)
-
+(global-set-key (kbd "C-M-v") 'recenter)
 ;; (global-set-key (kbd "C-v") 'my-scroll-8-lines-up)
 ;; (global-set-key (kbd "M-v") 'scroll-up) ;; a lot somehow?
 ;; (global-set-key (kbd "C-M-v") 'scroll-line-up)
@@ -519,6 +518,10 @@
 ;; Z
 (evil-global-set-key 'monster  (kbd "/") 'undo)
 
+
+(evil-global-set-key 'monster (kbd ">") 'next-buffer)
+(evil-global-set-key 'monster (kbd "<") 'previous-buffer)
+
 ;; (evil-global-set-key 'monster  (kbd "!") 'eval-defun)
 
 
@@ -673,7 +676,10 @@
 (evil-define-key 'monster haskell-mode-map (kbd "C-o") 'haskell-hide-toggle)
 (evil-define-key 'monster haskell-mode-map (kbd "M-o") 'haskell-hide-toggle)
 ;; TODO maybe this should be a prefix map for consistency?
-(evil-define-key 'monster haskell-mode-map (kbd "C-M-o") 'haskell-hide-toggle-all)
+(evil-define-key 'monster haskell-mode-map (kbd "C-M-o") nil)
+(evil-define-key 'monster haskell-mode-map (kbd "C-M-o o") 'haskell-hide-toggle-all)
+(evil-define-key 'monster haskell-mode-map (kbd "C-M-o s") 'my-haskell-hs-show-all)
+(evil-define-key 'monster haskell-mode-map (kbd "C-M-o h") 'my-haskell-hs-hide-all)
 
 ;; haskell lookup hoogle?
 

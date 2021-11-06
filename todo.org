@@ -1,6 +1,5 @@
 #+CATEGORY: Emacs
 
-* DONE [#A] yasnippet for Haskell :haskell: :yasnippet:
 * TODO [#A] setup flycheck and keybindings
 * TODO [#A] Haskell mode bindings :haskell:
 * TODO [#A] emacs functions for Haskell refactor tool thing :haskell:
@@ -38,7 +37,6 @@
 * TODO dedicated restclient buffer for project (.restclient)
 .restclient files should automatically start into restclient mode
 
-* DONE only show function keys on specific applications (Emacs)
 * TODO sort out the differences between C-x C-o, C-x o, x o, x C-o
 * TODO clean up buffer keybinding
 with appropriate function for my todo files
@@ -60,9 +58,13 @@ http://haskell.github.io/haskell-mode/manual/latest/
 * TODO setup flyspell
 * TODO haskell mode align binding 
 http://haskell.github.io/haskell-mode/manual/latest/Aligning-code.html#Aligning-code
+* TODO when you leave a buffer, reset state to monster state, for editable buffers
 * golang
 ** DONE fix lsp mode so it starts automatically
 ** DONE fix the goddamn C-M-j binding 
+* DONE haskell hide mode show all function
+* DONE [#A] yasnippet for Haskell :haskell: :yasnippet:
+* DONE only show function keys on specific applications (Emacs)
 * DONE mark buffer should have a binding that isn't c-c h
 
 * DONE [#A] lsp bindings?
