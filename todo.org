@@ -16,8 +16,6 @@
 * TODO how do we organize various scripts for local dev? Makefile?
 
 * TODO automatically invoke lsp-mode for Python files and projects
-* DONE mark buffer should have a binding that isn't c-c h
-
 * TODO make sure virtual environment is used for commands in Python projects with .venv?
 
 * TODO org mode specific ligatures for todo items? :org:
@@ -40,7 +38,7 @@
 * TODO dedicated restclient buffer for project (.restclient)
 .restclient files should automatically start into restclient mode
 
-* TODO only show function keys on specific applications (Emacs)
+* DONE only show function keys on specific applications (Emacs)
 * TODO sort out the differences between C-x C-o, C-x o, x o, x C-o
 * TODO clean up buffer keybinding
 with appropriate function for my todo files
@@ -51,9 +49,22 @@ with appropriate function for my todo files
 
 ** DONE projectile stack test binding just for Haskell projects?
 
+* TODO better org mode tag color :org:
+* TODO make separate bindings directory with separate files for each mode
+* TODO how do I want indentation to work? what bindings do I want?
+* TODO set up bindings for rectangle commands
+http://haskell.github.io/haskell-mode/manual/latest/Rectangular-commands.html#Rectangular-commands
+* TODO find definition lookup in hackage
+* TODO set up interactive haskell bindings
+http://haskell.github.io/haskell-mode/manual/latest/
+* TODO setup flyspell
+* TODO haskell mode align binding 
+http://haskell.github.io/haskell-mode/manual/latest/Aligning-code.html#Aligning-code
 * golang
 ** DONE fix lsp mode so it starts automatically
 ** DONE fix the goddamn C-M-j binding 
+* DONE mark buffer should have a binding that isn't c-c h
+
 * DONE [#A] lsp bindings?
 what lsp prefix do I use?
 what about the single keystrokes in normal state?
@@ -96,4 +107,4 @@ asdasdasd
 * DONE find and remember commands to resize frame
 * DONE C-x w hotkeys
 * DONE make-frame hotkey
-* TODO better org mode tag color :org:
+* DONE hideshow bindings

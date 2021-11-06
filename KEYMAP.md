@@ -7,13 +7,41 @@ The idea of having a "normal" mode and an "insert" mode is very helpful! But I d
 
 ## Core Ideas
 
-Commands mapped to C-<key> should be micro-level commands and they should work in both insert mode and normal mode. This way they are in your muscle memory in either mode, and they are usable in either mode.
+Some commands are likely to be useful in insert state and normal state.
+Some commands are unlikely to be useful in insert state, and we would like the keys available for other things in insert mode.
+
+### Example 1 (scrolling)
+
+Simple "reversible" command
+
+v   -> Scroll line vertically in window
+C-v -> Scroll down
+M-v -> Scroll up
+C-M-v -> Scrolling hydra
+
+### Example 2 (C-o)
+
+#### Normal state
+
+o     -> hs-toggle-hiding
+C-o   -> hs-hide-block
+M-o   -> hs-show-block
+C-M-o -> hideshow prefix command
+
+#### Insert state
+
+o     -> self-insert-command
+C-o   -> open line below
+M-o   -> open line above
+C-M-o -> ?
+
+
 
 ## Some keys are simple commands.
 
-k       -> Perform command
-C-k     -> Perform command at a micro level 
-M-k     -> Perform command at a micro level but with a twist (often the C command reversed) 
+k       -> Perform whatever version of command is most convenient
+C-k     -> Perform command
+M-k     -> Perform command but with a twist (often the reverse)
 C-M-k   -> Perform command at a micro level but with a twist
 
 K       -> Perform a related but different command, often more macro
