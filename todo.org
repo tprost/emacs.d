@@ -1,6 +1,6 @@
 #+CATEGORY: Emacs
 
-* TODO [#A] yasnippet for Haskell :haskell: :yasnippet:
+* DONE [#A] yasnippet for Haskell :haskell: :yasnippet:
 * TODO [#A] setup flycheck and keybindings
 * TODO [#A] Haskell mode bindings :haskell:
 * TODO [#A] emacs functions for Haskell refactor tool thing :haskell:
