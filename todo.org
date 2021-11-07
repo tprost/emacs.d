@@ -2,9 +2,9 @@
 
 * TODO [#A] setup flycheck and keybindings
 * TODO [#A] Haskell mode bindings :haskell:
-* TODO [#A] emacs functions for Haskell refactor tool thing :haskell:
-* TODO work through the rest of org mode functions and bindings :org:
+* TODO [#A] work through the rest of org mode functions and bindings :org:
 
+* TODO [#5] emacs functions for Haskell refactor tool thing :haskell:
 * TODO org priority functions :org:
 
 * TODO make sure projectile doesn't search through a million unnecessary lisp files
@@ -98,6 +98,7 @@ that's better than just expand region
 or C-M-h
 global-set-key (kbd "C-@") 'er/expand-region)
 *** level three
+**** asdasdasdsda
 ** test
 asdasdasd
 
@@ -110,3 +111,4 @@ asdasdasd
 * DONE C-x w hotkeys
 * DONE make-frame hotkey
 * DONE hideshow bindings
+* TODO elisp binding hydra yasnippet?

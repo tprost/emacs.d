@@ -97,4 +97,22 @@ Inserted by installing org-mode or when a release is made."
 ;; (setq org-drill-spaced-repetition-algorithm 'sm2)
 ;; (setq org-drill-add-random-noise-to-intervals-p t)
 
+(setq org-priority-highest ?A)
+(setq org-priority-lowest ?Z)
+(setq org-priority-default ?E)
+
+;; (require 'darktooth-theme)
+
+(require 'darktooth-colors)
+
+;; (color-defined-p "darktooth-identifiers-1")
+
+(set-face-attribute 'org-level-1 nil :foreground darktooth-light1)
+(set-face-attribute 'org-level-2 nil :foreground darktooth-light2)
+(set-face-attribute 'org-level-3 nil :foreground darktooth-light3)
+(set-face-attribute 'org-level-4 nil :foreground darktooth-light4)
+(set-face-attribute 'org-todo nil :foreground darktooth-neutral-yellow)
+(set-face-attribute 'org-tag nil :foreground darktooth-neutral-purple)
+(set-face-attribute 'org-headline-done nil :foreground darktooth-neutral-aqua)
+
 (provide 'setup-org)

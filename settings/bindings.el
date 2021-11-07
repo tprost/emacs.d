@@ -109,7 +109,7 @@
 (evil-global-set-key 'monster  (kbd "H") 'describe-key)
 
 ;; i
-(evil-global-set-key 'monster  (kbd "i") 'evil-insert-state)
+(evil-global-set-key 'monster (kbd "i") 'evil-insert-state)
 
 ;; I
 ;; what could go here?
@@ -556,20 +556,37 @@
 
 (global-set-key (kbd "C-;") 'whole-line-or-region-comment-dwim-2)
 
+
+;; ORG MODE BINDINGS
 (global-set-key (kbd "C-x C-o l") #'org-store-link)
 (global-set-key (kbd "C-x C-o a") #'org-agenda)
 (global-set-key (kbd "C-x C-o c") #'org-capture)
 
 (define-prefix-command 'my-org-mode-prefix-map)
-(define-key my-org-mode-prefix-map (kbd "o a") 'outline-show-all)
-(define-key my-org-mode-prefix-map (kbd "o b") 'org-tree-to-indirect-buffer)
-(define-key my-org-mode-prefix-map (kbd "o c") 'outline-show-children)
-(define-key my-org-mode-prefix-map (kbd "o g") 'org-global-cycle)
-(define-key my-org-mode-prefix-map (kbd "o k") 'outline-show-branches)
-(define-key my-org-mode-prefix-map (kbd "o o") 'org-cycle)
-(define-key my-org-mode-prefix-map (kbd "o r") 'org-reveal)
-(define-key my-org-mode-prefix-map (kbd "o s") 'org-set-startup-visibility)
-(define-key my-org-mode-prefix-map (kbd "o w") 'org-copy-visible)
+(define-key org-mode-map (kbd "C-c") my-org-mode-prefix-map)
+(evil-define-key 'monster org-mode-map (kbd "c") my-org-mode-prefix-map)
+(evil-define-key 'monster org-mode-map (kbd "C-c") my-org-mode-prefix-map)
+
+(evil-define-key 'monster org-mode-map (kbd "#") 'org-priority)
+
+(define-key my-org-mode-prefix-map (kbd "a") 'outline-show-all)
+(define-key my-org-mode-prefix-map (kbd "b") 'org-tree-to-indirect-buffer)
+(define-key my-org-mode-prefix-map (kbd "c") 'outline-show-children)
+(define-key my-org-mode-prefix-map (kbd "g") 'org-global-cycle)
+(define-key my-org-mode-prefix-map (kbd "k") 'outline-show-branches)
+(define-key my-org-mode-prefix-map (kbd "o") 'org-cycle)
+(define-key my-org-mode-prefix-map (kbd "r") 'org-reveal)
+(define-key my-org-mode-prefix-map (kbd "s") 'org-set-startup-visibility)
+(define-key my-org-mode-prefix-map (kbd "w") 'org-copy-visible)
+
+;; (define-key my-org-mode-prefix-map (kbd "d") 'org-priority-down)
+
+
+
+(define-key my-org-mode-prefix-map (kbd "# u") 'org-priority-up)
+(define-key my-org-mode-prefix-map (kbd "# d") 'org-priority-down)
+
+
 
 (define-key my-org-mode-prefix-map (kbd "i") 'org-meta-return)
 (define-key my-org-mode-prefix-map (kbd "C-i") 'org-insert-heading-respect-content)
@@ -622,7 +639,6 @@
 (define-key org-mode-map (kbd "C-o") #'org-cycle)
 (define-key org-mode-map (kbd "C-y") #'org-yank)
 (define-key org-mode-map (kbd "M-o") #'outline-show-all)
-(define-key org-mode-map (kbd "C-c") my-org-mode-prefix-map)
 (define-key org-mode-map (kbd "C-x c") #'my-org-sort-and-organize-todo-file)
 
 (evil-define-key 'monster org-mode-map (kbd "F") 'org-forward-heading-same-level)
@@ -638,9 +654,6 @@
 (evil-define-key 'monster org-mode-map (kbd "o") 'org-cycle)
 
 ;; (evil-define-key 'monster org-mode-map (kbd "J") ')
-
-(evil-define-key 'monster org-mode-map (kbd "c") my-org-mode-prefix-map)
-(evil-define-key 'monster org-mode-map (kbd "C-c") my-org-mode-prefix-map)
 
 (global-unset-key (kbd "<f1>"))
 

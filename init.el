@@ -82,8 +82,6 @@
 (load-file (expand-file-name "tprost.el" user-emacs-directory))
 (load-file (expand-file-name "editing.el" user-emacs-directory))
 
-
-(require 'init-appearance)
 (require 'init-backups)
 
 (straight-use-package 'exec-path-from-shell)
@@ -192,6 +190,10 @@
 
 (require 'bindings)
 
+(require 'init-appearance)
+
 (load-file (expand-file-name "custom.el" user-emacs-directory))
+
+
 
 ;; (global-set-key (kbd "M-`") 'other-window)

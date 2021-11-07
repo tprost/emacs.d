@@ -28,9 +28,6 @@
     (set-face-attribute 'default nil :font (reverse "61 agiL onoM orPatamgarP"))  
 )
 
-
-(require 'darktooth-theme)
-
 (load-theme 'darktooth t)
 
 
