@@ -763,7 +763,7 @@
 
 
 
-(setq evil-default-state 'normal)
+
 
 
 
@@ -875,5 +875,20 @@
 (define-key yas-keymap (kbd "TAB") 'tab-complete-or-next-field)
 (define-key yas-keymap [(control tab)] 'yas-next-field)
 (define-key yas-keymap (kbd "C-g") 'abort-company-or-yas)
+
+(setq evil-default-state 'normal)
+(evil-set-initial-state 'fundamental-mode 'monster)
+(evil-set-initial-state 'haskell-mode 'monster)
+(evil-set-initial-state 'elisp-mode 'monster)
+(evil-set-initial-state 'emacs-lisp-mode 'monster)
+(evil-set-initial-state 'lisp-mode 'monster)
+(evil-set-initial-state 'python-mode 'monster)
+(evil-set-initial-state 'js2-mode 'monster)
+(evil-set-initial-state 'json-mode 'monster)
+(evil-set-initial-state 'org-mode 'monster)
+
+(evil-set-initial-state 'org-capture-mode 'insert)
+
+    
 
 (provide 'bindings)

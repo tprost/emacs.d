@@ -179,10 +179,13 @@
 
 (add-to-list 'load-path "~/.emacs.d/settings")
 
+(require 'init-appearance)
+
 (require 'setup-evil)
 (require 'setup-org)
 (require 'setup-haskell-mode)
 (require 'setup-yasnippet)
+(require 'setup-haskell-mode)
 
 (require 'editing)
 (require 'stack)
@@ -190,10 +193,6 @@
 
 (require 'bindings)
 
-(require 'init-appearance)
-
 (load-file (expand-file-name "custom.el" user-emacs-directory))
-
-
 
 ;; (global-set-key (kbd "M-`") 'other-window)
