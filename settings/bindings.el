@@ -18,7 +18,8 @@
 (evil-define-state monster
   "Monster state."
   :tag " <ж> "
-  :suppress-keymap t  
+  :suppress-keymap t
+  ;; :entry-hook 'my-turn-on-transient-mark-mode
   (message (if (evil-monster-state-p)
                "Enabling monster state."
                "Disabling monster state.")))
@@ -876,19 +877,21 @@
 (define-key yas-keymap [(control tab)] 'yas-next-field)
 (define-key yas-keymap (kbd "C-g") 'abort-company-or-yas)
 
-(setq evil-default-state 'normal)
-(evil-set-initial-state 'fundamental-mode 'monster)
-(evil-set-initial-state 'haskell-mode 'monster)
-(evil-set-initial-state 'elisp-mode 'monster)
-(evil-set-initial-state 'emacs-lisp-mode 'monster)
-(evil-set-initial-state 'lisp-mode 'monster)
-(evil-set-initial-state 'python-mode 'monster)
-(evil-set-initial-state 'js2-mode 'monster)
-(evil-set-initial-state 'json-mode 'monster)
-(evil-set-initial-state 'org-mode 'monster)
+;; (evil-set-initial-state 'fundamental-mode 'monster)
+;; (evil-set-initial-state 'haskell-mode 'monster)
+;; (evil-set-initial-state 'elisp-mode 'monster)
+;; (evil-set-initial-state 'emacs-lisp-mode 'monster)
+;; (evil-set-initial-state 'lisp-mode 'monster)
+;; (evil-set-initial-state 'python-mode 'monster)
+;; (evil-set-initial-state 'js2-mode 'monster)
+;; (evil-set-initial-state 'json-mode 'monster)
+;; (evil-set-initial-state 'org-mode 'monster)
 
-(evil-set-initial-state 'org-capture-mode 'insert)
+;; (evil-set-initial-state 'org-capture-mode 'insert)
 
+;; (define-key evil-normal-state-map (kbd "SPC") nil)
+;; (define-key evil-monster-state-map (kbd "SPC") nil)
+;; (define-key evil-monster-state-map (kbd "<SPC>") 'set-mark-command)
     
 
 (provide 'bindings)

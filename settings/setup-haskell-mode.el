@@ -8,8 +8,8 @@
 (add-hook 'haskell-mode-hook #'lsp)
 (add-hook 'haskell-literate-mode-hook #'lsp)
 
-(add-hook 'haskell-mode-hook
-          (lambda () (local-set-key (kbd "C-M-x") #'my-haskell-send-region)))
+;; (add-hook 'haskell-mode-hook
+;;           (lambda () (local-set-key (kbd "C-M-x") #'my-haskell-send-region)))
 
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
