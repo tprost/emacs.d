@@ -32,7 +32,7 @@
 
 * TODO dired mode color coding filenames?
 
-* TODO dedicated restclient buffer for project (.restclient)
+* DONE dedicated restclient buffer for project (.restclient)
 .restclient files should automatically start into restclient mode
 
 * TODO sort out the differences between C-x C-o, C-x o, x o, x C-o
@@ -114,3 +114,5 @@ asdasdasd
 * DONE C-x w hotkeys
 * DONE make-frame hotkey
 * DONE hideshow bindings
+* TODO enlalrge frame to two window units size macro
+* TODO insert mode automatic on org capture mode not working

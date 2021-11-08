@@ -186,6 +186,7 @@
 (require 'setup-haskell-mode)
 (require 'setup-yasnippet)
 (require 'setup-haskell-mode)
+(require 'setup-restclient)
 
 (require 'editing)
 (require 'stack)

@@ -887,7 +887,7 @@
 ;; (evil-set-initial-state 'json-mode 'monster)
 ;; (evil-set-initial-state 'org-mode 'monster)
 
-;; (evil-set-initial-state 'org-capture-mode 'insert)
+(evil-set-initial-state 'org-capture-mode 'insert)
 
 ;; (define-key evil-normal-state-map (kbd "SPC") nil)
 ;; (define-key evil-monster-state-map (kbd "SPC") nil)
