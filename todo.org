@@ -1,10 +1,13 @@
 #+CATEGORY: Emacs
 
+* TODO [#A] fix weird issue can't select text in monster moode
+* TODO [#A] emacs functions for Haskell refactor tool thing :haskell:
 * TODO [#A] setup flycheck and keybindings
 * TODO [#A] Haskell mode bindings :haskell:
 * TODO [#A] work through the rest of org mode functions and bindings :org:
 
-* TODO [#5] emacs functions for Haskell refactor tool thing :haskell:
+* DONE [#B] set up bindings for rectangle commands
+http://haskell.github.io/haskell-mode/manual/latest/Rectangular-commands.html#Rectangular-commands
 * TODO make sure projectile doesn't search through a million unnecessary lisp files
 * TODO cleanup file structure in .emacs.d
 
@@ -32,9 +35,6 @@
 
 * TODO dired mode color coding filenames?
 
-* DONE dedicated restclient buffer for project (.restclient)
-.restclient files should automatically start into restclient mode
-
 * TODO sort out the differences between C-x C-o, C-x o, x o, x C-o
 * TODO clean up buffer keybinding
 with appropriate function for my todo files
@@ -47,8 +47,6 @@ with appropriate function for my todo files
 
 * TODO [#E] make separate bindings directory with separate files for each mode
 * TODO how do I want indentation to work? what bindings do I want?
-* TODO [#B] set up bindings for rectangle commands
-http://haskell.github.io/haskell-mode/manual/latest/Rectangular-commands.html#Rectangular-commands
 * TODO find definition lookup in hackage
 * TODO set up interactive haskell bindings
 http://haskell.github.io/haskell-mode/manual/latest/
@@ -57,11 +55,16 @@ http://haskell.github.io/haskell-mode/manual/latest/
 http://haskell.github.io/haskell-mode/manual/latest/Aligning-code.html#Aligning-code
 * TODO when you leave a buffer, reset state to monster state, for editable buffers
 * TODO elisp binding hydra yasnippet?
-* DONE fix default evil state
 * TODO macro to set up frame and window for emacs editing?
+* TODO enlalrge frame to two window units size macro
+* TODO insert mode automatic on org capture mode not working
 * golang
 ** DONE fix lsp mode so it starts automatically
 ** DONE fix the goddamn C-M-j binding 
+* DONE dedicated restclient buffer for project (.restclient)
+.restclient files should automatically start into restclient mode
+
+* DONE fix default evil state
 * DONE org priority functions :org:
 
 * DONE better org mode tag color :org:
@@ -114,5 +117,3 @@ asdasdasd
 * DONE C-x w hotkeys
 * DONE make-frame hotkey
 * DONE hideshow bindings
-* TODO enlalrge frame to two window units size macro
-* TODO insert mode automatic on org capture mode not working

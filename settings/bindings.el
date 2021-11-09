@@ -423,6 +423,25 @@
 (define-key 'my-x-map (kbd "C-p") 'projectile-command-map)
 
 
+(define-key 'my-x-map (kbd "p") 'projectile-switch-project)
+
+(define-prefix-command 'my-rectangle-map)
+(define-key 'my-x-map (kbd "C-r") 'my-rectangle-map)
+(define-key 'my-x-map (kbd "r") 'my-rectangle-map)
+
+(define-key 'my-rectangle-map (kbd "k") 'kill-rectangle)
+(define-key 'my-rectangle-map (kbd "M-w") 'copy-rectangle-as-kill)
+(define-key 'my-rectangle-map (kbd "w") 'copy-rectangle-as-kill)
+(define-key 'my-rectangle-map (kbd "d") 'delete-rectangle)
+(define-key 'my-rectangle-map (kbd "y") 'yank-rectangle)
+(define-key 'my-rectangle-map (kbd "o") 'open-rectangle)
+(define-key 'my-rectangle-map (kbd "c") 'clear-rectangle)
+(define-key 'my-rectangle-map (kbd "n") 'rectangle-number-lines)
+(define-key 'my-rectangle-map (kbd "_") 'delete-whitespace-rectangle)
+(define-key 'my-rectangle-map (kbd "%") 'string-rectangle)
+(define-key 'my-rectangle-map (kbd "i") 'string-insert-rectangle)
+(define-key 'my-rectangle-map (kbd "SPC") 'rectangle-mark-mode)
+
 (define-key 'my-x-map (kbd "s") 'save-buffer)
 (define-key 'my-x-map (kbd "C-s") 'save-buffer)
 
