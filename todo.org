@@ -57,7 +57,7 @@ http://haskell.github.io/haskell-mode/manual/latest/Aligning-code.html#Aligning-
 * TODO elisp binding hydra yasnippet?
 * TODO macro to set up frame and window for emacs editing?
 * TODO enlalrge frame to two window units size macro
-* TODO insert mode automatic on org capture mode not working
+* DONE insert mode automatic on org capture mode not working
 * golang
 ** DONE fix lsp mode so it starts automatically
 ** DONE fix the goddamn C-M-j binding 

@@ -536,9 +536,10 @@
 (global-set-key (kbd "C-z") 'evil-monster-state)
 
 ;; Z
+
+
 (evil-global-set-key 'monster  (kbd "/") 'undo)
-
-
+(global-set-key (kbd "C-.") 'set-mark-command)
 (evil-global-set-key 'monster (kbd ">") 'next-buffer)
 (evil-global-set-key 'monster (kbd "<") 'previous-buffer)
 
@@ -896,21 +897,12 @@
 (define-key yas-keymap [(control tab)] 'yas-next-field)
 (define-key yas-keymap (kbd "C-g") 'abort-company-or-yas)
 
-;; (evil-set-initial-state 'fundamental-mode 'monster)
-;; (evil-set-initial-state 'haskell-mode 'monster)
-;; (evil-set-initial-state 'elisp-mode 'monster)
-;; (evil-set-initial-state 'emacs-lisp-mode 'monster)
-;; (evil-set-initial-state 'lisp-mode 'monster)
-;; (evil-set-initial-state 'python-mode 'monster)
-;; (evil-set-initial-state 'js2-mode 'monster)
-;; (evil-set-initial-state 'json-mode 'monster)
-;; (evil-set-initial-state 'org-mode 'monster)
-
-(evil-set-initial-state 'org-capture-mode 'insert)
+;; TODO make this only for org capture mode somehow
+(evil-set-initial-state 'org-mode 'insert)
+;; (evil-set-initial-state 'org-capture-mode 'insert)
 
 ;; (define-key evil-normal-state-map (kbd "SPC") nil)
 ;; (define-key evil-monster-state-map (kbd "SPC") nil)
 ;; (define-key evil-monster-state-map (kbd "<SPC>") 'set-mark-command)
-    
 
 (provide 'bindings)
