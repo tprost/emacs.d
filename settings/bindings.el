@@ -111,6 +111,11 @@
 
 ;; i
 (evil-global-set-key 'monster (kbd "i") 'evil-insert-state)
+(evil-global-set-key 'monster (kbd "<insertchar>") 'evil-insert-state)
+(evil-global-set-key 'insert (kbd "<insertchar>") 'evil-monster-state)
+(evil-global-set-key 'monster (kbd "<insert>") 'evil-insert-state)
+(evil-global-set-key 'insert (kbd "<insert>") 'evil-monster-state)
+
 
 ;; I
 ;; what could go here?
@@ -173,7 +178,7 @@
 ;; m
 (evil-global-set-key 'monster (kbd "m") 'set-mark-command)
 (define-prefix-command 'my-mark-map)
-(global-set-key (kbd "<C-m>") 'my-mark-map)
+(global-set-key (kbd "<C-m>") 'set-mark-command)
 (define-key my-mark-map (kbd "w") 'er/mark-word)
 (define-key my-mark-map (kbd "s") 'er/mark-sentence)
 (define-key my-mark-map (kbd "p") 'er/mark-paragraph)
@@ -233,7 +238,10 @@
 
 ;; P
 (evil-global-set-key 'monster (kbd "P") 'projectile-command-map)
-
+(global-set-key (kbd "<menu>") 'projectile-command-map)
+(global-set-key (kbd "<f1>") 'projectile-command-map)
+                
+                
 ;; q
 (evil-global-set-key 'monster (kbd "q") 'kill-current-buffer)
 ;; (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
@@ -563,6 +571,11 @@
 
 (evil-global-set-key 'monster  (kbd "SPC") 'set-mark-command)
 (global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
+(global-set-key (kbd "<home>") 'beginning-of-buffer)
+(global-set-key (kbd "<end>") 'end-of-buffer)
+(global-set-key (kbd "<find>") 'search-forward)
+(global-set-key (kbd "<undo>") 'undo)
+(global-set-key (kbd "C-z") 'undo)
 
 (evil-global-set-key 'monster  (kbd "%") 'query-replace)
 
