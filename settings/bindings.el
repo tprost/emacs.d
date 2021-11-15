@@ -15,37 +15,37 @@
 
 (define-key input-decode-map [?\C-m] [C-m])
 
-(evil-define-state monster
-  "Monster state."
-  :tag " <ж> "
-  :suppress-keymap t
-  ;; :entry-hook 'my-turn-on-transient-mark-mode
-  (message (if (evil-monster-state-p)
-               "Enabling monster state."
-               "Disabling monster state.")))
+;; (evil-define-state monster
+;;   "Monster state."
+;;   :tag " <ж> "
+;;   :suppress-keymap t
+;;   ;; :entry-hook 'my-turn-on-transient-mark-mode
+;;   (message (if (evil-monster-state-p)
+;;                "Enabling monster state."
+;;                "Disabling monster state.")))
 
 ;; a
-(evil-global-set-key 'monster (kbd "a") 'backward-paragraph)
+(evil-global-set-key 'emacs (kbd "a") 'backward-paragraph)
                     
 (global-set-key (kbd "C-a") 'crux-move-beginning-of-line)
 (global-set-key (kbd "M-a") 'beginning-of-line)
 (global-set-key (kbd "C-M-a") 'beginning-of-line)
 
 ;; A
-(evil-global-set-key 'monster  (kbd "A") 'beginning-of-buffer)
+(evil-global-set-key 'emacs  (kbd "A") 'beginning-of-buffer)
 ;; (global-set-key (kbdi "C-S-a") 'my-beginning-of-code)
 ;; (global-set-key (kbd "M-S-a") 'my-beginning-of-text)
 (global-set-key (kbd "C-M-S-a") 'beginning-of-buffer)
 
 ;; b
-(evil-global-set-key 'monster  (kbd "b") 'backward-paragraph)
+(evil-global-set-key 'emacs  (kbd "b") 'backward-paragraph)
 (global-set-key (kbd "C-b") 'backward-char)
 (global-set-key (kbd "M-b") 'backward-word)
 (global-set-key (kbd "C-M-b") 'backward-sentence)
 
 ;;
 ; B
-(evil-global-set-key 'monster  (kbd "B") 'backward-sexp)
+(evil-global-set-key 'emacs  (kbd "B") 'backward-sexp)
 (global-set-key (kbd "C-S-b") 'backward-symbol)
 ;; (global-set-key (kbd "M-S-b") 'backward-sexp)
 (global-set-key (kbd "C-M-S-b") 'backward-sexp)
@@ -57,63 +57,63 @@
 ;; C
 
 ;; d
-(evil-global-set-key 'monster  (kbd "d") 'kill-paragraph)
+(evil-global-set-key 'emacs  (kbd "d") 'kill-paragraph)
 (global-set-key (kbd "C-d") 'delete-char)
 (global-set-key (kbd "M-d") 'kill-word)
 (global-set-key (kbd "C-M-d") 'kill-sentence)
 
 ;; D
-(evil-global-set-key 'monster  (kbd "D") 'backward-kill-sexp)
+(evil-global-set-key 'emacs  (kbd "D") 'backward-kill-sexp)
 ;; (global-set-key (kbd "C-S-d") 'my-backward-kill-symbol)
 ;; (global-set-key (kbd "M-S-d") 'my-backward-kill-?)
 (global-set-key (kbd "C-M-S-d") 'backward-kill-sexp)
-;; (evil-global-set-key 'monster  (kbd "C-M-d") 'zap-to-char)
-;; (evil-global-set-key 'monster  (kbd "C-M-S-d") 'zap-backwards-to-char)
+;; (evil-global-set-key 'emacs  (kbd "C-M-d") 'zap-to-char)
+;; (evil-global-set-key 'emacs  (kbd "C-M-S-d") 'zap-backwards-to-char)
 
 ;; e
-(evil-global-set-key 'monster  (kbd "e") 'forward-paragraph)
+(evil-global-set-key 'emacs  (kbd "e") 'forward-paragraph)
 ;; (global-set-key (kbd "C-e") 'crux-end-of-line)
 (global-set-key (kbd "C-e") 'end-of-line)
 (global-set-key (kbd "M-e") 'end-of-line)
 ;; (global-set-key (kbd "C-M-e") 'my-second-to-last-end-of-paragraph)
 
 ;; E
-(evil-global-set-key 'monster  (kbd "E") 'end-of-buffer)
+(evil-global-set-key 'emacs  (kbd "E") 'end-of-buffer)
 ;; (global-set-key (kbd "C-S-e") 'my-end-of-code)
 ;; (global-set-key (kbd "M-S-e") 'my-end-of-text)
 ;; (global-set-key (kbd "C-M-S-e") 'end-of-buffer)
 
 ;; f
-(evil-global-set-key 'monster  (kbd "f") 'forward-sentence)
+(evil-global-set-key 'emacs  (kbd "f") 'forward-sentence)
 (global-set-key (kbd "C-f") 'forward-char)
 (global-set-key (kbd "M-f") 'forward-word)
 ;; (global-set-key (kbd "C-M-f") 'forward-phrase)
 (global-set-key (kbd "C-M-f") 'forward-sentence)
 
 ;; F
-(evil-global-set-key 'monster  (kbd "F") 'forward-sexp)
+(evil-global-set-key 'emacs  (kbd "F") 'forward-sexp)
 (global-set-key (kbd "C-S-f") 'forward-symbol)
 (global-set-key (kbd "M-S-f") 'forward-sexp)
 (global-set-key (kbd "C-M-S-f") 'end-of-defun)
 
 ;; g
-(evil-global-set-key 'monster  (kbd "g") 'keyboard-quit)
+(evil-global-set-key 'emacs  (kbd "g") 'keyboard-quit)
 
 ;; G
 ;; what could go here?
 ;; maybe resetting windows or something?
 
 ;; h
-(evil-global-set-key 'monster  (kbd "h") 'help-map)
+(evil-global-set-key 'emacs  (kbd "h") 'help-map)
 
 ;; H
-(evil-global-set-key 'monster  (kbd "H") 'describe-key)
+(evil-global-set-key 'emacs  (kbd "H") 'describe-key)
 
 ;; i
-(evil-global-set-key 'monster (kbd "i") 'evil-insert-state)
-(evil-global-set-key 'monster (kbd "<insertchar>") 'evil-insert-state)
+(evil-global-set-key 'emacs (kbd "i") 'evil-insert-state)
+(evil-global-set-key 'emacs (kbd "<insertchar>") 'evil-insert-state)
 (evil-global-set-key 'insert (kbd "<insertchar>") 'evil-monster-state)
-(evil-global-set-key 'monster (kbd "<insert>") 'evil-insert-state)
+(evil-global-set-key 'emacs (kbd "<insert>") 'evil-insert-state)
 (evil-global-set-key 'insert (kbd "<insert>") 'evil-monster-state)
 
 
@@ -123,7 +123,7 @@
 
 ;; j
 (define-prefix-command 'my-avy-map)
-(evil-global-set-key 'monster  (kbd "j") 'avy-goto-char)
+(evil-global-set-key 'emacs  (kbd "j") 'avy-goto-char)
 (global-set-key (kbd "C-j") 'my-avy-map)
 (global-set-key (kbd "C-j c") 'avy-goto-char)
 (global-set-key (kbd "C-j 2") 'avy-goto-char-2)
@@ -156,27 +156,27 @@
 ;; J
 
 ;; k
-(evil-global-set-key 'monster  (kbd "k") 'my-major-kill-dwim)
+(evil-global-set-key 'emacs  (kbd "k") 'my-major-kill-dwim)
 (global-set-key (kbd "C-k") 'crux-kill-and-join-forward)
 (global-set-key (kbd "M-k") 'crux-smart-kill-line)
 
 ;; K
-(evil-global-set-key 'monster  (kbd "K") 'crux-kill-line-backwards)
+(evil-global-set-key 'emacs  (kbd "K") 'crux-kill-line-backwards)
 (global-set-key (kbd "C-S-k") 'crux-kill-line-backwards)
 ;; (global-set-key (kbd "M-S-k") 'kill-word)
 ;; (global-set-key (kbd "C-M-S-k") 'kill-sentence)
 
 ;; l
-(evil-global-set-key 'monster  (kbd "l") 'recenter-top-bottom)
+(evil-global-set-key 'emacs  (kbd "l") 'recenter-top-bottom)
 (global-set-key (kbd "C-l") 'recenter)
 (global-set-key (kbd "M-l") 'recenter)
 (global-set-key (kbd "C-M-l") 'recenter)
 
 ;; L
-(evil-global-set-key 'monster (kbd "L") 'lsp-keymap-prefix)
+(evil-global-set-key 'emacs (kbd "L") 'lsp-keymap-prefix)
 
 ;; m
-(evil-global-set-key 'monster (kbd "m") 'set-mark-command)
+(evil-global-set-key 'emacs (kbd "m") 'set-mark-command)
 (define-prefix-command 'my-mark-map)
 (global-set-key (kbd "<C-m>") 'set-mark-command)
 (define-key my-mark-map (kbd "w") 'er/mark-word)
@@ -193,7 +193,7 @@
 ;; (define-key my-mark-map (kbd "f p") 'er/mark-feature-step)
 
 ;; M
-(evil-global-set-key 'monster  (kbd "M") 'mc/mark-all-dwim)
+(evil-global-set-key 'emacs  (kbd "M") 'mc/mark-all-dwim)
 (define-prefix-command 'my-mc-map)
 (global-set-key (kbd "C-S-m") 'my-mc-map)
 (global-set-key (kbd "C-S-m a") 'mc/mark-all-dwim)
@@ -204,7 +204,7 @@
 (global-set-key (kbd "C-S-m p") 'mc/mark-previous-like-this)
 
 ;; n
-(evil-global-set-key 'monster (kbd "n") 'forward-paragraph)
+(evil-global-set-key 'emacs (kbd "n") 'forward-paragraph)
 ;; (global-set-key (kbd "C-n") 'next-line)
 ;; (global-set-key (kbd "M-n") '
 
@@ -212,14 +212,14 @@
 
 ;; o
 ;; code folding
-(evil-global-set-key 'monster (kbd "o") 'hs-toggle-hiding)
-(evil-global-set-key 'monster (kbd "C-o") 'hs-hide-block)
-(evil-global-set-key 'monster (kbd "M-o") 'hs-show-block)
+(evil-global-set-key 'emacs (kbd "o") 'hs-toggle-hiding)
+(evil-global-set-key 'emacs (kbd "C-o") 'hs-hide-block)
+(evil-global-set-key 'emacs (kbd "M-o") 'hs-show-block)
 (define-prefix-command 'my-hs-map)
 (define-key my-hs-map (kbd "s") 'hs-show-all)
 (define-key my-hs-map (kbd "h") 'hs-hide-all)
 (define-key my-hs-map (kbd "l") 'hs-hide-level)
-(evil-global-set-key 'monster (kbd "C-M-o") 'my-hs-map)
+(evil-global-set-key 'emacs (kbd "C-M-o") 'my-hs-map)
 
 (evil-global-set-key 'insert (kbd "C-o") 'my-open-line-below)
 (evil-global-set-key 'insert (kbd "M-o") 'my-open-line-above)
@@ -227,23 +227,23 @@
 (evil-global-set-key 'insert (kbd "C-M-o") 'my-trim-lines-above-and-below)
 
 ;; O
-(evil-global-set-key 'monster  (kbd "O") 'er/expand-region)
-(evil-global-set-key 'monster  (kbd "M-S-o") 'er/contract-region)
+(evil-global-set-key 'emacs  (kbd "O") 'er/expand-region)
+(evil-global-set-key 'emacs  (kbd "M-S-o") 'er/contract-region)
 (global-set-key (kbd "C-S-o") 'er/expand-region)
 (global-set-key (kbd "C-M-S-o") 'er/contract-region)
 
 
 ;; p
-(evil-global-set-key 'monster  (kbd "p") 'backward-paragraph)
+(evil-global-set-key 'emacs  (kbd "p") 'backward-paragraph)
 
 ;; P
-(evil-global-set-key 'monster (kbd "P") 'projectile-command-map)
+(evil-global-set-key 'emacs (kbd "P") 'projectile-command-map)
 (global-set-key (kbd "<menu>") 'projectile-command-map)
 (global-set-key (kbd "<f1>") 'projectile-command-map)
                 
                 
 ;; q
-(evil-global-set-key 'monster (kbd "q") 'kill-current-buffer)
+(evil-global-set-key 'emacs (kbd "q") 'kill-current-buffer)
 ;; (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
 ;; (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
 ;; (define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
@@ -271,12 +271,12 @@
 ;; Q
 
 ;; r
-(evil-global-set-key 'monster  (kbd "r") 'isearch-backward)
+(evil-global-set-key 'emacs  (kbd "r") 'isearch-backward)
 
 ;; R
 
 ;; s
-(evil-global-set-key 'monster  (kbd "s") 'isearch-forward)
+(evil-global-set-key 'emacs  (kbd "s") 'isearch-forward)
 ;; (global-set-key (kbd "C-s") 'isearch-forward)
 (global-set-key (kbd "M-s") 'isearch-forward-regexp)
 
@@ -286,7 +286,7 @@
 ;; t is for typing!
 
 (define-prefix-command 'my-editing-map)
-(evil-global-set-key 'monster  (kbd "t") 'my-editing-map)
+(evil-global-set-key 'emacs  (kbd "t") 'my-editing-map)
 (global-set-key (kbd "C-t") 'my-editing-map)
 
 (defhydra hydra-move-text (global-map "C-t N")
@@ -316,7 +316,7 @@
 ;; T
 ;; https://emacsredux.com/blog/2016/01/31/use-tab-to-indent-or-complete/
 (define-prefix-command 'my-indenting-map)
-(evil-global-set-key 'monster  (kbd "T") 'my-indent-dwim)
+(evil-global-set-key 'emacs  (kbd "T") 'my-indent-dwim)
 (global-set-key (kbd "C-S-t") 'my-indenting-map)
 (define-key my-indenting-map (kbd "f") 'crux-indent-defun)
 (define-key my-indenting-map (kbd "t") 'my-indent-dwim)
@@ -332,29 +332,29 @@
 ;; U
 
 ;; v
-(evil-global-set-key 'monster (kbd "v") 'recenter)
-(evil-global-set-key 'monster (kbd "C-v") 'scroll-up)
-(evil-global-set-key 'monster (kbd "M-v") 'scroll-down)
+(evil-global-set-key 'emacs (kbd "v") 'recenter)
+(evil-global-set-key 'emacs (kbd "C-v") 'scroll-up)
+(evil-global-set-key 'emacs (kbd "M-v") 'scroll-down)
 (evil-global-set-key 'insert  (kbd "C-v") 'my-scroll-8-lines-up)
 (evil-global-set-key 'insert  (kbd "M-v") 'my-scroll-8-lines-down)
 (global-set-key (kbd "C-M-v") 'recenter)
 ;; (global-set-key (kbd "C-v") 'my-scroll-8-lines-up)
 ;; (global-set-key (kbd "M-v") 'scroll-up) ;; a lot somehow?
 ;; (global-set-key (kbd "C-M-v") 'scroll-line-up)
-;; (evil-global-set-key 'monster (kbd "C-M-v") 'evil-scroll-line-to-bottom)
+;; (evil-global-set-key 'emacs (kbd "C-M-v") 'evil-scroll-line-to-bottom)
 
 ;; V
-;; (evil-global-set-key 'monster  (kbd "V") 'scroll-down)
+;; (evil-global-set-key 'emacs  (kbd "V") 'scroll-down)
 ;; (global-set-key (kbd "C-S-v") 'my-scroll-8-lines-down)
 ;; (global-set-key (kbd "M-S-v") 'scroll-page-down)
 ;; (global-set-key (kbd "C-M-S-v") 'scroll-line-down)
 
 ;; ;; w
-(evil-global-set-key 'monster  (kbd "w") 'whole-line-or-region-kill-ring-save)
+(evil-global-set-key 'emacs  (kbd "w") 'whole-line-or-region-kill-ring-save)
 
 ;; x
 (define-prefix-command 'my-x-map)
-(evil-global-set-key 'monster  (kbd "x") 'my-x-map)
+(evil-global-set-key 'emacs  (kbd "x") 'my-x-map)
 (global-set-key (kbd "C-x") 'my-x-map)
 
 (define-key 'my-x-map (kbd "b") 'helm-mini)
@@ -511,15 +511,15 @@
 (define-prefix-command 'my-emacs-d-map)
 (define-key my-emacs-d-map (kbd "t") #'my-emacs-todo-file)
 (define-key my-x-map (kbd "e") my-emacs-d-map)
-;; (evil-global-set-key 'monster  (kbd "m") 'er/expand-region)
-;; (evil-global-set-key 'monster  (kbd "<C-m>") 'my-mark-map)
-;; (evil-global-set-key 'monster  (kbd "<C-m> l") 'my-mark-current-line)
-;; (evil-global-set-key 'monster  (kbd "<C-m> f") 'er/mark-defun)
-;; (evil-global-set-key 'monster  (kbd "<C-m> w") 'er/mark-word)-
+;; (evil-global-set-key 'emacs  (kbd "m") 'er/expand-region)
+;; (evil-global-set-key 'emacs  (kbd "<C-m>") 'my-mark-map)
+;; (evil-global-set-key 'emacs  (kbd "<C-m> l") 'my-mark-current-line)
+;; (evil-global-set-key 'emacs  (kbd "<C-m> f") 'er/mark-defun)
+;; (evil-global-set-key 'emacs  (kbd "<C-m> w") 'er/mark-word)-
 
 
 ;; X
-(evil-global-set-key 'monster  (kbd "X") 'my-eval-dwim) ;; eval dwim
+(evil-global-set-key 'emacs  (kbd "X") 'my-eval-dwim) ;; eval dwim
 (define-prefix-command 'my-eval-map)
 (global-set-key (kbd "C-S-x") 'my-eval-map)
 (define-key my-eval-map (kbd "x") 'my-eval-dwim) ;; eval dwim
@@ -534,10 +534,10 @@
 (global-set-key (kbd "C-<return>") 'my-eval-dwim)
 
 ;; y
-(evil-global-set-key 'monster  (kbd "y") 'yank)
+(evil-global-set-key 'emacs  (kbd "y") 'yank)
 
 ;; Y
-(evil-global-set-key 'monster  (kbd "Y") 'yasnippet)
+(evil-global-set-key 'emacs  (kbd "Y") 'yasnippet)
 (global-set-key (kbd "C-S-y") 'yasnippet)
 
 ;; z
@@ -546,21 +546,21 @@
 ;; Z
 
 
-(evil-global-set-key 'monster  (kbd "/") 'undo)
+(evil-global-set-key 'emacs  (kbd "/") 'undo)
 (global-set-key (kbd "C-.") 'set-mark-command)
-(evil-global-set-key 'monster (kbd ">") 'next-buffer)
-(evil-global-set-key 'monster (kbd "<") 'previous-buffer)
+(evil-global-set-key 'emacs (kbd ">") 'next-buffer)
+(evil-global-set-key 'emacs (kbd "<") 'previous-buffer)
 
-;; (evil-global-set-key 'monster  (kbd "!") 'eval-defun)
+;; (evil-global-set-key 'emacs  (kbd "!") 'eval-defun)
 
 
 
-;; (evil-global-set-key 'monster  (kbd "[") 'my-open-line-above)
-;; ;; (evil-global-set-key 'monster  (kbd "{") 'my-open-line-above)
+;; (evil-global-set-key 'emacs  (kbd "[") 'my-open-line-above)
+;; ;; (evil-global-set-key 'emacs  (kbd "{") 'my-open-line-above)
 
-;; ;; (evil-global-set-key 'monster  (kbd "}") 'crux-smart-open-line)
+;; ;; (evil-global-set-key 'emacs  (kbd "}") 'crux-smart-open-line)
 
-;; (evil-global-set-key 'monster  (kbd "]") 'crux-smart-open-line)
+;; (evil-global-set-key 'emacs  (kbd "]") 'crux-smart-open-line)
 
 ;; 
 ;; C-[ is interpreted at a very early stage as the ASCII control character ESC (see 21.7.1 - Keyboard Events). This code is spread out all other the place as the prefix for longer sequences. There is a reason for that: ESC is actually the meta prefix (see meta-prefix-char), and all bindings that read M-something will translate to a sequence that starts with ESC. Thus, changing the global map won't be enough: you need first to change meta-prefix-char, then to remap ESC to your new meta-prefix-char in each and every map that uses M- before you can safely map C-[1.
@@ -569,7 +569,7 @@
 ;; (global-set-key (kbd "C-]") 'my-open-line-below)
 
 
-(evil-global-set-key 'monster  (kbd "SPC") 'set-mark-command)
+(evil-global-set-key 'emacs  (kbd "SPC") 'set-mark-command)
 (global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
 (global-set-key (kbd "<home>") 'beginning-of-buffer)
 (global-set-key (kbd "<end>") 'end-of-buffer)
@@ -577,16 +577,16 @@
 (global-set-key (kbd "<undo>") 'undo)
 (global-set-key (kbd "C-z") 'undo)
 
-(evil-global-set-key 'monster  (kbd "%") 'query-replace)
+(evil-global-set-key 'emacs  (kbd "%") 'query-replace)
 
-(evil-global-set-key 'monster  (kbd "<backspace>") 'backward-delete-char)
-;; (evil-global-set-key 'monster  (kbd "C-<backspace>") 'backward-kill-word)
-;; (evil-global-set-key 'monster  (kbd "M-<backspace>") 'crux-kill-line-backwards)
+(evil-global-set-key 'emacs  (kbd "<backspace>") 'backward-delete-char)
+;; (evil-global-set-key 'emacs  (kbd "C-<backspace>") 'backward-kill-word)
+;; (evil-global-set-key 'emacs  (kbd "M-<backspace>") 'crux-kill-line-backwards)
 (global-set-key (kbd "C-M-<backspace>") 'backward-kill-sentence)
 
-;; ;; (evil-global-set-key 'monster  (kbd "(") 'kmacro-start-macro-or-insert-counter)
-;; ;; (evil-global-set-key 'monster  (kbd ")") 'kmacro-end-macro)
-;; ;; ;;(evil-global-set-key 'monster  (kbd "#") 'evil-record-macro)
+;; ;; (evil-global-set-key 'emacs  (kbd "(") 'kmacro-start-macro-or-insert-counter)
+;; ;; (evil-global-set-key 'emacs  (kbd ")") 'kmacro-end-macro)
+;; ;; ;;(evil-global-set-key 'emacs  (kbd "#") 'evil-record-macro)
 
 (global-set-key (kbd "C-;") 'whole-line-or-region-comment-dwim-2)
 
@@ -598,10 +598,10 @@
 
 (define-prefix-command 'my-org-mode-prefix-map)
 (define-key org-mode-map (kbd "C-c") my-org-mode-prefix-map)
-(evil-define-key 'monster org-mode-map (kbd "c") my-org-mode-prefix-map)
-(evil-define-key 'monster org-mode-map (kbd "C-c") my-org-mode-prefix-map)
+(evil-define-key 'emacs org-mode-map (kbd "c") my-org-mode-prefix-map)
+(evil-define-key 'emacs org-mode-map (kbd "C-c") my-org-mode-prefix-map)
 
-(evil-define-key 'monster org-mode-map (kbd "#") 'org-priority)
+(evil-define-key 'emacs org-mode-map (kbd "#") 'org-priority)
 
 (define-key my-org-mode-prefix-map (kbd "a") 'outline-show-all)
 (define-key my-org-mode-prefix-map (kbd "b") 'org-tree-to-indirect-buffer)
@@ -675,27 +675,27 @@
 (define-key org-mode-map (kbd "M-o") #'outline-show-all)
 (define-key org-mode-map (kbd "C-x c") #'my-org-sort-and-organize-todo-file)
 
-(evil-define-key 'monster org-mode-map (kbd "F") 'org-forward-heading-same-level)
-(evil-define-key 'monster org-mode-map (kbd "B") 'org-backward-heading-same-level)
-(evil-define-key 'monster org-mode-map (kbd "N") 'org-next-visible-heading)
-(evil-define-key 'monster org-mode-map (kbd "P") 'org-previous-visible-heading)
-(evil-define-key 'monster org-mode-map (kbd "U") 'outline-up-heading)
-(evil-define-key 'monster org-mode-map (kbd "J") 'org-goto)
-(evil-define-key 'monster org-mode-map (kbd "K") 'org-cut-subtree)
-(evil-define-key 'monster org-mode-map (kbd "W") 'org-copy-subtree)
-(evil-define-key 'monster org-mode-map (kbd "Y") 'org-paste-subtree)
+(evil-define-key 'emacs org-mode-map (kbd "F") 'org-forward-heading-same-level)
+(evil-define-key 'emacs org-mode-map (kbd "B") 'org-backward-heading-same-level)
+(evil-define-key 'emacs org-mode-map (kbd "N") 'org-next-visible-heading)
+(evil-define-key 'emacs org-mode-map (kbd "P") 'org-previous-visible-heading)
+(evil-define-key 'emacs org-mode-map (kbd "U") 'outline-up-heading)
+(evil-define-key 'emacs org-mode-map (kbd "J") 'org-goto)
+(evil-define-key 'emacs org-mode-map (kbd "K") 'org-cut-subtree)
+(evil-define-key 'emacs org-mode-map (kbd "W") 'org-copy-subtree)
+(evil-define-key 'emacs org-mode-map (kbd "Y") 'org-paste-subtree)
 ;; avy-org-goto-heading-timer
-(evil-define-key 'monster org-mode-map (kbd "o") 'org-cycle)
+(evil-define-key 'emacs org-mode-map (kbd "o") 'org-cycle)
 
-;; (evil-define-key 'monster org-mode-map (kbd "J") ')
+;; (evil-define-key 'emacs org-mode-map (kbd "J") ')
 
 (global-unset-key (kbd "<f1>"))
 
 (evil-define-key nil 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
 (evil-define-key 'insert 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
-(evil-define-key 'monster 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
-(evil-define-key 'monster 'haskell-stack-mode (kbd "1") 'my-projectile-run-stack-testing-vterm)
-(evil-define-key 'monster 'haskell-stack-mode (kbd "P x") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'emacs 'haskell-stack-mode (kbd "<f2>") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'emacs 'haskell-stack-mode (kbd "1") 'my-projectile-run-stack-testing-vterm)
+(evil-define-key 'emacs 'haskell-stack-mode (kbd "P x") 'my-projectile-run-stack-testing-vterm)
 
 ;; (defun my-little-message ()
 ;;   (interactive)
@@ -706,9 +706,9 @@
 ;;   (which-key-show-full-keymap (lookup-key (current-local-map) (kbd "C-c"))))
 
 ;; (haskell-mode-map)
-;; (evil-define-key 'monster 'haskell-stack-mode (kbd "C") '(lookup-key (current-local-map) (kbd "C-c")))
-;; (evil-define-key 'monster 'haskell-stack-mode (kbd "C") 'my-one-time-haskell-mode-c)
-;; (evil-define-key 'monster 'haskell-stack-mode (kbd "C") 'helm-M-x)
+;; (evil-define-key 'emacs 'haskell-stack-mode (kbd "C") '(lookup-key (current-local-map) (kbd "C-c")))
+;; (evil-define-key 'emacs 'haskell-stack-mode (kbd "C") 'my-one-time-haskell-mode-c)
+;; (evil-define-key 'emacs 'haskell-stack-mode (kbd "C") 'helm-M-x)
 
 (evil-define-key nil haskell-mode-map (kbd "C-c r") 'projectile-replace)
 ;; (evil-define-key nil haskell-mode-map (kbd "C-c i") 'haskell-interactive-switch)
@@ -719,14 +719,14 @@
 (evil-define-key nil haskell-mode-map (kbd "C-c C-, s") 'haskell-sort-imports)
 (evil-define-key nil haskell-mode-map (kbd "C-c C-, a") 'haskell-align-imports)
 
-(evil-define-key 'monster haskell-mode-map (kbd "o") 'haskell-hide-toggle)
-(evil-define-key 'monster haskell-mode-map (kbd "C-o") 'haskell-hide-toggle)
-(evil-define-key 'monster haskell-mode-map (kbd "M-o") 'haskell-hide-toggle)
+(evil-define-key 'emacs haskell-mode-map (kbd "o") 'haskell-hide-toggle)
+(evil-define-key 'emacs haskell-mode-map (kbd "C-o") 'haskell-hide-toggle)
+(evil-define-key 'emacs haskell-mode-map (kbd "M-o") 'haskell-hide-toggle)
 ;; TODO maybe this should be a prefix map for consistency?
-(evil-define-key 'monster haskell-mode-map (kbd "C-M-o") nil)
-(evil-define-key 'monster haskell-mode-map (kbd "C-M-o o") 'haskell-hide-toggle-all)
-(evil-define-key 'monster haskell-mode-map (kbd "C-M-o s") 'my-haskell-hs-show-all)
-(evil-define-key 'monster haskell-mode-map (kbd "C-M-o h") 'my-haskell-hs-hide-all)
+(evil-define-key 'emacs haskell-mode-map (kbd "C-M-o") nil)
+(evil-define-key 'emacs haskell-mode-map (kbd "C-M-o o") 'haskell-hide-toggle-all)
+(evil-define-key 'emacs haskell-mode-map (kbd "C-M-o s") 'my-haskell-hs-show-all)
+(evil-define-key 'emacs haskell-mode-map (kbd "C-M-o h") 'my-haskell-hs-hide-all)
 
 ;; haskell lookup hoogle?
 
@@ -738,7 +738,7 @@
 
 ;; (evil-define-key nil haskell-mode-map (kbd "C-c R") 'projectile-replace)
 
-;; (evil-define-key 'monster 'haskell-mode (kbd "D") 'helm-M-x)
+;; (evil-define-key 'emacs 'haskell-mode (kbd "D") 'helm-M-x)
 
 ;;   ---             -------
 
