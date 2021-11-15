@@ -15,15 +15,6 @@
 
 (define-key input-decode-map [?\C-m] [C-m])
 
-;; (evil-define-state monster
-;;   "Monster state."
-;;   :tag " <ж> "
-;;   :suppress-keymap t
-;;   ;; :entry-hook 'my-turn-on-transient-mark-mode
-;;   (message (if (evil-monster-state-p)
-;;                "Enabling monster state."
-;;                "Disabling monster state.")))
-
 ;; a
 (evil-global-set-key 'emacs (kbd "a") 'backward-paragraph)
                     
@@ -112,9 +103,9 @@
 ;; i
 (evil-global-set-key 'emacs (kbd "i") 'evil-insert-state)
 (evil-global-set-key 'emacs (kbd "<insertchar>") 'evil-insert-state)
-(evil-global-set-key 'insert (kbd "<insertchar>") 'evil-monster-state)
+(evil-global-set-key 'insert (kbd "<insertchar>") 'evil-emacs-state)
 (evil-global-set-key 'emacs (kbd "<insert>") 'evil-insert-state)
-(evil-global-set-key 'insert (kbd "<insert>") 'evil-monster-state)
+(evil-global-set-key 'insert (kbd "<insert>") 'evil-emacs-state)
 
 
 ;; I
@@ -541,7 +532,7 @@
 (global-set-key (kbd "C-S-y") 'yasnippet)
 
 ;; z
-(global-set-key (kbd "C-z") 'evil-monster-state)
+(global-set-key (kbd "C-z") 'evil-emacs-state)
 
 ;; Z
 
@@ -575,7 +566,7 @@
 (global-set-key (kbd "<end>") 'end-of-buffer)
 (global-set-key (kbd "<find>") 'search-forward)
 (global-set-key (kbd "<undo>") 'undo)
-(global-set-key (kbd "C-z") 'undo)
+;; (global-set-key (kbd "C-z") 'undo)
 
 (evil-global-set-key 'emacs  (kbd "%") 'query-replace)
 
@@ -916,6 +907,6 @@
 
 ;; (define-key evil-normal-state-map (kbd "SPC") nil)
 ;; (define-key evil-monster-state-map (kbd "SPC") nil)
-;; (define-key evil-monster-state-map (kbd "<SPC>") 'set-mark-command)
+(define-key evil-emacs-state-map (kbd "<SPC>") 'set-mark-command)
 
 (provide 'bindings)

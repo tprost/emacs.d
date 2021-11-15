@@ -1,6 +1,6 @@
 #+CATEGORY: Emacs
 
-* TODO [#A] fix weird issue can't select text in monster moode
+* DONE [#A] fix weird issue can't select text in monster moode
 * TODO [#A] emacs functions for Haskell refactor tool thing :haskell:
 * TODO [#A] setup flycheck and keybindings
 * TODO [#A] Haskell mode bindings :haskell:
