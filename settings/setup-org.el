@@ -4,6 +4,9 @@
 
 (require 'init-org-drill)
 
+(add-hook 'org-mode-hook #'evil-local-mode)
+
+
 (defun org-git-version ()
   "The Git version of org-mode.
 Inserted by installing org-mode or when a release is made."

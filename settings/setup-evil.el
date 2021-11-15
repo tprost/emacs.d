@@ -6,6 +6,4 @@
 (require 'evil-repeat)
 (require 'evil-core)
 
-(evil-mode 1)
-
 (provide 'setup-evil)

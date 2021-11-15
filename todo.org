@@ -117,3 +117,4 @@ asdasdasd
 * DONE C-x w hotkeys
 * DONE make-frame hotkey
 * DONE hideshow bindings
+* TODO figure out "stage all unstaged changes" in magit mode binding
