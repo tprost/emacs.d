@@ -785,15 +785,8 @@
 
 ;; C-c M-g         magit-file-dispatch
 
-
-
-
-
-
-
-
-;; (evil-set-initial-state 'magit-mode 'insert)
-;; (evil-set-initial-state 'magit-status-mode 'insert)
+(evil-set-initial-state 'magit-mode 'motion)
+(evil-set-initial-state 'magit-status-mode 'motion)
 
 ;; ;; ;; ;; kill buffer backwards
 ;; ;; ;; (global-set-key (kbd "M-S-<backspace>") 'crux-kill-line-backwards)
