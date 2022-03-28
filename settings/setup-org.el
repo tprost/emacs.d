@@ -1,5 +1,11 @@
 ;; hack to make straight.el load newest org-mode
 (require 'subr-x)
+
+;; (package! org-plus-contrib
+;;   :recipe (:host github :repo "rougier/nano-modeline"))
+
+(straight-use-package 'org)
+(straight-use-package 'org-contrib)
 (straight-use-package 'git)
 
 (require 'init-org-drill)
@@ -35,7 +41,7 @@ Inserted by installing org-mode or when a release is made."
 
 (provide 'org-version)
 
-(straight-use-package 'org-plus-contrib)
+;; (straight-use-package 'org-plus-contrib)
 
 ;; customizations
 
