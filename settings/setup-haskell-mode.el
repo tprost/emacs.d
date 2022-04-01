@@ -4,17 +4,16 @@
 
 (require 'lsp-haskell)
 
-;; Hooks so haskell and literate haskell major modes trigger LSP setup
-(add-hook 'haskell-mode-hook #'lsp)
-(add-hook 'haskell-literate-mode-hook #'lsp)
+;; ;; Hooks so haskell and literate haskell major modes trigger LSP setup
+(add-hook 'haskell-mode-hook #'lsp-deferred)
+;; ;; (add-hook 'haskell-mode-hook #'lsp)
+;; ;; (add-hook 'haskell-literate-mode-hook #'lsp)
 
 (defun my-haskell-mode-hook ()
+  (set-fill-column 90)
   (evil-local-mode))
 
 (add-hook 'haskell-mode-hook #'my-haskell-mode-hook)
-
-          
-
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
 ;; (add-to-list 'company-backends 'company-ghc)

@@ -32,7 +32,6 @@
 (require 'init-helm)
 (require 'init-projectile)
 (require 'init-company-mode)
-(require 'init-lsp-mode)
 (require 'init-magit)
 
 (require 'init-dired)
@@ -129,7 +128,7 @@
 
 
 (straight-use-package 'pony-mode)
-(straight-use-package 'vterm)
+;; (straight-use-package 'vterm)
 
 (defun projectile-run-vterm-dwim (commands &optional name)
  "Create project level vterm and run given command. If buffer with name
@@ -179,12 +178,26 @@
 
 (add-to-list 'load-path "~/.emacs.d/settings")
 
+(straight-use-package 'direnv)
+(straight-use-package 'nix-mode)
+(straight-use-package 'lookup)
+
+(load "lookup-autoloads")
+(setq lookup-default-dictionary-options
+'())
+(setq lookup-search-agents nil)
+      
+
+(direnv-mode)
+
 (require 'init-appearance)
 
 (require 'setup-evil)
 (require 'setup-org)
 (require 'setup-haskell-mode)
 (require 'setup-yasnippet)
+(require 'setup-lsp-mode)
+(require 'setup-markdown-mode)
 (require 'setup-haskell-mode)
 (require 'setup-restclient)
 
@@ -196,4 +209,25 @@
 
 (load-file (expand-file-name "custom.el" user-emacs-directory))
 
+
+
 ;; (global-set-key (kbd "M-`") 'other-window)
+
+
+
+
+
+
+(defun look-up-in-goldendict (word)
+  (start-process "goldendict" nil "goldendict" word)
+  )
+
+(defun look-up-region-in-goldendict ()
+  (interactive)
+  (let ((word ""))
+    (if (equal major-mode 'pdf-view-mode)
+        (setq word (car (pdf-view-active-region-text)))
+      (setq word  (buffer-substring (mark) (point))))
+    (look-up-in-goldendict word)
+    )
+  )

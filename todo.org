@@ -118,3 +118,7 @@ asdasdasd
 * DONE make-frame hotkey
 * DONE hideshow bindings
 * TODO figure out "stage all unstaged changes" in magit mode binding
+
+* TODO make sure org mode org-level-1 .. org-level-4 faces are height 1.0
+
+* TODO ligatures only in haskell mode, not in markdown mode

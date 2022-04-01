@@ -3,7 +3,7 @@
 (straight-use-package 'ansi-color)
 (straight-use-package 'beacon)
 
-(straight-use-package 'darktooth-theme)
+(straight-use-package 'monokai-theme)
 
 (setq default-frame-alist
       (append (list
@@ -24,16 +24,15 @@
 (setq-default display-fill-column-indicator-character ?⬝)
 
 (set-face-attribute 'default nil :font (reverse "81 agiL onoM orPatamgarP"))
-(if (eq system-type 'darwin)
-    (set-face-attribute 'default nil :font (reverse "61 agiL onoM orPatamgarP"))  
-)
+(if (string= (system-name) "zeus")
+    (set-face-attribute 'default nil :font (reverse "21 agiL onoM orPatamgarP")))
 
-(load-theme 'darktooth t)
+(load-theme 'monokai t)
 
 
 (face-attribute 'mode-line :background)
 (face-attribute 'mode-line :foreground)
-(face-attribute 'default :background)
+;; (face-attribute 'default :background)
 
 (setq window-header-line-height 40)
 (setq window-divider-default-places 'right-only)
@@ -42,7 +41,7 @@
 ;; (setq x-underline-at-descent-line t)
 
 (setq window-divider-default-right-width 24)
-(face-attribute 'default :background)
+;; (face-attribute 'default :background)
 
 (window-divider-mode 1)
 
