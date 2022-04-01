@@ -1,22 +1,22 @@
-(defun tprost-kill-to-end-of-buffer ()
+(defun my-kill-to-end-of-buffer ()
   "Kill to end of buffer."
 (interactive)
 (set-mark (point))
 (end-of-buffer)
 (kill-region (region-beginning) (region-end)))
 
-(defun tprost-kill-to-beginning-of-buffer ()
+(defun my-kill-to-beginning-of-buffer ()
   "Kill to beginning of buffer."
 (interactive)
 (set-mark (point))
 (beginning-of-buffer)
 (kill-region (region-beginning) (region-end)))
 
-(defun tprost-helm-for-dir (project-dir)
+(defun my-helm-for-dir (project-dir)
   (let ((default-directory project-dir))
     (helm-projectile-find-file)))
 
-(defun tprost-open-snippets-dwim ()
+(defun my-open-snippets-dwim ()
     "Go to whatever snippets directory is most likely to be the one I want."
     (interactive)
     (let ((major-mode-snippet-directory (concat (file-name-directory "~/.emacs.d/snippets/") (symbol-name major-mode))))
@@ -24,34 +24,34 @@
           (dired major-mode-snippet-directory)
         (dired (file-name-directory "~/.emacs.d/snippets/")))))
 
-(defun tprost-init-file ()
+(defun my-init-file ()
     "Go straight to my init file."
     (interactive)
     (find-file "~/.emacs.d/init.el"))
 
-(defun tprost-init-todo-file ()
+(defun my-init-todo-file ()
     "Go straight to my init TODO file."
     (interactive)
     (find-file "~/.emacs.d/todo.org"))
 
-(defun tprost-init-file-for-major-mode ()
+(defun my-init-file-for-major-mode ()
   "Go to init file for current major mode."
   (interactive)
   (let ((major-mode-init-file (concat (file-name-directory "~/.emacs.d/init/") "init-" (symbol-name major-mode) ".el")))
     (find-file major-mode-init-file)))
 
-(defun tprost-find-emacsd-file ()
+(defun my-find-emacsd-file ()
   "Go to my .emacs.d and run helm-projectile-find-file."
   (interactive)
-  (tprost-helm-for-dir "~/.emacs.d"))
+  (my-helm-for-dir "~/.emacs.d"))
 
-(defun tprost-init-directory ()
+(defun my-init-directory ()
   "Go to my ~/.emacs.d/init."
   (interactive)
   (dired (file-name-directory "~/.emacs.d/init/")))
 
 ;; https://www.emacswiki.org/emacs/FindBuffer
-(defun tprost-find-pet-buffer (prompt match how do-this name)
+(defun my-find-pet-buffer (prompt match how do-this name)
   "find pet buffer or create it if not found.
     Looks for a buffer with name matching 'match'.
     If it can't find such a buffer, it asks the user for exact
@@ -65,15 +65,15 @@
       (switch-to-buffer (find-my-lost-buffer match (buffer-list)))
       (end-of-buffer))))
 
-(defun tprost-find-compilation-buffer ()
+(defun my-find-compilation-buffer ()
   (interactive)
-  (tprost-find-pet-buffer "compile" "\*compilation" "make" 'compile nil))
+  (my-find-pet-buffer "compile" "\*compilation" "make" 'compile nil))
 
 
 
 ;;set frame full height and 86 columns wide
 ;;and position at screen right
-(defun tprost-resize-frame-for-coding-layout ()
+(defun my-resize-frame-for-coding-layout ()
   "set frame full height and 86 columns wide and position at screen right"
   (interactive)
   (set-frame-width (selected-frame) (+ 96 76))
@@ -84,34 +84,34 @@
   ;; (set-frame-position (selected-frame) (- (display-pixel-width) (frame-pixel-width)) 0)
   )
 
-(defun tprost-project-term ()
+(defun my-project-term ()
   (interactive)
   (projectile-run-term nil)
   )
 
-(defun tprost-project-layout ()
+(defun my-project-layout ()
   "Set up frame size and windows for coding!"
   (interactive)
-  (tprost-resize-frame-for-coding-layout)
+  (my-resize-frame-for-coding-layout)
   (delete-other-windows)
   (split-window-horizontally)
-  (tprost-find-pet-buffer "compile" "\*compilation" "make" 'compile nil)
+  (my-find-pet-buffer "compile" "\*compilation" "make" 'compile nil)
   (purpose-toggle-window-purpose-dedicated)
   (other-window 1)
   (enlarge-window-horizontally 12)
   (window-configuration-to-register ?c)
 )
 
-(defun tprost-open-my-emacs-file ()
+(defun my-open-my-emacs-file ()
   (interactive)
   ;;; Place your code below this line, but inside the bracket.
   (find-file "~/.emacs.d/init.el"))
 
-(defun tprost-open-my-japanese-file ()
+(defun my-open-my-japanese-file ()
   (interactive)
   (find-file "~/org/drill/japanese/drill.org"))
 
-(defun tprost-open-computer-science-drill-directory ()
+(defun my-open-computer-science-drill-directory ()
   (interactive)  
   (dired "~/org/drill/computer-science"))
 
@@ -128,9 +128,9 @@ With prefix arg, find the previous file."
                      (length files))))
       (find-file (nth pos files)))))
 
-(defun tprost-drill-computer-science ()
+(defun my-drill-computer-science ()
   (interactive)
-  (tprost-open-computer-science-drill-directory)
+  (my-open-computer-science-drill-directory)
   (find-file "algorithms.org")
   (org-drill 'directory))
 
@@ -149,19 +149,19 @@ With prefix arg, find the previous file."
 
 ;; (require 'xah-lookup)
 
-;; (defun tprost-lookup-japanese-wiktionary (&optional @word)
+;; (defun my-lookup-japanese-wiktionary (&optional @word)
 ;;   "Lookup definition of current word or text selection in URL `https://ja.wiktionary.org/'
 ;; Version 2017-02-09"
 ;;   (interactive)
 ;;   (xah-lookup-word-on-internet
 ;;    @word
-;;    (get 'tprost-lookup-japanese-wiktionary 'xah-lookup-url )
-;;    (get 'tprost-lookup-japanese-wiktionary 'xah-lookup-browser-function )))
+;;    (get 'my-lookup-japanese-wiktionary 'xah-lookup-url )
+;;    (get 'my-lookup-japanese-wiktionary 'xah-lookup-browser-function )))
 
-;; (put 'tprost-lookup-japanese-wiktionary 'xah-lookup-url "https://ja.wiktionary.org/wiki/word02051")
-;; (put 'tprost-lookup-japanese-wiktionary 'xah-lookup-browser-function xah-lookup-browser-function)
+;; (put 'my-lookup-japanese-wiktionary 'xah-lookup-url "https://ja.wiktionary.org/wiki/word02051")
+;; (put 'my-lookup-japanese-wiktionary 'xah-lookup-browser-function xah-lookup-browser-function)
 
-;; (defun tprost-parse-japanese-wiktionary (&optional @word)
+;; (defun my-parse-japanese-wiktionary (&optional @word)
 ;;   "Hit https://ja.wiktionary.org and parse the contents"
   
 ;; (with-current-buffer (url-retrieve-synchronously "https://ja.wiktionary.org/wiki/test")
@@ -172,6 +172,6 @@ With prefix arg, find the previous file."
 
 
 
-;; (load "~/.emacs.d/tprost.el")
+;; (load "~/.emacs.d/my.el")
 ;; (load "~/.emacs.d/dictionary-api.el")
 ;; ;; GNU Emac
