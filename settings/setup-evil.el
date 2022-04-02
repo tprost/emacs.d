@@ -1,6 +1,6 @@
 (straight-use-package 'evil)
 
-(setq evil-default-state 'emacs)
+(setq evil-default-state 'insert)
 (setq evil-move-beyond-eol t)
 
 (require 'evil-repeat)

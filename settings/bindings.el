@@ -559,8 +559,11 @@
 ;; (global-set-key (kbd "C-[") 'my-open-line-above)
 ;; (global-set-key (kbd "C-]") 'my-open-line-below)
 
-
+;; <SPC>
 (evil-global-set-key 'emacs  (kbd "SPC") 'set-mark-command)
+(global-set-key (kbd "C-SPC") 'my-toggle-evil-mode)
+
+
 (global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
 (global-set-key (kbd "<home>") 'beginning-of-buffer)
 (global-set-key (kbd "<end>") 'end-of-buffer)
@@ -913,5 +916,9 @@
 (global-set-key (kbd "C-h C-l") 'helm-locate-library)
 
 (global-set-key (kbd "TAB") 'company-complete)
+
+(defhydra hydra-startup (global-map "C-x C-x x")
+  "What would like to do?"
+  ("j" my-open-my-japanese-file "japanese"))
 
 (provide 'bindings)

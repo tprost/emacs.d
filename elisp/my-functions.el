@@ -175,3 +175,5 @@ With prefix arg, find the previous file."
 ;; (load "~/.emacs.d/my.el")
 ;; (load "~/.emacs.d/dictionary-api.el")
 ;; ;; GNU Emac
+
+(provide 'my-functions)

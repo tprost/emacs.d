@@ -43,4 +43,9 @@
 
 ;; (setq explicit-shell-file-name "/bin/bash")
 
+(setq inhibit-startup-screen t)
+(setq initial-buffer-choice nil)
+
+
+
 (provide 'setup-miscellaneous)

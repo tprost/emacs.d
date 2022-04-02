@@ -15,6 +15,10 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 (add-to-list 'load-path "~/.emacs.d/settings")
+(add-to-list 'load-path "~/.emacs.d/elisp")
+
+(require 'my-functions)
+(require 'my-dictionary-functions)
 
 (require 'setup-defaults)
 (require 'setup-helm)
@@ -22,7 +26,6 @@
 (require 'setup-company-mode)
 (require 'setup-magit)
 (require 'setup-dired)
-(require 'setup-miscellaneous)
 ;; (require 'setup-term-mode)
 ;; (require 'setup-defaults)
 ;; (require 'setup-exec-path-from-shell)
@@ -75,13 +78,15 @@
 (require 'setup-markdown-mode)
 (require 'setup-haskell-mode)
 (require 'setup-restclient)
+
+(require 'setup-miscellaneous)
 (require 'editing)
 (require 'stack)
 (require 'bindings)
 
 (load-file (expand-file-name "custom.el" user-emacs-directory))
 
-
+(hydra-startup/body)
 
 ;; (global-set-key (kbd "M-`") 'other-window)
 
