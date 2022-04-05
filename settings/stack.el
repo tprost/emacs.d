@@ -1,4 +1,4 @@
-(require 'vterm)
+;; (require 'vterm)
 
 (defun my-projectile-run-stack-testing-vterm ()
   (interactive)
