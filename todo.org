@@ -1,5 +1,18 @@
 #+CATEGORY: Emacs
 
+
+* TODO find a project "set up" system
+** Django Projects
+- Start docker compose up in a shell
+- Start the local server (.venv)
+- Be able to run unit tests (.venv)
+- Be able to run BDD tests (.venv)
+- Reproduce it across MacOS and linux? 
+- Shell for running manage.py commands?
+** Go Projects
+- Start docker compose
+
+
 * DONE [#A] fix weird issue can't select text in monster moode
 * TODO [#A] emacs functions for Haskell refactor tool thing :haskell:
 * TODO [#A] setup flycheck and keybindings

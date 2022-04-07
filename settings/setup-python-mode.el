@@ -24,7 +24,10 @@
     (electric-newline-and-maybe-indent)))
 
 (require 'lsp-python-ms)
-(setq lsp-python-ms-auto-install-server t)
+
+;; TODO
+(setq lsp-python-ms-auto-install-server nil)
+
 (add-hook 'python-mode-hook #'lsp) ; or lsp-deferred
 
  (add-to-list 'lsp-disabled-clients 'pyls)
