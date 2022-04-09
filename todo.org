@@ -1,17 +1,31 @@
 #+CATEGORY: Emacs
 
+* Projectile, Layout, Project Terminals and Shell Commands
+** TODO Prompt to fire up project vterm buffers, docker, etc. when entering appropriate project
+** TODO [#A] shortcut to go to projectile vterm with helm? quick keybindings to 1-9? 
+*** TODO projectile level mapping of vterm identifiers and the command we should run
+*** TODO projectile vterms should be configured to have run command?
 
-* TODO find a project "set up" system
-** Django Projects
+** DONE Function to start a projectile vterm shell with a particular buffer name with command
+my-projectile-run-vterm-dwim
+** TODO Function to start a general purpose vterm shell with a particular buffer name with command?
+** TODO Function to run command in existing vterm buffer
+** TODO My Django Projects
+
+*** TODO use .venv automatically for shell and one-off projectile shell commands
 - Start docker compose up in a shell
 - Start the local server (.venv)
 - Be able to run unit tests (.venv)
 - Be able to run BDD tests (.venv)
 - Reproduce it across MacOS and linux? 
 - Shell for running manage.py commands?
-** Go Projects
+** TODO My Go Projects
 - Start docker compose
+** TODO My Haskell Projects :haskell:
+** TODO My Ruby Projects
+** TODO My Emacs.d
 
+* TODO get lsp mode working for elisp :elisp:
 
 * DONE [#A] fix weird issue can't select text in monster moode
 * TODO [#A] emacs functions for Haskell refactor tool thing :haskell:
@@ -135,3 +149,5 @@ asdasdasd
 * TODO make sure org mode org-level-1 .. org-level-4 faces are height 1.0
 
 * TODO ligatures only in haskell mode, not in markdown mode
+
+* TODO editorconfig

@@ -17,8 +17,11 @@
 (add-to-list 'load-path "~/.emacs.d/settings")
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
-(require 'my-functions)
 (require 'my-dictionary-functions)
+(require 'my-editing)
+(require 'my-functions)
+(require 'my-projectile)
+(require 'my-python-functions)
 
 (require 'setup-defaults)
 (require 'setup-helm)
@@ -80,7 +83,6 @@
 (require 'setup-restclient)
 
 (require 'setup-miscellaneous)
-(require 'editing)
 (require 'stack)
 (require 'bindings)
 

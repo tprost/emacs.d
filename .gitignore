@@ -32,3 +32,5 @@ transient
 /persist/
 snippets
 recentf~
+backup/*
+backup

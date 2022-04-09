@@ -499,6 +499,8 @@
   ("s" shrink-frame-horizontally "shrink-frame-horizontally")
   ("w" hydra-window-management/body "window"))
 
+(global-set-key (kbd "M-ESC") 'other-frame)
+
 (define-prefix-command 'my-emacs-d-map)
 (define-key my-emacs-d-map (kbd "t") #'my-emacs-todo-file)
 (define-key my-x-map (kbd "e") my-emacs-d-map)
@@ -561,7 +563,8 @@
 
 ;; <SPC>
 (evil-global-set-key 'emacs  (kbd "SPC") 'set-mark-command)
-(global-set-key (kbd "C-SPC") 'my-toggle-evil-mode)
+(global-set-key (kbd "M-SPC") 'my-toggle-evil-mode)
+(global-set-key (kbd "C-SPC") 'set-mark-command)
 
 
 (global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)

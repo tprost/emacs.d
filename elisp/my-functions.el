@@ -58,12 +58,12 @@
     command line for command 'do-this', and then does that.
 
     If name is nil, ignore, else rename buffer to name."
-  (if (null (find-my-lost-buffer match (buffer-list)))
+  (if (null (my-find-my-lost-buffer match (buffer-list)))
       (let ((compilation-buffer-name-function (lambda (dummy) name)))
-        (funcall do-this (ask-how prompt how)))
+        (funcall do-this (my-ask-how prompt how)))
     (progn
-      (switch-to-buffer (find-my-lost-buffer match (buffer-list)))
-      (end-of-buffer))))
+      (switch-to-buffer (my-find-my-lost-buffer match (buffer-list)))
+      (end-of-buffer)))) 
 
 (defun my-find-compilation-buffer ()
   (interactive)
@@ -95,8 +95,8 @@
   (my-resize-frame-for-coding-layout)
   (delete-other-windows)
   (split-window-horizontally)
-  (my-find-pet-buffer "compile" "\*compilation" "make" 'compile nil)
-  (purpose-toggle-window-purpose-dedicated)
+  ;; (my-find-pet-buffer "compile" "\*compilation" "make" 'compile nil)
+  ;; (purpose-toggle-window-purpose-dedicated)
   (other-window 1)
   (enlarge-window-horizontally 12)
   (window-configuration-to-register ?c)
