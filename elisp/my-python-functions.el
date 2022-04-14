@@ -19,7 +19,7 @@
 	    (define-key map (kbd "d") 'my-project-docker-compose)
 	    (define-key map (kbd "r") 'my-project-django-runserver)	    
 	    map)
-  :after-hook (my-django-project-setup)
+  ;; :after-hook (my-django-project-setup)
    )
 
 (defun my-project-docker-compose ()

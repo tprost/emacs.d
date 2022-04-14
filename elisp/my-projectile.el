@@ -23,7 +23,7 @@
 	(eq (projectile-project-type) 'python-pip))
 
 (defun my-projectile-after-switch-project-hook ()	
-	(when (my--is-project-django) (my-setup-django-project))
+	(when (my--is-project-django) (my-django-project=setup))
 	(message (symbol-name (projectile-project-type))))
 
 ;; (add-hook 'projectile-mode-hook 'my-projectile-ide-hook)

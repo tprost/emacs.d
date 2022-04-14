@@ -91,9 +91,9 @@ Inserted by installing org-mode or when a release is made."
          "* TODO %?\n  %i\n  %a")
         ("e" "Emacs Todo" entry (file "~/.emacs.d/todo.org")
          "* TODO %?")
-        ("l" "Journal" entry (file+datetree "~/taylor/journal.org")
+        ("l" "Journal" entry (file+datetree "~/org/journal/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")
-        ("j" "Japanese" entry (file "~/taylor/drill/japanese/drill.org")
+        ("j" "Japanese" entry (file "~/org/drill/japanese/drill.org")
          (file "~/.emacs.d/drill/japanese.org"))))
 
 ;; (straight-use-package 'org-drill)

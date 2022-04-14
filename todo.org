@@ -151,3 +151,19 @@ asdasdasd
 * TODO ligatures only in haskell mode, not in markdown mode
 
 * TODO editorconfig
+
+* Japanese Drill Process
+
+** TODO function to create a definition for word with goldendict
+** TODO binding for goldendict lookup
+** TODO binding for quick japanese org capture?
+** TODO automatically add spacing between each item
+** TODO hide square brackets on showing answer?
+It'd be nice to be able to lookup stuff without going back to edit mode.
+Maybe allow cursor navigation?
+** TODO kanji drill mode with stroke order font
+** TODO experiment with better looking Japanese font (Mincho)
+
+
+
+
