@@ -1,16 +1,16 @@
 #+CATEGORY: emacs
 
+* DONE add nixos configuration to TODO file
 * DONE todo aggregation shortcut and startup hotkey
 * DONE do I really need evil mode?
 
-* DONE add nixos configuration to TODO file
 * TODO org mode visual line mode
 * TODO how do we organize various scripts for local dev? Makefile?
 
 * Projectile, Layout, Project Terminals and Shell Commands
 ** TODO Prompt to fire up project vterm buffers, docker, etc. when entering appropriate project
 ** TODO [#A] shortcut to go to projectile vterm with helm? quick keybindings to 1-9? 
-*** TODO projectile level mapping of vterm identifiers and the command we should run
+** TODO projectile level mapping of vterm identifiers and the command we should run
 *** TODO projectile vterms should be configured to have run command?
 
 ** DONE Function to start a projectile vterm shell with a particular buffer name with command
