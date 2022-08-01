@@ -122,4 +122,42 @@ Inserted by installing org-mode or when a release is made."
 (set-face-attribute 'org-tag nil :foreground darktooth-neutral-purple)
 (set-face-attribute 'org-headline-done nil :foreground darktooth-neutral-aqua)
 
+(defvar auto-minor-mode-alist ()
+  "Alist of filename patterns vs correpsonding minor mode functions, see `auto-mode-alist'
+All elements of this alist are checked, meaning you can enable multiple minor modes for the same regexp.")
+
+(defun enable-minor-mode-based-on-extension ()
+  "Check file name against `auto-minor-mode-alist' to enable minor modes
+the checking happens for all pairs in auto-minor-mode-alist"
+  (when buffer-file-name
+    (let ((name (file-name-sans-versions buffer-file-name))
+          (remote-id (file-remote-p buffer-file-name))
+          (case-fold-search auto-mode-case-fold)
+          (alist auto-minor-mode-alist))
+      ;; Remove remote file name identification.
+      (when (and (stringp remote-id)
+                 (string-match-p (regexp-quote remote-id) name))
+        (setq name (substring name (match-end 0))))
+      (while (and alist (caar alist) (cdar alist))
+        (if (string-match-p (caar alist) name)
+            (funcall (cdar alist) 1))
+        (setq alist (cdr alist))))))
+
+(add-hook 'find-file-hook #'enable-minor-mode-based-on-extension)
+
+(setq my-org-todo-mode-map (make-sparse-keymap))
+
+(define-minor-mode my-org-todo-mode
+  "For org files with giant lists of TODO items."
+	:keymap my-org-todo-mode-map
+  :lighter " ☑")
+
+(add-to-list 'auto-minor-mode-alist '("\\todo.org\\'" . my-org-todo-mode))
+
+(defun my-org-todo-file-cleanup ()
+	(interactive)
+	(mark-whole-buffer)
+	(org-sort-entries nil ?o))
+
+
 (provide 'setup-org)

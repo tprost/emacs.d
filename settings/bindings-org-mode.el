@@ -40,4 +40,6 @@
 ;; TODO everything in the manual from
 ;; https://orgmode.org/manual/Sparse-Trees.html
 
+(define-key my-org-todo-mode-map (kbd "<f1>") 'my-org-todo-file-cleanup)
+
 (provide 'bindings-org-mode)

@@ -196,8 +196,8 @@
 ;; O
 ;; (evil-global-set-key 'emacs  (kbd "O") 'er/expand-region)
 ;; (evil-global-set-key 'emacs  (kbd "M-S-o") 'er/contract-region)
-(global-set-key (kbd "C-o") 'er/expand-region)
-(global-set-key (kbd "C-S-o") 'er/contract-region)
+(global-set-key (kbd "C-@") 'er/expand-region)
+(global-set-key (kbd "M-@") 'er/contract-region)
 
 
 ;; p
@@ -569,7 +569,7 @@
 (global-set-key (kbd "M-%") 'query-replace-regexp)
 (global-set-key (kbd "H-%") 'lsp-rename)
 
-(global-set-key (kbd "<f1>") 'save-buffer)
+(global-set-key (kbd "<f1>") 'crux-cleanup-buffer-or-region)
 (global-set-key (kbd "<f2>") 'revert-buffer)
 (global-set-key (kbd "<f3>") 'kmacro-start-macro-or-insert-counter)
 (global-set-key (kbd "<f4>") 'kmacro-end-or-call-macro)

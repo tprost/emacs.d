@@ -1,47 +1,15 @@
 #+CATEGORY: emacs
 
-* DONE add nixos configuration to TODO file
-* DONE todo aggregation shortcut and startup hotkey
-* DONE do I really need evil mode?
-
 * TODO org mode visual line mode
 * TODO how do we organize various scripts for local dev? Makefile?
 
-* Projectile, Layout, Project Terminals and Shell Commands
-** TODO Prompt to fire up project vterm buffers, docker, etc. when entering appropriate project
-** TODO [#A] shortcut to go to projectile vterm with helm? quick keybindings to 1-9? 
-** TODO projectile level mapping of vterm identifiers and the command we should run
-*** TODO projectile vterms should be configured to have run command?
-
-** DONE Function to start a projectile vterm shell with a particular buffer name with command
-my-projectile-run-vterm-dwim
-** TODO Function to start a general purpose vterm shell with a particular buffer name with command?
-** TODO Function to run command in existing vterm buffer
-** TODO My Django Projects
-
-*** TODO use .venv automatically for shell and one-off projectile shell commands
-- Start docker compose up in a shell
-- Start the local server (.venv)
-- Be able to run unit tests (.venv)
-- Be able to run BDD tests (.venv)
-- Reproduce it across MacOS and linux? 
-- Shell for running manage.py commands?
-** TODO My Go Projects
-- Start docker compose
-** TODO My Haskell Projects :haskell:
-** TODO My Ruby Projects
-** TODO My Emacs.d
-
 * TODO get lsp mode working for elisp :elisp:
 
-* DONE [#A] fix weird issue can't select text in monster moode
 * TODO [#A] emacs functions for Haskell refactor tool thing :haskell:
 * TODO [#A] setup flycheck and keybindings
 * TODO [#A] Haskell mode bindings :haskell:
 * TODO [#A] work through the rest of org mode functions and bindings :org:
 
-* DONE [#B] set up bindings for rectangle commands
-http://haskell.github.io/haskell-mode/manual/latest/Rectangular-commands.html#Rectangular-commands
 * TODO make sure projectile doesn't search through a million unnecessary lisp files
 * TODO cleanup file structure in .emacs.d
 
@@ -91,10 +59,73 @@ http://haskell.github.io/haskell-mode/manual/latest/Aligning-code.html#Aligning-
 * TODO elisp binding hydra yasnippet?
 * TODO macro to set up frame and window for emacs editing?
 * TODO enlalrge frame to two window units size macro
-* DONE insert mode automatic on org capture mode not working
+* TODO figure out "stage all unstaged changes" in magit mode binding
+
+* TODO make sure org mode org-level-1 .. org-level-4 faces are height 1.0 :org:
+
+* TODO ligatures only in haskell mode, not in markdown mode :appearance:
+
+* TODO editorconfig
+
+* TODO function to create a definition for word with goldendict :japanese:
+* TODO binding for goldendict lookup :japanese:
+* TODO binding for quick japanese org capture? :japanese:
+* TODO automatically add spacing between each item :japanese:
+* TODO hide square brackets on showing answer? :japanese:
+It'd be nice to be able to lookup stuff without going back to edit mode.
+Maybe allow cursor navigation?
+* TODO kanji drill mode with stroke order font :japanese:
+* TODO experiment with better looking Japanese font (Mincho) :japanese:
+
+* TODO get python lsp working for all projects :python:
+* TODO direnv for python projects :python: :direnv:
+
+* TODO org-table-align binding :org: :binding:
+* TODO org mode tag faces doesn't work for multiple tags :org: :appearance:
+* TODO org mode hyper key :org:
+
+* TODO projectile file ignore list :projectile:
+* TODO make-frame binding :binding:
+* Projectile, Layout, Project Terminals and Shell Commands
+** TODO Prompt to fire up project vterm buffers, docker, etc. when entering appropriate project
+** TODO [#A] shortcut to go to projectile vterm with helm? quick keybindings to 1-9? 
+** TODO projectile level mapping of vterm identifiers and the command we should run
+*** TODO projectile vterms should be configured to have run command?
+
+** DONE Function to start a projectile vterm shell with a particular buffer name with command
+my-projectile-run-vterm-dwim
+** TODO Function to start a general purpose vterm shell with a particular buffer name with command?
+** TODO Function to run command in existing vterm buffer
+** TODO My Django Projects
+
+*** TODO use .venv automatically for shell and one-off projectile shell commands
+- Start docker compose up in a shell
+- Start the local server (.venv)
+- Be able to run unit tests (.venv)
+- Be able to run BDD tests (.venv)
+- Reproduce it across MacOS and linux? 
+- Shell for running manage.py commands?
+** TODO My Go Projects
+- Start docker compose
+** TODO My Haskell Projects :haskell:
+** TODO My Ruby Projects
+** TODO My Emacs.d
+
 * golang
 ** DONE fix lsp mode so it starts automatically
 ** DONE fix the goddamn C-M-j binding 
+* DONE [#A] yasnippet for Haskell :haskell: :yasnippet:
+* DONE only show function keys on specific applications (Emacs)
+* DONE mark buffer should have a binding that isn't c-c h
+
+* DONE add nixos configuration to TODO file
+* DONE todo aggregation shortcut and startup hotkey
+* DONE do I really need evil mode?
+
+* DONE [#A] fix weird issue can't select text in monster moode
+* DONE [#B] set up bindings for rectangle commands
+http://haskell.github.io/haskell-mode/manual/latest/Rectangular-commands.html#Rectangular-commands
+* DONE insert mode automatic on org capture mode not working
 * DONE dedicated restclient buffer for project (.restclient)
 .restclient files should automatically start into restclient mode
 
@@ -103,9 +134,6 @@ http://haskell.github.io/haskell-mode/manual/latest/Aligning-code.html#Aligning-
 
 * DONE better org mode tag color :org:
 * DONE haskell hide mode show all function
-* DONE [#A] yasnippet for Haskell :haskell: :yasnippet:
-* DONE only show function keys on specific applications (Emacs)
-* DONE mark buffer should have a binding that isn't c-c h
 
 * DONE [#A] lsp bindings?
 what lsp prefix do I use?
@@ -151,30 +179,3 @@ asdasdasd
 * DONE C-x w hotkeys
 * DONE make-frame hotkey
 * DONE hideshow bindings
-* TODO figure out "stage all unstaged changes" in magit mode binding
-
-* TODO make sure org mode org-level-1 .. org-level-4 faces are height 1.0 :org:
-
-* TODO ligatures only in haskell mode, not in markdown mode :appearance:
-
-* TODO editorconfig
-
-* TODO function to create a definition for word with goldendict :japanese:
-* TODO binding for goldendict lookup :japanese:
-* TODO binding for quick japanese org capture? :japanese:
-* TODO automatically add spacing between each item :japanese:
-* TODO hide square brackets on showing answer? :japanese:
-It'd be nice to be able to lookup stuff without going back to edit mode.
-Maybe allow cursor navigation?
-* TODO kanji drill mode with stroke order font :japanese:
-* TODO experiment with better looking Japanese font (Mincho) :japanese:
-
-* TODO get python lsp working for all projects :python:
-* TODO direnv for python projects :python: :direnv:
-
-* TODO org-table-align binding :org: :binding:
-* TODO org mode tag faces doesn't work for multiple tags :org: :appearance:
-* TODO org mode hyper key :org:
-
-* TODO projectile file ignore list :projectile:
-* TODO make-frame binding :binding:
