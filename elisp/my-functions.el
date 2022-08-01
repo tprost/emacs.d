@@ -12,6 +12,11 @@
 (beginning-of-buffer)
 (kill-region (region-beginning) (region-end)))
 
+(defun my-start-or-stop-kmacro ()
+  "Start a kmacro unless one is already being recorded, in which case stop recording."
+  (interactive)
+  (if defining-kbd-macro (kmacro-end-macro nil) (kmacro-start-macro nil)))
+
 (defun my-helm-for-dir (project-dir)
   (let ((default-directory project-dir))
     (helm-projectile-find-file)))

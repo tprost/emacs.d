@@ -17,21 +17,21 @@
 
 ;; a
 (global-set-key (kbd "C-a") 'crux-move-beginning-of-line)
+(global-set-key (kbd "C-S-a") 'beginning-of-line)
 (global-set-key (kbd "M-a") 'avy-goto-line)
-(global-set-key (kbd "C-M-a") 'beginning-of-buffer)
-(global-set-key (kbd "C-A") 'beginning-of-line)
 (global-set-key (kbd "M-A") 'avy-goto-line-above)
-(global-set-key (kbd "C-A") 'beginning-of-buffer-other-window)
+(global-set-key (kbd "C-M-a") 'beginning-of-buffer)
+(global-set-key (kbd "C-M-A") 'beginning-of-buffer-other-window)
 
 ;; b
 (global-set-key (kbd "C-b") 'backward-char)
-(global-set-key (kbd "C-B") 'my-backward-to-char) ;; TODO
+(global-set-key (kbd "C-S-b") 'my-backward-to-char) ;; TODO
 (global-set-key (kbd "M-b") 'backward-word)
 (global-set-key (kbd "M-B") 'backward-to-word)
 (global-set-key (kbd "C-M-b") 'backward-sentence)
-(global-set-key (kbd "C-M-B") 'my-backward-to-sentence) ;; TODO
+(global-set-key (kbd "C-M-S-b") 'my-backward-to-sentence) ;; TODO
 (global-set-key (kbd "H-b") 'backward-sexp)
-(global-set-key (kbd "H-B") 'my-backward-to-sexp) ;; TODO
+(global-set-key (kbd "H-S-B") 'my-backward-to-sexp) ;; TODO
 
 ;; c
 ;; reserved for major or minor modes
@@ -40,30 +40,29 @@
 
 ;; d
 (global-set-key (kbd "C-d") 'delete-char)
-(global-set-key (kbd "C-D") 'kill-paragraph)
+(global-set-key (kbd "C-S-d") 'backward-delete-char)
 (global-set-key (kbd "M-d") 'kill-word)
-(global-set-key (kbd "M-D") 'kill-page)
+(global-set-key (kbd "M-S-d") 'backward-kill-word)
 (global-set-key (kbd "C-M-d") 'kill-sentence)
-(global-set-key (kbd "C-M-D") 'my-kill-to-end-of-buffer)
+(global-set-key (kbd "C-M-S-d") 'my-kill-to-end-of-buffer)
 (global-set-key (kbd "H-d") 'kill-sexp)
+(global-set-key (kbd "H-S-d") 'backward-kill-sexp)
 ;; (global-set-key (kbd "H-S-d") 'kill-sexp)
 
 
 ;; e
 (global-set-key (kbd "C-e") 'end-of-visual-line)
-(global-set-key (kbd "C-E") 'end-of-line)
+(global-set-key (kbd "C-S-e") 'end-of-line)
 (global-set-key (kbd "M-e") 'avy-goto-end-of-line)
-(global-set-key (kbd "M-E") 'avy-goto-line-below) ;; TODO
+(global-set-key (kbd "M-S-e") 'avy-goto-line-below) ;; TODO
 (global-set-key (kbd "C-M-e") 'end-of-buffer)
-(global-set-key (kbd "C-M-E") 'end-of-buffer-other-window)
+(global-set-key (kbd "C-M-S-e") 'end-of-buffer-other-window)
 
 ;; f
 (global-set-key (kbd "C-f") 'forward-char)
 (global-set-key (kbd "M-f") 'forward-word)
 (global-set-key (kbd "C-M-f") 'forward-sentence)
 (global-set-key (kbd "H-f") 'forward-sexp)
-
-;; F
 
 ;; g
 ;; (evil-global-set-key 'emacs  (kbd "g") 'keyboard-quit)
@@ -136,7 +135,7 @@
 ;; (global-set-key (kbd "C-M-S-k") 'kill-sentence)
 
 ;; l
-;; (evil-global-set-key 'emacs  (kbd "l") 'recenter-top-bottom)
+ ;; (evil-global-set-key 'emacs  (kbd "l") 'recenter-top-bottom)
 (global-set-key (kbd "C-l") 'recenter)
 (global-set-key (kbd "M-l") 'recenter)
 (global-set-key (kbd "C-M-l") 'recenter)
@@ -147,7 +146,7 @@
 ;; m
 ;; (evil-global-set-key 'emacs (kbd "m") 'set-mark-command)
 (define-prefix-command 'my-mark-map)
-(global-set-key (kbd "<C-m>") 'set-mark-command)
+(global-set-key (kbd "<C-m>") 'my-mark-map)
 (define-key my-mark-map (kbd "w") 'er/mark-word)
 (define-key my-mark-map (kbd "s") 'er/mark-sentence)
 (define-key my-mark-map (kbd "p") 'er/mark-paragraph)
@@ -161,16 +160,17 @@
 ;; (define-key my-mark-map (kbd "f s") 'er/mark-feature-scenario)
 ;; (define-key my-mark-map (kbd "f p") 'er/mark-feature-step)
 
-;; M
 ;; (evil-global-set-key 'emacs  (kbd "M") 'mc/mark-all-dwim)
 (define-prefix-command 'my-mc-map)
-(global-set-key (kbd "C-S-m") 'my-mc-map)
-(global-set-key (kbd "C-S-m a") 'mc/mark-all-dwim)
-(global-set-key (kbd "C-S-m r") 'mc/mark-all-in-region)
-(global-set-key (kbd "C-S-m l") 'mc/edit-beginnings-of-lines)
-(global-set-key (kbd "C-S-m m") 'mc/mark-all-dwim)
-(global-set-key (kbd "C-S-m n") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-S-m p") 'mc/mark-previous-like-this)
+(define-key my-mc-map (kbd "a") 'mc/mark-all-dwim)
+(define-key my-mc-map (kbd "C-S-m") 'my-mc-map)
+(define-key my-mc-map (kbd "C-S-m a") 'mc/mark-all-dwim)
+(define-key my-mc-map (kbd "C-S-m r") 'mc/mark-all-in-region)
+(define-key my-mc-map (kbd "C-S-m l") 'mc/edit-beginnings-of-lines)
+(define-key my-mc-map (kbd "C-S-m m") 'mc/mark-all-dwim)
+(define-key my-mc-map (kbd "C-S-m n") 'mc/mark-next-like-this)
+(define-key my-mc-map (kbd "C-S-m p") 'mc/mark-previous-like-this)
+(global-set-key (kbd "M-m") 'my-mc-map)
 
 ;; n
 ;; (evil-global-set-key 'emacs (kbd "n") 'forward-paragraph)
@@ -196,8 +196,8 @@
 ;; O
 ;; (evil-global-set-key 'emacs  (kbd "O") 'er/expand-region)
 ;; (evil-global-set-key 'emacs  (kbd "M-S-o") 'er/contract-region)
-(global-set-key (kbd "C-S-o") 'er/expand-region)
-(global-set-key (kbd "C-M-S-o") 'er/contract-region)
+(global-set-key (kbd "C-o") 'er/expand-region)
+(global-set-key (kbd "C-S-o") 'er/contract-region)
 
 
 ;; p
@@ -205,7 +205,6 @@
 
 ;; P
 ;; (evil-global-set-key 'emacs (kbd "P") 'projectile-command-map)
-(global-set-key (kbd "<menu>") 'projectile-command-map)
 
                 
                 
@@ -257,7 +256,7 @@
 (global-set-key (kbd "C-t") 'my-editing-map)
 
 (defhydra hydra-move-text (global-map "C-t N")
-  "text scale"
+  "Drag lines around."
   ("n" move-text-down "down")
   ("p" move-text-up "up"))
 
@@ -323,61 +322,52 @@
 (define-prefix-command 'my-x-map)
 ;; (evil-global-set-key 'emacs  (kbd "x") 'my-x-map)
 (global-set-key (kbd "C-x") 'my-x-map)
+(global-set-key (kbd "C-S-x") 'my-x-map)
 
-(define-prefix-command 'my-buffer-map)
-(define-key 'my-buffer-map (kbd "r") 'crux-rename-file-and-buffer)
-(define-key 'my-buffer-map (kbd "b") 'beginning-of-buffer)
-(define-key 'my-buffer-map (kbd "c") 'cleanup-buffer)
-(define-key 'my-buffer-map (kbd "d") 'crux-delete-file-and-buffer)
-(define-key 'my-buffer-map (kbd "e") 'end-of-buffer)
-(define-key 'my-buffer-map (kbd "k") 'kill-current-buffer)
-(define-key 'my-buffer-map (kbd "m") 'mark-whole-buffer)
-(define-key 'my-buffer-map (kbd "n") 'next-buffer)
-(define-key 'my-buffer-map (kbd "p") 'previous-buffer)
-(define-key 'my-buffer-map (kbd "r") 'rename-buffer)
-(define-key 'my-buffer-map (kbd "v") 'revert-buffer)
-(define-key 'my-buffer-map (kbd "w") 'erase-buffer)
-
-(define-key 'my-x-map (kbd "C-b") 'my-buffer-map)
-(define-key 'my-x-map (kbd "b") 'helm-mini)
+(define-key 'my-x-map (kbd "C-b") 'helm-mini)
+(define-key 'my-x-map (kbd "b") 'my-buffer-map)
 
 
-(define-key 'my-x-map (kbd "c") 'crux-cleanup-buffer-or-region)
-(define-key 'my-x-map (kbd "d") 'dired)
+
+(define-key 'my-x-map (kbd "C-c") 'crux-cleanup-buffer-or-region)
+(define-key 'my-x-map (kbd "C-d") 'dired)
 (define-key 'my-x-map (kbd "D") 'crux-recentf-find-directory)
 
-(define-key 'my-x-map (kbd "e") 'my-emacs-init-file)
-(define-key 'my-x-map (kbd "C-e t") 'my-emacs-todo-file)
-(define-key 'my-x-map (kbd "C-e b") 'my-emacs-bindings-file)
-(define-key 'my-x-map (kbd "C-e f") 'my-emacs-projectile-find-file)
+(define-key 'my-x-map (kbd "C-e") 'my-emacs-init-file)
+(define-key 'my-x-map (kbd "e t") 'my-emacs-todo-file)
+(define-key 'my-x-map (kbd "e b") 'my-emacs-bindings-file)
+(define-key 'my-x-map (kbd "e f") 'my-emacs-projectile-find-file)
 
+(define-key 'my-x-map (kbd "C-f") 'crux-recentf-find-file)
 (define-key 'my-x-map (kbd "f") 'helm-find-files)
-(define-key 'my-x-map (kbd "C-f") 'helm-find-files)
-(define-key 'my-x-map (kbd "F") 'crux-recentf-find-file)
 
 (define-key 'my-x-map (kbd "g") 'magit)
+(define-key 'my-x-map (kbd "C-g") 'magit)
 
 (define-key 'my-x-map (kbd "h") 'info-emacs-manual)
+(define-key 'my-x-map (kbd "C-h") 'info-emacs-manual)
 
-(define-key 'my-x-map (kbd "k") 'kmacro-start-macro)
-(define-key 'my-x-map (kbd "K") 'helm-execute-kmacro)
+(define-key 'my-x-map (kbd "C-k") 'my-start-or-stop-kmacro)
+(define-key 'my-x-map (kbd "C-S-k") 'kmacro-end-or-call-macro-repeat)
+(define-key 'my-x-map (kbd "k s") 'kmacro-start-macro-or-insert-counter)
+(define-key 'my-x-map (kbd "k i") 'kmacro-insert-counter)
+(define-key 'my-x-map (kbd "k e") 'kmacro-end-or-call-macro-repeat)
 
-(define-key 'my-x-map (kbd "C-k h") 'helm-execute-kmacro)
-(define-key 'my-x-map (kbd "C-k x") 'kmacro-call-macro)
-(define-key 'my-x-map (kbd "C-k c") 'kmacro-insert-counter)
-(define-key 'my-x-map (kbd "C-k C-c s") 'kmacro-set-counter)
-(define-key 'my-x-map (kbd "C-k C-c a") 'kmacro-add-counter)
-(define-key 'my-x-map (kbd "C-k C-c f") 'kmacro-set-format)
-(define-key 'my-x-map (kbd "C-k C-c i") 'kmacro-insert-counter)
-(define-key 'my-x-map (kbd "C-k s") 'kmacro-start-macro)
-(define-key 'my-x-map (kbd "C-k e") 'kmacro-end-or-call-macro-repeat)
-(define-key 'my-x-map (kbd "C-k n") 'kmacro-cycle-ring-next)
-(define-key 'my-x-map (kbd "C-k p") 'kmacro-cycle-ring-previous)
-(define-key 'my-x-map (kbd "C-k b") 'kmacro-name-last-macro)
-(define-key 'my-x-map (kbd "C-k l") 'insert-kbd-macro)
-(define-key 'my-x-map (kbd "C-k i") 'kmacro-insert-counter)
-(define-key 'my-x-map (kbd "C-k b") 'kmacro-bind-to-key)
-(define-key 'my-x-map (kbd "C-k r") 'kmacro-to-register)
+(define-key 'my-x-map (kbd "k h") 'helm-execute-kmacro)
+(define-key 'my-x-map (kbd "k x") 'kmacro-call-macro)
+(define-key 'my-x-map (kbd "k c s") 'kmacro-set-counter)
+(define-key 'my-x-map (kbd "k c a") 'kmacro-add-counter)
+(define-key 'my-x-map (kbd "k c f") 'kmacro-set-format)
+(define-key 'my-x-map (kbd "k c i") 'kmacro-insert-counter)
+(define-key 'my-x-map (kbd "k s") 'kmacro-start-macro)
+(define-key 'my-x-map (kbd "k e") 'kmacro-end-or-call-macro-repeat)
+(define-key 'my-x-map (kbd "k n") 'kmacro-cycle-ring-next)
+(define-key 'my-x-map (kbd "k p") 'kmacro-cycle-ring-previous)
+(define-key 'my-x-map (kbd "k b") 'kmacro-name-last-macro)
+(define-key 'my-x-map (kbd "k l") 'insert-kbd-macro)
+(define-key 'my-x-map (kbd "k i") 'kmacro-insert-counter)
+(define-key 'my-x-map (kbd "k b") 'kmacro-bind-to-key)
+(define-key 'my-x-map (kbd "k r") 'kmacro-to-register)
 ;; kmacro-start-macro-or-insert-counter
 
 (define-key 'my-x-map (kbd "l") 'lsp)
@@ -521,22 +511,18 @@
 
 ;; Z
 
+(global-set-key (kbd "H-<return>") 'my-eval-dwim)
 
-;; (evil-global-set-key 'emacs  (kbd "/") 'undo)
-(global-set-key (kbd "C-.") 'set-mark-command)
+(global-set-key (kbd "C-z") 'undo)
+
+;; (global-set-key (kbd "C-.") 'set-mark-command)
 ;; (evil-global-set-key 'emacs (kbd ">") 'next-buffer)
 ;; (evil-global-set-key 'emacs (kbd "<") 'previous-buffer)
 
-;; (evil-global-set-key 'emacs  (kbd "!") 'eval-defun)
-(global-set-key (kbd "<f1>") 'org-capture)
-(global-set-key (kbd "<f2>") lsp-command-map)
-(global-set-key (kbd "<f3>") 'projectile-command-map)
-(global-set-key (kbd "<f4>") 'hydra-window-management/body)
-
-(global-set-key (kbd "C-<") 'scroll-up-line)
-(global-set-key (kbd "C->") 'scroll-down-line)
-(global-set-key (kbd "M-<") 'scroll-up-command)
-(global-set-key (kbd "M->") 'scroll-down-command)
+(global-set-key (kbd "C-<") 'scroll-down-line)
+(global-set-key (kbd "C->") 'scroll-up-line)
+(global-set-key (kbd "M-<") 'scroll-down-command)
+(global-set-key (kbd "M->") 'scroll-up-command)
 
 ;; (evil-global-set-key 'emacs  (kbd "[") 'my-open-line-above)
 ;; (evil-global-set-key 'emacs  (kbd "{") 'my-open-line-above)
@@ -681,7 +667,29 @@
 
 ;; (evil-define-key 'emacs org-mode-map (kbd "J") ')
 
-(global-unset-key (kbd "<f1>"))
+(global-set-key (kbd "C-%") 'query-replace)
+(global-set-key (kbd "M-%") 'query-replace-regexp)
+(global-set-key (kbd "H-%") 'lsp-rename)
+
+(global-set-key (kbd "<f1>") 'save-buffer)
+(global-set-key (kbd "<f2>") 'revert-buffer)
+(global-set-key (kbd "<f3>") 'kmacro-start-macro-or-insert-counter)
+(global-set-key (kbd "<f4>") 'kmacro-end-or-call-macro)
+
+;; project level hotkeys
+(global-set-key (kbd "<f5>") 'projectile-test-project)
+(global-set-key (kbd "<f6>") 'projectile-compile-project)
+(global-set-key (kbd "<f7>") 'projectile-run-vterm)
+(global-set-key (kbd "<f8>") 'projectile-grep)
+(global-set-key (kbd "<f9>") 'projectile-find-file)
+
+(global-set-key (kbd "C-<return>") nil)
+(global-set-key (kbd "M-<return>") nil)
+;; (global-set-key (kbd "<f2>") lsp-command-map)
+;; (global-set-key (kbd "<f3>") 'projectile-command-map)
+;; (global-set-key (kbd "<f4>") 'hydra-window-management/body)
+
+
 
 ;; (evil-define-key nil 'haskell-stack-mode (kbd "<f7>") 'my-projectile-run-stack-testing-vterm)
 ;; (evil-define-key 'insert 'haskell-stack-mode (kbd "<f7>") 'my-projectile-run-stack-testing-vterm)
@@ -910,9 +918,6 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-m") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-h f") 'helm-apropos)
 (global-set-key (kbd "C-h r") 'helm-info-emacs)
 (global-set-key (kbd "C-h C-l") 'helm-locate-library)
@@ -923,5 +928,19 @@
   "What would like to do?"
 	("t" org-todo-list "org-todo-list")
   ("j" my-open-my-japanese-file "japanese"))
+
+(define-prefix-command 'my-buffer-map)
+(define-key 'my-buffer-map (kbd "r") 'crux-rename-file-and-buffer)
+(define-key 'my-buffer-map (kbd "b") 'beginning-of-buffer)
+(define-key 'my-buffer-map (kbd "c") 'cleanup-buffer)
+(define-key 'my-buffer-map (kbd "d") 'crux-delete-file-and-buffer)
+(define-key 'my-buffer-map (kbd "e") 'end-of-buffer)
+(define-key 'my-buffer-map (kbd "k") 'kill-current-buffer)
+(define-key 'my-buffer-map (kbd "m") 'mark-whole-buffer)
+(define-key 'my-buffer-map (kbd "n") 'next-buffer)
+(define-key 'my-buffer-map (kbd "p") 'previous-buffer)
+(define-key 'my-buffer-map (kbd "r") 'rename-buffer)
+(define-key 'my-buffer-map (kbd "v") 'revert-buffer)
+(define-key 'my-buffer-map (kbd "w") 'erase-buffer)
 
 (provide 'bindings)
