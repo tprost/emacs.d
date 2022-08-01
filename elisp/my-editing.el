@@ -1,11 +1,3 @@
-
-(defun my-toggle-evil-mode ()
-  (interactive)
-  (cond
-    (
-     (eq evil-state 'insert) (evil-emacs-state))
-    (t (evil-insert-state))))
-
 (defun my-scroll-8-lines-down ()
   (interactive)
   (scroll-down-line 8))

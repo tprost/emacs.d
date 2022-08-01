@@ -1,4 +1,11 @@
-#+CATEGORY: Emacs
+#+CATEGORY: emacs
+
+* DONE todo aggregation shortcut and startup hotkey
+* DONE do I really need evil mode?
+
+* DONE add nixos configuration to TODO file
+* TODO org mode visual line mode
+* TODO how do we organize various scripts for local dev? Makefile?
 
 * Projectile, Layout, Project Terminals and Shell Commands
 ** TODO Prompt to fire up project vterm buffers, docker, etc. when entering appropriate project
@@ -40,7 +47,7 @@ http://haskell.github.io/haskell-mode/manual/latest/Rectangular-commands.html#Re
 
 * TODO find a way to organize and run processes and set up shells per project
 * TODO set up a nice home screen with drill?
-* TODO how do we organize various scripts for local dev? Makefile?
+
 
 * TODO automatically invoke lsp-mode for Python files and projects :python:
 * TODO make sure virtual environment is used for commands in Python projects with .venv? :python:
@@ -146,24 +153,28 @@ asdasdasd
 * DONE hideshow bindings
 * TODO figure out "stage all unstaged changes" in magit mode binding
 
-* TODO make sure org mode org-level-1 .. org-level-4 faces are height 1.0
+* TODO make sure org mode org-level-1 .. org-level-4 faces are height 1.0 :org:
 
-* TODO ligatures only in haskell mode, not in markdown mode
+* TODO ligatures only in haskell mode, not in markdown mode :appearance:
 
 * TODO editorconfig
 
-* Japanese Drill Process
-
-** TODO function to create a definition for word with goldendict
-** TODO binding for goldendict lookup
-** TODO binding for quick japanese org capture?
-** TODO automatically add spacing between each item
-** TODO hide square brackets on showing answer?
+* TODO function to create a definition for word with goldendict :japanese:
+* TODO binding for goldendict lookup :japanese:
+* TODO binding for quick japanese org capture? :japanese:
+* TODO automatically add spacing between each item :japanese:
+* TODO hide square brackets on showing answer? :japanese:
 It'd be nice to be able to lookup stuff without going back to edit mode.
 Maybe allow cursor navigation?
-** TODO kanji drill mode with stroke order font
-** TODO experiment with better looking Japanese font (Mincho)
+* TODO kanji drill mode with stroke order font :japanese:
+* TODO experiment with better looking Japanese font (Mincho) :japanese:
 
+* TODO get python lsp working for all projects :python:
+* TODO direnv for python projects :python: :direnv:
 
+* TODO org-table-align binding :org: :binding:
+* TODO org mode tag faces doesn't work for multiple tags :org: :appearance:
+* TODO org mode hyper key :org:
 
-
+* TODO projectile file ignore list :projectile:
+* TODO make-frame binding :binding:

@@ -10,8 +10,6 @@
 
 (require 'init-org-drill)
 
-(add-hook 'org-mode-hook #'evil-local-mode)
-
 
 (defun org-git-version ()
   "The Git version of org-mode.
@@ -46,17 +44,17 @@ Inserted by installing org-mode or when a release is made."
 ;; customizations
 
 (setq my-org-todo-files (file-expand-wildcards "~/org/*/*todo.org"))
-(setq my-personal-development-todo-files (file-expand-wildcards "~/dev/personal/*/*todo.org"))
-(setq my-work-development-todo-files (file-expand-wildcards "~/dev/work/*/*todo.org"))
+(setq my-development-todo-files (file-expand-wildcards "~/dev/personal/**/*todo.org"))
 (setq my-emacs-todo-files (file-expand-wildcards "~/.emacs.d/*todo.org"))
 (setq my-playbook-todo-files (file-expand-wildcards "~/.playbook/*todo.org"))
 (setq my-dotfiles-todo-files (file-expand-wildcards "~/.dotfiles/*todo.org"))
+(setq my-nixos-todo-files (file-expand-wildcards "/etc/nixos/*todo.org"))
 
-(setq org-agenda-files (append my-org-todo-files
-                               my-personal-development-todo-files
-                               my-work-development-todo-files
+(setq org-agenda-files (append my-org-todo-files                               
+                               my-development-todo-files
                                my-emacs-todo-files
                                my-dotfiles-todo-files
+															 my-nixos-todo-files
                                my-playbook-todo-files))
 
 

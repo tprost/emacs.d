@@ -10,8 +10,8 @@
 ;; ;; (add-hook 'haskell-literate-mode-hook #'lsp)
 
 (defun my-haskell-mode-hook ()
-  (set-fill-column 90)
-  (evil-local-mode))
+  (set-fill-column 90))
+  
 
 (add-hook 'haskell-mode-hook #'my-haskell-mode-hook)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)

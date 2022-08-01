@@ -16,8 +16,8 @@
   nil
   ;; :lighter " Django Project"
   :keymap (let ((map (make-sparse-keymap)))
-	    (define-key map (kbd "d") 'my-project-docker-compose)
-	    (define-key map (kbd "r") 'my-project-django-runserver)	    
+	    ;; (define-key map (kbd "d") 'my-project-docker-compose)
+	    ;; (define-key map (kbd "r") 'my-project-django-runserver)	    
 	    map)
   ;; :after-hook (my-django-project-setup)
    )
@@ -25,6 +25,7 @@
 (defun my-project-docker-compose ()
 	(interactive)
 	(my-projectile-run-vterm-dwim "docker-compose up" "docker"))
+
 
 (defun my-project-django-runserver ()
 	(interactive)
