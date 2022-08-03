@@ -40,4 +40,15 @@
   (hs-minor-mode -1)
   (hs-minor-mode 1))
 
+(defun my-haskell-rename ()
+	(interactive)
+	(lsp-find-definition) 
+	(mark-word)
+	(shell-command (read-string "Retrie Command: " " retrie --unfold ModuleName.oldName"))) ;; TODO
+
+(defun my-haskell-retrie ()
+	(interactive)	
+  (shell-command (read-string "Retrie Command: " " retrie --adhoc \"forall f g xs. map f (map g xs) = map (f . g) xs\"")))
+	
+
 (provide 'setup-haskell-mode)

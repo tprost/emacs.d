@@ -1,7 +1,26 @@
 (define-prefix-command 'my-x-map)
 
 ;; a
-;; edebug?
+(defhydra hydra-frame-management (global-map "C-x a")
+  "frame"
+  ("<left>" move-frame-left)
+  ("<right>" move-frame-right)
+  ("<down>" move-frame-down)
+  ("<up>" move-frame-up)
+  ("E" enlarge-frame "enlarge-frame")
+  ("S" shrink-frame "shrink-frame")
+  ("b" switch-to-buffer-other-frame "switch-to-buffer-other-frame")
+  ("d" delete-frame "delete-frame")  
+  ("d" dired-other-frame "dired-other-frame")	
+  ("e" enlarge-frame-horizontally "enlarge-frame-horizontally")
+	("k" delete-frame "kill-frame")
+	("0" delete-frame "kill-frame")    
+  ("n" make-frame "make-frame")  
+  ("o" other-frame "other-frame")
+  ("q" nil)
+  ("s" shrink-frame-horizontally "shrink-frame-horizontally")
+  ("w" hydra-window-management/body "window"))
+(define-key 'my-x-map (kbd "C-a") 'make-frame)
 
 ;; b
 (define-key 'my-x-map (kbd "C-b") 'helm-mini)
@@ -15,7 +34,7 @@
 (define-key 'my-x-map (kbd "d") 'crux-recentf-find-directory)
 
 ;; e
-(define-key 'my-x-map (kbd "C-e") 'my-emacs-init-file)
+(define-key 'my-x-map (kbd "C-e") 'my-emacs-projectile-find-file)
 (define-key 'my-x-map (kbd "e t") 'my-emacs-todo-file)
 (define-key 'my-x-map (kbd "e b") 'my-emacs-bindings-file)
 (define-key 'my-x-map (kbd "e f") 'my-emacs-projectile-find-file)
@@ -67,26 +86,7 @@
 (define-key 'my-x-map (kbd "C-l") lsp-command-map)
 
 ;; m
-(defhydra hydra-frame-management (global-map "C-x m")
-  "frame"
-  ("<left>" move-frame-left)
-  ("<right>" move-frame-right)
-  ("<down>" move-frame-down)
-  ("<up>" move-frame-up)
-  ("E" enlarge-frame "enlarge-frame")
-  ("S" shrink-frame "shrink-frame")
-  ("b" switch-to-buffer-other-frame "switch-to-buffer-other-frame")
-  ("d" delete-frame "delete-frame")  
-  ("d" dired-other-frame "dired-other-frame")	
-  ("e" enlarge-frame-horizontally "enlarge-frame-horizontally")
-	("k" delete-frame "kill-frame")
-	("0" delete-frame "kill-frame")    
-  ("n" make-frame "make-frame")  
-  ("o" other-frame "other-frame")
-  ("q" nil)
-  ("s" shrink-frame-horizontally "shrink-frame-horizontally")
-  ("w" hydra-window-management/body "window"))
-(define-key 'my-x-map (kbd "<C-m>") 'make-frame)
+;; ?
 
 ;; n
 

@@ -1,6 +1,6 @@
 #+CATEGORY: emacs
 
-* TODO yasnippet for Haskell :haskell:yasnippet:
+* DONE yasnippet for Haskell :haskell:yasnippet:
 * TODO how do we organize various scripts for local dev? Makefile?
 
 * TODO get lsp mode working for elisp :elisp:
@@ -38,7 +38,7 @@
 
 * TODO faster input mode... rebind RET?
 * TODO better switch to test file function (for Haskell?)
-* TODO emacs lisp yasnippets... at least defun :yasnippet:
+* DONE emacs lisp yasnippets... at least defun :yasnippet:
 * TODO figure out what "todo order" is in org mode :org:
 
 ** DONE projectile stack test binding just for Haskell projects?
@@ -50,7 +50,7 @@ http://haskell.github.io/haskell-mode/manual/latest/
 * TODO setup flyspell?
 * TODO haskell mode align binding :bindings:
 http://haskell.github.io/haskell-mode/manual/latest/Aligning-code.html#Aligning-code
-* TODO elisp binding hydra yasnippet? :bindings:yasnippet:
+* DONE elisp binding hydra yasnippet? :bindings:yasnippet:
 * TODO macro to set up frame and window for emacs editing?
 * TODO enlarge frame to two window units size macro
 * TODO figure out "stage all unstaged changes" in magit mode binding
@@ -74,12 +74,12 @@ Maybe allow cursor navigation?
 * TODO get python lsp working for all projects :python:
 * TODO direnv for python projects :python: :direnv:
 
-* DONE org mode tag faces doesn't work for multiple tags :org:appearance:
-You were using tags wrong. They :look:like:this:.
 * TODO projectile file ignore list :projectile:
 * TODO set up a japanese word todo capture system
 Because if I think of a word I want to memorize in Japanese, I want to quickly capture it and not have to make a drill item right away.
 * TODO investigate term-projectile + automatic named services for project
+* TODO explore how to have an extra folder of yasnippets :yasnippet:
+* DONE how to move from one thing to the next in a yasnippet :yasnippet:
 * Projectile, Layout, Project Terminals and Shell Commands
 ** TODO Prompt to fire up project vterm buffers, docker, etc. when entering appropriate project
 ** TODO [#A] shortcut to go to projectile vterm with helm? quick keybindings to 1-9? :bindings:
@@ -108,6 +108,8 @@ my-projectile-run-vterm-dwim
 * golang
 ** DONE fix lsp mode so it starts automatically
 ** DONE fix the goddamn C-M-j binding 
+* DONE org mode tag faces doesn't work for multiple tags :org:appearance:
+You were using tags wrong. They :look:like:this:.
 * DONE org mode visual line mode :bindings:
 * DONE sort out the differences between C-x C-o, C-x o, x o, x C-o :bindings:
 * DONE org-table-align binding :org:bindings:
@@ -187,3 +189,5 @@ asdasdasd
 * DONE C-x w hotkeys
 * DONE make-frame hotkey
 * DONE hideshow bindings
+* TODO how do I quickly look at the snippets for a mode, for example Haskell :yasnippet:
+* TODO indentation bindings :bindings:
