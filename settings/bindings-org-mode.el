@@ -40,6 +40,13 @@
 ;; TODO everything in the manual from
 ;; https://orgmode.org/manual/Sparse-Trees.html
 
+(define-key org-mode-map (kbd "H-t") 'org-todo)
+
+(define-key org-mode-map (kbd "H-x H-l") 'org-insert-link)
+(define-key org-mode-map (kbd "H-x H-t") 'org-table-align)
+
+
+
 (define-key my-org-todo-mode-map (kbd "<f1>") 'my-org-todo-file-cleanup)
 
 (provide 'bindings-org-mode)

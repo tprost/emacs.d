@@ -108,3 +108,6 @@
       (while (re-search-forward org-link-bracket-re nil t)
         (replace-match (match-string-no-properties 
                         (if (match-end 2) 2 1)))))))
+
+(setq backup-directory-alist `(("." . "~/.saves")))
+(setq auto-save-default nil)

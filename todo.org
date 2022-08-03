@@ -1,6 +1,6 @@
 #+CATEGORY: emacs
 
-* TODO org mode visual line mode
+* TODO org mode visual line mode :bindings:
 * TODO how do we organize various scripts for local dev? Makefile?
 
 * TODO get lsp mode working for elisp :elisp:
@@ -8,7 +8,7 @@
 * TODO [#A] emacs functions for Haskell refactor tool thing :haskell:
 * TODO [#A] setup flycheck and keybindings
 * TODO [#A] Haskell mode bindings :haskell:
-* TODO [#A] work through the rest of org mode functions and bindings :org:
+* TODO work through the rest of org mode functions and bindings :org:
 
 * TODO make sure projectile doesn't search through a million unnecessary lisp files
 * TODO cleanup file structure in .emacs.d
@@ -22,43 +22,38 @@
 
 * TODO org mode specific ligatures for todo items? :org:
 
-* TODO one keypress run the project tests with the default command
 * TODO take first error link in compilation buffer and visit it in code window/frame
 * TODO function to find all occurences of TODO in project
 
-* TODO hotkey for creating a feature branch off of develop based on JIRA tag and name?
+* TODO hotkey for creating a feature branch off of develop based on JIRA tag and name? :bindings:
 * TODO include csv-mode
 
-* TODO easier hotkeys for switch to wdired mode and out
+* TODO easier hotkeys for switch to wdired mode and out :bindings:
 
 * TODO make shell use up arrow key for previous command
 * TODO find and remember command to start an additional shell
-* TODO tab in shell mode should autocomplete
+* TODO tab in shell mode should autocomplete :bindings:
 
 * TODO dired mode color coding filenames?
 
-* TODO sort out the differences between C-x C-o, C-x o, x o, x C-o
-* TODO clean up buffer keybinding
-with appropriate function for my todo files
+* DONE sort out the differences between C-x C-o, C-x o, x o, x C-o :bindings:
 * TODO faster input mode... rebind RET?
 * TODO better switch to test file function (for Haskell?)
-* TODO emacs lisp yasnippets... at least defun
+* TODO emacs lisp yasnippets... at least defun :yasnippet:
 * TODO figure out what "todo order" is in org mode :org:
 
 ** DONE projectile stack test binding just for Haskell projects?
 
-* TODO [#E] make separate bindings directory with separate files for each mode
-* TODO how do I want indentation to work? what bindings do I want?
+* TODO how do I want indentation to work? what bindings do I want? :bindings:
 * TODO find definition lookup in hackage
-* TODO set up interactive haskell bindings
+* TODO set up interactive haskell bindings :bindings:
 http://haskell.github.io/haskell-mode/manual/latest/
-* TODO setup flyspell
-* TODO haskell mode align binding 
+* TODO setup flyspell?
+* TODO haskell mode align binding :bindings:
 http://haskell.github.io/haskell-mode/manual/latest/Aligning-code.html#Aligning-code
-* TODO when you leave a buffer, reset state to monster state, for editable buffers
-* TODO elisp binding hydra yasnippet?
+* TODO elisp binding hydra yasnippet? :bindings:yasnippet:
 * TODO macro to set up frame and window for emacs editing?
-* TODO enlalrge frame to two window units size macro
+* TODO enlarge frame to two window units size macro
 * TODO figure out "stage all unstaged changes" in magit mode binding
 
 * TODO make sure org mode org-level-1 .. org-level-4 faces are height 1.0 :org:
@@ -69,7 +64,7 @@ http://haskell.github.io/haskell-mode/manual/latest/Aligning-code.html#Aligning-
 
 * TODO function to create a definition for word with goldendict :japanese:
 * TODO binding for goldendict lookup :japanese:
-* TODO binding for quick japanese org capture? :japanese:
+* TODO binding for quick japanese org capture? :japanese:bindings:
 * TODO automatically add spacing between each item :japanese:
 * TODO hide square brackets on showing answer? :japanese:
 It'd be nice to be able to lookup stuff without going back to edit mode.
@@ -80,15 +75,22 @@ Maybe allow cursor navigation?
 * TODO get python lsp working for all projects :python:
 * TODO direnv for python projects :python: :direnv:
 
-* TODO org-table-align binding :org: :binding:
-* TODO org mode tag faces doesn't work for multiple tags :org: :appearance:
-* TODO org mode hyper key :org:
+* DONE org-table-align binding :org:bindings:
+* TODO org mode tag faces doesn't work for multiple tags :org:appearance:
+* DONE org mode hyper key :org:bindings:
 
 * TODO projectile file ignore list :projectile:
-* TODO make-frame binding :binding:
+* DONE make-frame binding :bindings:
+* DONE org-insert-link :bindings:
+* TODO visual line mode :bindings:
+
+* TODO set up a japanese word todo capture system
+Because if I think of a word I want to memorize in Japanese, I want to quickly capture it and not have to make a drill item right away.
+* TODO investigate term-projectile + automatic named services for project
+* DONE sort out emacs hotkeys :bindings:
 * Projectile, Layout, Project Terminals and Shell Commands
 ** TODO Prompt to fire up project vterm buffers, docker, etc. when entering appropriate project
-** TODO [#A] shortcut to go to projectile vterm with helm? quick keybindings to 1-9? 
+** TODO [#A] shortcut to go to projectile vterm with helm? quick keybindings to 1-9? :bindings:
 ** TODO projectile level mapping of vterm identifiers and the command we should run
 *** TODO projectile vterms should be configured to have run command?
 
@@ -114,7 +116,12 @@ my-projectile-run-vterm-dwim
 * golang
 ** DONE fix lsp mode so it starts automatically
 ** DONE fix the goddamn C-M-j binding 
-* DONE [#A] yasnippet for Haskell :haskell: :yasnippet:
+* [#A] yasnippet for Haskell :haskell: :yasnippet:
+* DONE one keypress run the project tests with the default command
+* DONE clean up buffer keybinding
+with appropriate function for my todo files
+* DONE [#E] make separate bindings directory with separate files for each mode
+* DONE when you leave a buffer, reset state to monster state, for editable buffers
 * DONE only show function keys on specific applications (Emacs)
 * DONE mark buffer should have a binding that isn't c-c h
 
