@@ -49,7 +49,7 @@
 ;; (require 'setup-markdown-mode)
 ;; (require 'setup-yaml-mode)
 
-;; (require 'setup-yasnippet)
+(require 'setup-yasnippet)
 
 ;; (straight-use-package 'direnv)
 ;; (require 'direnv)

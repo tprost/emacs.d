@@ -159,5 +159,8 @@ the checking happens for all pairs in auto-minor-mode-alist"
 	(mark-whole-buffer)
 	(org-sort-entries nil ?o))
 
+(add-hook 'org-mode-hook (lambda ()
+													 (visual-line-mode)))
+                           
 
 (provide 'setup-org)

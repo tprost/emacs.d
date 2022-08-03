@@ -1,13 +1,13 @@
 #+CATEGORY: emacs
 
-* TODO org mode visual line mode :bindings:
+* TODO yasnippet for Haskell :haskell:yasnippet:
 * TODO how do we organize various scripts for local dev? Makefile?
 
 * TODO get lsp mode working for elisp :elisp:
 
-* TODO [#A] emacs functions for Haskell refactor tool thing :haskell:
-* TODO [#A] setup flycheck and keybindings
-* TODO [#A] Haskell mode bindings :haskell:
+* TODO emacs functions for Haskell refactor tool thing :haskell:
+* TODO setup flycheck and keybindings :haskell:
+* TODO Haskell mode bindings :haskell:
 * TODO work through the rest of org mode functions and bindings :org:
 
 * TODO make sure projectile doesn't search through a million unnecessary lisp files
@@ -36,7 +36,6 @@
 
 * TODO dired mode color coding filenames?
 
-* DONE sort out the differences between C-x C-o, C-x o, x o, x C-o :bindings:
 * TODO faster input mode... rebind RET?
 * TODO better switch to test file function (for Haskell?)
 * TODO emacs lisp yasnippets... at least defun :yasnippet:
@@ -75,19 +74,12 @@ Maybe allow cursor navigation?
 * TODO get python lsp working for all projects :python:
 * TODO direnv for python projects :python: :direnv:
 
-* DONE org-table-align binding :org:bindings:
-* TODO org mode tag faces doesn't work for multiple tags :org:appearance:
-* DONE org mode hyper key :org:bindings:
-
+* DONE org mode tag faces doesn't work for multiple tags :org:appearance:
+You were using tags wrong. They :look:like:this:.
 * TODO projectile file ignore list :projectile:
-* DONE make-frame binding :bindings:
-* DONE org-insert-link :bindings:
-* TODO visual line mode :bindings:
-
 * TODO set up a japanese word todo capture system
 Because if I think of a word I want to memorize in Japanese, I want to quickly capture it and not have to make a drill item right away.
 * TODO investigate term-projectile + automatic named services for project
-* DONE sort out emacs hotkeys :bindings:
 * Projectile, Layout, Project Terminals and Shell Commands
 ** TODO Prompt to fire up project vterm buffers, docker, etc. when entering appropriate project
 ** TODO [#A] shortcut to go to projectile vterm with helm? quick keybindings to 1-9? :bindings:
@@ -116,7 +108,16 @@ my-projectile-run-vterm-dwim
 * golang
 ** DONE fix lsp mode so it starts automatically
 ** DONE fix the goddamn C-M-j binding 
-* [#A] yasnippet for Haskell :haskell: :yasnippet:
+* DONE org mode visual line mode :bindings:
+* DONE sort out the differences between C-x C-o, C-x o, x o, x C-o :bindings:
+* DONE org-table-align binding :org:bindings:
+* DONE org mode hyper key :org:bindings:
+
+* DONE make-frame binding :bindings:
+* DONE org-insert-link :bindings:
+* DONE visual line mode :bindings:
+
+* DONE sort out emacs hotkeys :bindings:
 * DONE one keypress run the project tests with the default command
 * DONE clean up buffer keybinding
 with appropriate function for my todo files
