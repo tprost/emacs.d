@@ -5,7 +5,7 @@
 (require 'lsp-haskell)
 
 ;; ;; Hooks so haskell and literate haskell major modes trigger LSP setup
-(add-hook 'haskell-mode-hook #'lsp-deferred)
+(add-hook 'haskell-mode-hook #'lspe-deferred)
 ;; ;; (add-hook 'haskell-mode-hook #'lsp)
 ;; ;; (add-hook 'haskell-literate-mode-hook #'lsp)
 
@@ -15,6 +15,7 @@
 
 (add-hook 'haskell-mode-hook #'my-haskell-mode-hook)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(add-hook 'haskell-mode-hook 'haskell-collapse-mode)
 
 ;; (add-to-list 'company-backends 'company-ghc)
           
@@ -48,7 +49,18 @@
 
 (defun my-haskell-retrie ()
 	(interactive)	
-  (shell-command (read-string "Retrie Command: " " retrie --adhoc \"forall f g xs. map f (map g xs) = map (f . g) xs\"")))
+  (shell-command (read-string "Retrie Command: " " retrie --adhoc \"forall f g
+	xs. map f (map g xs) = map (f . g) xs\"")))
+
+(defun my-haskell-organize-imports ()
+	(interactive)
+	(save-buffer)
+	(message (buffer-file-name))
+	(message (format "fix-imports -i src -i test %s <%s >test.hs"
+	(buffer-file-name) (buffer-file-name) (buffer-file-name)))
+	(erase-buffer)
+	(shell-command (format "fix-imports -i src -i test %s <%s" (buffer-file-name) (buffer-file-name) (buffer-file-name)) (current-buffer)))
+	
 	
 
 (provide 'setup-haskell-mode)

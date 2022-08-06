@@ -1,11 +1,10 @@
 #+CATEGORY: emacs
 
-* DONE yasnippet for Haskell :haskell:yasnippet:
 * TODO how do we organize various scripts for local dev? Makefile?
 
 * TODO get lsp mode working for elisp :elisp:
 
-* TODO emacs functions for Haskell refactor tool thing :haskell:
+* TODO my-haskell-rename function :haskell:
 * TODO setup flycheck and keybindings :haskell:
 * TODO Haskell mode bindings :haskell:
 * TODO work through the rest of org mode functions and bindings :org:
@@ -38,7 +37,6 @@
 
 * TODO faster input mode... rebind RET?
 * TODO better switch to test file function (for Haskell?)
-* DONE emacs lisp yasnippets... at least defun :yasnippet:
 * TODO figure out what "todo order" is in org mode :org:
 
 ** DONE projectile stack test binding just for Haskell projects?
@@ -50,7 +48,6 @@ http://haskell.github.io/haskell-mode/manual/latest/
 * TODO setup flyspell?
 * TODO haskell mode align binding :bindings:
 http://haskell.github.io/haskell-mode/manual/latest/Aligning-code.html#Aligning-code
-* DONE elisp binding hydra yasnippet? :bindings:yasnippet:
 * TODO macro to set up frame and window for emacs editing?
 * TODO enlarge frame to two window units size macro
 * TODO figure out "stage all unstaged changes" in magit mode binding
@@ -79,7 +76,8 @@ Maybe allow cursor navigation?
 Because if I think of a word I want to memorize in Japanese, I want to quickly capture it and not have to make a drill item right away.
 * TODO investigate term-projectile + automatic named services for project
 * TODO explore how to have an extra folder of yasnippets :yasnippet:
-* DONE how to move from one thing to the next in a yasnippet :yasnippet:
+* TODO how do I quickly look at the snippets for a mode, for example Haskell :yasnippet:
+* TODO indentation bindings :bindings:
 * Projectile, Layout, Project Terminals and Shell Commands
 ** TODO Prompt to fire up project vterm buffers, docker, etc. when entering appropriate project
 ** TODO [#A] shortcut to go to projectile vterm with helm? quick keybindings to 1-9? :bindings:
@@ -101,13 +99,14 @@ my-projectile-run-vterm-dwim
 - Shell for running manage.py commands?
 ** TODO My Go Projects
 - Start docker compose
-** TODO My Haskell Projects :haskell:
-** TODO My Ruby Projects
-** TODO My Emacs.d
 
 * golang
 ** DONE fix lsp mode so it starts automatically
 ** DONE fix the goddamn C-M-j binding 
+* DONE yasnippet for Haskell :haskell:yasnippet:
+* DONE emacs lisp yasnippets... at least defun :yasnippet:
+* DONE elisp binding hydra yasnippet? :bindings:yasnippet:
+* DONE how to move from one thing to the next in a yasnippet :yasnippet:
 * DONE org mode tag faces doesn't work for multiple tags :org:appearance:
 You were using tags wrong. They :look:like:this:.
 * DONE org mode visual line mode :bindings:
@@ -189,5 +188,3 @@ asdasdasd
 * DONE C-x w hotkeys
 * DONE make-frame hotkey
 * DONE hideshow bindings
-* TODO how do I quickly look at the snippets for a mode, for example Haskell :yasnippet:
-* TODO indentation bindings :bindings:

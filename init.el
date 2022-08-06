@@ -48,7 +48,7 @@
 ;; (require 'setup-makefile)
 ;; (require 'setup-markdown-mode)
 ;; (require 'setup-yaml-mode)
-
+(require 'setup-flycheck)
 (require 'setup-yasnippet)
 
 ;; (straight-use-package 'direnv)

@@ -78,6 +78,42 @@
 ;; (evil-global-set-key 'emacs  (kbd "H") 'describe-key)
 
 ;; i
+(global-set-key (kbd "C-i") nil)
+(global-set-key (kbd "C-i C-s") 'split-line)
+(global-set-key (kbd "C-i C-f") 'crux-indent-defun)
+(global-set-key (kbd "C-i C-x") 'indent-sexp)
+(global-set-key (kbd "C-i C-d") 'delete-indentation)
+(global-set-key (kbd "C-i C-;") 'indent-for-comment)
+(global-set-key (kbd "C-i C-2") 'indent-to)
+(global-set-key (kbd "C-i C-r") 'indent-region)
+(global-set-key (kbd "C-i C-g") 'indent-rigidly)
+(global-set-key (kbd "C-i C-l") 'indent-relative)	
+(global-set-key (kbd "C-i <backspace>") 'indent-rigidly-left)
+(global-set-key (kbd "C-i SPC") 'indent-rigidly-right)
+(global-set-key (kbd "C-i C-c") 'indent-code-rigidly)
+(global-set-key (kbd "M-i") 'indent-for-tab-command)
+
+;; delete-indentation
+;; ;; Tq
+;; ;; https://emacsredux.com/blog/2016/01/31/use-tab-to-indent-or-complete/
+;; (define-prefix-command 'my-indenting-map)
+;; ;; (evil-global-set-key 'emacs  (kbd "T") 'my-indent-dwim)
+;; (global-set-key (kbd "C-S-t") 'my-indenting-map)
+;; (define-key my-indenting-map (kbd "f") 'crux-indent-defun)
+;; (define-key my-indenting-map (kbd "t") 'my-indent-dwim)
+;; (define-key my-indenting-map (kbd ";") 'indent-for-comment)
+;; (define-key my-indenting-map (kbd "r") 'indent-rigidly)
+;; (define-key my-indenting-map (kbd "x") 'indent-sexp)
+;; (define-key my-indenting-map (kbd "p") 'indent-pp-sexp)
+;; (define-key my-indenting-map (kbd "2") 'indent-to)
+;; ;; TODO explore more indenting commands
+
+;; indent-according-to-mode
+;; newline-and-indent
+;; reindent-then-newline-and-indent
+;; indent-region
+
+								
 ;; (evil-global-set-key 'emacs (kbd "i") 'evil-insert-state)
 ;; (evil-global-set-key 'emacs (kbd "<insertchar>") 'evil-insert-state)
 ;; (evil-global-set-key 'insert (kbd "<insertchar>") 'evil-emacs-state)
@@ -184,10 +220,10 @@
 ;; (evil-global-set-key 'emacs (kbd "o") 'hs-toggle-hiding)
 ;; (evil-global-set-key 'emacs (kbd "C-o") 'hs-hide-block)
 ;; (evil-global-set-key 'emacs (kbd "M-o") 'hs-show-block)
-(define-prefix-command 'my-hs-map)
-(define-key my-hs-map (kbd "s") 'hs-show-all)
-(define-key my-hs-map (kbd "h") 'hs-hide-all)
-(define-key my-hs-map (kbd "l") 'hs-hide-level)
+;; (define-prefix-command 'my-hs-map)
+;; (define-key my-hs-map (kbd "s") 'hs-show-all)
+;; (define-key my-hs-map (kbd "h") 'hs-hide-all)
+;; (define-key my-hs-map (kbd "l") 'hs-hide-level)
 ;; (evil-global-set-key 'emacs (kbd "C-M-o") 'my-hs-map)
 ;; (evil-global-set-key 'insert (kbd "C-o") 'my-open-line-below)
 ;; (evil-global-set-key 'insert (kbd "M-o") 'my-open-line-above)
@@ -196,8 +232,9 @@
 ;; O
 ;; (evil-global-set-key 'emacs  (kbd "O") 'er/expand-region)
 ;; (evil-global-set-key 'emacs  (kbd "M-S-o") 'er/contract-region)
-(global-set-key (kbd "C-@") 'er/expand-region)
-(global-set-key (kbd "M-@") 'er/contract-region)
+;; (global-set-key (kbd "C-@") 'er/expand-region)
+;; (global-set-key (kbd "M-@") 'er/contract-region)
+(global-set-key (kbd "C-@") 'hs-toggle-hiding)
 
 
 ;; p
@@ -280,18 +317,6 @@
 ;; fixup-whitespace
 
 ;; T
-;; https://emacsredux.com/blog/2016/01/31/use-tab-to-indent-or-complete/
-(define-prefix-command 'my-indenting-map)
-;; (evil-global-set-key 'emacs  (kbd "T") 'my-indent-dwim)
-(global-set-key (kbd "C-S-t") 'my-indenting-map)
-(define-key my-indenting-map (kbd "f") 'crux-indent-defun)
-(define-key my-indenting-map (kbd "t") 'my-indent-dwim)
-(define-key my-indenting-map (kbd ";") 'indent-for-comment)
-(define-key my-indenting-map (kbd "r") 'indent-rigidly)
-(define-key my-indenting-map (kbd "x") 'indent-sexp)
-(define-key my-indenting-map (kbd "p") 'indent-pp-sexp)
-(define-key my-indenting-map (kbd "2") 'indent-to)
-;; TODO explore more indenting commands
 
 ;; u
 
@@ -425,26 +450,14 @@
 ;; (global-set-key (kbd "<f3>") 'projectile-command-map)
 ;; (global-set-key (kbd "<f4>") 'hydra-window-management/body)
 
-
-
-;; (evil-define-key nil 'haskell-stack-mode (kbd "<f7>") 'my-projectile-run-stack-testing-vterm)
-;; (evil-define-key 'insert 'haskell-stack-mode (kbd "<f7>") 'my-projectile-run-stack-testing-vterm)
-;; (evil-define-key 'emacs 'haskell-stack-mode (kbd "<f7>") 'my-projectile-run-stack-testing-vterm)
-;; (evil-define-key 'emacs 'haskell-stack-mode (kbd "1") 'my-projectile-run-stack-testing-vterm)
-;; (evil-define-key 'emacs 'haskell-stack-mode (kbd "P x") 'my-projectile-run-stack-testing-vterm)
-
-;; (defun my-little-message ()
-;;   (interactive)
-;;   (popup-menu (lookup-key (current-local-map) (kbd "C-c"q)))
-
-;; (defun my-one-time-haskell-mode-c ()
-;;   (interactive)  
-;;   (which-key-show-full-keymap (lookup-key (current-local-map) (kbd "C-c"))))
-
-;; (haskell-mode-map)
-;; (evil-define-key 'emacs 'haskell-stack-mode (kbd "C") '(lookup-key (current-local-map) (kbd "C-c")))
-;; (evil-define-key 'emacs 'haskell-stack-mode (kbd "C") 'my-one-time-haskell-mode-c)
-;; (evil-define-key 'emacs 'haskell-stack-mode (kbd "C") 'helm-M-x)
+(define-key haskell-mode-map (kbd "<f5>") 'my-projectile-run-stack-testing-vterm)
+(define-key haskell-mode-map (kbd "H-o") 'my-haskell-organize-imports)
+(define-key haskell-mode-map (kbd "H-r") 'my-haskell-rename)
+(define-key haskell-mode-map (kbd "H-C-r") 'my-haskell-retrie)
+(define-key haskell-mode-map (kbd "H-RET") 'my-haskell-send-region)
+(define-key haskell-mode-map (kbd "C-@") 'haskell-hide-toggle)
+;; (define-key haskell-mode-map (kbd "H-") 'my-haskell-hs-hide-all)
+;; (define-key haskell-mode-map (kbd "H-") 'my-haskell-hs-show-all)
 
 ;; (evil-define-key nil haskell-mode-map (kbd "C-c r") 'projectile-replace)
 ;; (evil-define-key nil haskell-mode-map (kbd "C-c i") 'haskell-interactive-switch)

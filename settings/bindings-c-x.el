@@ -154,6 +154,7 @@
   ("t" crux-transpose-windows "transpose") 
   ("v" split-window-vertically "vertically")
   ("f" hydra-frame-management/body "frame"))
+(global-set-key (kbd "C-x w") 'hydra-window-management/body)
 (global-set-key (kbd "C-x C-w") 'other-window)
 
 ;; x
