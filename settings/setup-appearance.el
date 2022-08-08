@@ -1,5 +1,3 @@
-(require 'dash)
-
 (straight-use-package 'ansi-color)
 (straight-use-package 'beacon)
 
@@ -428,7 +426,7 @@
 ;;  (vc-mode vc-mode)
 ;;  "  " mode-line-modes mode-line-misc-info mode-line-end-spaces)
 
-(provide 'init-appearance)
+(provide 'setup-appearance)
 
 (setq split-height-threshold 30)
 (setq split-width-threshold nil)

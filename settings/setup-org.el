@@ -8,7 +8,7 @@
 (straight-use-package 'org-contrib)
 (straight-use-package 'git)
 
-(require 'init-org-drill)
+(require 'setup-org-drill)
 
 
 (defun org-git-version ()

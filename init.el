@@ -13,7 +13,6 @@
   (load bootstrap-file nil 'nomessage))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 (add-to-list 'load-path "~/.emacs.d/settings")
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
@@ -70,9 +69,7 @@
 ;; (require 'setup-my-global-macros)
 
 ;; (load-file (expand-file-name "tprost.el" user-emacs-directory))
-;; (load-file (expand-file-name "editing.el" user-emacs-directory))
-
-(require 'init-appearance)
+;; (load-file (expand-file-name "editing.el" user-emacs-directory))1
 
 (require 'setup-org)
 (require 'setup-haskell-mode)
@@ -84,6 +81,8 @@
 
 (require 'setup-miscellaneous)
 (require 'stack)
+
+(require 'setup-appearance)
 (require 'bindings)
 
 (load-file (expand-file-name "custom.el" user-emacs-directory))

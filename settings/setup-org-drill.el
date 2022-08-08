@@ -39,4 +39,4 @@
 (add-hook 'org-drill-display-answer-hook #'tprost-org-drill-display-answer-tweaks)
 
 
-(provide 'init-org-drill)
+(provide 'setup-org-drill)
