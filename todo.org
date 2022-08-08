@@ -1,5 +1,8 @@
 #+CATEGORY: emacs
 
+* TODO use tab mode? perhaps for project vterms?
+* TODO clean up old init directory
+
 * TODO how do we organize various scripts for local dev? Makefile?
 
 * TODO get lsp mode working for elisp :elisp:

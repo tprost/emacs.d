@@ -1,6 +1,8 @@
 (define-prefix-command 'my-x-map)
 
 ;; a
+(define-key emacs-lisp-mode-map (kbd "C-x C-a") nil)
+(global-set-key (kbd "C-x C-a") nil)
 (defhydra hydra-frame-management (global-map "C-x a")
   "frame"
   ("<left>" move-frame-left)
@@ -21,6 +23,7 @@
   ("s" shrink-frame-horizontally "shrink-frame-horizontally")
   ("w" hydra-window-management/body "window"))
 (define-key 'my-x-map (kbd "C-a") 'make-frame)
+(global-set-key (kbd "C-x a") 'hydra-frame-management/body)
 
 ;; b
 (define-key 'my-x-map (kbd "C-b") 'helm-mini)
@@ -30,7 +33,7 @@
 (define-key 'my-x-map (kbd "C-c") 'crux-cleanup-buffer-or-region)
 
 ;; d
-(define-key 'my-x-map (kbd "C-d") 'dired)
+(define-key 'my-x-map (kbd "C-d") 'my-dired-dwim)
 (define-key 'my-x-map (kbd "d") 'crux-recentf-find-directory)
 
 ;; e

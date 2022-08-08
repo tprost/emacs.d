@@ -50,6 +50,7 @@
 ;; (require 'setup-yaml-mode)
 (require 'setup-flycheck)
 (require 'setup-yasnippet)
+(require 'setup-ligature)
 
 ;; (straight-use-package 'direnv)
 ;; (require 'direnv)
