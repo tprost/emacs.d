@@ -16,6 +16,8 @@
 (add-to-list 'load-path "~/.emacs.d/settings")
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
+(require 'setup-appearance)
+
 (require 'my-dictionary-functions)
 (require 'my-editing)
 (require 'my-functions)
@@ -82,8 +84,6 @@
 
 (require 'setup-miscellaneous)
 (require 'stack)
-
-(require 'setup-appearance)
 (require 'bindings)
 
 (load-file (expand-file-name "custom.el" user-emacs-directory))

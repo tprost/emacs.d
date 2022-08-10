@@ -1,15 +1,15 @@
 (straight-use-package 'ansi-color)
 (straight-use-package 'beacon)
-
-(straight-use-package 'underwater-theme)
 (straight-use-package 'kaolin-themes)
 
-;; (load-theme 'kaolin-dark t)
+(load-theme 'kaolin-dark t)
 ;; (load-theme 'kaolin-light t)
 ;; (load-theme 'kaolin-galaxy t)
 ;; (load-theme 'kaolin-bubblegum t)
 ;; (load-theme 'kaolin-eclipse t)
-(load-theme 'kaolin-ocean t)
+;; (load-theme 'doom-nova t)
+;; (load-theme 'doom-molokai t)
+;; (load-theme 'doom-moonlight t)
 ;; (load-theme 'kaolin-temple t)
 ;; (load-theme 'kaolin-valley-dark t)
 ;; (load-theme 'kaolin-valley-light t)
@@ -418,14 +418,6 @@
 
 (beacon-mode 1)
 
-(set-face-attribute 'magit-header-line nil
-                    :overline nil
-                    :underline nil
-                      :foreground "black" :background "dark orange"
-                      :box nil
-                      :box '( :line-width 4 :color "dark orange")
-                      )
-
 
 (setq-default mode-line-format nil)
 (setq-default header-line-format (list "%e"  mode-line-modified " " "%l" " " mode-line-buffer-identification ))
@@ -436,7 +428,7 @@
 ;;  (vc-mode vc-mode)
 ;;  "  " mode-line-modes mode-line-misc-info mode-line-end-spaces)
 
-(provide 'setup-appearance)
-
 (setq split-height-threshold 30)
 (setq split-width-threshold nil)
+
+(provide 'setup-appearance)
