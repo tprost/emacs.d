@@ -163,7 +163,12 @@
 (define-key 'my-x-map (kbd "C-w") 'other-window)
 
 ;; x
-;; ?
+(defhydra hydra-startup (global-map "C-x C-x")
+  "What would like to do?"
+	("t" org-todo-list "org-todo-list")
+  ("j" my-open-my-japanese-file "japanese"))
+(define-key 'my-x-map (kbd "x") 'hydra-startup/body)
+(define-key 'my-x-map (kbd "C-x") 'hydra-startup/body)
 
 ;; y
 (define-key 'my-x-map (kbd "C-y") 'yas-expand)

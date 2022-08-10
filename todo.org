@@ -7,7 +7,7 @@
 
 * TODO get lsp mode working for elisp :elisp:
 
-* TODO my-haskell-rename function :haskell:
+* TODO my-haskell-rename function 1 :haskell:
 * TODO setup flycheck and keybindings
 * TODO Haskell mode bindings :haskell:
 * TODO work through the rest of org mode functions and bindings :org:

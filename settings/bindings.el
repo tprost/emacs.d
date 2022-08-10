@@ -246,12 +246,37 @@
                 
                 
 ;; q
-(global-set-key (kbd "C-q") nil)
-(global-set-key (kbd "C-q n") 'next-error)
-(global-set-key (kbd "C-q p") 'previous-error)
+;; (global-set-key (kbd "C-q") nil)
+;; (global-set-key (kbd "C-q n") 'next-error)
+;; (global-set-key (kbd "C-q p") 'previous-error)
 (define-key flycheck-mode-map flycheck-keymap-prefix nil)
-(setq flycheck-keymap-prefix (kbd "H-q"))
+(setq flycheck-keymap-prefix (kbd "C-q"))
 (define-key flycheck-mode-map flycheck-keymap-prefix flycheck-command-map)
+(define-key flycheck-command-map (kbd "C-n") 'flycheck-next-error)
+(define-key flycheck-command-map (kbd "C-p") 'flycheck-previous-error)
+(define-key flycheck-command-map (kbd "C-l") 'flycheck-list-errors)
+(global-set-key (kbd "M-q") 'flycheck-next-error)
+;;   ---             -------
+
+;; C-c !           Prefix Command
+
+;; C-c ! C-c       flycheck-compile
+;; C-c ! C-w       flycheck-copy-errors-as-kill
+;; C-c ! ?         flycheck-describe-checker
+;; C-c ! C         flycheck-clear
+;; C-c ! H         display-local-help
+;; C-c ! V         flycheck-version
+;; C-c ! c         flycheck-buffer
+;; C-c ! e         flycheck-explain-error-at-point
+;; C-c ! h         flycheck-display-error-at-point
+;; C-c ! i         flycheck-manual
+;; C-c ! l         flycheck-list-errors
+;; C-c ! n         flycheck-next-error
+;; C-c ! p         flycheck-previous-error
+;; C-c ! s         flycheck-select-checker
+;; C-c ! v         flycheck-verify-setup
+;; C-c ! x         flycheck-disable-checker
+
 
 ;; Q
 
@@ -327,6 +352,7 @@
 
 ;; x
 (require 'bindings-c-x)
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 ;; X
 
@@ -473,26 +499,6 @@
 
 ;; (evil-define-key 'emacs 'haskell-mode (kbd "D") 'helm-M-x)
 
-;;   ---             -------
-
-;; C-c !           Prefix Command
-
-;; C-c ! C-c       flycheck-compile
-;; C-c ! C-w       flycheck-copy-errors-as-kill
-;; C-c ! ?         flycheck-describe-checker
-;; C-c ! C         flycheck-clear
-;; C-c ! H         display-local-help
-;; C-c ! V         flycheck-version
-;; C-c ! c         flycheck-buffer
-;; C-c ! e         flycheck-explain-error-at-point
-;; C-c ! h         flycheck-display-error-at-point
-;; C-c ! i         flycheck-manual
-;; C-c ! l         flycheck-list-errors
-;; C-c ! n         flycheck-next-error
-;; C-c ! p         flycheck-previous-error
-;; C-c ! s         flycheck-select-checker
-;; C-c ! v         flycheck-verify-setup
-;; C-c ! x         flycheck-disable-checker
 
 ;; 
 ;; `interactive-haskell-mode' Minor Mode Bindings Starting With C-c:
@@ -648,18 +654,12 @@
 ;; (define-key evil-monster-state-map (kbd "SPC") nil)
 ;; (define-key evil-emacs-state-map (kbd "<SPC>") 'set-mark-command)
 
-(global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-h f") 'helm-apropos)
 (global-set-key (kbd "C-h r") 'helm-info-emacs)
 (global-set-key (kbd "C-h C-l") 'helm-locate-library)
 
 (global-set-key (kbd "TAB") 'company-complete)
-
-(defhydra hydra-startup (global-map "C-x C-x")
-  "What would like to do?"
-	("t" org-todo-list "org-todo-list")
-  ("j" my-open-my-japanese-file "japanese"))
 
 (define-prefix-command 'my-buffer-map)
 (define-key 'my-buffer-map (kbd "r") 'crux-rename-file-and-buffer)

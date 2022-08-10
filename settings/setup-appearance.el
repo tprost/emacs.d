@@ -1,7 +1,18 @@
 (straight-use-package 'ansi-color)
 (straight-use-package 'beacon)
 
-(straight-use-package 'monokai-theme)
+(straight-use-package 'underwater-theme)
+(straight-use-package 'kaolin-themes)
+
+;; (load-theme 'kaolin-dark t)
+;; (load-theme 'kaolin-light t)
+;; (load-theme 'kaolin-galaxy t)
+;; (load-theme 'kaolin-bubblegum t)
+;; (load-theme 'kaolin-eclipse t)
+(load-theme 'kaolin-ocean t)
+;; (load-theme 'kaolin-temple t)
+;; (load-theme 'kaolin-valley-dark t)
+;; (load-theme 'kaolin-valley-light t)
 
 (setq default-frame-alist
       (append (list
@@ -24,8 +35,6 @@
 (set-face-attribute 'default nil :font (reverse "81 agiL onoM orPatamgarP"))
 (if (string= (system-name) "zeus")
     (set-face-attribute 'default nil :font (reverse "21 agiL onoM orPatamgarP")))
-
-(load-theme 'monokai t)
 
 
 (face-attribute 'mode-line :background)
@@ -421,7 +430,8 @@
 (setq-default mode-line-format nil)
 (setq-default header-line-format (list "%e"  mode-line-modified " " "%l" " " mode-line-buffer-identification ))
 
-(set-cursor-color "white")
+;; (set-cursor-color "white")
+
 ;; ("%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification mode-line-buffer-identification "   " mode-line-position
 ;;  (vc-mode vc-mode)
 ;;  "  " mode-line-modes mode-line-misc-info mode-line-end-spaces)

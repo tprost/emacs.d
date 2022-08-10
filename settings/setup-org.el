@@ -113,20 +113,20 @@ Inserted by installing org-mode or when a release is made."
 (require 'darktooth-colors)
 
 ;; (color-defined-p "darktooth-identifiers-1")
-(custom-set-faces
-  '(org-level-1 ((t (:inherit outline-1 :height 1.0))))
-  '(org-level-2 ((t (:inherit outline-2 :height 1.0))))
-  '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
-  '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
-  '(org-level-5 ((t (:inherit outline-5 :height 1.0)))))
 
-(set-face-attribute 'org-level-1 nil :foreground darktooth-light1)
-(set-face-attribute 'org-level-2 nil :foreground darktooth-light2)
-(set-face-attribute 'org-level-3 nil :foreground darktooth-light3)
-(set-face-attribute 'org-level-4 nil :foreground darktooth-light4)
-(set-face-attribute 'org-todo nil :foreground darktooth-neutral-yellow)
-(set-face-attribute 'org-tag nil :foreground darktooth-neutral-purple)
-(set-face-attribute 'org-headline-done nil :foreground darktooth-neutral-aqua)
+(set-face-attribute 'org-level-1 nil :height 1.0)
+(set-face-attribute 'org-level-2 nil :height 1.0)
+(set-face-attribute 'org-level-3 nil :height 1.0)
+(set-face-attribute 'org-level-4 nil :height 1.0)
+(set-face-attribute 'org-level-5 nil :height 1.0)
+;; (set-face-attribute 'org-level-1 nil :foreground darktooth-light1 :height 1.0)
+;; (set-face-attribute 'org-level-2 nil :foreground darktooth-light2 :height 1.0)
+;; (set-face-attribute 'org-level-3 nil :foreground darktooth-light3 :height 1.0)
+;; (set-face-attribute 'org-level-4 nil :foreground darktooth-light4 :height 1.0)
+;; (set-face-attribute 'org-level-5 nil :foreground darktooth-light4 :height 1.0)
+;; (set-face-attribute 'org-todo nil :foreground darktooth-neutral-yellow)
+;; (set-face-attribute 'org-tag nil :foreground darktooth-neutral-purple)
+;; (set-face-attribute 'org-headline-done nil :foreground darktooth-neutral-aqua)
 
 (defvar auto-minor-mode-alist ()
   "Alist of filename patterns vs correpsonding minor mode functions, see `auto-mode-alist'
