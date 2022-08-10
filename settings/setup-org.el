@@ -113,6 +113,12 @@ Inserted by installing org-mode or when a release is made."
 (require 'darktooth-colors)
 
 ;; (color-defined-p "darktooth-identifiers-1")
+(custom-set-faces
+  '(org-level-1 ((t (:inherit outline-1 :height 1.0))))
+  '(org-level-2 ((t (:inherit outline-2 :height 1.0))))
+  '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
+  '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
+  '(org-level-5 ((t (:inherit outline-5 :height 1.0)))))
 
 (set-face-attribute 'org-level-1 nil :foreground darktooth-light1)
 (set-face-attribute 'org-level-2 nil :foreground darktooth-light2)
@@ -159,8 +165,7 @@ the checking happens for all pairs in auto-minor-mode-alist"
 	(mark-whole-buffer)
 	(org-sort-entries nil ?o))
 
-(add-hook 'org-mode-hook (lambda ()
-													 (visual-line-mode)))
+(add-hook 'org-mode-hook (lambda ()	(visual-line-mode)))
                            
 
 (provide 'setup-org)

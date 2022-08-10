@@ -23,7 +23,7 @@
   ("s" shrink-frame-horizontally "shrink-frame-horizontally")
   ("w" hydra-window-management/body "window"))
 (define-key 'my-x-map (kbd "C-a") 'make-frame)
-(global-set-key (kbd "C-x a") 'hydra-frame-management/body)
+(define-key 'my-x-map (kbd "a") 'hydra-frame-management/body)
 
 ;; b
 (define-key 'my-x-map (kbd "C-b") 'helm-mini)
@@ -46,7 +46,9 @@
 ;; (define-key my-x-map (kbd "e") my-emacs-d-map)
 
 ;; f
-(define-key 'my-x-map (kbd "f") 'crux-recentf-find-file)
+(define-key 'my-x-map (kbd "f") nil)
+(define-key 'my-x-map (kbd "f r") 'crux-rename-file-and-buffer)
+(define-key 'my-x-map (kbd "f f") 'crux-recentf-find-file)
 (define-key 'my-x-map (kbd "C-f") 'helm-find-files)
 
 ;; g
@@ -157,8 +159,8 @@
   ("t" crux-transpose-windows "transpose") 
   ("v" split-window-vertically "vertically")
   ("f" hydra-frame-management/body "frame"))
-(global-set-key (kbd "C-x w") 'hydra-window-management/body)
-(global-set-key (kbd "C-x C-w") 'other-window)
+(define-key 'my-x-map (kbd "w") 'hydra-window-management/body)
+(define-key 'my-x-map (kbd "C-w") 'other-window)
 
 ;; x
 ;; ?
@@ -178,6 +180,8 @@
   "text scale"
   ("i" text-scale-increase "increase")
   ("d" text-scale-decrease "decrease"))
+(define-key 'my-x-map (kbd "=") 'hydra-text-scale/body)
+(define-key 'my-x-map (kbd "C-=") 'hydra-text-scale/body)
 
 (global-set-key (kbd "C-x") 'my-x-map)
 (global-set-key (kbd "C-S-x") 'my-x-map)

@@ -28,6 +28,7 @@
 (require 'setup-company-mode)
 (require 'setup-magit)
 (require 'setup-dired)
+(require 'setup-csv-mode)
 ;; (require 'setup-term-mode)
 ;; (require 'setup-defaults)
 ;; (require 'setup-exec-path-from-shell)
