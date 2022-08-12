@@ -249,12 +249,13 @@
 ;; (global-set-key (kbd "C-q n") 'next-error)
 ;; (global-set-key (kbd "C-q p") 'previous-error)
 (define-key flycheck-mode-map flycheck-keymap-prefix nil)
-(setq flycheck-keymap-prefix (kbd "C-q"))
+(setq flycheck-keymap-prefix (kbd "C-c !"))
 (define-key flycheck-mode-map flycheck-keymap-prefix flycheck-command-map)
 (define-key flycheck-command-map (kbd "C-n") 'flycheck-next-error)
 (define-key flycheck-command-map (kbd "C-p") 'flycheck-previous-error)
 (define-key flycheck-command-map (kbd "C-l") 'flycheck-list-errors)
-(global-set-key (kbd "M-q") 'flycheck-next-error)
+;; (global-set-key (kbd "M-q") 'flycheck-next-error)
+
 ;;   ---             -------
 
 ;; C-c !           Prefix Command
@@ -436,7 +437,13 @@
 (global-set-key (kbd "C-M-<backspace>") 'backward-kill-sentence)
 
 ;; @
-(global-set-key (kbd "C-c C-@") 'hs-toggle-hiding)
+(global-set-key (kbd "C-c C-.") 'hs-toggle-hiding)
+(global-set-key (kbd "H-.") 'hs-toggle-hiding)
+
+;; #
+(global-set-key (kbd "C-#") 'er/expand-region)
+(global-set-key (kbd "M-#") 'er/contract-region)
+
 
 ;; ;
 (global-set-key (kbd "C-;") 'whole-line-or-region-comment-dwim-2)

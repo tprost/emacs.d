@@ -1,12 +1,12 @@
-(define-key org-mode-map (kbd "H-f") 'org-previous-visible-heading)
-(define-key org-mode-map (kbd "H-b") 'org-next-visible-heading)
-(define-key org-mode-map (kbd "H-n") 'org-forward-heading-same-level)
-(define-key org-mode-map (kbd "H-p") 'org-backward-heading-same-level)
+(define-key org-mode-map (kbd "H-p") 'org-previous-visible-heading)
+(define-key org-mode-map (kbd "H-n") 'org-next-visible-heading)
+(define-key org-mode-map (kbd "H-f") 'org-forward-heading-same-level)
+(define-key org-mode-map (kbd "H-b") 'org-backward-heading-same-level)
 (define-key org-mode-map (kbd "H-u") 'org-up-heading)
 (define-key org-mode-map (kbd "H-j") 'org-goto)
 
-(define-key org-mode-map (kbd "H-<tab>") 'org-cycle)
-(define-key org-mode-map (kbd "H-S-<tab>") 'org-global-cycle)
+(define-key org-mode-map (kbd "H-.") 'org-cycle)
+(define-key org-mode-map (kbd "H-C-.") 'org-global-cycle)
 ;; outline-show-all
 ;; org-reveal
 ;; oiutline-show-branches
@@ -32,6 +32,7 @@
 
 (define-key org-mode-map (kbd "H-y") 'org-yank)
 (define-key org-mode-map (kbd "H-^") 'org-sort)
+
 ;; TODO cut copy paste subtrees
 ;; TODO org clone
 ;; TODO refile
@@ -40,10 +41,8 @@
 ;; TODO everything in the manual from
 ;; https://orgmode.org/manual/Sparse-Trees.html
 
-(define-key org-mode-map (kbd "H-t") 'org-todo)
-
-(define-key org-mode-map (kbd "H-x H-l") 'org-insert-link)
-(define-key org-mode-map (kbd "H-x H-t") 'org-table-align)
+(define-key org-mode-map (kbd "C-c C-l") 'org-insert-link)
+; ;; (define-key org-mode-map (kbd "H-x H-t") 'org-table-align)
 
 
 
