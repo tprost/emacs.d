@@ -1,23 +1,23 @@
 #+CATEGORY: emacs
 
-* TODO org mode hide/show binding should match
+* TODO fix C-x C-a in elisp and other modes :bindings:
 
+* DONE why does LSP mode for Haskell chug at startup 
+(and then later at random times)
+I guess because the env isn't cached? seems better now with direnv-nix
+* TODO org mode hide/show binding should match
 * TODO use tab mode? perhaps for project vterms?
 * TODO how do we organize various scripts for local dev? Makefile?
 
 * TODO get lsp mode working for elisp :elisp:
 
 * TODO my-haskell-rename function 1 :haskell:
-* TODO setup flycheck and keybindings
+* DONE setup flycheck and keybindings
 * TODO Haskell mode bindings :haskell:
 * TODO work through the rest of org mode functions and bindings :org:
 
 * TODO make sure projectile doesn't search through a million unnecessary lisp files
-* DONE cleanup file structure in .emacs.d
-
 * TODO find a way to organize and run processes and set up shells per project
-* DONE set up a nice home screen with drill?
-
 * TODO automatically invoke lsp-mode for Python files and projects :python:
 * TODO make sure virtual environment is used for commands in Python projects with .venv? :python:
 
@@ -25,11 +25,11 @@
 * TODO function to find all occurences of TODO in project
 
 * TODO hotkey for creating a feature branch off of develop based on JIRA tag and name? :bindings:
-* TODO easier hotkeys for switch to wdired mode and out :bindings:
+* TODO easier hotkeys for switch to wdired mode and out :bindings:dired:
 
-* DONE make shell use up arrow key for previous command
 * TODO find and remember command to start an additional shell
-* TODO tab in shell mode should autocomplete :bindings:
+* DONE tab in shell mode should autocomplete :bindings:
+vterm seems to work fine thank you
 
 * TODO dired mode color coding filenames?
 
@@ -37,13 +37,10 @@
 * TODO better switch to test file function (for Haskell?)
 * TODO figure out what "todo order" is in org mode :org:
 
-* DONE projectile stack test binding just for Haskell projects? :haskell:
-
-* DONE how do I want indentation to work? what bindings do I want? :bindings:
 * TODO find definition lookup in hackage
 * TODO set up interactive haskell bindings :bindings:
 http://haskell.github.io/haskell-mode/manual/latest/
-* TODO setup flyspell?
+* DONE setup flyspell?
 * TODO haskell mode align binding :bindings:
 http://haskell.github.io/haskell-mode/manual/latest/Aligning-code.html#Aligning-code
 * TODO macro to set up frame and window for emacs editing?
@@ -71,15 +68,11 @@ Because if I think of a word I want to memorize in Japanese, I want to quickly c
 * TODO investigate term-projectile + automatic named services for project
 * TODO explore how to have an extra folder of yasnippets :yasnippet:
 * TODO how do I quickly look at the snippets for a mode, for example Haskell :yasnippet:
-* DONE indentation bindings :bindings:
-* Projectile, Layout, Project Terminals and Shell Commands
 * TODO Prompt to fire up project vterm buffers, docker, etc. when entering appropriate project
 * TODO [#A] shortcut to go to projectile vterm with helm? quick keybindings to 1-9? :bindings:
 * TODO projectile level mapping of vterm identifiers and the command we should run
 * TODO projectile vterms should be configured to have run command?
 
-* DONE Function to start a projectile vterm shell with a particular buffer name with command
-my-projectile-run-vterm-dwim
 * TODO Function to start a general purpose vterm shell with a particular buffer name with command?
 * TODO Function to run command in existing vterm buffer
 
@@ -92,6 +85,18 @@ my-projectile-run-vterm-dwim
 - Shell for running manage.py commands?
 * TODO My Go Projects (Start docker compose)
 
+* Projectile, Layout, Project Terminals and Shell Commands
+* DONE cleanup file structure in .emacs.d
+
+* DONE set up a nice home screen with drill?
+
+* DONE make shell use up arrow key for previous command
+* DONE projectile stack test binding just for Haskell projects? :haskell:
+
+* DONE how do I want indentation to work? what bindings do I want? :bindings:
+* DONE indentation bindings :bindings:
+* DONE Function to start a projectile vterm shell with a particular buffer name with command
+my-projectile-run-vterm-dwim
 * DONE fix lsp mode so it starts automatically
 * DONE fix the goddamn C-M-j binding 
 * DONE crux-rename file and buffer binding

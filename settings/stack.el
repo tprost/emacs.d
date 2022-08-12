@@ -1,5 +1,6 @@
 ;; (require 'vterm)
 
+
 (defun my-projectile-run-stack-testing-vterm ()
   (interactive)
   (let* ((project (projectile-ensure-project (projectile-project-root)))          

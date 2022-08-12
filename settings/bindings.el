@@ -234,7 +234,6 @@
 ;; (evil-global-set-key 'emacs  (kbd "M-S-o") 'er/contract-region)
 ;; (global-set-key (kbd "C-@") 'er/expand-region)
 ;; (global-set-key (kbd "M-@") 'er/contract-region)
-;; (global-set-key (kbd "C-@") 'hs-toggle-hiding)
 
 
 ;; p
@@ -436,6 +435,9 @@
 ;; (evil-global-set-key 'emacs  (kbd "M-<backspace>") 'crux-kill-line-backwards)
 (global-set-key (kbd "C-M-<backspace>") 'backward-kill-sentence)
 
+;; @
+(global-set-key (kbd "C-c C-@") 'hs-toggle-hiding)
+
 ;; ;
 (global-set-key (kbd "C-;") 'whole-line-or-region-comment-dwim-2)
 (global-set-key (kbd "C-%") 'query-replace)
@@ -455,6 +457,7 @@
 (global-set-key (kbd "<f9>") 'projectile-find-file)
 
 (global-set-key (kbd "C-<return>") nil)
+;; (global-set-key (kbd "C-<tab>") 'hs-toggle-hiding)
 (global-set-key (kbd "M-<return>") nil)
 ;; (global-set-key (kbd "<f2>") lsp-command-map)
 ;; (global-set-key (kbd "<f3>") 'projectile-command-map)
@@ -465,7 +468,7 @@
 (define-key haskell-mode-map (kbd "H-r") 'my-haskell-rename)
 (define-key haskell-mode-map (kbd "H-C-r") 'my-haskell-retrie)
 (define-key haskell-mode-map (kbd "H-RET") 'my-haskell-send-region)
-(define-key haskell-mode-map (kbd "C-@") 'haskell-hide-toggle)
+(define-key haskell-mode-map (kbd "H-@") 'haskell-hide-toggle)
 ;; (define-key haskell-mode-map (kbd "H-") 'my-haskell-hs-hide-all)
 ;; (define-key haskell-mode-map (kbd "H-") 'my-haskell-hs-show-all)
 

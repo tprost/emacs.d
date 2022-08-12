@@ -25,6 +25,8 @@
 (require 'my-python-functions)
 
 (require 'setup-defaults)
+(require 'setup-text-mode)
+(require 'setup-emacs-lisp-mode)
 (require 'setup-helm)
 (require 'setup-projectile)
 (require 'setup-company-mode)
