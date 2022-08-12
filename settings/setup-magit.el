@@ -2,12 +2,12 @@
 
 (require 'magit)
 
-(set-face-attribute 'magit-header-line nil
-                    :overline nil
-                    :underline nil
-                      :foreground "black" :background "dark orange"
-                      :box nil
-                      :box '( :line-width 4 :color "dark orange")
-                      )
+;; (set-face-attribute 'magit-header-line nil
+;; 										:inherit 'mode-line
+;; 										:extend t
+;; 										:background "#000000"
+;; 										:foreground "dark orange"
+;; 										:box '(:line-width (4 . 4) :color "black")
+;; 										:weight 'bold)
 
 (provide 'setup-magit)

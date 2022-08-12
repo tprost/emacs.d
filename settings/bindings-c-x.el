@@ -129,7 +129,18 @@
 (define-key 'my-x-map (kbd "s") 'save-some-buffers)
 
 ;; t
-(define-key 'my-x-map (kbd "C-t") 'my-new-vterm)
+(define-key 'my-x-map (kbd "t 0") 'tab-close)
+(define-key 'my-x-map (kbd "t 1") 'tab-close-other)
+(define-key 'my-x-map (kbd "t 2") 'tab-new)
+(define-key 'my-x-map (kbd "t RET") 'tab-switch)
+(define-key 'my-x-map (kbd "t o") 'tab-next)
+(define-key 'my-x-map (kbd "t u") 'tab-undo)
+(define-key 'my-x-map (kbd "t l") 'tab-last)
+(define-key 'my-x-map (kbd "t r") 'tab-rename)
+(define-key 'my-x-map (kbd "t r") 'tab-recent)
+;; tab-bar-history-back
+;; tab-bar-history-forward
+
 
 ;; u
 

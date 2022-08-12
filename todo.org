@@ -1,5 +1,7 @@
 #+CATEGORY: emacs
 
+* TODO style my tab bar mode
+* TODO explore tab bar history
 * TODO organize org bindings with C-c 
 * TODO tweak C-c . <key> bindings to be not C-<key> :hs:
 * DONE fix C-x C-a in elisp and other modes :bindings:
@@ -8,7 +10,7 @@
 (and then later at random times)
 I guess because the env isn't cached? seems better now with direnv-nix
 * DONE org mode hide/show binding should match
-* TODO use tab mode? perhaps for project vterms?
+* DONE use tab mode? perhaps for project vterms?
 * TODO how do we organize various scripts for local dev? Makefile?
 
 * TODO get lsp mode working for elisp :elisp:

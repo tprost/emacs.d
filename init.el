@@ -25,6 +25,7 @@
 (require 'my-python-functions)
 
 (require 'setup-defaults)
+(require 'setup-tab-bar-mode)
 (require 'setup-text-mode)
 (require 'setup-emacs-lisp-mode)
 (require 'setup-helm)
