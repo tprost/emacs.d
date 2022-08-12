@@ -181,16 +181,29 @@
                     :overline nil
                     :underline nil)
 
-(defun minibuffer-bg ()	
-     (set (make-local-variable 'face-remapping-alist)
-          '((default :foreground "#FFC0CB"))))
+(defun my-style-the-echo-area ()
+  (if (get-buffer " *Echo Area 0*")
+			(with-current-buffer " *Echo Area 0*" (face-remap-add-relative 'default
+  '(:background "#520435"))))
+	(if (get-buffer " *Echo Area 1*")
+			(with-current-buffer " *Echo Area 1*" (face-remap-add-relative 'default
+  '(:background "#520435")))))
 
-(dolist
-    (buf (list " *Minibuf-0*" " *Minibuf-1*" " *Echo Area 0*" " *Echo Area 1*" "*Quail Completions*"))
-  (when (get-buffer buf)
-    (with-current-buffer buf (minibuffer-bg))))
+  
+																																 
 
-(add-hook 'minibuffer-setup-hook 'minibuffer-bg)
+(add-hook 'after-change-major-mode-hook 'my-style-the-echo-area)
+
+;; (defun minibuffer-bg ()	
+;;      (set (make-local-variable 'face-remapping-alist)
+;;           '((default :foreground "#FFC0CB"))))
+
+;; (dolist
+;;     (buf (list " *Minibuf-0*" " *Minibuf-1*" " *Echo Area 0*" " *Echo Area 1*" "*Quail Completions*"))
+;;   (when (get-buffer buf)
+;;     (with-current-buffer buf (minibuffer-bg))))
+
+;; (add-hook 'minibuffer-setup-hook 'minibuffer-bg)
 
 
 ;; (set-face-attribute 'tab-bar nil
