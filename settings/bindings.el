@@ -127,35 +127,29 @@
 
 ;; j
 (define-prefix-command 'my-avy-map)
-;; (evil-global-set-key 'emacs  (kbd "j") 'avy-goto-char)
-(global-set-key (kbd "C-j") 'my-avy-map)
-(global-set-key (kbd "C-j c") 'avy-goto-char)
-(global-set-key (kbd "C-j 2") 'avy-goto-char-2)
-(global-set-key (kbd "C-j j") 'avy-goto-char)
-(global-set-key (kbd "C-j a") 'avy-goto-char-2-above)
-(global-set-key (kbd "C-j e") 'avy-goto-char-2-below)
-(global-set-key (kbd "C-j b") 'avy-goto-char-2-above)
-(global-set-key (kbd "C-j f") 'avy-goto-char-2-below)
-(global-set-key (kbd "C-j l") 'avy-goto-char-in-line)
-(global-set-key (kbd "C-j w") 'avy-goto-word-1)
-(global-set-key (kbd "C-j C-w 0") 'avy-goto-word-0)
-(global-set-key (kbd "C-j C-w 1") 'avy-goto-word-1)
 
-(define-prefix-command 'my-micro-avy-map)
-(global-set-key (kbd "M-j") 'my-micro-avy-map)
-(global-set-key (kbd "M-j c") 'avy-goto-char)
-(global-set-key (kbd "M-j l") 'avy-goto-line)
-(global-set-key (kbd "M-j a") 'avy-goto-line-above)
-(global-set-key (kbd "M-j e") 'avy-goto-line-below)
-(global-set-key (kbd "M-j b") 'avy-goto-word-0-above)
-(global-set-key (kbd "M-j f") 'avy-goto-word-0-below)
-(global-set-key (kbd "M-j w") 'avy-goto-word-0)
+(global-set-key (kbd "C-j") 'avy-goto-char)
+(global-set-key (kbd "M-j") nil)
+(global-set-key (kbd "M-j M-c") 'avy-goto-char)
+(global-set-key (kbd "M-j c c") 'avy-goto-char)
+(global-set-key (kbd "M-j c 1") 'avy-goto-char)
+(global-set-key (kbd "M-j c 2") 'avy-goto-char-2)
+(global-set-key (kbd "M-j c a") 'avy-goto-char-2-above)
+(global-set-key (kbd "M-j c b") 'avy-goto-char-2-below)
 
-(define-prefix-command 'my-macro-avy-map)
-(global-set-key (kbd "C-M-j") 'my-macro-avy-map)
-(global-set-key (kbd "C-M-j l") 'avy-goto-line)
-(global-set-key (kbd "C-M-j a") 'avy-goto-line-above)
-(global-set-key (kbd "C-M-j e") 'avy-goto-line-below)
+(global-set-key (kbd "M-j M-2") 'avy-goto-char-2)
+(global-set-key (kbd "M-j M-j") 'avy-goto-char)
+
+(global-set-key (kbd "M-j M-a") 'avy-goto-char-2-above)
+(global-set-key (kbd "M-j M-e") 'avy-goto-char-2-below)
+(global-set-key (kbd "M-j M-b") 'avy-goto-char-2-above)
+(global-set-key (kbd "M-j M-f") 'avy-goto-char-2-below)
+(global-set-key (kbd "M-j M-l") 'avy-goto-char-in-line)
+(global-set-key (kbd "M-j M-w") 'avy-goto-word-1)
+(global-set-key (kbd "M-j w 0") 'avy-goto-word-0)
+(global-set-key (kbd "M-j w 1") 'avy-goto-word-1)
+
+
 
 ;; J
 
@@ -181,36 +175,26 @@
 
 ;; m
 ;; (evil-global-set-key 'emacs (kbd "m") 'set-mark-command)
-(define-prefix-command 'my-mark-map)
-(global-set-key (kbd "<C-m>") 'my-mark-map)
-(define-key my-mark-map (kbd "C-w") 'er/mark-word)
-(define-key my-mark-map (kbd "C-s") 'er/mark-sentence)
-(define-key my-mark-map (kbd "C-p") 'er/mark-paragraph)
-(define-key my-mark-map (kbd "C-l") 'my-mark-current-line)
-(define-key my-mark-map (kbd "C-c") 'er/mark-comment)
-(define-key my-mark-map (kbd "C-f") 'er/mark-defun)
-(define-key my-mark-map (kbd "C-e") 'er/mark-email)
-(define-key my-mark-map (kbd "C-m") 'er/mark-symbol)
-(define-key my-mark-map (kbd "C-b") 'mark-whole-buffer)
+
 ;; (define-key my-mark-map (kbd "f") (define-prefix-command 'my-mark-feature-map))
 ;; (define-key my-mark-map (kbd "f s") 'er/mark-feature-scenario)
 ;; (define-key my-mark-map (kbd "f p") 'er/mark-feature-step)
 
 ;; (evil-global-set-key 'emacs  (kbd "M") 'mc/mark-all-dwim)
+(global-set-key (kbd "<C-m>") 'mc/mark-all-dwim)
 (define-prefix-command 'my-mc-map)
-(define-key my-mc-map (kbd "a") 'mc/mark-all-dwim)
-(define-key my-mc-map (kbd "C-S-m") 'my-mc-map)
-(define-key my-mc-map (kbd "C-S-m a") 'mc/mark-all-dwim)
-(define-key my-mc-map (kbd "C-S-m r") 'mc/mark-all-in-region)
-(define-key my-mc-map (kbd "C-S-m l") 'mc/edit-beginnings-of-lines)
-(define-key my-mc-map (kbd "C-S-m m") 'mc/mark-all-dwim)
-(define-key my-mc-map (kbd "C-S-m n") 'mc/mark-next-like-this)
-(define-key my-mc-map (kbd "C-S-m p") 'mc/mark-previous-like-this)
 (global-set-key (kbd "M-m") 'my-mc-map)
+(define-key my-mc-map (kbd "M-a") 'mc/mark-all-dwim)
+(define-key my-mc-map (kbd "M-r") 'mc/mark-all-in-region)
+(define-key my-mc-map (kbd "M-l") 'mc/edit-beginnings-of-lines)
+(define-key my-mc-map (kbd "M-m") 'mc/mark-all-dwim)
+(define-key my-mc-map (kbd "M-n") 'mc/mark-next-like-this)
+(define-key my-mc-map (kbd "M-p") 'mc/mark-previous-like-this)
+
 
 ;; n
 ;; (evil-global-set-key 'emacs (kbd "n") 'forward-paragraph)
-;; (global-set-key (kbd "C-n") 'next-line)
+(global-set-key (kbd "M-n") 'forward-paragraph)
 ;; (global-set-key (kbd "M-n") '
 
 ;; N
@@ -239,7 +223,10 @@
 
 
 ;; p
+(global-set-key (kbd "M-p") 'backward-paragraph)
+
 ;; (evil-global-set-key 'emacs  (kbd "p") 'backward-paragraph)
+
 
 ;; P
 ;; (evil-global-set-key 'emacs (kbd "P") 'projectile-command-map)
@@ -250,12 +237,6 @@
 ;; (global-set-key (kbd "C-q") nil)
 ;; (global-set-key (kbd "C-q n") 'next-error)
 ;; (global-set-key (kbd "C-q p") 'previous-error)
-(define-key flycheck-mode-map flycheck-keymap-prefix nil)
-(setq flycheck-keymap-prefix (kbd "C-c !"))
-(define-key flycheck-mode-map flycheck-keymap-prefix flycheck-command-map)
-(define-key flycheck-command-map (kbd "C-n") 'flycheck-next-error)
-(define-key flycheck-command-map (kbd "C-p") 'flycheck-previous-error)
-(define-key flycheck-command-map (kbd "C-l") 'flycheck-list-errors)
 ;; (global-set-key (kbd "M-q") 'flycheck-next-error)
 
 ;;   ---             -------
@@ -420,15 +401,53 @@
 ;; (global-set-key (kbd "C-[") 'my-open-line-above)
 ;; (global-set-key (kbd "C-]") 'my-open-line-below)
 
+
 ;; <SPC>
 ;; (evil-global-set-key 'emacs  (kbd "SPC") 'set-mark-command)
 ;; (global-set-key (kbd "M-SPC") 'my-toggle-evil-mode)
 (global-set-key (kbd "C-SPC") 'set-mark-command)
+(global-set-key (kbd "C-,") 'set-mark-command)
+(global-set-key (kbd "M-SPC") 'my-mark-map)
+(global-set-key (kbd "M-,") 'my-mark-map)
+
+(setq expand-region-contract-fast-key "<backspace>")
+
+(global-set-key (kbd "C-^") 'sort-lines)
+
+;; =
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+(define-prefix-command 'my-mark-map)
+(global-set-key (kbd "M-=") 'my-mark-map)
+(define-key my-mark-map (kbd "M-a") 'er/mark-next-accessor)
+(define-key my-mark-map (kbd "M-b") 'er/mark-wholew-buffer)
+(define-key my-mark-map (kbd "M-c") 'er/mark-method-call)
+(define-key my-mark-map (kbd "M-e") 'er/mark-email)
+(define-key my-mark-map (kbd "M-f") 'er/mark-defun)
+(define-key my-mark-map (kbd "M-l") 'my-mark-current-line)
+(define-key my-mark-map (kbd "M-p") 'er/mark-inside-pairs)
+(define-key my-mark-map (kbd "M-p") 'er/mark-paragraph)
+(define-key my-mark-map (kbd "M-q") 'er/mark-outside-quotes)
+(define-key my-mark-map (kbd "M-s") 'er/mark-sentence)
+(define-key my-mark-map (kbd "M-u") 'er/mark-url)
+(define-key my-mark-map (kbd "M-w") 'er/mark-word)
+(define-key my-mark-map (kbd "M-y") 'er/mark-symbol)
+
+(define-key my-mark-map (kbd "M-'") 'er/mark-inside-quotes)
+(define-key my-mark-map (kbd "M--") 'er/contract-region)
+(define-key my-mark-map (kbd "M-;") 'er/mark-comment)
+(define-key my-mark-map (kbd "M-=") 'er/expand-region)
+(define-key my-mark-map (kbd "M-S-Q") 'er/mark-inside-quotes)
+(define-key my-mark-map (kbd "M-S-Y") 'er/mark-symbol-with-prefix)
+(define-key my-mark-map (kbd "M-SPC") 'er/expand-region)
+(define-key my-mark-map (kbd "M-\"") 'er/mark-outside-quotes)
+
 
 (global-set-key (kbd "H-r") 'lsp-rename)
 (global-set-key (kbd "H-d") 'lsp-find-definition)
 (global-set-key (kbd "H-j") 'lsp-goto-type-definition)
 (global-set-key (kbd "H-i") 'lsp-organize-imports)
+
 
 
 (global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
@@ -479,70 +498,6 @@
 ;; (global-set-key (kbd "<f3>") 'projectile-command-map)
 ;; (global-set-key (kbd "<f4>") 'hydra-window-management/body)
 
-(define-key haskell-mode-map (kbd "<f5>") 'my-projectile-run-stack-testing-vterm)
-(define-key haskell-mode-map (kbd "H-o") 'my-haskell-organize-imports)
-(define-key haskell-mode-map (kbd "H-r") 'my-haskell-rename)
-(define-key haskell-mode-map (kbd "H-C-r") 'my-haskell-retrie)
-(define-key haskell-mode-map (kbd "H-RET") 'my-haskell-send-region)
-(define-key haskell-mode-map (kbd "H-@") 'haskell-hide-toggle)
-;; (define-key haskell-mode-map (kbd "H-") 'my-haskell-hs-hide-all)
-;; (define-key haskell-mode-map (kbd "H-") 'my-haskell-hs-show-all)
-
-;; (evil-define-key nil haskell-mode-map (kbd "C-c r") 'projectile-replace)
-;; (evil-define-key nil haskell-mode-map (kbd "C-c i") 'haskell-interactive-switch)
-
-;; (evil-define-key nil haskell-mode-map (kbd "C-c ,") 'haskell-mode-format-imports)
-;; (evil-define-key nil haskell-mode-map (kbd "C-c C-,") nil)
-;; (evil-define-key nil haskell-mode-map (kbd "C-c C-, n") 'haskell-navigate-imports)
-;; (evil-define-key nil haskell-mode-map (kbd "C-c C-, s") 'haskell-sort-imports)
-;; (evil-define-key nil haskell-mode-map (kbd "C-c C-, a") 'haskell-align-imports)
-
-;; (evil-define-key 'emacs haskell-mode-map (kbd "o") 'haskell-hide-toggle)
-;; (evil-define-key 'emacs haskell-mode-map (kbd "C-o") 'haskell-hide-toggle)
-;; (evil-define-key 'emacs haskell-mode-map (kbd "M-o") 'haskell-hide-toggle)
-;; TODO maybe this should be a prefix map for consistency?
-;; (evil-define-key 'emacs haskell-mode-map (kbd "C-M-o") nil)
-;; (evil-define-key 'emacs haskell-mode-map (kbd "C-M-o o") 'haskell-hide-toggle-all)
-;; (evil-define-key 'emacs haskell-mode-map (kbd "C-M-o s") 'my-haskell-hs-show-all)
-;; (evil-define-key 'emacs haskell-mode-map (kbd "C-M-o h") 'my-haskell-hs-hide-all)
-
-;; haskell lookup hoogle?
-
-
-;; haskell-navigate-imports
-
-;; haskell-process-load-file
-;; haskell-process-reload
-
-;; (evil-define-key nil haskell-mode-map (kbd "C-c R") 'projectile-replace)
-
-;; (evil-define-key 'emacs 'haskell-mode (kbd "D") 'helm-M-x)
-
-
-;; 
-;; `interactive-haskell-mode' Minor Mode Bindings Starting With C-c:
-;; key             binding
-;; ---             -------
-
-;; C-c C-b         haskell-interactive-switch
-;; C-c C-c         haskell-process-cabal-build
-;; C-c TAB         haskell-process-do-info
-;; C-c C-k         haskell-interactive-mode-clear
-;; C-c C-l         haskell-process-load-file
-;; C-c C-r         haskell-process-reload
-;; C-c C-t         haskell-process-do-type
-;; C-c C-v         haskell-cabal-visit-file
-;; C-c C-x         haskell-process-cabal
-;; C-c C-z         haskell-interactive-switch
-
-;; 
-;; Major Mode Bindings Starting With C-c:
-;; key             binding
-;; ---             -------
-
-;; C-c C-s         haskell-mode-toggle-scc-at-point
-;; C-c C-,         haskell-mode-format-imports
-
 ;; 
 ;; Global Bindings Starting With C-c:
 ;; key             binding
@@ -579,7 +534,7 @@
 ;; (global-set-key (kbd "TAB") 'smart-tab)
 
 ;; (global-set-key (kbd "M-i") 'back-to-indentation)
-;; (global-set-key (kbd "C-C-S-m") 'iy-go-to-char)
+;; (global-set-key (kbd "C-) 'iy-go-to-char)
 
 
 
@@ -725,7 +680,16 @@
 ;; (define-key projectile-mode-map (kbd "C-x p t f") 'term-projectile-forward)
 ;; (define-key projectile-mode-map (kbd "C-x p t s") 'term-projectile-switch-to)
 
+
+(define-key flycheck-mode-map flycheck-keymap-prefix nil)
+(setq flycheck-keymap-prefix (kbd "C-c !"))
+(define-key flycheck-mode-map flycheck-keymap-prefix flycheck-command-map)
+(define-key flycheck-command-map (kbd "C-n") 'flycheck-next-error)
+(define-key flycheck-command-map (kbd "C-p") 'flycheck-previous-error)
+(define-key flycheck-command-map (kbd "C-l") 'flycheck-list-errors)
+
 (require 'bindings-org-mode)
+(require 'bindings-haskell-mode)
 
 (provide 'bindings)
 

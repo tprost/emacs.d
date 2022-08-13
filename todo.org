@@ -1,5 +1,6 @@
 #+CATEGORY: emacs
 
+* TODO there's lots more to mark
 * TODO multiple cursors!
 * TODO fix Haskell clean up imports
 * TODO how do I make Flycheck ignore untyped stuff

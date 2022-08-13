@@ -48,8 +48,8 @@
 		   (goto-char (region-beginning))
 		   (open-line 1)
 		   (insert (format "%s = %s" oldName newName))
-	     (shell-command (read-string "Retrie Command: " (format " retrie --unfold
-	Game.%s" oldName))))
+	     (shell-command
+				(read-string "Retrie Command: " (format " retrie --unfold Game.%s" oldName))))
 
 (defun my-haskell-rename ()
 	(interactive)
@@ -57,9 +57,7 @@
 	(mark-word)
 	(my-haskell-rename--with
 	 (buffer-substring-no-properties (mark) (point))
-	 (read-string "New name: ")))
-	
-	     
+	 (read-string "New name: "))) 	     
 
 (defun my-haskell-retrie ()
 	(interactive)	
