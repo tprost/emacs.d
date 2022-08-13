@@ -1,7 +1,17 @@
 #+CATEGORY: emacs
 
-* TODO style my tab bar mode
-* TODO explore tab bar history
+* TODO multiple cursors!
+* TODO fix Haskell clean up imports
+* TODO how do I make Flycheck ignore untyped stuff
+* TODO Start up Haskell REPL and send code to it :haskell:
+* TODO Haskell REPL mode + bindings + setup
+
+* TODO assign buffers to numbers? or just use tab mode?
+
+* DONE style my tab bar mode
+* DONE explore tab bar history
+
+
 * TODO organize org bindings with C-c 
 * TODO tweak C-c . <key> bindings to be not C-<key> :hs:
 * DONE fix C-x C-a in elisp and other modes :bindings:

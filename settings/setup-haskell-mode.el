@@ -42,16 +42,33 @@
   (hs-minor-mode -1)
   (hs-minor-mode 1))
 
+(defun my-haskell-rename--with (oldName newName)
+	(my-haskell-mark-function-definition)
+	     (replace-string-in-region oldName newName)
+		   (goto-char (region-beginning))
+		   (open-line 1)
+		   (insert (format "%s = %s" oldName newName))
+	     (shell-command (read-string "Retrie Command: " (format " retrie --unfold
+	ModuleName.%s" oldName))))
+
 (defun my-haskell-rename ()
 	(interactive)
-	(lsp-find-definition) 
+	(lsp-find-definition)
 	(mark-word)
-	(shell-command (read-string "Retrie Command: " " retrie --unfold ModuleName.oldName"))) ;; TODO
+	(my-haskell-rename--with
+	 (buffer-substring-no-properties (mark) (point))
+	 (read-string "New name: ")))
+	
+	     
 
 (defun my-haskell-retrie ()
 	(interactive)	
   (shell-command (read-string "Retrie Command: " " retrie --adhoc \"forall f g
 	xs. map f (map g xs) = map (f . g) xs\"")))
+
+(defun my-haskell-mark-function-definition ()
+	(interactive)
+	(er/mark-paragraph))
 
 (defun my-haskell-organize-imports ()
 	(interactive)
