@@ -16,7 +16,6 @@
 (straight-use-package 'pyenv-mode)
 (straight-use-package 'whole-line-or-region)
 (straight-use-package 'which-key)
-(straight-use-package 'direnv)
 (straight-use-package 'nix-mode)
 (straight-use-package 'glsl-mode)
 (straight-use-package 'frame-cmds)
@@ -24,8 +23,6 @@
 (straight-use-package 'exec-path-from-shell)
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
-
-(direnv-mode)
 
 (defun look-up-in-goldendict (word)
   (start-process "goldendict" nil "goldendict" word)

@@ -19,6 +19,8 @@
 * DONE why does LSP mode for Haskell chug at startup 
 (and then later at random times)
 I guess because the env isn't cached? seems better now with direnv-nix
+(also emacs direnv mode is really bad a remembering the env)
+
 * DONE org mode hide/show binding should match
 * DONE use tab mode? perhaps for project vterms?
 * TODO how do we organize various scripts for local dev? Makefile?

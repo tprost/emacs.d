@@ -49,7 +49,7 @@
 		   (open-line 1)
 		   (insert (format "%s = %s" oldName newName))
 	     (shell-command (read-string "Retrie Command: " (format " retrie --unfold
-	ModuleName.%s" oldName))))
+	Game.%s" oldName))))
 
 (defun my-haskell-rename ()
 	(interactive)

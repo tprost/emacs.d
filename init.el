@@ -56,9 +56,6 @@
 (require 'setup-flycheck)
 (require 'setup-yasnippet)
 (require 'setup-ligature)
-
-;; (straight-use-package 'direnv)
-;; (require 'direnv)
 ;; (straight-use-package 'multiple-cursors)
 ;; (require 'multiple-cursors)
 ;; (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
@@ -68,9 +65,6 @@
 ;; (straight-use-package 'which-key)
 ;; (require 'which-key)
 ;; (which-key-mode)
-;; (straight-use-package 'direnv)
-;; (require 'direnv)
-;; (direnv-mode)
 ;; (require 'setup-avy)
 ;; (require 'setup-my-global-macros)
 

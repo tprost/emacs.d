@@ -1,10 +1,11 @@
 (straight-use-package 'lsp-mode)
 (straight-use-package 'lsp-ui)
 (straight-use-package 'helm-lsp)
+(straight-use-package 'envrc)
+
+(envrc-global-mode)
 
 (require 'lsp-mode)
-
-(advice-add 'lsp :before #'direnv-update-environment)
 
 ;; (add-hook 'lua-mode-hook #'lsp)
 ;; (add-hook 'go-mode-hook #'lsp)
