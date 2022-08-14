@@ -271,42 +271,34 @@
 ;; S
 
 ;; t
-;; (global-set-key (kbd "C-t") 'tab-next)
-;; (global-set-key (kbd "C-S-T") 'tab-previous)
-;; (global-set-key (kbd "M-t") 'tab-switch)
-;; (global-set-key (kbd "M-S-T") 'tab-switch)
-
-
-
-;; t is for typing!
-
-;; (define-prefix-command 'my-editing-map)
-;; ;; (evil-global-set-key 'emacs  (kbd "t") 'my-editing-map)
-;; (global-set-key (kbd "C-t") 'my-editing-map)
-
-;; (defhydra hydra-move-text (global-map "C-t N")
-;;   "Drag lines around."
-;;   ("n" move-text-down "down")
-;;   ("p" move-text-up "up"))
-
-;; (define-key my-editing-map (kbd "c") 'crux-capitalize-region)
-;; (define-key my-editing-map (kbd "d") 'downcase-dwim)
-;; (define-key my-editing-map (kbd "u") 'upcase-dwim)
-;;  ;; TODO fix ispell and bind to something else
-;; (define-key my-editing-map (kbd "?") 'crux-ispell-word-then-abbrev)
-;; (define-key my-editing-map (kbd "o") 'my-open-line-below)
-;; (define-key my-editing-map (kbd "p") 'hydra-move-text/move-text-up)
-;; (define-key my-editing-map (kbd "n") 'hydra-move-text/move-text-down)
-;; (define-key my-editing-map (kbd "^") 'crux-top-join-line)
-;; (define-key my-editing-map (kbd "C-o") 'my-open-line-below-and-move)
-;; (define-key my-editing-map (kbd "O") 'my-open-line-above)
-;; (define-key my-editing-map (kbd "C-S-o") 'my-open-line-above-and-move)
-;; (define-key my-editing-map (kbd "s") 'sort-lines)
-;; (define-key my-editing-map (kbd "&") 'crux-duplicate-current-line-or-region)
-;; (define-key my-editing-map (kbd "l") 'delete-blank-lines)
-;; (define-key my-editing-map (kbd "w") 'fixup-whitespace)
-;; ;; (define-key my-editing-map (kbd "&") 'crux-duplicate-and-comment-current-line-or-region)
-;; ;; fixup-whitespace
+;; t is for typing! or rather, less of it please
+(define-prefix-command 'my-editing-map)
+(global-set-key (kbd "C-t") 'my-editing-map)
+(defhydra hydra-move-text (global-map "C-t N")
+  "Drag lines around."
+  ("n" move-text-down "down")
+  ("p" move-text-up "up"))
+(define-key my-editing-map (kbd "C-c") 'crux-capitalize-region)
+(define-key my-editing-map (kbd "m") 'hydra-move-text/body)
+(define-key my-editing-map (kbd "C-d") 'downcase-dwim)
+(define-key my-editing-map (kbd "C-u") 'upcase-dwim)
+(define-key my-editing-map (kbd "u w") 'upcase-word)
+(define-key my-editing-map (kbd "u u") 'upcase-dwim)
+(define-key my-editing-map (kbd "u C-r") 'upcase-region)
+(define-key my-editing-map (kbd "u r") 'crux-upcase-region)
+(define-key my-editing-map (kbd "u i") 'upcase-initials-region)
+(define-key my-editing-map (kbd "C-p") 'hydra-move-text/move-text-up)
+(define-key my-editing-map (kbd "C-n") 'hydra-move-text/move-text-down)
+(define-key my-editing-map (kbd "C-j") 'crux-top-join-line)
+(define-key my-editing-map (kbd "C-o") 'my-open-line-below)
+(define-key my-editing-map (kbd "C-S-O") 'my-open-line-above)
+(define-key my-editing-map (kbd "o a") 'my-open-line-above)
+(define-key my-editing-map (kbd "o b") 'my-open-line-below)
+(define-key my-editing-map (kbd "C-&") 'crux-duplicate-current-line-or-region)
+(define-key my-editing-map (kbd "& ;")
+	'crux-duplicate-and-comment-current-line-or-region)
+(define-key my-editing-map (kbd "C-l") 'delete-blank-lines)
+(define-key my-editing-map (kbd "C-w") 'fixup-whitespace)
 
 ;; T
 
@@ -400,7 +392,7 @@
 ;; (global-set-key (kbd "M-^") 'sort-paragraphs)
 
 ;; &
-;; (global-set-key (kbd "C-&") )
+(global-set-key (kbd "C-&") 'crux-duplicate-current-line-or-region)
 
 ;; *
 ;; (global-set-key (kbd "C-*") )
