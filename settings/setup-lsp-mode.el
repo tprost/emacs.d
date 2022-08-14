@@ -7,6 +7,8 @@
 
 (require 'lsp-mode)
 
+
+
 ;; (add-hook 'lua-mode-hook #'lsp)
 ;; (add-hook 'go-mode-hook #'lsp)
 ;; (add-hook 'csharp-mode-hook #'lsp)

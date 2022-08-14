@@ -28,6 +28,19 @@
 ;; b
 (define-key 'my-x-map (kbd "C-b") 'helm-mini)
 (define-key 'my-x-map (kbd "b") 'my-buffer-map)
+(define-prefix-command 'my-buffer-map)
+(define-key 'my-buffer-map (kbd "r") 'crux-rename-file-and-buffer)
+(define-key 'my-buffer-map (kbd "b") 'beginning-of-buffer)
+(define-key 'my-buffer-map (kbd "c") 'cleanup-buffer)
+(define-key 'my-buffer-map (kbd "d") 'crux-delete-file-and-buffer)
+(define-key 'my-buffer-map (kbd "e") 'end-of-buffer)
+(define-key 'my-buffer-map (kbd "k") 'kill-current-buffer)
+(define-key 'my-buffer-map (kbd "m") 'mark-whole-buffer)
+(define-key 'my-buffer-map (kbd "n") 'next-buffer)
+(define-key 'my-buffer-map (kbd "p") 'previous-buffer)
+(define-key 'my-buffer-map (kbd "r") 'rename-buffer)
+(define-key 'my-buffer-map (kbd "v") 'revert-buffer)
+(define-key 'my-buffer-map (kbd "w") 'erase-buffer)
 
 ;; c
 (define-key 'my-x-map (kbd "C-c") 'crux-cleanup-buffer-or-region)
@@ -188,9 +201,10 @@
 (define-key 'my-x-map (kbd "y i") 'yas-insert-snippet)
 (define-key 'my-x-map (kbd "y x") 'yas-expand)	
 
-
 ;; z
 ;; ?
+
+(define-key 'my-x-map (kbd "8") 'insert-char)
 
 (defhydra hydra-text-scale (global-map "C-x C-=")
   "text scale"
@@ -202,4 +216,68 @@
 (global-set-key (kbd "C-x") 'my-x-map)
 (global-set-key (kbd "C-S-x") 'my-x-map)
 
+;; executables
+;; (global-unset-key (kbd "C-x i"))
+;; (global-set-key (kbd "C-x C-i") 'tprost-init-file)
+;; (global-set-key (kbd "C-x i i") 'tprost-init-file)
+;; (global-set-key (kbd "C-x i I") 'tprost-init-file-for-major-mode)
+;; (global-set-key (kbd "C-x i f") 'tprost-find-emacsd-file)
+;; (global-set-key (kbd "C-x i d") 'tprost-init-directory)
+;; (global-set-key (kbd "C-x i t") 'tprost-init-todo-file)
+;; (global-unset-key (kbd "C-x c"))
+;; (global-set-key (kbd "C-x c") 'crux-cleanup-buffer-or-region)
+
+;; (global-set-key (kbd "C-x L") 'tprost-project-layout)
+;; (global-set-key (kbd "C-x S-E") 'eval-last-sexp)
+
+;; (global-set-key (kbd "C-x c") 'crux-create-scratch-buffer)
+;; (global-set-key (kbd "C-x !") 'crux-sudo-edit)
+
+;; (global-set-key (kbd "C-x C-y s") 'tprost-open-snippets-directory-dwim)
+
+;; file prefix
+;; (global-unset-key (kbd "C-x C-f"))
+;; (global-set-key (kbd "C-x f") 'helm-find-files)
+;; (global-set-key (kbd "C-x C-f f") 'helm-find-files)
+;; (global-set-key (kbd "C-x C-f r") 'crux-rename-file-and-buffer)
+;; (global-set-key (kbd "C-x C-f k") 'crux-delete-file-and-buffer)
+
+;; custom global shit prefix
+;; (global-unset-key (kbd "C-x C-c"))
+;; (global-set-key (kbd "C-x C-c e") 'tprost-find-emacsd-file)
+;; (global-set-key (kbd "C-x C-c C-e e") 'tprost-find-emacsd-file)
+;; (global-set-key (kbd "C-x C-c C-e i") 'tprost-init-file)
+;; (global-set-key (kbd "C-x C-c C-e t") 'tprost-init-todo-file)
+
+;; (global-set-key (kbd "C-x C-c C-p d") 'tprost-project-drill)
+;; (global-set-key (kbd "C-x C-c C-p j") 'tprost-project-journal)
+;; (global-set-key (kbd "C-x C-c C-p w") 'tprost-project-wiki)
+
+;; (global-set-key (kbd "C-x C-c j") 'tprost-open-my-japanese-file)
+;; (global-set-key (kbd "C-x C-c c") 'tprost-open-computer-science-drill-directory)
+;; (global-set-key (kbd "C-x C-c d") 'org-drill)
+;; (global-set-key (kbd "C-x C-c C-d j") 'tprost-drill-japanese)
+;; (global-set-key (kbd "C-x C-c C-d c") 'tprost-drill-computer-science)
+
+;; (global-set-key (kbd "C-x C-c C-d j") 'tprost-drill-)
+
+;; (global-unset-key (kbd "C-x C-d"))
+;; (global-set-key (kbd "C-x C-d j") 'tprost-open-my-japanese-file)
+;; (global-set-key (kbd "C-x C-d c") 'tprost-open-computer-science-drill-directory)
+;; (global-set-key (kbd "C-x C-d C-o d") 'tprost-drill) ;; TODO
+;; (global-set-key (kbd "C-x C-d C-d") 'tprost-drill) ;; TODO
+
+;; python
+;; (define-key python-mode-map (kbd "C-c i") 'py-isort-buffer)
+;; (define-key python-mode-map (kbd "C-M-i") 'my-python-mode-add-import)
+;; (define-key python-mode-map (kbd "C-M-o") 'my-python-organize-imports)
+;; (define-key python-mode-map (kbd "C-M-j") 'lsp-find-definition)
+
+;; (global-set-key (kbd "C-x D") 'dired-in-downloads-directory)
+;; (global-set-key (kbd "C-x M-w b b") 'my-copy-buffer-file-name-with-path)
+;; (global-set-key (kbd "C-x M-w b w") 'my-copy-buffer-file-name-without-path)
+
+
+
 (provide 'bindings-c-x)
+

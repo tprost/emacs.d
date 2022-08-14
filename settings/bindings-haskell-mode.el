@@ -5,7 +5,11 @@
 (define-key haskell-mode-map (kbd "H-RET") 'my-haskell-send-region)
 
 (define-key haskell-mode-map (kbd "H-.") 'haskell-hide-toggle)
-(define-key haskell-mode-map (kbd "H-m H-f") 'my-haskell-mark-function-definition)
+(define-key haskell-mode-map (kbd "H-j") 'lsp-find-definition)
+(define-key haskell-mode-map (kbd "H-m H-f")
+	'my-haskell-mark-function-definition)
+
+
 
 ;; (define-key haskell-mode-map (kbd "H-") 'my-haskell-hs-hide-all)
 ;; (define-key haskell-mode-map (kbd "H-") 'my-haskell-hs-show-all)

@@ -213,4 +213,11 @@
 ;;                     :overline nil
 ;;                     :underline nil)
 
+;; set zero width space character to not be shown at all
+;; which is good for org mode
+(set-char-table-range glyphless-char-display
+                      (char-from-name "ZERO WIDTH SPACE") 'zero-width)
+
+
+
 (provide 'setup-appearance)

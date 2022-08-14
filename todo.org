@@ -1,7 +1,9 @@
 #+CATEGORY: emacs
 
-* TODO there's lots more to mark
-* TODO multiple cursors!
+* TODO explore hippie-expand
+* TODO go straight to bindings file command
+* TODO there's lots more to mark :bindings:
+* TODO multiple cursors! :bindings:
 * TODO fix Haskell clean up imports
 * TODO how do I make Flycheck ignore untyped stuff
 * TODO Start up Haskell REPL and send code to it :haskell:

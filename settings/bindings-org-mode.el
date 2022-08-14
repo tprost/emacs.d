@@ -4,6 +4,7 @@
 (define-key org-mode-map (kbd "H-b") 'org-backward-heading-same-level)
 (define-key org-mode-map (kbd "H-u") 'org-up-heading)
 (define-key org-mode-map (kbd "H-j") 'org-goto)
+(define-key org-mode-map (kbd "H-t") 'org-todo)
 
 (define-key org-mode-map (kbd "H-.") 'org-cycle)
 (define-key org-mode-map (kbd "H-C-.") 'org-global-cycle)
@@ -23,6 +24,9 @@
   ("n" org-move-subtree-down "down")
   ("p" org-move-subtree-up "up")
 	("RET" nil "done"))
+
+
+(define-key org-mode-map (kbd "C-j") 'avy-goto-char)
 
 (define-key org-mode-map (kbd "H-o") 'org-promote-subtree)
 (define-key org-mode-map (kbd "H-S-O") 'org-demote-subtree)
