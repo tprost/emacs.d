@@ -1,4 +1,8 @@
-(define-key haskell-mode-map (kbd "<f5>") 'my-projectile-run-stack-testing-vterm)
+;;;
+
+(define-key haskell-mode-map (kbd "<f4>") 'my-haskystack-testing-vterm-dwim)
+
+(define-key haskell-mode-map (kbd "H-t") 'my-haskystack-testing-vterm-dwim)
 (define-key haskell-mode-map (kbd "H-o") 'my-haskell-organize-imports)
 (define-key haskell-mode-map (kbd "H-r") 'my-haskell-rename)
 (define-key haskell-mode-map (kbd "H-C-r") 'my-haskell-retrie)

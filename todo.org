@@ -1,5 +1,10 @@
 #+CATEGORY: emacs
 
+* TODO fix line artifact in echo area pink
+* TODO visit most recent error from haskystack test vterm fn
+* TODO explore bookmarks
+* TODO explore registers
+https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html
 * TODO explore hippie-expand
 * TODO go straight to bindings file command
 * TODO there's lots more to mark :bindings:

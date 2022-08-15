@@ -77,6 +77,26 @@
 	(erase-buffer)
 	(shell-command (format "fix-imports -i src -i test %s <%s" (buffer-file-name) (buffer-file-name) (buffer-file-name)) (current-buffer)))
 	
+
+(defun my-haskell-stack-project-setup ()
+	(interactive)
+	(switch-to-buffer (my-haskystack-testing-vterm-dwim))
+	(my-haskystack-testing-vterm-dwim)
+	(buffer-to-projectile-register-noninteractive ?t (current-buffer))
 	
+	(projectile-run-vterm)
+	(buffer-to-projectile-register-noninteractive ?! (current-buffer))
+	(buffer-to-projectile-register-noninteractive ?s (current-buffer))q
+	
+	(find-file (file-name-concat (projectile-project-root) "stack.yaml"))
+	(buffer-to-projectile-register-noninteractive ?k (current-buffer))
+	(find-file (file-name-concat (projectile-project-root) "package.yaml"))
+	(buffer-to-projectile-register-noninteractive ?p (current-buffer))
+	(find-file (file-name-concat (projectile-project-root) "todo.org"))
+	(buffer-to-projectile-register-noninteractive ?o (current-buffer)))
+
+(defun my-find-project-todo-file ()
+  (interactive)
+  (find-file (file-name-concat (projectile-project-root) "todo.org")))
 
 (provide 'setup-haskell-mode)

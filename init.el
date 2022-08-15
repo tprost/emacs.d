@@ -23,6 +23,8 @@
 (require 'my-functions)
 (require 'my-projectile)
 (require 'my-python-functions)
+(require 'my-haskystack)
+
 
 (require 'setup-defaults)
 (require 'setup-tab-bar-mode)
@@ -30,6 +32,7 @@
 (require 'setup-emacs-lisp-mode)
 (require 'setup-helm)
 (require 'setup-projectile)
+(require 'projectile-buffer-registers)
 (require 'setup-company-mode)
 (require 'setup-magit)
 (require 'setup-dired)

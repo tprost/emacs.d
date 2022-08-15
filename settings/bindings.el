@@ -35,6 +35,7 @@
 
 ;; c
 ;; reserved for major or minor modes
+(global-set-key (kbd "H-c") 'crux-cleanup-buffer-or-region)
 
 ;; C
 
@@ -330,6 +331,7 @@
 ;; x
 (require 'bindings-c-x)
 (global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "H-x") 'switch-to-buffer-in-projectile-register)
 
 ;; X
 ;; (evil-global-set-key 'emacs  (kbd "X") 'my-eval-dwim) ;; eval dwim
@@ -367,6 +369,8 @@
 ;; ?
 
 ;; !
+(global-set-key (kbd "C-!") 'vterm)
+(global-set-key (kbd "M-!") 'shell-command)
 ;; (global-set-key (kbd "H-!") 'next-error)
 
 ;; @
@@ -517,7 +521,8 @@
 (global-set-key (kbd "TAB") 'company-complete)
 (global-set-key (kbd "C-TAB") 'tab-next)
 (global-set-key (kbd "S-C-TAB") 'tab-previous)
-(global-set-key (kbd "M-<tab>") 'tab-switch)
+(global-set-key (kbd "M-<tab>") 'switch-to-buffer-in-projectile-register)
+(global-set-key (kbd "C-M-<tab>") 'buffer-to-projectile-register)
 (setq tab-bar-select-tab-modifiers '(hyper))
 
 ;; BACKSPACE
@@ -526,7 +531,7 @@
 
 (global-set-key (kbd "<home>") 'beginning-of-buffer)
 (global-set-key (kbd "<end>") 'end-of-buffer)
-(global-set-key (kbd "<find>") 'search-forward)
+(global-set-key (kbd "<find>") 'switch-to-buffer-in-projectile-register)
 (global-set-key (kbd "<undo>") 'undo)
 ;; (global-set-key (kbd "C-z") 'undo)
 
@@ -534,25 +539,27 @@
 ;; (evil-global-set-key 'emacs  (kbd "C-<backspace>") 'backward-kill-word)
 ;; (evil-global-set-key 'emacs  (kbd "M-<backspace>") 'crux-kill-line-backwards)
 
+(global-set-key (kbd "<f1>") 'switch-to-buffer-in-projectile-register) ;; a
+(global-set-key (kbd "H-<f1>") 'buffer-to-projectile-register) ;; a
 
-(global-set-key (kbd "C-c C-.") 'hs-toggle-hiding)
+(global-set-key (kbd "<f2>") 'projectile-test-project)
+(global-set-key (kbd "<f3>") 'projectile-run-vterm) ;; s
+(global-set-key (kbd "<f4>") 'projectile-test-project) ;; t
+(global-set-key (kbd "<f23>") 'projectile-compile-project) ;; c
+(global-set-key (kbd "<f13>") 'projectile-find-file) ;; f
+(global-set-key (kbd "<f14>") 'projectile-switch-project) ;; p
+(global-set-key (kbd "<f15>") 'magit) ;; g
 
-(global-set-key (kbd "<f1>") 'crux-cleanup-buffer-or-region)
-(global-set-key (kbd "<f2>") 'revert-buffer)
-;; (global-set-key (kbd "<f3>") 'kmacro-start-macro-or-insert-counter)
-;; (global-set-key (kbd "<f4>") 'kmacro-end-or-call-macro)
-
-;; project level hotkeys
-(global-set-key (kbd "<f5>") 'projectile-test-project)
-(global-set-key (kbd "<f6>") 'projectile-compile-project)
-(global-set-key (kbd "<f7>") 'projectile-run-vterm)
-(global-set-key (kbd "<f8>") 'projectile-grep)
-(global-set-key (kbd "<f9>") 'projectile-find-file)
+(global-set-key (kbd "<f22>") 'projectile-run-project)
+(global-set-key (kbd "<f24>") 'revert-buffer) ;; v
 
 ;; (global-set-key (kbd "<f1> c") 'calendar)
 ;; (global-set-key (kbd "<f1> j") 'open-my-japanese-file)
 ;; (global-set-key (kbd "<f1> k k") 'open-my-japanese-file)
 ;; (global-set-key (kbd "<f1> f") 'set-frame-size-to-80-36)
+
+;; hs-minor-mode
+(global-set-key (kbd "C-c C-.") 'hs-toggle-hiding)
 
 ;; yasnippet 
 (define-key yas-keymap (kbd "C-g") 'abort-company-or-yas)
@@ -562,6 +569,13 @@
 ;; (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
 ;; (define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
 (define-key projectile-command-map (kbd "x") 'projectile-test-project)
+(define-key projectile-command-map (kbd "b")
+	'projectile-switch-to-buffer)
+(define-key projectile-command-map (kbd "r") nil)
+(define-key projectile-command-map (kbd "r r")
+	'switch-to-buffer-in-projectile-register)
+(define-key projectile-command-map (kbd "r s") 'buffer-to-projectile-register)
+
 
 (define-key projectile-command-map (kbd "1") 'projectile-find-test-file)
 (define-key projectile-command-map (kbd "1") 'projectile-toggle-between-implementation-and-test)
