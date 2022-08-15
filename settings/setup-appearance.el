@@ -184,14 +184,10 @@
 (defun my-style-the-echo-area ()
   (if (get-buffer " *Echo Area 0*")
 			(with-current-buffer " *Echo Area 0*" (face-remap-add-relative 'default
-  '(:background "#520435"))))
+  '(:background "#520435" :box nil))))
 	(if (get-buffer " *Echo Area 1*")
 			(with-current-buffer " *Echo Area 1*" (face-remap-add-relative 'default
-  '(:background "#520435")))))
-
-  
-																																 
-
+  '(:background "#520435" :box nil)))))																																 
 (add-hook 'after-change-major-mode-hook 'my-style-the-echo-area)
 
 ;; (defun minibuffer-bg ()	
