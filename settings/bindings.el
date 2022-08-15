@@ -533,6 +533,7 @@
 (global-set-key (kbd "<end>") 'end-of-buffer)
 (global-set-key (kbd "<find>") 'switch-to-buffer-in-projectile-register)
 (global-set-key (kbd "<undo>") 'undo)
+(global-set-key (kbd "<menu>") 'switch-to-buffer-in-projectile-register)
 ;; (global-set-key (kbd "C-z") 'undo)
 
 ;; (evil-global-set-key 'emacs  (kbd "<backspace>") 'backward-delete-char)
@@ -602,6 +603,11 @@
 (define-key flycheck-command-map (kbd "C-n") 'flycheck-next-error)
 (define-key flycheck-command-map (kbd "C-p") 'flycheck-previous-error)
 (define-key flycheck-command-map (kbd "C-l") 'flycheck-list-errors)
+
+;; haskell-stack-mode
+(define-key haskell-stack-mode-map (kbd "<f2>")
+	'haskell-stack-testing-vterm-dwim)
+(define-key haskell-mode-map (kbd "H-t") 'haskell-stack-testing-vterm-dwim)
 
 (require 'bindings-org-mode)
 (require 'bindings-haskell-mode)

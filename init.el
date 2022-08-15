@@ -23,8 +23,8 @@
 (require 'my-functions)
 (require 'my-projectile)
 (require 'my-python-functions)
-(require 'my-haskystack)
 
+(require 'haskell-stack-mode)
 
 (require 'setup-defaults)
 (require 'setup-tab-bar-mode)

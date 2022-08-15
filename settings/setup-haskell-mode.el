@@ -80,13 +80,13 @@
 
 (defun my-haskell-stack-project-setup ()
 	(interactive)
-	(switch-to-buffer (my-haskystack-testing-vterm-dwim))
+	(switch-to-buffer (haskell-stack-testing-vterm-dwim))
 	(my-haskystack-testing-vterm-dwim)
 	(buffer-to-projectile-register-noninteractive ?t (current-buffer))
 	
 	(projectile-run-vterm)
 	(buffer-to-projectile-register-noninteractive ?! (current-buffer))
-	(buffer-to-projectile-register-noninteractive ?s (current-buffer))q
+	(buffer-to-projectile-register-noninteractive ?s (current-buffer))
 	
 	(find-file (file-name-concat (projectile-project-root) "stack.yaml"))
 	(buffer-to-projectile-register-noninteractive ?k (current-buffer))
