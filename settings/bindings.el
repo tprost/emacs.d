@@ -189,87 +189,61 @@
 
 
 ;; n
-;; (evil-global-set-key 'emacs (kbd "n") 'forward-paragraph)
+(global-set-key (kbd "C-n") 'next-line)
 (global-set-key (kbd "M-n") 'forward-paragraph)
-;; (global-set-key (kbd "M-n") '
-
-;; N
 
 ;; o
-(global-set-key (kbd "C-o") 'other-window)
-(global-set-key (kbd "M-o") 'other-frame)
+(global-set-key (kbd "C-o") 'other-frame)
+(global-set-key (kbd "C-S-O") 'other-window-or-frame)
+(global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "H-o") 'lsp-organize-imports)
-;; code folding
-;; (evil-global-set-key 'emacs (kbd "o") 'hs-toggle-hiding)
-;; (evil-global-set-key 'emacs (kbd "C-o") 'hs-hide-block)
-;; (evil-global-set-key 'emacs (kbd "M-o") 'hs-show-block)
-;; (define-prefix-command 'my-hs-map)
-;; (define-key my-hs-map (kbd "s") 'hs-show-all)
-;; (define-key my-hs-map (kbd "h") 'hs-hide-all)
-;; (define-key my-hs-map (kbd "l") 'hs-hide-level)
-;; (evil-global-set-key 'emacs (kbd "C-M-o") 'my-hs-map)
-;; (evil-global-set-key 'insert (kbd "C-o") 'my-open-line-below)
-;; (evil-global-set-key 'insert (kbd "M-o") 'my-open-line-above)
-;; (evil-global-set-key 'insert (kbd "C-M-o") 'my-trim-lines-above-and-below)
-
-;; O
-;; (evil-global-set-key 'emacs  (kbd "O") 'er/expand-region)
-;; (evil-global-set-key 'emacs  (kbd "M-S-o") 'er/contract-region)
 
 ;; p
+(global-set-key (kbd "C-p") 'previous-line)
 (global-set-key (kbd "M-p") 'backward-paragraph)
 
-;; (evil-global-set-key 'emacs  (kbd "p") 'backward-paragraph)
-
-
-;; P
-;; (evil-global-set-key 'emacs (kbd "P") 'projectile-command-map)
-
-                
-                
 ;; q
-;; (global-set-key (kbd "C-q") nil)
-;; (global-set-key (kbd "C-q n") 'next-error)
-;; (global-set-key (kbd "C-q p") 'previous-error)
-;; (global-set-key (kbd "M-q") 'flycheck-next-error)
-
-;;   ---             -------
-
-;; C-c !           Prefix Command
-
-;; C-c ! C-c       flycheck-compile
-;; C-c ! C-w       flycheck-copy-errors-as-kill
-;; C-c ! ?         flycheck-describe-checker
-;; C-c ! C         flycheck-clear
-;; C-c ! H         display-local-help
-;; C-c ! V         flycheck-version
-;; C-c ! c         flycheck-buffer
-;; C-c ! e         flycheck-explain-error-at-point
-;; C-c ! h         flycheck-display-error-at-point
-;; C-c ! i         flycheck-manual
-;; C-c ! l         flycheck-list-errors
-;; C-c ! n         flycheck-next-error
-;; C-c ! p         flycheck-previous-error
-;; C-c ! s         flycheck-select-checker
-;; C-c ! v         flycheck-verify-setup
-;; C-c ! x         flycheck-disable-checker
-
-
-;; Q
 
 ;; r
-(global-set-key (kbd "H-r") 'lsp-rename)
-(global-set-key (kbd "H-r") 'lsp-rename)
-;; (evil-global-set-key 'emacs  (kbd "r") 'isearch-backward)
+(define-prefix-command 'my-register-map)
+(global-set-key (kbd "C-r") 'my-register-map)
+(define-key 'my-register-map (kbd "C-v") 'view-register)
 
-;; R
+;; r points
+(define-key 'my-register-map (kbd "C-p") 'point-to-register)
+(define-key 'my-register-map (kbd "C-j") 'jump-to-register)
+(define-key 'my-register-map (kbd "p r") 'point-to-register)
+(define-key 'my-register-map (kbd "p j") 'jump-to-register)
+
+(define-key 'my-register-map (kbd "C-i") 'insert-register)
+
+;; r regions
+(define-key 'my-register-map (kbd "C-r") 'copy-to-register)
+(define-key 'my-register-map (kbd "r w") 'copy-to-register)
+(define-key 'my-register-map (kbd "r i") 'insert-register)
+(define-key 'my-register-map (kbd "r a") 'append-to-register)
+(define-key 'my-register-map (kbd "r p") 'prepend-to-register)
+
+;; w windows
+(define-key 'my-register-map (kbd "C-w") 'window-configuration-to-register)
+
+;; f frames
+(define-key 'my-register-map (kbd "C-f") 'frame-configuration-to-register)
+(define-key 'my-register-map (kbd "f r") 'frame-configuration-to-register)
+(define-key 'my-register-map (kbd "f j") 'jump-to-frame-config-register)
+
+(define-key 'my-register-map (kbd "C-u") 'number-to-register)
+(define-key 'my-register-map (kbd "u r") 'number-to-register)
+(define-key 'my-register-map (kbd "u i") 'increment-register)
+(global-set-key (kbd "M-r") 'jump-to-register)
+(global-set-key (kbd "H-r") 'lsp-rename)
 
 ;; s
-;; (evil-global-set-key 'emacs  (kbd "s") 'isearch-forward)
-;; (global-set-key (kbd "C-s") 'isearch-forward)
+(global-set-key (kbd "C-s") 'isearch-forward)
 (global-set-key (kbd "M-s") 'isearch-forward-regexp)
-
-;; S
+(global-set-key (kbd "C-S-S") 'isearch-backward)
+(global-set-key (kbd "M-S-S") 'isearch-backward-regexp)
+(global-set-key (kbd "C-M-s") 'my-isearch-forward-from-beginning-of-buffer)
 
 ;; t
 ;; t is for typing! or rather, less of it please
@@ -301,29 +275,16 @@
 (define-key my-editing-map (kbd "C-l") 'delete-blank-lines)
 (define-key my-editing-map (kbd "C-w") 'fixup-whitespace)
 
-;; T
-
 ;; u
 
 ;; U
 
 ;; v
-;; (evil-global-set-key 'emacs (kbd "v") 'recenter)
-;; (evil-global-set-key 'emacs (kbd "C-v") 'scroll-up)
-;; (evil-global-set-key 'emacs (kbd "M-v") 'scroll-down)
-;; (evil-global-set-key 'insert  (kbd "C-v") 'my-scroll-8-lines-up)
-;; (evil-global-set-key 'insert  (kbd "M-v") 'my-scroll-8-lines-down)
-;; (global-set-key (kbd "C-M-v") 'recenter)
-;; (global-set-key (kbd "C-v") 'scroll-up-command)
-;; (global-set-key (kbd "M-v") 'scroll-down-command) ;; a lot somehow?
-;; (global-set-key (kbd "C-M-v") 'scroll-line-up)
-;; (evil-global-set-key 'emacs (kbd "C-M-v") 'evil-scroll-line-to-bottom)
-
-;; V
-;; (evil-global-set-key 'emacs  (kbd "V") 'scroll-down)
-;; (global-set-key (kbd "C-S-v") 'my-scroll-8-lines-down)
-;; (global-set-key (kbd "M-S-v") 'scroll-page-down)
-;; (global-set-key (kbd "C-M-S-v") 'scroll-line-down)
+(global-set-key (kbd "C-v") 'my-scroll-8-lines-up)
+(global-set-key (kbd "C-S-V") 'my-scroll-8-lines-down)
+(global-set-key (kbd "M-v") 'scroll-up)
+(global-set-key (kbd "M-S-V") 'scroll-down)
+;; scroll-line-up, recenter
 
 ;; w
 ;; (evil-global-set-key 'emacs  (kbd "w") 'whole-line-or-region-kill-ring-save)
@@ -352,9 +313,6 @@
 (global-set-key (kbd "C-y") 'yank)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
-;; Y
-;; ?
-
 ;; z
 (global-set-key (kbd "C-z") 'undo)
 ;; (global-unset-key (kbd "C-z"))
@@ -365,41 +323,45 @@
 ;; (global-set-key (kbd "C-z c") 'tp-set-input-method-to-chinese)
 ;; (global-set-key (kbd "C-z m") 'tp-set-input-method-to-chinese)
 
-;; Z
-;; ?
-
 ;; !
 (global-set-key (kbd "C-!") 'vterm)
 (global-set-key (kbd "M-!") 'shell-command)
 ;; (global-set-key (kbd "H-!") 'next-error)
 
-;; @
-(global-set-key (kbd "C-@") 'set-mark-command)
-(global-set-key (kbd "M-@") 'er/expand-region)
-(setq expand-region-contract-fast-key "<backspace>")
+;; "
 
 ;; #
+(define-prefix-command 'my-rectangle-map)
+(global-set-key (kbd "C-#") 'my-rectangle-map)
+(define-key 'my-rectangle-map (kbd "C-k") 'kill-rectangle)
+(define-key 'my-rectangle-map (kbd "M-w") 'copy-rectangle-as-kill)
+(define-key 'my-rectangle-map (kbd "C-w") 'copy-rectangle-as-kill)
+(define-key 'my-rectangle-map (kbd "C-d") 'delete-rectangle)
+(define-key 'my-rectangle-map (kbd "C-y") 'yank-rectangle)
+(define-key 'my-rectangle-map (kbd "C-o") 'open-rectangle)
+(define-key 'my-rectangle-map (kbd "C-c") 'clear-rectangle)
+(define-key 'my-rectangle-map (kbd "C-n") 'rectangle-number-lines)
+(define-key 'my-rectangle-map (kbd "C-t") 'delete-whitespace-rectangle)
+(define-key 'my-rectangle-map (kbd "C-s") 'string-rectangle)
+(define-key 'my-rectangle-map (kbd "C-i") 'string-insert-rectangle)
+(define-key 'my-rectangle-map (kbd "C-SPC") 'rectangle-mark-mode)
+(global-set-key (kbd "M-#") 'kill-rectangle)
 ;; (global-set-key (kbd "C-#") 'er/expand-region)
 ;; (global-set-key (kbd "M-#") 'er/contract-region)
 
 ;; $
-;; (global-set-key (kbd "C-$") 'ispell-word)
-;; (global-set-key (kbd "M-$") 'ispell)
+(global-set-key (kbd "C-$") 'ispell-word)
+(global-set-key (kbd "M-$") 'ispell)
 
 ;; %
 (global-set-key (kbd "C-%") 'query-replace)
 (global-set-key (kbd "M-%") 'query-replace-regexp)
 (global-set-key (kbd "H-%") 'lsp-rename)
 
-;; ^
-(global-set-key (kbd "C-^") 'sort-lines)
-;; (global-set-key (kbd "M-^") 'sort-paragraphs)
-
 ;; &
 (global-set-key (kbd "C-&") 'crux-duplicate-current-line-or-region)
 
-;; *
-;; (global-set-key (kbd "C-*") )
+;; '
 
 ;; (
 (global-set-key (kbd "C-(") 'kmacro-start-macro-or-insert-counter)
@@ -407,60 +369,24 @@
 ;; )
 (global-set-key (kbd "C-)") 'kmacro-end-or-call-macro)
 
-;; -
-;; (global-set-key (kbd "C--") 'kmacro-end-or-call-macro)
-
-;; _
-;;
+;; *
+;; (global-set-key (kbd "C-*") )
 
 ;; +
 
-;; =
-
-;; [
-;; It's probably a bad idea to bind C-
-;; https://emacs.stackexchange.com/questions/7832/how-to-bind-c-for-real
-;; C-[ is interpreted at a very early stage as the ASCII control character ESC (see 21.7.1 - Keyboard Events). This code is spread out all other the place as the prefix for longer sequences. There is a reason for that: ESC is actually the meta prefix (see meta-prefix-char), and all bindings that read M-something will translate to a sequence that starts with ESC. Thus, changing the global map won't be enough: you need first to change meta-prefix-char, then to remap ESC to your new meta-prefix-char in each and every map that uses M- before you can safely map C-[1.
-;; (global-set-key (kbd "C-[") 'my-open-line-above)
-
-;; ]
-;; (global-set-key (kbd "C-]") 'my-open-line-below)
-
-;; {
-(global-set-key (kbd "C-{") 'my-open-line-above)
-
-;; }
-(global-set-key (kbd "C-}") 'my-open-line-below)
-
-;; \
-(global-set-key (kbd "C-\\") 'visual-line-mode)
-
-;; |
-;; (global-set-key (kbd "C-|") 'my-open-line-below)
-
-;; ;
-(global-set-key (kbd "C-;") 'whole-line-or-region-comment-dwim-2)
-(global-set-key (kbd "M-;") 'comment-dwim)
-;; (global-set-key (kbd "C-M-;") 'comment-dwim)
-;; (global-set-key (kbd "C-M-; k") 'comment-kill)
-;; (global-set-key (kbd "C-M-; C-M-k") 'comment-kill)
-
-;; :
-
-;; '
-
-;; "
-
 ;; ,
-(global-set-key (kbd "C-,") 'mc/mark-all-dwim)
 (define-prefix-command 'my-mc-map)
-(global-set-key (kbd "M-,") 'my-mc-map)
-(define-key my-mc-map (kbd "M-a") 'mc/mark-all-dwim)
-(define-key my-mc-map (kbd "M-r") 'mc/mark-all-in-region)
-(define-key my-mc-map (kbd "M-l") 'mc/edit-beginnings-of-lines)
-(define-key my-mc-map (kbd "M-m") 'mc/mark-all-dwim)
-(define-key my-mc-map (kbd "M-n") 'mc/mark-next-like-this)
-(define-key my-mc-map (kbd "M-p") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-,") 'my-mc-map)
+(define-key my-mc-map (kbd "C-a") 'mc/mark-all-dwim)
+(define-key my-mc-map (kbd "C-r") 'mc/mark-all-in-region)
+(define-key my-mc-map (kbd "C-l") 'mc/edit-beginnings-of-lines)
+(define-key my-mc-map (kbd "C-m") 'mc/mark-all-dwim)
+(define-key my-mc-map (kbd "C-n") 'mc/mark-next-like-this)
+(define-key my-mc-map (kbd "C-p") 'mc/mark-previous-like-this)
+(global-set-key (kbd "M-,") 'mc/mark-all-dwim)
+
+;; -
+;; (global-set-key (kbd "C--") 'kmacro-end-or-call-macro)
 
 ;; .
 (define-prefix-command 'my-mark-map)
@@ -492,19 +418,63 @@
 (global-set-key (kbd "M-.") 'er/expand-region)
 (global-set-key (kbd "H-.") 'hs-toggle-hiding)
 
-;; <
-(global-set-key (kbd "C-<") 'scroll-down-line)
-(global-set-key (kbd "M-<") 'scroll-down-command)
-
-;; >
-(global-set-key (kbd "C->") 'scroll-up-line)
-(global-set-key (kbd "M->") 'scroll-up-command)
-
 ;; /
 (global-set-key (kbd "C-/") 'undo)
 
+;; :
+
+;; ;
+(global-set-key (kbd "C-;") 'whole-line-or-region-comment-dwim-2)
+(global-set-key (kbd "M-;") 'comment-dwim)
+;; (global-set-key (kbd "C-M-;") 'comment-dwim)
+;; (global-set-key (kbd "C-M-; k") 'comment-kill)
+;; (global-set-key (kbd "C-M-; C-M-k") 'comment-kill)
+
+;; <
+(global-set-key (kbd "C-<") 'my-join-line-above)
+
+;; >
+(global-set-key (kbd "C->") 'my-join-line-below)
+
+;; =
+
 ;; ?
 (global-set-key (kbd "C-?") 'hs-toggle-hiding)
+
+;; @
+(global-set-key (kbd "C-@") 'set-mark-command)
+(global-set-key (kbd "M-@") 'er/expand-region)
+(setq expand-region-contract-fast-key "<backspace>")
+
+;; [
+;; It's probably a bad idea to bind C-
+;; https://emacs.stackexchange.com/questions/7832/how-to-bind-c-for-real
+;; C-[ is interpreted at a very early stage as the ASCII control character ESC (see 21.7.1 - Keyboard Events). This code is spread out all other the place as the prefix for longer sequences. There is a reason for that: ESC is actually the meta prefix (see meta-prefix-char), and all bindings that read M-something will translate to a sequence that starts with ESC. Thus, changing the global map won't be enough: you need first to change meta-prefix-char, then to remap ESC to your new meta-prefix-char in each and every map that uses M- before you can safely map C-[1.
+;; (global-set-key (kbd "C-[") 'my-open-line-above)
+
+;; \
+(global-set-key (kbd "C-\\") 'visual-line-mode)
+
+;; ]
+;; (global-set-key (kbd "C-]") 'my-open-line-below)
+
+;; ^
+(global-set-key (kbd "C-^") 'sort-lines)
+(global-set-key (kbd "M-^") 'sort-paragraphs)
+
+;; _
+;;
+
+;; {
+(global-set-key (kbd "C-{") 'my-open-line-above)
+(global-set-key (kbd "M-{") 'my-delete-blank-lines-above)
+
+;; }
+(global-set-key (kbd "C-}") 'my-open-line-below)
+(global-set-key (kbd "M-}") 'my-delete-blank-lines-below)
+
+;; |
+(global-set-key (kbd "C-|") 'delete-blank-lines)
 
 ;; SPC
 (global-set-key (kbd "C-SPC") 'set-mark-command)

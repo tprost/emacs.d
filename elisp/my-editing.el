@@ -326,4 +326,18 @@ Version 2015-01-26"
       (yas-abort-snippet)
     (company-abort)))
 
+(defun my-join-line-above ()
+	(interactive)
+	(join-line))
+
+(defun my-join-line-below ()
+	(interactive)
+	(setq current-prefix-arg '(1))
+	(call-interactively 'join-line))
+
+(defun my-isearch-forward-from-beginning-of-buffer ()
+	(interactive)
+	(beginning-of-buffer)
+	(isearch-forward))
+
 (provide 'my-editing)

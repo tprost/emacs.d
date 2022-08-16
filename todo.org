@@ -1,9 +1,21 @@
 #+CATEGORY: emacs
 
+* TODO sort out new line indent vs C-j vs electric etc.
+* TODO the fuck is the backtab key
+* TODO investigate paredit
+* TODO investigate structured-haskell-mode
+build isn't working oh no
+* DONE write my-isearch-from-beginning-of-buffer :binding:
+* TODO write my-duplicate-paragraph :binding:
+* TODO delete-trailing-whitespace :binding:
+* DONE duplicate line doesn't work great
+* TODO vterm C-o :binding:
+* TODO emacs project minor mode + project registers
+* TODO search buffer :binding:
 * TODO fix line artifact in echo area pink
 * TODO visit most recent error from haskystack test vterm fn
 * TODO explore bookmarks
-* TODO explore registers
+* DONE explore registers
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html
 * TODO explore hippie-expand
 * TODO go straight to bindings file command
@@ -109,7 +121,7 @@ Because if I think of a word I want to memorize in Japanese, I want to quickly c
 - Shell for running manage.py commands?
 * TODO My Go Projects (Start docker compose)
 
-* Projectile, Layout, Project Terminals and Shell Commands
+* TODO Projectile, Layout, Project Terminals and Shell Commands
 * DONE cleanup file structure in .emacs.d
 
 * DONE set up a nice home screen with drill?
