@@ -1,5 +1,6 @@
 #+CATEGORY: emacs
 
+* TODO fix parantheses face so that it doesn't fuck up the region highlight
 * TODO sort out new line indent vs C-j vs electric etc.
 * TODO the fuck is the backtab key
 * TODO investigate paredit

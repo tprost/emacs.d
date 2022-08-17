@@ -26,6 +26,7 @@
 
 (require 'haskell-stack-mode)
 
+
 (require 'setup-defaults)
 (require 'setup-tab-bar-mode)
 (require 'setup-text-mode)
@@ -76,6 +77,8 @@
 
 (require 'setup-org)
 (require 'setup-haskell-mode)
+(require 'setup-structured-haskell-mode) ;; package cl is deprecated oh no
+
 (require 'setup-yasnippet)
 (require 'setup-lsp-mode)
 (require 'setup-markdown-mode)

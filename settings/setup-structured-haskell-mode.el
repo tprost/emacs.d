@@ -28,21 +28,32 @@
 (define-key shm-map (kbd "H-y") 'shm/yank)
 (define-key shm-map (kbd "H-.") 'shm/mark-node)
 
-(define-key shm-map (kbd "H-^") 'shm/raise)
+(define-key shm-map (kbd "H-r") 'shm/raise)
 (define-key shm-map (kbd "H-s") 'shm/splice)
 
 (define-key shm-map (kbd "H-<") 'shm/delete-indentation)
 (define-key shm-map (kbd "H->") 'shm/newline-indent)
 
-(define-key shm-map (kbd "H-<") 'shm/delete-indentation)
-(define-key shm-map (kbd "H->") 'shm/newline-indent)
-
-(define-key shm-map (kbd "H-<return>") 'shm/newline-indent-proxy)
-;; (define-key shm-map (kbd "H-<return>") 'shm/ret-proxy)
+;; (define-key shm-map (kbd "H-<return>") 'shm/newline-indent-proxy)
+(define-key shm-map (kbd "H-<return>") 'shm/ret-proxy)
 (define-key shm-map (kbd "H-C-<return>") 'shm/simple-indent-newline-indent)
 (define-key shm-map (kbd "H-<backspace>") 'shm/backward-kill-word)
 (define-key shm-map (kbd "H-$") 'shm/$)
 (define-key shm-map (kbd "H-+") 'shm/add-operand)
+(define-key shm-map (kbd "H-;") 'shm/comment)
+
+(define-key shm-map (kbd "H-C-|") 'shm/split)
+(define-key shm-map (kbd "H-|") 'shm/split-line)
+
+(define-key shm-map (kbd "H-i H-n") 'shm/newline-indent)
+(define-key shm-map (kbd "H-i H-l") 'shm/newline-indent)
+(define-key shm-map (kbd "H-i H-d") 'shm/delete-indentation)
+(define-key shm-map (kbd "H-i H-<") 'shm/simple-indent)
+(define-key shm-map (kbd "H-i H-S-i") 'shm/simple-indent-backtab)
+
+(define-key shm-map (kbd "H-/") 'shm/swing-down)
+(define-key shm-map (kbd "H-\\") 'shm/swing-up)
+;; (define-key shm-map (kbd "H-;") 'shm/swing-uo)
 
 
 (define-key shm-map (kbd "C-k") nil)

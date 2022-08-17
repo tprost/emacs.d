@@ -80,21 +80,6 @@
 ;; H
 
 ;; i
-(global-set-key (kbd "C-i") nil)
-(global-set-key (kbd "C-i C-s") 'split-line)
-(global-set-key (kbd "C-i C-f") 'crux-indent-defun)
-(global-set-key (kbd "C-i C-x") 'indent-sexp)
-(global-set-key (kbd "C-i C-d") 'delete-indentation)
-(global-set-key (kbd "C-i C-;") 'indent-for-comment)
-(global-set-key (kbd "C-i C-2") 'indent-to)
-(global-set-key (kbd "C-i C-r") 'indent-region)
-(global-set-key (kbd "C-i C-g") 'indent-rigidly)
-(global-set-key (kbd "C-i C-l") 'indent-relative)	
-(global-set-key (kbd "C-i <backspace>") 'indent-rigidly-left)
-(global-set-key (kbd "C-i SPC") 'indent-rigidly-right)
-(global-set-key (kbd "C-i C-c") 'indent-code-rigidly)
-(global-set-key (kbd "M-i") 'indent-for-tab-command)
-;; (global-set-key (kbd "M-i") 'back-to-indentation)
 (global-set-key (kbd "H-i") 'lsp-organize-imports)
 
 ;; delete-indentation
@@ -253,6 +238,20 @@
   "Drag lines around."
   ("n" move-text-down "down")
   ("p" move-text-up "up"))
+(define-key my-editing-map (kbd "C-s") 'split-line)
+(define-key my-editing-map (kbd "C-i C-f") 'crux-indent-defun)
+(define-key my-editing-map (kbd "C-i C-x") 'indent-sexp)
+(define-key my-editing-map (kbd "C-i C-d") 'delete-indentation)
+(define-key my-editing-map (kbd "C-i C-;") 'indent-for-comment)
+(define-key my-editing-map (kbd "C-i C-2") 'indent-to)
+(define-key my-editing-map (kbd "C-i C-r") 'indent-region)
+(define-key my-editing-map (kbd "C-i C-g") 'indent-rigidly)
+(define-key my-editing-map (kbd "C-i C-l") 'indent-relative)	
+(define-key my-editing-map (kbd "C-i <backspace>") 'indent-rigidly-left)
+(define-key my-editing-map (kbd "C-i SPC") 'indent-rigidly-right)
+(define-key my-editing-map (kbd "C-i C-c") 'indent-code-rigidly)
+;; (global-set-key (kbd "M-i") 'indent-for-tab-command)
+;; (global-set-key (kbd "M-i") 'back-to-indentation)
 (define-key my-editing-map (kbd "C-c") 'crux-capitalize-region)
 (define-key my-editing-map (kbd "m") 'hydra-move-text/body)
 (define-key my-editing-map (kbd "C-d") 'downcase-dwim)
@@ -474,7 +473,7 @@
 (global-set-key (kbd "M-}") 'my-delete-blank-lines-below)
 
 ;; |
-(global-set-key (kbd "C-|") 'delete-blank-lines)
+(global-set-key (kbd "C-|") 'split-line)
 
 ;; SPC
 (global-set-key (kbd "C-SPC") 'set-mark-command)
