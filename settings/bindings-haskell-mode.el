@@ -3,7 +3,8 @@
 (define-key haskell-mode-map (kbd "H-o") 'my-haskell-organize-imports)
 (define-key haskell-mode-map (kbd "H-r") 'my-haskell-rename)
 (define-key haskell-mode-map (kbd "H-C-r") 'my-haskell-retrie)
-(define-key haskell-mode-map (kbd "H-RET") 'my-haskell-send-region)
+(define-key haskell-mode-map (kbd "H-RET") 'my-haskell-send-region-to-vterm)
+(define-key haskell-mode-map (kbd "H-<return>") 'my-haskell-send-region-to-vterm)
 
 (define-key haskell-mode-map (kbd "H-.") 'haskell-hide-toggle)
 (define-key haskell-mode-map (kbd "H-j") 'lsp-find-definition)

@@ -214,6 +214,6 @@
 (set-char-table-range glyphless-char-display
                       (char-from-name "ZERO WIDTH SPACE") 'zero-width)
 
-
+(set-face-attribute 'show-paren-match nil :background nil)
 
 (provide 'setup-appearance)

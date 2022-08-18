@@ -32,6 +32,19 @@
               (pop-to-buffer b))
         (message "Region not active")))
 
+(defun my-haskell-send-region-to-vterm (start end)
+    "Send region to Haskell Interactive"
+    (interactive "r")
+		(let ((regionp (buffer-substring start end)))
+			
+		  (with-current-buffer "*vterm typerdrive*"
+				(vterm-send-string ":{")
+				(vterm-send-return)
+			  (vterm-send-string regionp)
+				(vterm-send-return)
+				(vterm-send-string ":}")
+				(vterm-send-return))))    
+
 (defun my-haskell-hs-hide-all ()
   (interactive)
   (my-haskell-hs-open-all)
