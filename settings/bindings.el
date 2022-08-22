@@ -573,13 +573,12 @@
 (define-key flycheck-command-map (kbd "C-p") 'flycheck-previous-error)
 (define-key flycheck-command-map (kbd "C-l") 'flycheck-list-errors)
 
-;; haskell-stack-mode
-(define-key haskell-stack-mode-map (kbd "<f2>")
-	'haskell-stack-testing-vterm-dwim)
 (define-key haskell-mode-map (kbd "H-t") 'haskell-stack-testing-vterm-dwim)
+(define-key haskell-mode-map (kbd "<f2>") 'haskell-stack-testing-vterm-dwim)
 
 (require 'bindings-org-mode)
 (require 'bindings-haskell-mode)
+(require 'bindings-structured-haskell-mode)
 
 (provide 'bindings)
 

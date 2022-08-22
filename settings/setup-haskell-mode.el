@@ -1,10 +1,12 @@
 (straight-use-package 'haskell-mode)
 (straight-use-package 'lsp-haskell)
 (straight-use-package 'haskell-snippets)
+(straight-use-package 'helm-lsp)
 
+(require 'helm-lsp)
 (require 'lsp-haskell)
 
-;; ;; Hooks so haskell and literate haskell major modes trigger LSP setup
+;; ;; Hooks so haskell and literate haskell major modes trigger LSP setup1
 (add-hook 'haskell-mode-hook #'lsp-deferred)
 ;; ;; (add-hook 'haskell-mode-hook #'lsp)
 ;; ;; (add-hook 'haskell-literate-mode-hook #'lsp)
@@ -111,5 +113,9 @@
 (defun my-find-project-todo-file ()
   (interactive)
   (find-file (file-name-concat (projectile-project-root) "todo.org")))
+
+
+
+;; (flycheck-add-next-checker 'lsp 'haskell-stack-ghc)
 
 (provide 'setup-haskell-mode)
