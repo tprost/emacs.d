@@ -3,6 +3,8 @@
 (straight-use-package 'haskell-snippets)
 (straight-use-package 'helm-lsp)
 
+
+(require 'haskell-mode)
 (require 'helm-lsp)
 (require 'lsp-haskell)
 

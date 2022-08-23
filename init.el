@@ -18,14 +18,6 @@
 
 (require 'setup-appearance)
 
-(require 'my-dictionary-functions)
-(require 'my-editing)
-(require 'my-functions)
-(require 'my-projectile)
-(require 'my-python-functions)
-
-(require 'haskell-stack-mode)
-
 
 (require 'setup-defaults)
 (require 'setup-tab-bar-mode)
@@ -88,6 +80,14 @@
 (require 'setup-miscellaneous)
 (require 'stack)
 (require 'bindings)
+
+(require 'my-dictionary-functions)
+(require 'my-editing)
+(require 'my-functions)
+(require 'my-projectile)
+(require 'my-python-functions)
+
+(require 'haskell-stack-mode)
 
 (load-file (expand-file-name "custom.el" user-emacs-directory))
 
