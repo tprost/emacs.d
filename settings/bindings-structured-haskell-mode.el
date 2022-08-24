@@ -26,7 +26,7 @@
 (define-key shm-map (kbd "H->") 'shm/newline-indent)
 
 ;; (define-key shm-map (kbd "H-<return>") 'shm/newline-indent-proxy)
-(define-key shm-map (kbd "H-<return>") 'shm/ret-proxy)
+;; (define-key shm-map (kbd "H-<return>") nil)
 (define-key shm-map (kbd "H-C-<return>") 'shm/simple-indent-newline-indent)
 (define-key shm-map (kbd "H-<backspace>") 'shm/backward-kill-word)
 (define-key shm-map (kbd "H-$") 'shm/$)
