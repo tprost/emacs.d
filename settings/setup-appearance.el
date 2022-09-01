@@ -29,12 +29,12 @@
       (append (list
 	           '(min-height . 1)
                '(height     . 45)
-	           '(min-width  . 1)
+	           '(min-width  . 0)
                '(width      . 81)
                '(vertical-scroll-bars . nil)
                '(internal-border-width . 12)
-               '(left-fringe    . 1)
-               '(right-fringe   . 1)
+               '(left-fringe    . 0)
+               '(right-fringe   . 0)
                '(tool-bar-lines . 0)
                '(menu-bar-lines . 0))))
 
@@ -183,11 +183,13 @@
 
 (defun my-style-the-echo-area ()
   (if (get-buffer " *Echo Area 0*")
-			(with-current-buffer " *Echo Area 0*" (face-remap-add-relative 'default
-  '(:background "#520435" :box nil))))
+			(with-current-buffer " *Echo Area 0*"
+				(face-remap-add-relative 'default '(:background "#520435" :box nil))
+				(face-remap-add-relative 'fringe '(:background "#520435" :box nil))))
 	(if (get-buffer " *Echo Area 1*")
-			(with-current-buffer " *Echo Area 1*" (face-remap-add-relative 'default
-  '(:background "#520435" :box nil)))))																																 
+			(with-current-buffer " *Echo Area 1*"
+				(face-remap-add-relative 'default '(:background "#520435" :box nil))
+				(face-remap-add-relative 'fringe '(:background "#520435" :box nil)))))																																 
 (add-hook 'after-change-major-mode-hook 'my-style-the-echo-area)
 
 ;; (defun minibuffer-bg ()	

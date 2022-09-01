@@ -22,7 +22,7 @@ build isn't working oh no
 * TODO vterm C-o :binding:
 * TODO emacs project minor mode + project registers
 * TODO search buffer :binding:
-* TODO fix line artifact in echo area pink
+* DONE fix line artifact in echo area pink
 * TODO visit most recent error from haskystack test vterm fn
 * TODO explore bookmarks
 * DONE explore registers
