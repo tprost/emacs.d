@@ -115,3 +115,5 @@
 
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq auto-save-default nil)
+(put 'downcase-region 'disabled nil)
+(straight-use-package 'csound-mode)

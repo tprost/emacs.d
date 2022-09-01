@@ -41,7 +41,7 @@
     (interactive "r")
 		(let ((regionp (buffer-substring start end)))
 			
-		  (with-current-buffer "*vterm typerdrive*"
+		  (with-current-buffer "*vterm typerdrive ghci*"
 				(vterm-send-string ":{")
 				(vterm-send-return)
 			  (vterm-send-string regionp)
