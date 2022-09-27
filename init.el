@@ -71,6 +71,8 @@
 (require 'setup-haskell-mode)
 (require 'setup-structured-haskell-mode) ;; package cl is deprecated oh no
 
+(require 'setup-haxe-mode)
+
 (require 'setup-yasnippet)
 (require 'setup-lsp-mode)
 (require 'setup-markdown-mode)

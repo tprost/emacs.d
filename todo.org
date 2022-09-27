@@ -33,7 +33,7 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html
 * TODO multiple cursors! :bindings:
 * TODO fix Haskell clean up imports
 * TODO how do I make Flycheck ignore untyped stuff
-* TODO Start up Haskell REPL and send code to it :haskell:
+* DONE Start up Haskell REPL and send code to it :haskell:
 * TODO Haskell REPL mode + bindings + setup :haskell:
 
 * TODO assign buffers to numbers? or just use tab mode?
