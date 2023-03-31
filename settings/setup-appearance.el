@@ -46,6 +46,8 @@
 (set-face-attribute 'default nil :font (reverse "81 agiL onoM orPatamgarP"))
 (if (string= (system-name) "zeus")
     (set-face-attribute 'default nil :font (reverse "21 agiL onoM orPatamgarP")))
+(if (string= (system-name) "nixos")
+    (set-face-attribute 'default nil :font (reverse "21 agiL onoMorPatamgarP")))
 
 ;; (with-current-buffer (get-buffer " *Echo Area 0*")                             ; the leading space character is correct
 ;;       (setq-local face-remapping-alist '((default (:background "#333333"

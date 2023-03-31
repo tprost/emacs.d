@@ -1,4 +1,8 @@
 
+
+
+
+
 ;; keys on macosx
 (setq mac-command-modifier 'super)
 (setq mac-option-modifier 'meta)
@@ -14,6 +18,10 @@
 (whole-line-or-region-global-mode t)
 
 (define-key input-decode-map [?\C-m] [C-m])
+
+
+
+
 
 ;; a
 (global-set-key (kbd "C-a") 'crux-move-beginning-of-line)
@@ -232,47 +240,47 @@
 
 ;; t
 ;; t is for typing! or rather, less of it please
-(define-prefix-command 'my-editing-map)
-(global-set-key (kbd "C-t") 'my-editing-map)
-(defhydra hydra-move-text (global-map "C-t N")
-  "Drag lines around."
-  ("n" move-text-down "down")
-  ("p" move-text-up "up"))
-(define-key my-editing-map (kbd "C-s") 'split-line)
-(define-key my-editing-map (kbd "C-i C-f") 'crux-indent-defun)
-(define-key my-editing-map (kbd "C-i C-x") 'indent-sexp)
-(define-key my-editing-map (kbd "C-i C-d") 'delete-indentation)
-(define-key my-editing-map (kbd "C-i C-;") 'indent-for-comment)
-(define-key my-editing-map (kbd "C-i C-2") 'indent-to)
-(define-key my-editing-map (kbd "C-i C-r") 'indent-region)
-(define-key my-editing-map (kbd "C-i C-g") 'indent-rigidly)
-(define-key my-editing-map (kbd "C-i C-l") 'indent-relative)	
-(define-key my-editing-map (kbd "C-i <backspace>") 'indent-rigidly-left)
-(define-key my-editing-map (kbd "C-i SPC") 'indent-rigidly-right)
-(define-key my-editing-map (kbd "C-i C-c") 'indent-code-rigidly)
-;; (global-set-key (kbd "M-i") 'indent-for-tab-command)
-;; (global-set-key (kbd "M-i") 'back-to-indentation)
-(define-key my-editing-map (kbd "C-c") 'crux-capitalize-region)
-(define-key my-editing-map (kbd "m") 'hydra-move-text/body)
-(define-key my-editing-map (kbd "C-d") 'downcase-dwim)
-(define-key my-editing-map (kbd "C-u") 'upcase-dwim)
-(define-key my-editing-map (kbd "u w") 'upcase-word)
-(define-key my-editing-map (kbd "u u") 'upcase-dwim)
-(define-key my-editing-map (kbd "u C-r") 'upcase-region)
-(define-key my-editing-map (kbd "u r") 'crux-upcase-region)
-(define-key my-editing-map (kbd "u i") 'upcase-initials-region)
-(define-key my-editing-map (kbd "C-p") 'hydra-move-text/move-text-up)
-(define-key my-editing-map (kbd "C-n") 'hydra-move-text/move-text-down)
-(define-key my-editing-map (kbd "C-j") 'crux-top-join-line)
-(define-key my-editing-map (kbd "C-o") 'my-open-line-below)
-(define-key my-editing-map (kbd "C-S-O") 'my-open-line-above)
-(define-key my-editing-map (kbd "o a") 'my-open-line-above)
-(define-key my-editing-map (kbd "o b") 'my-open-line-below)
-(define-key my-editing-map (kbd "C-&") 'crux-duplicate-current-line-or-region)
-(define-key my-editing-map (kbd "& ;")
-	'crux-duplicate-and-comment-current-line-or-region)
-(define-key my-editing-map (kbd "C-l") 'delete-blank-lines)
-(define-key my-editing-map (kbd "C-w") 'fixup-whitespace)
+;; (define-prefix-command 'my-editing-map)
+;; (global-set-key (kbd "C-t") 'my-editing-map)
+;; (defhydra hydra-move-text (global-map "C-t N")
+;;   "Drag lines around."
+;;   ("n" move-text-down "down")
+;;   ("p" move-text-up "up"))
+;; (define-key my-editing-map (kbd "C-s") 'split-line)
+;; (define-key my-editing-map (kbd "C-i C-f") 'crux-indent-defun)
+;; (define-key my-editing-map (kbd "C-i C-x") 'indent-sexp)
+;; (define-key my-editing-map (kbd "C-i C-d") 'delete-indentation)
+;; (define-key my-editing-map (kbd "C-i C-;") 'indent-for-comment)
+;; (define-key my-editing-map (kbd "C-i C-2") 'indent-to)
+;; (define-key my-editing-map (kbd "C-i C-r") 'indent-region)
+;; (define-key my-editing-map (kbd "C-i C-g") 'indent-rigidly)
+;; (define-key my-editing-map (kbd "C-i C-l") 'indent-relative)	
+;; (define-key my-editing-map (kbd "C-i <backspace>") 'indent-rigidly-left)
+;; (define-key my-editing-map (kbd "C-i SPC") 'indent-rigidly-right)
+;; (define-key my-editing-map (kbd "C-i C-c") 'indent-code-rigidly)
+;; ;; (global-set-key (kbd "M-i") 'indent-for-tab-command)
+;; ;; (global-set-key (kbd "M-i") 'back-to-indentation)
+;; (define-key my-editing-map (kbd "C-c") 'crux-capitalize-region)
+;; (define-key my-editing-map (kbd "m") 'hydra-move-text/body)
+;; (define-key my-editing-map (kbd "C-d") 'downcase-dwim)
+;; (define-key my-editing-map (kbd "C-u") 'upcase-dwim)
+;; (define-key my-editing-map (kbd "u w") 'upcase-word)
+;; (define-key my-editing-map (kbd "u u") 'upcase-dwim)
+;; (define-key my-editing-map (kbd "u C-r") 'upcase-region)
+;; (define-key my-editing-map (kbd "u r") 'crux-upcase-region)
+;; (define-key my-editing-map (kbd "u i") 'upcase-initials-region)
+;; (define-key my-editing-map (kbd "C-p") 'hydra-move-text/move-text-up)
+;; (define-key my-editing-map (kbd "C-n") 'hydra-move-text/move-text-down)
+;; (define-key my-editing-map (kbd "C-j") 'crux-top-join-line)
+;; (define-key my-editing-map (kbd "C-o") 'my-open-line-below)
+;; (define-key my-editing-map (kbd "C-S-O") 'my-open-line-above)
+;; (define-key my-editing-map (kbd "o a") 'my-open-line-above)
+;; (define-key my-editing-map (kbd "o b") 'my-open-line-below)
+;; (define-key my-editing-map (kbd "C-&") 'crux-duplicate-current-line-or-region)
+;; (define-key my-editing-map (kbd "& ;")
+;; 	'crux-duplicate-and-comment-current-line-or-region)
+;; (define-key my-editing-map (kbd "C-l") 'delete-blank-lines)
+;; (define-key my-editing-map (kbd "C-w") 'fixup-whitespace)
 
 ;; u
 
@@ -327,7 +335,10 @@
 (global-set-key (kbd "M-!") 'shell-command)
 ;; (global-set-key (kbd "H-!") 'next-error)
 
-;; "
+;; @
+(global-set-key (kbd "C-@") 'er/expand-region)
+;; (global-set-key (kbd "M-@") 'er/expand-region)
+(setq expand-region-contract-fast-key "<backspace>")
 
 ;; #
 (define-prefix-command 'my-rectangle-map)
@@ -349,13 +360,16 @@
 ;; (global-set-key (kbd "M-#") 'er/contract-region)
 
 ;; $
-(global-set-key (kbd "C-$") 'ispell-word)
-(global-set-key (kbd "M-$") 'ispell)
+(global-set-key (kbd "C-$") 'vterm)
+(global-set-key (kbd "M-$") 'my-new-vterm)
 
 ;; %
 (global-set-key (kbd "C-%") 'query-replace)
 (global-set-key (kbd "M-%") 'query-replace-regexp)
-(global-set-key (kbd "H-%") 'lsp-rename)
+
+;; ^
+(global-set-key (kbd "C-^") 'sort-lines)
+(global-set-key (kbd "M-^") 'sort-paragraphs)
 
 ;; &
 (global-set-key (kbd "C-&") 'crux-duplicate-current-line-or-region)
@@ -440,11 +454,11 @@
 ;; ?
 (global-set-key (kbd "C-?") 'hs-toggle-hiding)
 
-;; @
-(global-set-key (kbd "C-@") 'set-mark-command)
-(global-set-key (kbd "M-@") 'er/expand-region)
-(setq expand-region-contract-fast-key "<backspace>")
+(global-set-key (kbd "C-<up>") 'move-text-line-up)
+(global-set-key (kbd "C-<down>") 'move-text-line-down)
 
+
+(global-set-key (kbd "C-`") 'hydra-frame-management/body)
 ;; [
 ;; It's probably a bad idea to bind C-
 ;; https://emacs.stackexchange.com/questions/7832/how-to-bind-c-for-real
@@ -456,10 +470,6 @@
 
 ;; ]
 ;; (global-set-key (kbd "C-]") 'my-open-line-below)
-
-;; ^
-(global-set-key (kbd "C-^") 'sort-lines)
-(global-set-key (kbd "M-^") 'sort-paragraphs)
 
 ;; _
 ;;
@@ -483,7 +493,6 @@
 (global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
 (global-set-key (kbd "C-<return>") nil)
 (global-set-key (kbd "M-<return>") nil)
-(global-set-key (kbd "H-<return>") 'my-eval-dwim)
 
 ;; TAB
 (global-set-key [tab] 'company-complete)
@@ -509,73 +518,41 @@
 ;; (evil-global-set-key 'emacs  (kbd "C-<backspace>") 'backward-kill-word)
 ;; (evil-global-set-key 'emacs  (kbd "M-<backspace>") 'crux-kill-line-backwards)
 
-(global-set-key (kbd "<f1>") 'switch-to-buffer-in-projectile-register) ;; a
-(global-set-key (kbd "H-<f1>") 'buffer-to-projectile-register) ;; a
-
-(global-set-key (kbd "<f2>") 'projectile-test-project)
-(global-set-key (kbd "<f3>") 'projectile-run-vterm) ;; s
+(global-set-key (kbd "<f1>") 'projectile-test-project) ;; !
+;; (global-set-key (kbd "<f2>") 'projectile-) ;; r 
+(global-set-key (kbd "<f3>") 'projectile-find-file)
 (global-set-key (kbd "<f4>") 'projectile-test-project) ;; t
 (global-set-key (kbd "<f23>") 'projectile-compile-project) ;; c
 (global-set-key (kbd "<f13>") 'projectile-find-file) ;; f
-(global-set-key (kbd "<f14>") 'projectile-switch-project) ;; p
+(global-set-key (kbd "<f14>") 'projectile-command-map) ;; p
 (global-set-key (kbd "<f15>") 'magit) ;; g
-
 (global-set-key (kbd "<f22>") 'projectile-run-project)
 (global-set-key (kbd "<f24>") 'revert-buffer) ;; v
 
-;; (global-set-key (kbd "<f1> c") 'calendar)
-;; (global-set-key (kbd "<f1> j") 'open-my-japanese-file)
-;; (global-set-key (kbd "<f1> k k") 'open-my-japanese-file)
-;; (global-set-key (kbd "<f1> f") 'set-frame-size-to-80-36)
 
-;; hs-minor-mode
-(global-set-key (kbd "C-c C-.") 'hs-toggle-hiding)
+(global-set-key (kbd "H-h") 'lsp-describe-thing-at-point)
+(global-set-key (kbd "H-j") 'lsp-find-definition)
+(global-set-key (kbd "H-r") 'lsp-rename)
+(global-set-key (kbd "H-x") 'helm-make-projectile)
+(global-set-key (kbd "H-$") 'projectile-run-vterm)
+(global-set-key (kbd "H-C-$") 'term-projectile-create-new)
+(global-set-key (kbd "H-*") 'switch-to-buffer-in-projectile-register)
+(global-set-key (kbd "H-M-*") 'buffer-to-projectile-register)
+(global-set-key (kbd "H-%") 'lsp-rename)
+(global-set-key (kbd "H-<return>") 'my-eval-dwim)
 
 ;; yasnippet 
 (define-key yas-keymap (kbd "C-g") 'abort-company-or-yas)
 
-;; projectile
-;; (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
-;; (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
-;; (define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
-(define-key projectile-command-map (kbd "x") 'projectile-test-project)
-(define-key projectile-command-map (kbd "b")
-	'projectile-switch-to-buffer)
-(define-key projectile-command-map (kbd "r") nil)
-(define-key projectile-command-map (kbd "r r")
-	'switch-to-buffer-in-projectile-register)
-(define-key projectile-command-map (kbd "r s") 'buffer-to-projectile-register)
-
-
-(define-key projectile-command-map (kbd "1") 'projectile-find-test-file)
-(define-key projectile-command-map (kbd "1") 'projectile-toggle-between-implementation-and-test)
-
-(define-key projectile-command-map (kbd "v") 'projectile-run-vterm)
-(define-key projectile-command-map (kbd "V") 'projectile-run-vterm-dwim)
-(define-key projectile-command-map (kbd "t") 'my-jump-to-project-todo-file)
-;; (define-key projectile-command-map (kbd "v") 'projectile-run-vterm)
-;; (define-key projectile-command-map (kbd "d") 'projectile-debug)
-;; (define-key projectile-command-map (kbd "d") 'projectile-debug)
-;; (define-key projectile-command-map (kbd "g") 'projectile-grep)
-
-;; (define-key projectile-mode-map (kbd "C-x C-p x") 'projectile-test-project)
-;; (define-key projectile-mode-map (kbd "C-x C-p t") 'projectile-run-term)
-;; (define-key projectile-mode-map (kbd "C-x C-p t n") 'term-projectile-create-new)
-;; (define-key projectile-mode-map (kbd "C-x p t b") 'term-projectile-backward)
-;; (define-key projectile-mode-map (kbd "C-x p t f") 'term-projectile-forward)
-;; (define-key projectile-mode-map (kbd "C-x p t s") 'term-projectile-switch-to)
-
 ;; flycheck
 (define-key flycheck-mode-map flycheck-keymap-prefix nil)
-(setq flycheck-keymap-prefix (kbd "C-c !"))
+(setq flycheck-keymap-prefix (kbd "M-!"))
 (define-key flycheck-mode-map flycheck-keymap-prefix flycheck-command-map)
-(define-key flycheck-command-map (kbd "C-n") 'flycheck-next-error)
-(define-key flycheck-command-map (kbd "C-p") 'flycheck-previous-error)
-(define-key flycheck-command-map (kbd "C-l") 'flycheck-list-errors)
+(define-key flycheck-command-map (kbd "n") 'flycheck-next-error)
+(define-key flycheck-command-map (kbd "p") 'flycheck-previous-error)
+(define-key flycheck-command-map (kbd "l") 'flycheck-list-errors)
 
-(define-key haskell-mode-map (kbd "H-t") 'haskell-stack-testing-vterm-dwim)
-(define-key haskell-mode-map (kbd "<f2>") 'haskell-stack-testing-vterm-dwim)
-
+(require 'bindings-projectile-mode)
 (require 'bindings-org-mode)
 (require 'bindings-haskell-mode)
 (require 'bindings-structured-haskell-mode)

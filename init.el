@@ -119,3 +119,6 @@
 (setq auto-save-default nil)
 (put 'downcase-region 'disabled nil)
 (straight-use-package 'csound-mode)
+(straight-use-package 'rust-mode)
+(straight-use-package 'helm-make)
+

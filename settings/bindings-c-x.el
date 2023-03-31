@@ -30,6 +30,7 @@
 (define-key 'my-x-map (kbd "b") 'my-buffer-map)
 (define-prefix-command 'my-buffer-map)
 (define-key 'my-buffer-map (kbd "r") 'crux-rename-file-and-buffer)
+(define-key 'my-buffer-map (kbd "a") 'beginning-of-buffer)
 (define-key 'my-buffer-map (kbd "b") 'beginning-of-buffer)
 (define-key 'my-buffer-map (kbd "c") 'cleanup-buffer)
 (define-key 'my-buffer-map (kbd "d") 'crux-delete-file-and-buffer)
@@ -121,12 +122,14 @@
 ;; q
 
 ;; r
+(define-key 'my-x-map (kbd "C-r") 'crux-rename-file-and-buffer)
 
 ;; s
 (define-key 'my-x-map (kbd "C-s") 'save-buffer)
 (define-key 'my-x-map (kbd "s") 'save-some-buffers)
 
 ;; t
+(define-key 'my-x-map (kbd "C-t") 'vterm)
 (define-key 'my-x-map (kbd "t 0") 'tab-close)
 (define-key 'my-x-map (kbd "t 1") 'tab-close-other)
 (define-key 'my-x-map (kbd "t 2") 'tab-new)
