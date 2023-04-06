@@ -45,7 +45,10 @@
 ;; TODO everything in the manual from
 ;; https://orgmode.org/manual/Sparse-Trees.html
 
-(define-key org-mode-map (kbd "C-c C-l") 'org-insert-link)
+(define-key org-mode-map (kbd "C-c C-t") 'org-table-align)
+(define-key org-mode-map (kbd "C-c t a") 'org-table-align)
+(define-key org-mode-map (kbd "C-c t i") 'org-table-create)
+(define-key org-mode-map (kbd "C-c t c") 'org-table-create)
 ; ;; (define-key org-mode-map (kbd "H-x H-t") 'org-table-align)
 
 

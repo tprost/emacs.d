@@ -122,3 +122,9 @@
 (straight-use-package 'rust-mode)
 (straight-use-package 'helm-make)
 
+(push '("\\*compilation\\*" . (nil (reusable-frames . t))) display-buffer-alist)
+
+(straight-use-package 'aggressive-indent)
+(global-aggressive-indent-mode 1)
+
+(straight-use-package 'helm-swoop)

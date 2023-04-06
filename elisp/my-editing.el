@@ -1,3 +1,112 @@
+(defun my-kill-line-or-region ()
+  "Kill to the end of the line if no region is active, but kill the region if it is active."
+  (interactive)
+  (if (region-active-p)
+      (kill-region (region-beginning) (region-end))
+    (kill-line)))
+
+(defun my-beginning-of-buffer-text ()
+  "Move the cursor to the beginning of the first non-whitespace text in the buffer."
+  (interactive)
+  (goto-char (point-min))
+	(re-search-forward "[^[:space:]\n]" nil t)
+  (beginning-of-line))
+
+(defun my-backward-3-chars ()
+  "Move the cursor backward 3 characters."
+  (interactive)
+  (backward-char 3))
+
+(defun my-backward-3-words ()
+  "Move the cursor backward 3 words."
+  (interactive)
+  (backward-word 3))
+
+(defun my-backward-3-paragraphs ()
+  "Move the cursor backward 3 paragraphs."
+  (interactive)
+  (backward-paragraph 3))
+
+(defun my-end-of-line-text ()
+  "Move the cursor to the end of the current line of text, skipping over any trailing whitespace."
+  (interactive)
+  (end-of-line)
+  (skip-chars-backward "[:space:]"))
+
+(defun my-end-of-buffer-text ()
+  "Move the cursor to the end of the last line of text in the buffer."
+  (interactive)
+  (goto-char (point-max))
+  (re-search-backward "\\S-" nil t)
+  (end-of-line))
+
+(defun my-replace-in-buffer (beg end)
+  "Replace all occurrences of a search string in the current buffer with a replace string based on the current region, with prompting."
+  (interactive "r")
+  (let ((search (buffer-substring-no-properties beg end))
+        (replace (read-from-minibuffer "Replace string: ")))
+    (query-replace search replace)))
+
+
+(defun my-replace-in-buffer-no-fear (beg end)
+  "Replace all occurrences of a search string in the current buffer with a replace string based on the current region."
+  (interactive "r")
+  (let ((search (buffer-substring-no-properties beg end))
+        (replace (read-from-minibuffer "Replace string: ")))
+    (save-excursion
+      (goto-char (point-min))
+      (while (search-forward search nil t)
+        (replace-match replace nil t)))))
+
+(defun my-backward-whitespace ()
+  "Move the cursor backwards to the first non-whitespace character on the line."
+  (interactive)
+  (forward-whitespace -1))
+
+(defun my-backward-to-first-whitespace ()
+  "Move the cursor backwards to the first whitespace character on the line
+after the first non-whitespace character."
+  (interactive)
+	(beginning-of-line-text)
+	(forward-whitespace 1))
+
+(defun my-kill-to-beginning-of-line ()
+  "Kill all text from the cursor position to the beginning of the line."
+  (interactive)
+  (kill-region (point) (line-beginning-position)))
+
+(defun my-forward-3-chars ()
+  "Move the cursor forward 3 characters."
+  (interactive)
+  (forward-char 3))
+
+(defun my-forward-3-words ()
+  "Move the cursor forward 3 words."
+  (interactive)
+  (forward-word 3))
+
+(defun my-forward-3-paragraphs ()
+  "Move the cursor forward 3 paragraphs."
+  (interactive)
+  (forward-paragraph 3))
+
+(defun my-avy-goto-line-text ()
+  "Run `avy-goto-line' and then move the cursor to the beginning of the first non-whitespace text on the line."
+  (interactive)
+  (avy-goto-line)
+  (beginning-of-line-text))
+
+(defun my-avy-goto-end-of-line-text ()
+  "Run `avy-goto-line' and then move the cursor to end of the non-whitespace chars on the line."
+  (interactive)
+  (avy-goto-line)
+  (my-end-of-line-text))
+
+(defun my-delete-3-chars ()
+  "Delete the 3 characters to the right of the cursor."
+  (interactive)
+  (delete-char 3))
+
 (defun my-scroll-8-lines-down ()
   (interactive)
   (scroll-down-line 8))
@@ -339,5 +448,10 @@ Version 2015-01-26"
 	(interactive)
 	(beginning-of-buffer)
 	(isearch-forward))
+
+(defun my-isearch-backward-from-end-of-buffer ()
+	(interactive)
+	(end-of-buffer)
+	(isearch-backward))
 
 (provide 'my-editing)

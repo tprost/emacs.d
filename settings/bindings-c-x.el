@@ -1,10 +1,26 @@
 (define-prefix-command 'my-x-map)
+(define-prefix-command 'my-cmx-map)
+
+
+
+(global-set-key (kbd "C-M-x") nil)
+(global-set-key (kbd "C-M-x") 'my-cmx-map)
+(define-key emacs-lisp-mode-map (kbd "C-M-x") nil)
+(define-key 'my-cmx-map (kbd "C-M-a") 'make-frame)
+(define-key 'my-cmx-map (kbd "C-M-b C-M-a") 'beginning-of-buffer)
+(define-key 'my-cmx-map (kbd "C-M-b C-M-e") 'end-of-buffer)
+;; (global-set-key (kbd "C-M-x C-M-a C-M-a") 'make-frame)
+;; (global-set-key (kbd "C-M-x C-M-a C-M-o") 'other-frame)
+
+
+																								 
+
 
 ;; a
 (define-key emacs-lisp-mode-map (kbd "C-x C-a") nil)
 (global-set-key (kbd "C-x C-a") nil)
 (defhydra hydra-frame-management (global-map "C-x a")
-  "frame"
+  "frame" 
   ("<left>" move-frame-left)
   ("<right>" move-frame-right)
   ("<down>" move-frame-down)
@@ -26,7 +42,7 @@
 (define-key 'my-x-map (kbd "a") 'hydra-frame-management/body)
 
 ;; b
-(define-key 'my-x-map (kbd "C-b") 'helm-mini)
+(define-key 'my-x-map (kbd "C-b") 'helm-buffers-list)
 (define-key 'my-x-map (kbd "b") 'my-buffer-map)
 (define-prefix-command 'my-buffer-map)
 (define-key 'my-buffer-map (kbd "r") 'crux-rename-file-and-buffer)
@@ -60,18 +76,18 @@
 ;; (define-key my-x-map (kbd "e") my-emacs-d-map)
 
 ;; f
+(define-key 'my-x-map (kbd "C-f") 'helm-find-files)
 (define-key 'my-x-map (kbd "f") nil)
 (define-key 'my-x-map (kbd "f r") 'crux-rename-file-and-buffer)
 (define-key 'my-x-map (kbd "f f") 'crux-recentf-find-file)
-(define-key 'my-x-map (kbd "C-f") 'helm-find-files)
 
 ;; g
-(define-key 'my-x-map (kbd "g") 'magit)
 (define-key 'my-x-map (kbd "C-g") 'magit)
+(define-key 'my-x-map (kbd "g") 'magit)
 
 ;; h
-(define-key 'my-x-map (kbd "h") 'info-emacs-manual)
 (define-key 'my-x-map (kbd "C-h") 'info-emacs-manual)
+(define-key 'my-x-map (kbd "h") 'info-emacs-manual)
 
 ;; i
 ;; ?
@@ -117,7 +133,12 @@
 
 ;; p
 (define-key 'my-x-map (kbd "p") 'projectile-command-map)
-(define-key 'my-x-map (kbd "C-p") 'projectile-find-file)
+(define-key 'my-x-map (kbd "C-p") nil)
+(define-key 'my-x-map (kbd "C-p C-f") 'projectile-find-file)
+(define-key 'my-x-map (kbd "C-p C-g") 'projectile-grep)
+(define-key 'my-x-map (kbd "C-p C-b") 'projectile-switch-to-buffer)
+(define-key 'my-x-map (kbd "C-p C-$") 'projectile-run-vterm)
+(define-key 'my-x-map (kbd "C-p C-v") 'projectile-run-vterm)
 
 ;; q
 
@@ -200,6 +221,8 @@
   ("d" text-scale-decrease "decrease"))
 (define-key 'my-x-map (kbd "=") 'hydra-text-scale/body)
 (define-key 'my-x-map (kbd "C-=") 'hydra-text-scale/body)
+
+(define-key 'my-x-map (kbd "C-$") 'vterm)
 
 (global-set-key (kbd "C-x") 'my-x-map)
 (global-set-key (kbd "C-S-x") 'my-x-map)
