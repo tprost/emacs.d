@@ -454,4 +454,24 @@ Version 2015-01-26"
 	(end-of-buffer)
 	(isearch-backward))
 
+(defun my-close-line-below ()
+  "Remove the line below the current line without changing the cursor position."
+  (interactive)
+  (let ((line (line-number-at-pos)))
+    (save-excursion
+      (forward-line)
+      (delete-region (point-at-bol) (point)))
+    (goto-char (point-min))
+    (forward-line (1- line))))
+
+(defun my-close-line-above ()
+  "Remove the line above the current line without changing the cursor position."
+  (interactive)
+  (let ((line (line-number-at-pos)))
+    (save-excursion
+      (forward-line -1)
+      (delete-region (point-at-bol) (point)))
+    (goto-char (point-min))
+    (forward-line (1- line))))
+
 (provide 'my-editing)

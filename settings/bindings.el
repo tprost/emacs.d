@@ -34,7 +34,16 @@
 
 ;; c
 (global-set-key (kbd "C-c C-k") 'delete-trailing-whitespace)
-;; reserved for major or minor modes
+(global-set-key (kbd "C-c C-r C-k") 'kill-rectangle)
+(global-set-key (kbd "C-c C-r C-d") 'delete-rectangle)
+(global-set-key (kbd "C-c C-r C-y") 'yank-rectangle)
+(global-set-key (kbd "C-c C-r C-o") 'open-rectangle)
+(global-set-key (kbd "C-c C-u") 'upcase-dwim)
+(global-set-key (kbd "C-c C-d") 'downcase-dwim)
+(global-set-key (kbd "C-c C-w") 'fixup-whitespace)
+(global-set-key (kbd "C-c C-l") 'delete-blank-lines)
+
+;; RESERVED for major or minor modes
 ;; t
 ;; t is for typing! or rather, less of it please
 ;; (define-prefix-command 'my-editing-map)
@@ -222,8 +231,10 @@
 ;; q
 
 ;; r
-(global-set-key (kbd "C-r") 'my-replace-in-buffer)
-(global-set-key (kbd "M-r") 'my-replace-in-buffer-no-fear)
+(global-set-key (kbd "C-r") 'query-replace)
+(global-set-key (kbd "C-S-r") 'query-replace-regexp)
+(global-set-key (kbd "M-r") 'my-replace-in-buffer)
+(global-set-key (kbd "C-M-r") 'my-replace-in-buffer-no-fear)
 (global-set-key (kbd "H-r") 'lsp-rename)
 
 ;; s
@@ -236,6 +247,9 @@
 (global-set-key (kbd "H-s") 'helm-multi-swoop-projectile)
 
 ;; t
+(global-set-key (kbd "C-t") 'my-open-line-below)
+(global-set-key (kbd "C-S-t") 'my-open-line-above)
+(global-set-key (kbd "M-t") 'delete-blank-lines)
 
 ;; u
 
@@ -264,111 +278,69 @@
 ;; z
 (global-set-key (kbd "C-z") 'undo)
 
-;; C-<symbol>
-(global-set-key (kbd "C-!") 'my-apologies-try-dollar-sign)
-(setq expand-region-contract-fast-key "<backspace>")
-(define-prefix-command 'my-rectangle-map)
-;; (global-set-key (kbd "C-#") 'my-rectangle-map)
-;; (define-key 'my-rectangle-map (kbd "C-k") 'kill-rectangle)
-;; (define-key 'my-rectangle-map (kbd "M-w") 'copy-rectangle-as-kill)
-;; (define-key 'my-rectangle-map (kbd "C-w") 'copy-rectangle-as-kill)
-;; (define-key 'my-rectangle-map (kbd "C-d") 'delete-rectangle)
-;; (define-key 'my-rectangle-map (kbd "C-y") 'yank-rectangle)
-;; (define-key 'my-rectangle-map (kbd "C-o") 'open-rectangle)
-;; (define-key 'my-rectangle-map (kbd "C-c") 'clear-rectangle)
-;; (define-key 'my-rectangle-map (kbd "C-n") 'rectangle-number-lines)
-;; (define-key 'my-rectangle-map (kbd "C-t") 'delete-whitespace-rectangle)
-;; (define-key 'my-rectangle-map (kbd "C-s") 'string-rectangle)
-;; (define-key 'my-rectangle-map (kbd "C-i") 'string-insert-rectangle)
-;; (define-key 'my-rectangle-map (kbd "C-SPC") 'rectangle-mark-mode)
-(global-set-key (kbd "C-$") 'iuno)
-(global-set-key (kbd "C-%") 'query-replace)
-(global-set-key (kbd "C-M-%") 'query-replace-regexp)
-(global-set-key (kbd "C-^") 'sort-lines)
-(global-set-key (kbd "C-M-^") 'sort-paragraphs)
-(global-set-key (kbd "C-&") 'nope)
-(global-set-key (kbd "C-*") 'jump-to-register)
-(global-set-key (kbd "C-M-*") 'point-to-register)
-(global-set-key (kbd "C-(") 'kmacro-start-macro-or-insert-counter)
-(global-set-key (kbd "C-)") 'kmacro-end-or-call-macro)
-(global-set-key (kbd "C-{") 'my-open-line-above)
-(global-set-key (kbd "M-{") 'my-delete-blank-lines-above)
-
-;; }
-(global-set-key (kbd "C-}") 'my-open-line-below)
-(global-set-key (kbd "M-}") 'my-delete-blank-lines-below)
-
-;; <
-(global-set-key (kbd "C-<") 'my-join-line-above)
-
-;; >
-(global-set-key (kbd "C->") 'end-of-buffer)
-(global-set-key (kbd "C-<") 'beginning-of-buffer)
-(global-set-key (kbd "M->") nil)
-(global-set-key (kbd "M-> !") 'compilation-next-error)
-(global-set-key (kbd "M-> b") 'my-find-compilation-buffer)
-
-;; :
-(global-set-key (kbd "C-:") 'goto-line)
+;; .
+(global-set-key (kbd "C-.") 'jump-to-register)
+(global-set-key (kbd "M-.") 'point-to-register)
 
 ;; ,
-(define-prefix-command 'my-mc-map)
-(global-set-key (kbd "C-,") 'my-mc-map)
-(define-key my-mc-map (kbd "C-a") 'mc/mark-all-dwim)
-(define-key my-mc-map (kbd "C-r") 'mc/mark-all-in-region)
-(define-key my-mc-map (kbd "C-l") 'mc/edit-beginnings-of-lines)
-(define-key my-mc-map (kbd "C-m") 'mc/mark-all-dwim)
-(define-key my-mc-map (kbd "C-n") 'mc/mark-next-like-this)
-(define-key my-mc-map (kbd "C-p") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-,") nil)
+(global-set-key (kbd "C-, C-a") 'mc/mark-all-dwim)
+(global-set-key (kbd "C-, C-r") 'mc/mark-all-in-region)
+(global-set-key (kbd "C-, C-l") 'mc/edit-beginnings-of-lines)
+(global-set-key (kbd "C-, C-m") 'mc/mark-all-dwim)
+(global-set-key (kbd "C-, C-n") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-, C-p") 'mc/mark-previous-like-this)
 (global-set-key (kbd "M-,") 'mc/mark-all-dwim)
 
-;; -
-;; (global-set-key (kbd "C--") 'kmacro-end-or-call-macro)
-
-;; .
-(define-prefix-command 'my-mark-map)
-(global-set-key (kbd "C-.") 'my-mark-map)
-
-(global-set-key (kbd "M-.") 'er/expand-region)
+;; ;
+(global-set-key (kbd "C-;") 'save-buffer)
 
 ;; /
 (global-set-key (kbd "C-/") 'undo)
 
+;; minor/major mode conveniences
+(global-set-key (kbd "C-!") 'flycheck-mode)
+
+(global-set-key (kbd "C-$") 'vterm)
+(global-set-key (kbd "C-_") 'whitespace-mode)
+(global-set-key (kbd "C-~") 'flyspell-mode)
+(global-set-key (kbd "C-@") 'compilation-next-error)
+(global-set-key (kbd "M-@") 'my-find-compilation-buffer)
+(global-set-key (kbd "C-%") 'query-replace) ;; isearch-mode
+(global-set-key (kbd "M-%") 'query-replace-regexp) ;; isearch-mode
+
+(global-set-key (kbd "C-&") 'nope)
+
+(global-set-key (kbd "C-(") 'kmacro-start-macro-or-insert-counter)
+(global-set-key (kbd "C-)") 'kmacro-end-or-call-macro)
+
+(global-set-key (kbd "C-{") 'previous-buffer)
+(global-set-key (kbd "C-}") 'next-buffer);; 
+
+;; <
+(global-set-key (kbd "C-<") 'text-scale-decrease)
+(global-set-key (kbd "C->") 'text-scale-increase)
+
 ;; :
+(global-set-key (kbd "C-:") 'goto-line)
 
 ;; ;
-(global-set-key (kbd "C-;") 'whole-line-or-region-comment-dwim-2)
-(global-set-key (kbd "M-;") 'comment-dwim)
+(global-set-key (kbd "C-;") 'magit)
+(global-set-key (kbd "M-;") 'magit)
+(global-set-key (kbd "H-;") 'comment-dwim)
 ;; (global-set-key (kbd "C-M-;") 'comment-dwim)
 ;; (global-set-key (kbd "C-M-; k") 'comment-kill)
 ;; (global-set-key (kbd "C-M-; C-M-k") 'comment-kill)
 
 ;; =
 
+
+(global-set-key (kbd "C-^") 'hs-toggle-hiding)
 ;; ?
 ;; (global-set-key (kbd "C-h f") 'helm-apropos)
 ;; (global-set-key (kbd "C-h r") 'helm-info-emacs)
 ;; (global-set-key (kbd "C-h C-l") 'helm-locate-library)
-;; (global-set-key (kbd "C-?") 'hs-toggle-hiding)
-
-
-(global-set-key (kbd "M-$") 'vterm)
-(global-set-key (kbd "H-$") 'projectile-run-vterm)
-
-;; %
-
-;; ^
-
-;; &
-(global-set-key (kbd "H-&") 'my-emacs-init-file)
-
-;; &
-
-;; (
-
-;; )
-
-;; {
+(global-set-key (kbd "C-?") 'helm-buffers-list)
 
 
 (global-set-key (kbd "C-<up>") 'move-text-line-up)
@@ -388,20 +360,15 @@
 ;; ]
 ;; (global-set-key (kbd "C-]") 'my-open-line-below)
 
-;; _
-;;
-
-;; |
-(global-set-key (kbd "C-|") 'split-line)
-
 ;; SPC
 (global-set-key (kbd "C-SPC") 'set-mark-command)
 (global-set-key (kbd "M-SPC") 'my-mark-map)
 
 ;; RET
 (global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
-(global-set-key (kbd "C-<return>") nil)
-(global-set-key (kbd "M-<return>") 'my-eval-dwim)
+
+(global-set-key (kbd "C-<return>") 'mc/mark-all-dwim)
+(global-set-key (kbd "M-<return>") 'mc/edit-lines)
 
 ;; TAB
 (global-set-key [tab] 'company-complete)
@@ -413,19 +380,15 @@
 (setq tab-bar-select-tab-modifiers '(hyper))
 
 ;; BACKSPACE
-(global-set-key (kbd "C-M-<backspace>") 'backward-kill-sentence)
-
+(global-set-key (kbd "C-<backspace>") 'backward-delete-char)
+(global-set-key (kbd "M-<backspace>") 'backward-kill-word)
+(global-set-key (kbd "C-M-<backspace>") 'backward-kill-paragraph)
 
 (global-set-key (kbd "<home>") 'beginning-of-buffer)
 (global-set-key (kbd "<end>") 'end-of-buffer)
 (global-set-key (kbd "<find>") 'switch-to-buffer-in-projectile-register)
 (global-set-key (kbd "<undo>") 'undo)
 (global-set-key (kbd "<menu>") 'switch-to-buffer-in-projectile-register)
-;; (global-set-key (kbd "C-z") 'undo)
-
-;; (evil-global-set-key 'emacs  (kbd "<backspace>") 'backward-delete-char)
-;; (evil-global-set-key 'emacs  (kbd "C-<backspace>") 'backward-kill-word)
-;; (evil-global-set-key 'emacs  (kbd "M-<backspace>") 'crux-kill-line-backwards)
 
 (global-set-key (kbd "<f1>") 'projectile-test-project) ;; !
 (global-set-key (kbd "<f2>") 'projectile-run-project) ;; r
@@ -440,37 +403,35 @@
 (global-set-key (kbd "<f24>") 'revert-buffer) ;; v
 
 
-(global-set-key (kbd "H-b") 'projectile-switch-to-buffer)
+;; x(global-set-key (kbd "H-M-b") 'projectile-switch-to-buffer)
 ;; (global-set-key (kbd "H-S-B") 'my-backward-to-sexp) ;; TODO
 
 ;; (global-set-key (kbd "H-d") 'kill-sexp)
 ;; (global-set-key (kbd "H-S-D") 'backward-kill-sexp)
 ;; (global-set-key (kbd "H-f") 'forward-sexp)
 ;; (global-set-key (kbd "H-i") 'lsp-organize-imports)
-;; (global-set-key (kbd "H-j") 'lsp-goto-type-definition)
+(global-set-key (kbd "H-j") 'lsp-goto-type-definition)
 ;; (global-set-key (kbd "H-o") 'lsp-organize-imports)
 ;; (global-set-key (kbd "H-h") 'lsp-describe-thing-at-point)
 ;; (global-set-key (kbd "H-j") 'lsp-find-definition)
 ;; (global-set-key (kbd "H-r") 'lsp-rename)
-(global-set-key (kbd "H-x") 'helm-make-projectile)
+;; (global-set-key (kbd "H-@") 'helm-make-projectile)
 ;; (global-set-key (kbd "H-x") 'switch-to-buffer-in-projectile-register)
-
-
-
-(global-set-key (kbd "H-;") 'projectile-test-project)
+(global-set-key (kbd "H-.") 'switch-to-buffer-in-projectile-register)
+(global-set-key (kbd "H-M-.") 'buffer-to-projectile-register)
+(global-set-key (kbd "H-!") 'projectile-test-project)
 (global-set-key (kbd "H-$") 'projectile-run-vterm)
-(global-set-key (kbd "<H-C-$>")
+(global-set-key (kbd "H-?") 'helm-projectile-switch-to-buffer)
+(global-set-key (kbd "<H-M-$>")
                 (lambda ()
                   (interactive)
                   (projectile-run-vterm t)))
 (global-set-key (kbd "H-%") 'lsp-rename)
-(global-set-key (kbd "H-*") 'switch-to-buffer-in-projectile-register)
 (global-set-key (kbd "H-;") 'comment-dwim)
 (global-set-key (kbd "H-<return>") 'my-eval-dwim)
 (global-set-key (kbd "H-=") 'helm-make-projectile)
-(global-set-key (kbd "H->") 'projectile-compile-project)
-(global-set-key (kbd "H-C-*") 'buffer-to-projectile-register)
-(global-set-key (kbd "H-M-*") 'buffer-to-projectile-register)
+(global-set-key (kbd "H-@") 'projectile-compile-project)
+
 
 
 
