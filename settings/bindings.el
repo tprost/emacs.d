@@ -299,17 +299,22 @@
 (global-set-key (kbd "C-/") 'undo)
 
 ;; minor/major mode conveniences
-(global-set-key (kbd "C-!") 'flycheck-mode)
+(global-set-key (kbd "C-!") 'flycheck-next-error)
 
 (global-set-key (kbd "C-$") 'vterm)
-(global-set-key (kbd "C-_") 'whitespace-mode)
-(global-set-key (kbd "C-~") 'flyspell-mode)
+
 (global-set-key (kbd "C-@") 'compilation-next-error)
 (global-set-key (kbd "M-@") 'my-find-compilation-buffer)
+
 (global-set-key (kbd "C-%") 'query-replace) ;; isearch-mode
 (global-set-key (kbd "M-%") 'query-replace-regexp) ;; isearch-mode
 
+(global-set-key (kbd "C-^") 'hs-toggle-hiding)
+
 (global-set-key (kbd "C-&") 'nope)
+
+(global-set-key (kbd "C-~") 'flyspell-mode)
+(global-set-key (kbd "C-_") 'whitespace-mode)
 
 (global-set-key (kbd "C-(") 'kmacro-start-macro-or-insert-counter)
 (global-set-key (kbd "C-)") 'kmacro-end-or-call-macro)
@@ -333,9 +338,8 @@
 ;; (global-set-key (kbd "C-M-; C-M-k") 'comment-kill)
 
 ;; =
+(global-set-key (kbd "C-|") 'magit)
 
-
-(global-set-key (kbd "C-^") 'hs-toggle-hiding)
 ;; ?
 ;; (global-set-key (kbd "C-h f") 'helm-apropos)
 ;; (global-set-key (kbd "C-h r") 'helm-info-emacs)

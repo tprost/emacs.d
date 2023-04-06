@@ -68,16 +68,19 @@
 ;; (load-file (expand-file-name "editing.el" user-emacs-directory))1
 
 (require 'setup-org)
-(require 'setup-haskell-mode)
-(require 'setup-structured-haskell-mode) ;; package cl is deprecated oh no
 
-(require 'setup-haxe-mode)
 
 (require 'setup-yasnippet)
-(require 'setup-lsp-mode)
 (require 'setup-markdown-mode)
-(require 'setup-haskell-mode)
 (require 'setup-restclient)
+
+(require 'setup-lsp-mode)
+
+(require 'setup-haskell-mode)
+(require 'setup-structured-haskell-mode) ;; package cl is deprecated oh no
+(require 'setup-rustic-mode)
+(require 'setup-haxe-mode)
+
 
 (require 'setup-miscellaneous)
 (require 'stack)
@@ -128,3 +131,6 @@
 (global-aggressive-indent-mode 1)
 
 (straight-use-package 'helm-swoop)
+
+
+(setq lsp-enable-automatic-install nil)

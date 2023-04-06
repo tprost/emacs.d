@@ -147,10 +147,9 @@
 (beacon-mode 1)
 
 
-(setq-default mode-line-format nil)
+;; (setq-default mode-line-format nil)
 
-(setq-default header-line-format (list "%e"  mode-line-modified " " "%l" " "
-		  mode-line-buffer-identification ))
+
 
 ;; (defface my-header-line-nothing-face
 ;; 	`((t :inherit 'default
@@ -219,5 +218,86 @@
                       (char-from-name "ZERO WIDTH SPACE") 'zero-width)
 
 (set-face-attribute 'show-paren-match nil :background nil)
+
+;; ;; write a function to do the spacing
+;; (defun simple-mode-line-render (left right)
+;;   "Return a string of `window-width' length containing LEFT, and RIGHT
+;;  aligned respectively."
+;;   (let* ((available-width (- (window-width) (length left) 2)))
+;;     (format (format " %%s %%%ds " available-width) left right)))
+
+;; ;; use the function in conjunction with :eval and format-mode-line in your mode-line-format
+;; (setq header-line-format
+;;       '((:eval (simple-mode-line-render
+;;                 ;; left
+;;                 (format-mode-line "%b [%m] [%*]")
+;;                 ;; right
+;;                 (format-mode-line "Line: %l/%i Column: %c")))))
+
+;; ;; Update the mode-line-format
+;; (setq-default header-line-format
+;; 							(list
+;; 							 "%e"
+;; 							 mode-line-front-space
+;; 							 mode-line-mule-info
+;; 							 mode-line-client
+;; 							 mode-line-modified
+;; 							 mode-line-remote
+;; 							 mode-line-frame-identification
+;; 							 mode-line-buffer-identification
+;; 							 "   "
+;; 							 mode-line-position
+;; 							 "  "
+;; 							 mode-line-modes
+;; 							 ;; mode-line-misc-info
+;; 							 ;; mode-line-end-spaces))
+;; 							 ))
+
+;; (straight-use-package 'diminish)
+;; (diminish 'company-mode)
+;; (diminish 'projectile-mode)
+;; (diminish 'helm-mode)
+;; (diminish 'eldoc-mode)
+;; (diminish 'auto-fill-mode)
+;; (diminish 'display-fill-column-indicator-mode)
+;; (diminish 'auto-encryption-mode)
+;; (diminish 'refill-mode)
+;; (diminish 'whole-line-or-region-local-mode)
+;; (diminish 'whole-line-or-region-global-mode)
+;; (diminish 'which-key-mode)
+;; (diminish 'auto-revert-mode)
+;; (diminish 'flycheck-mode)
+;; (diminish 'overwrite-mode)
+;; ;; (diminish 'envrc-mode)
+
+;; ;; Save the original mode line format
+;; (defvar original-mode-line-format mode-line-format)
+
+;; ;; Set the mode line format to the header line format
+;; (setq-default header-line-format mode-line-format)
+
+;; ;; Restore the original mode line format and hide the mode line
+;; (setq-default mode-line-format original-mode-line-format)
+
+(straight-use-package 'smart-mode-line)
+(setq-default header-line-format mode-line-format)
+(setq-default mode-line-format nil)
+(setq sml/no-confirm-load-theme t)
+(setq sml/theme 'dark)
+(sml/setup)
+
+(straight-use-package 'rich-minority)
+
+
+(setq rm-blacklist
+      (format "^ \\(%s\\)$"
+              (mapconcat #'identity
+                         '("Fly.*" "Projectile.*" "PgLn" "WLR" "WK" "Helm"
+													 "Fill"	"ARev" "company"	"yas" "ElDoc"	"=>" "hs"
+													 "envrc.*" "\\(\\*\\)"					 )
+                         "\\|")))
+
+(setq beacon-lighter "")
+
 
 (provide 'setup-appearance)
