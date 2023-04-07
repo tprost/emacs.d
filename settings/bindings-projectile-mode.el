@@ -2,6 +2,13 @@
 ;; (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
 ;; (define-key projectile-mode-map (kbd "C-q") 'projectile-command-map)
 ;; (define-key projectile-mode-map (kbd "C-x p T") 'term-projectile-create-new)
+(define-key projectile-command-map (kbd "C-f") 'projectile-find-file)
+(define-key projectile-command-map (kbd "C-t") 'projectile-test-project)
+(define-key projectile-command-map (kbd "C-b")
+	'helm-projectile-switch-to-buffer)
+(define-key projectile-command-map (kbd "C-p") 'helm-projectile-switch-project)
+
+
 (define-key projectile-command-map (kbd "x") 'projectile-test-project)
 (define-key projectile-command-map (kbd "b")
 	'projectile-switch-to-buffer)

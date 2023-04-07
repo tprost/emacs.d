@@ -168,6 +168,7 @@
 (global-set-key (kbd "M-j M-1") 'avy-goto-word-1)
 (global-set-key (kbd "C-M-j") 'occur)
 (global-set-key (kbd "H-j") 'helm-semantic-or-imenu)
+;; (global-set-key (kbd "H-j") 'lsp-goto-type-definition)
 
 ;; k
 (global-set-key (kbd "C-k") 'my-kill-line-or-region)
@@ -190,6 +191,7 @@
 (global-set-key (kbd "M-l") 'recenter-top-bottom)
 
 ;; m
+(global-set-key (kbd "<C-m>") 'set-mark-command)
 
 ;; n
 (global-set-key (kbd "C-n") 'next-line)
@@ -229,6 +231,28 @@
 (global-set-key (kbd "H-p") 'backward-sexp)
 
 ;; q
+;; (global-set-key (kbd "C-q") 'jump-to-register)
+;; (global-set-key (kbd "M-q") 'point-to-register)
+;; (global-set-key (kbd "H-q") 'switch-to-buffer-in-projectile-register)
+;; (global-set-key (kbd "H-M-q") 'buffer-to-projectile-register)
+
+;; (define-prefix-command 'my-register-map)
+;; (global-set-key (kbd "C-r") 'my-register-map)
+;; (define-key 'my-register-map (kbd "C-v") 'view-register)
+
+;; (define-key 'my-register-map (kbd "C-p") 'point-to-register)
+;; (define-key 'my-register-map (kbd "C-j") 'jump-to-register)
+;; (define-key 'my-register-map (kbd "p r") 'point-to-register)
+;; (define-key 'my-register-map (kbd "p j") 'jump-to-register)
+
+;; (define-key 'my-register-map (kbd "C-i") 'insert-register)
+
+;; ;; r regions
+;; (define-key 'my-register-map (kbd "C-r") 'copy-to-register)
+;; (define-key 'my-register-map (kbd "r w") 'copy-to-register)
+;; (define-key 'my-register-map (kbd "r i") 'insert-register)
+;; (define-key 'my-register-map (kbd "r a") 'append-to-register)
+;; (define-key 'my-register-map (kbd "r p") 'prepend-to-register)
 
 ;; r
 (global-set-key (kbd "C-r") 'query-replace)
@@ -278,49 +302,90 @@
 ;; z
 (global-set-key (kbd "C-z") 'undo)
 
+;; <return>
+(global-set-key (kbd "C-<return>") 'mc/mark-all-dwim)
+(global-set-key (kbd "C-S-<return>") 'mc/edit-lines)
+(global-set-key (kbd "M-<return>") nil)
+(global-set-key (kbd "M-<return>") nil)
+(global-set-key (kbd "M-<return> M-a") 'mc/mark-all-dwim)
+(global-set-key (kbd "M-<return> M-r") 'mc/mark-all-in-region)
+(global-set-key (kbd "M-<return> M-l") 'mc/edit-beginnings-of-lines)
+(global-set-key (kbd "M-<return> M-<return>") 'mc/mark-all-dwim)
+(global-set-key (kbd "M-<return> M-n") 'mc/mark-next-like-this)
+(global-set-key (kbd "M-<return> M-p") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-M-<return>") 'mc/mark-all-dwim)
+(global-set-key (kbd "H-<return>") 'my-eval-dwim)
+
 ;; .
-(global-set-key (kbd "C-.") 'jump-to-register)
-(global-set-key (kbd "M-.") 'point-to-register)
+(global-set-key (kbd "C-.") 'helm-buffers-list)
+;; (global-set-key (kbd "M-.") 'point-to-register)
 
 ;; ,
-(global-set-key (kbd "C-,") nil)
-(global-set-key (kbd "C-, C-a") 'mc/mark-all-dwim)
-(global-set-key (kbd "C-, C-r") 'mc/mark-all-in-region)
-(global-set-key (kbd "C-, C-l") 'mc/edit-beginnings-of-lines)
-(global-set-key (kbd "C-, C-m") 'mc/mark-all-dwim)
-(global-set-key (kbd "C-, C-n") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-, C-p") 'mc/mark-previous-like-this)
-(global-set-key (kbd "M-,") 'mc/mark-all-dwim)
+(global-set-key (kbd "C-,") 'helm-find-files)
 
 ;; ;
-(global-set-key (kbd "C-;") 'save-buffer)
+(global-set-key (kbd "C-;") 'magit)
+(global-set-key (kbd "M-;") 'magit)
+(global-set-key (kbd "H-;") 'comment-dwim)
+(global-set-key (kbd "H-;") 'comment-dwim)
 
 ;; /
-(global-set-key (kbd "C-/") 'undo)
+(global-set-key (kbd "C-/") 'dired-mode)
+(define-key projectile-mode-map (kbd "C-/") 'projectile-command-map)
+
+;; ?
+(global-set-key (kbd "C-?") 'dired-mode)
+(global-set-key (kbd "H-?") 'helm-projectile-switch-to-buffer)
 
 ;; minor/major mode conveniences
 (global-set-key (kbd "C-!") 'flycheck-next-error)
+(global-set-key (kbd "H-!") 'projectile-test-project)
 
 (global-set-key (kbd "C-$") 'vterm)
+(global-set-key (kbd "H-$") 'projectile-run-vterm)
+(global-set-key (kbd "H-$") 'projectile-run-vterm)
+(global-set-key (kbd "<H-M-$>")
+                (lambda ()
+                  (interactive)
+                  (projectile-run-vterm t)))
 
 (global-set-key (kbd "C-@") 'compilation-next-error)
 (global-set-key (kbd "M-@") 'my-find-compilation-buffer)
+(global-set-key (kbd "H-@") 'projectile-compile-project)
+
 
 (global-set-key (kbd "C-%") 'query-replace) ;; isearch-mode
 (global-set-key (kbd "M-%") 'query-replace-regexp) ;; isearch-mode
+;; (global-set-key (kbd "H-%") 'lsp-rename)
 
 (global-set-key (kbd "C-^") 'hs-toggle-hiding)
 
-(global-set-key (kbd "C-&") 'nope)
-
-(global-set-key (kbd "C-~") 'flyspell-mode)
-(global-set-key (kbd "C-_") 'whitespace-mode)
+(global-set-key (kbd "C-&") 'yasnippet)
+(global-set-key (kbd "C-*") 'todo)
 
 (global-set-key (kbd "C-(") 'kmacro-start-macro-or-insert-counter)
 (global-set-key (kbd "C-)") 'kmacro-end-or-call-macro)
 
+
+;; windows
+(global-set-key (kbd "C--") 'other-window)
+(global-set-key (kbd "C--") 'other-window)
+(global-set-key (kbd "C-_") 'whitespace-mode)
+;; (define-key 'my-register-map (kbd "C-w") 'window-configuration-to-register)
+
+;; frames
+(global-set-key (kbd "C-`") 'other-frame)
+(global-set-key (kbd "M-`") 'other-frame-backward)
+(global-set-key (kbd "M-`") 'hydra-frame-management/body)
+;; (global-set-key (kbd "C-~") 'flyspell-mode)
+;; (global-set-key (kbd "C-=") 'other-frame)
+
+;; (global-set-key (kbd "H-=") 'helm-make-projectile)
+
 (global-set-key (kbd "C-{") 'previous-buffer)
-(global-set-key (kbd "C-}") 'next-buffer);; 
+(global-set-key (kbd "C-}") 'next-buffer)
+;; (global-set-key (kbd "C-[") 'previous-buffer)
+;; (global-set-key (kbd "C-]") 'next-buffer)
 
 ;; <
 (global-set-key (kbd "C-<") 'text-scale-decrease)
@@ -329,33 +394,18 @@
 ;; :
 (global-set-key (kbd "C-:") 'goto-line)
 
-;; ;
-(global-set-key (kbd "C-;") 'magit)
-(global-set-key (kbd "M-;") 'magit)
-(global-set-key (kbd "H-;") 'comment-dwim)
-;; (global-set-key (kbd "C-M-;") 'comment-dwim)
-;; (global-set-key (kbd "C-M-; k") 'comment-kill)
-;; (global-set-key (kbd "C-M-; C-M-k") 'comment-kill)
-
-;; =
-(global-set-key (kbd "C-|") 'magit)
-
-;; ?
-;; (global-set-key (kbd "C-h f") 'helm-apropos)
-;; (global-set-key (kbd "C-h r") 'helm-info-emacs)
-;; (global-set-key (kbd "C-h C-l") 'helm-locate-library)
-(global-set-key (kbd "C-?") 'helm-buffers-list)
-
+;; |
+(global-set-key (kbd "C-|") 'aggressive-indent-mode)
 
 (global-set-key (kbd "C-<up>") 'move-text-line-up)
 (global-set-key (kbd "C-<down>") 'move-text-line-down)
 
 
-(global-set-key (kbd "C-`") 'hydra-frame-management/body)
+
 ;; [
 ;; It's probably a bad idea to bind C-
 ;; https://emacs.stackexchange.com/questions/7832/how-to-bind-c-for-real
-;; C-[ is interpreted at a very early stage as the ASCII control character ESC (see 21.7.1 - Keyboard Events). This code is spread out all other the place as the prefix for longer sequences. There is a reason for that: ESC is actually the meta prefix (see meta-prefix-char), and all bindings that read M-something will translate to a sequence that starts with ESC. Thus, changing the global map won't be enough: you need first to change meta-prefix-char, then to remap ESC to your new meta-prefix-char in each and every map that uses M- before you can safely map C-[1.
+;; C-[ is interpreted at a very early stage as the ASCII control characte a__ar ESC (see 21.7.1 - Keyboard Events). This code is spread out all other the place as the prefix for longer sequences. There is a reason for that: ESC is actually the meta prefix (see meta-prefix-char), and all bindings that read M-something will translate to a sequence that starts with ESC. Thus, changing the global map won't be enough: you need first to change meta-prefix-char, then to remap ESC to your new meta-prefix-char in each and every map that uses M- before you can safely map C-[1.
 ;; (global-set-key (kbd "C-[") 'my-open-line-above)
 
 ;; \
@@ -366,13 +416,10 @@
 
 ;; SPC
 (global-set-key (kbd "C-SPC") 'set-mark-command)
-(global-set-key (kbd "M-SPC") 'my-mark-map)
+(global-set-key (kbd "M-SPC") 'set-mark-command)
 
 ;; RET
 (global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
-
-(global-set-key (kbd "C-<return>") 'mc/mark-all-dwim)
-(global-set-key (kbd "M-<return>") 'mc/edit-lines)
 
 ;; TAB
 (global-set-key [tab] 'company-complete)
@@ -414,27 +461,13 @@
 ;; (global-set-key (kbd "H-S-D") 'backward-kill-sexp)
 ;; (global-set-key (kbd "H-f") 'forward-sexp)
 ;; (global-set-key (kbd "H-i") 'lsp-organize-imports)
-(global-set-key (kbd "H-j") 'lsp-goto-type-definition)
+
 ;; (global-set-key (kbd "H-o") 'lsp-organize-imports)
 ;; (global-set-key (kbd "H-h") 'lsp-describe-thing-at-point)
 ;; (global-set-key (kbd "H-j") 'lsp-find-definition)
 ;; (global-set-key (kbd "H-r") 'lsp-rename)
 ;; (global-set-key (kbd "H-@") 'helm-make-projectile)
 ;; (global-set-key (kbd "H-x") 'switch-to-buffer-in-projectile-register)
-(global-set-key (kbd "H-.") 'switch-to-buffer-in-projectile-register)
-(global-set-key (kbd "H-M-.") 'buffer-to-projectile-register)
-(global-set-key (kbd "H-!") 'projectile-test-project)
-(global-set-key (kbd "H-$") 'projectile-run-vterm)
-(global-set-key (kbd "H-?") 'helm-projectile-switch-to-buffer)
-(global-set-key (kbd "<H-M-$>")
-                (lambda ()
-                  (interactive)
-                  (projectile-run-vterm t)))
-(global-set-key (kbd "H-%") 'lsp-rename)
-(global-set-key (kbd "H-;") 'comment-dwim)
-(global-set-key (kbd "H-<return>") 'my-eval-dwim)
-(global-set-key (kbd "H-=") 'helm-make-projectile)
-(global-set-key (kbd "H-@") 'projectile-compile-project)
 
 
 
@@ -449,27 +482,6 @@
 (define-key flycheck-command-map (kbd "n") 'flycheck-next-error)
 (define-key flycheck-command-map (kbd "p") 'flycheck-previous-error)
 (define-key flycheck-command-map (kbd "l") 'flycheck-list-errors)
-
-;; (define-prefix-command 'my-register-map)
-;; (global-set-key (kbd "C-r") 'my-register-map)
-;; (define-key 'my-register-map (kbd "C-v") 'view-register)
-
-;; (define-key 'my-register-map (kbd "C-p") 'point-to-register)
-;; (define-key 'my-register-map (kbd "C-j") 'jump-to-register)
-;; (define-key 'my-register-map (kbd "p r") 'point-to-register)
-;; (define-key 'my-register-map (kbd "p j") 'jump-to-register)
-
-;; (define-key 'my-register-map (kbd "C-i") 'insert-register)
-
-;; ;; r regions
-;; (define-key 'my-register-map (kbd "C-r") 'copy-to-register)
-;; (define-key 'my-register-map (kbd "r w") 'copy-to-register)
-;; (define-key 'my-register-map (kbd "r i") 'insert-register)
-;; (define-key 'my-register-map (kbd "r a") 'append-to-register)
-;; (define-key 'my-register-map (kbd "r p") 'prepend-to-register)
-
-;; ;; w windows
-;; (define-key 'my-register-map (kbd "C-w") 'window-configuration-to-register)
 
 ;; ;; f frames
 ;; (define-key 'my-register-map (kbd "C-f") 'frame-configuration-to-register)
