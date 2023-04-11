@@ -427,11 +427,13 @@
 
 ;; TAB
 (global-set-key [tab] 'company-complete)
-(global-set-key (kbd "TAB") 'company-complete)
+;; (global-set-key (kbd "TAB") 'company-complete)
+(global-set-key (kbd "TAB") 'tab-indent-or-complete)
 (global-set-key (kbd "C-TAB") 'tab-next)
 (global-set-key (kbd "S-C-TAB") 'tab-previous)
 (global-set-key (kbd "M-<tab>") 'switch-to-buffer-in-projectile-register)
 (global-set-key (kbd "C-M-<tab>") 'buffer-to-projectile-register)
+(global-set-key (kbd "H-<tab>") 'yas-expand)
 (setq tab-bar-select-tab-modifiers '(hyper))
 
 ;; BACKSPACE

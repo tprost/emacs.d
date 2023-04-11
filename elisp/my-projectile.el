@@ -65,8 +65,6 @@
 (add-hook 'projectile-after-switch-project-hook
 					'my-create-vterm-buffers-from-terminals-file)
 
-
-
 ;; (lambda ()
 ;;   (when (and projectile-mode
 ;;              (not noninteractive)
