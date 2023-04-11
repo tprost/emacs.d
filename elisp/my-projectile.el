@@ -31,20 +31,34 @@
 (require 'yaml-mode)
 (require 'yaml)
 
-(defun my-projectile-run-vterm-with (name command register)
-	(let* ((buffer-name (concat "*vterm " (projectile-project-name) "* " name)))
-		(unless (buffer-live-p (get-buffer buffer-name))
+(defun my--projectile-vterm-name (key)
+	(concat "*vterm " (projectile-project-name) "* " name))
+
+(defun my--projectile-initialize-vterm (name)
+	(let* ((buffer-name (my--projectile-vterm-name name))
+				 (existing-buffer (get-buffer buffer-name)))
+   	(if (buffer-live-p existing-buffer) existing-buffer (vterm buffer-name))))
+
+(defun my-projectile-initialize-vterm-with (name command register)
+	(let* ((buffer-name (my--projectile-vterm-name name)))
+   	(unless (buffer-live-p (get-buffer buffer-name))
 			(let* ((new-vterm-buffer (vterm buffer-name)))
 				(vterm-insert command)
 				(vterm-send-return)
 				(when register (buffer-to-projectile-register register))))))
 
+(defun my--projectile-run-command-in-vterm (name command)
+	(view-buffer (my--projectile-initialize-vterm name))
+	(vterm-send-return)
+	(vterm-insert command)
+	(vterm-send-return))
+
 (defun my--create-vterm-buffer-from-terminal-object (terminal)
 	"Make vterm buffer from parsed terminal obj from YAML."
 	(message (gethash 'register terminal))
-	(my-projectile-run-vterm-with (gethash 'name terminal "untitled")
-																(gethash 'command terminal "ls")
-																(string-to-char (gethash 'register terminal))))
+	(my-projectile-initialize-vterm-with (gethash 'name terminal "untitled")
+																			 (gethash 'command terminal "ls")
+																			 (string-to-char (gethash 'register terminal))))
 
 (defun my-create-vterm-buffers-from-terminals-file ()
 	"Parse the .terminals.yaml file in the project root and create vterm buffers."
@@ -58,6 +72,54 @@
 
 		(mapcar 'my--create-vterm-buffer-from-terminal-object terminals)))
 
+(defun my--get-project-workflows ()
+	(let* ((workflows-file (concat (projectile-project-root) "workflows.yaml"))
+				 (workflows (if (file-exists-p workflows-file)
+												(with-temp-buffer
+													(insert-file-contents workflows-file)
+													(yaml-parse-string (buffer-substring-no-properties
+																							(point-min) (point-max)))) '())))
+		workflows))
+
+(defun my--get-project-workflow (workflow-name)
+	(let* ((workflows (my--get-project-workflows)))
+		(when workflows (gethash workflow-name workflows))))
+
+(defun my--get-project-workflow-command (workflow-name)
+  (gethash 'command (my--get-project-workflow)))
+
+(defun my--execute-project-workflow (workflow-name)
+  "Look for a commands.yaml file with a command named WORKFLOW-NAME and if it exists,
+   run the command in the appropriate vterm buffer, or in a compilation
+   buffer if none is specified."
+  (let* ((workflow (my--get-project-workflow workflow-name)))
+		(when workflow
+			(let* ((command (gethash 'command workflow))
+						 (terminal-name (gethash 'terminal workflow)))
+				(if terminal-name
+						(my--projectile-run-command-in-vterm terminal-name command)
+					(compile command))) workflow)))
+
+(defun my-test-project ()
+	(interactive)
+	(unless (my--execute-project-workflow 'test)
+    (projectile-test-project t)))
+
+(defun my-unit-test-project ()
+	(interactive)
+	(my--execute-project-workflow 'unit))
+
+(defun my-compile-project ()
+	(interactive)
+	(unless (my--execute-project-workflow 'compile)
+		(unless (my--execute-project-workflow 'build)
+			(projectile-compile-project t))))
+
+(defun my-run-project ()
+	(interactive)
+	(unless (my--execute-project-workflow 'run)
+		(unless (my--execute-project-workflow 'execute)
+			(projectile-run-project t))))
 
 
 

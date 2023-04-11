@@ -447,10 +447,10 @@
 (global-set-key (kbd "<undo>") 'undo)
 (global-set-key (kbd "<menu>") 'switch-to-buffer-in-projectile-register)
 
-(global-set-key (kbd "<f1>") 'projectile-test-project) ;; !
-(global-set-key (kbd "<f2>") 'projectile-run-project) ;; r
-(global-set-key (kbd "<f3>") 'projectile-find-file)
-(global-set-key (kbd "<f4>") 'projectile-test-project) ;; t
+(global-set-key (kbd "<f1>") 'my-test-project) ;; !
+(global-set-key (kbd "<f2>") 'my-run-project) ;; r
+(global-set-key (kbd "<f3>") 'my-compile-project)
+(global-set-key (kbd "<f4>") 'my-unit-test-project) ;; t
 (global-set-key (kbd "<f23>") 'projectile-compile-project) ;; c
 (global-set-key (kbd "<f13>") 'projectile-find-file) ;; f
 (global-set-key (kbd "<f12>") 'hydra-window-management/body) ;; f
@@ -504,6 +504,7 @@
 (require 'bindings-org-mode)
 (require 'bindings-haskell-mode)
 (require 'bindings-structured-haskell-mode)
+(require 'bindings-vterm)
 
 (provide 'bindings)
 
