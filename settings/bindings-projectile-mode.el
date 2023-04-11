@@ -7,6 +7,10 @@
 (define-key projectile-command-map (kbd "C-b")
 	'helm-projectile-switch-to-buffer)
 (define-key projectile-command-map (kbd "C-p") 'helm-projectile-switch-project)
+(define-key projectile-command-map (kbd "C-/") 'helm-projectile-switch-project)
+(define-key projectile-command-map (kbd "C-$") 'projectile-run-vterm)
+(define-key projectile-command-map (kbd "C-q")
+	'switch-to-buffer-in-projectile-register)
 
 
 (define-key projectile-command-map (kbd "x") 'projectile-test-project)

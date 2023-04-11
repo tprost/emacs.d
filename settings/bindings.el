@@ -318,6 +318,11 @@
 
 ;; .
 (global-set-key (kbd "C-.") 'helm-buffers-list)
+(global-set-key (kbd "M-.") nil)
+(global-set-key (kbd "M-. M-n") 'next-buffer)
+(global-set-key (kbd "M-. M-p") 'previous-buffer)
+(global-set-key (kbd "M-. M-k") 'kill-this-buffer)
+;; (global-set-key (kbd "M-.") 'next-buffer)
 ;; (global-set-key (kbd "M-.") 'point-to-register)
 
 ;; ,
@@ -332,6 +337,8 @@
 ;; /
 (global-set-key (kbd "C-/") 'dired-mode)
 (define-key projectile-mode-map (kbd "C-/") 'projectile-command-map)
+;; (global-set-key (kbd "M-/") nil)
+;; (global-set-key (kbd "M-/ M-$") 'my-projectile-run-new-vterm)
 
 ;; ?
 (global-set-key (kbd "C-?") 'dired-mode)
@@ -344,10 +351,7 @@
 (global-set-key (kbd "C-$") 'vterm)
 (global-set-key (kbd "H-$") 'projectile-run-vterm)
 (global-set-key (kbd "H-$") 'projectile-run-vterm)
-(global-set-key (kbd "<H-M-$>")
-                (lambda ()
-                  (interactive)
-                  (projectile-run-vterm t)))
+(global-set-key (kbd "H-M-$") 'my-projectile-run-new-vterm)
 
 (global-set-key (kbd "C-@") 'compilation-next-error)
 (global-set-key (kbd "M-@") 'my-find-compilation-buffer)

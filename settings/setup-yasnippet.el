@@ -11,5 +11,6 @@
 ;; (setq yas-snippet-dirs
 ;;       '("~/.emacs.d/snippets"))
 
-(provide 'setup-yasnippet)
 
+
+(provide 'setup-yasnippet)
