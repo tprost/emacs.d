@@ -98,7 +98,8 @@
 						 (terminal-name (gethash 'terminal workflow)))
 				(if terminal-name
 						(my--projectile-run-command-in-vterm terminal-name command)
-					(compile command))) workflow)))
+					(let ((default-directory (projectile-project-root)))
+						(compile command))))) workflow))
 
 (defun my-test-project ()
 	(interactive)

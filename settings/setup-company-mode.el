@@ -1,9 +1,15 @@
 (straight-use-package 'company)
+;; (straight-use-package 'company-lsp)
+
+;; (require 'company-lsp)
+;; (push 'company-lsp company-backends)
 
 (setq company-dabbrev-downcase nil)
 (add-hook 'after-init-hook 'global-company-mode)
 (global-company-mode)
 (add-to-list 'company-backends 'company-yasnippet t)
+
+(setq company-async-timeout 2)
 
 ;; ;; (require 'company-lsp)
 ;; (require 'company-yasnippet)

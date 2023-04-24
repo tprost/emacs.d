@@ -1,4 +1,6 @@
+(straight-use-package 'vterm)
 
+(require 'vterm)
 
 (define-key vterm-mode-map (kbd "<f1>") nil)
 (define-key vterm-mode-map (kbd "<f2>") nil)

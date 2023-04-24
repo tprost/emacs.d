@@ -15,7 +15,10 @@
 
 (defun my-haskell-mode-hook ()
   (set-fill-column 90))
-  
+
+
+;; (set-company-backend! 'haskell-mode 'company-lsp)
+
 
 (add-hook 'haskell-mode-hook #'my-haskell-mode-hook)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
