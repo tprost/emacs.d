@@ -1,3 +1,5 @@
+(require 'org)
+
 (define-key org-mode-map (kbd "H-p") 'org-previous-visible-heading)
 (define-key org-mode-map (kbd "H-n") 'org-next-visible-heading)
 (define-key org-mode-map (kbd "H-f") 'org-forward-heading-same-level)
@@ -53,6 +55,6 @@
 
 
 
-(define-key my-org-todo-mode-map (kbd "<f1>") 'my-org-todo-file-cleanup)
+;; (define-key my-org-todo-mode-map (kbd "<f1>") 'my-org-todo-file-cleanup)
 
 (provide 'bindings-org-mode)

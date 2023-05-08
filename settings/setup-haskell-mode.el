@@ -10,6 +10,7 @@
 
 ;; ;; Hooks so haskell and literate haskell major modes trigger LSP setup1
 (add-hook 'haskell-mode-hook #'lsp-deferred)
+;; (add-hook 'csharp-mode-hook #'lsp-deferred)
 ;; ;; (add-hook 'haskell-mode-hook #'lsp)
 ;; ;; (add-hook 'haskell-literate-mode-hook #'lsp)
 
@@ -20,9 +21,9 @@
 ;; (set-company-backend! 'haskell-mode 'company-lsp)
 
 
-(add-hook 'haskell-mode-hook #'my-haskell-mode-hook)
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-(add-hook 'haskell-mode-hook 'haskell-collapse-mode)
+;; (add-hook 'haskell-mode-hook #'my-haskell-mode-hook)
+;; (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+;; (add-hook 'haskell-mode-hook 'haskell-collapse-mode)
 (add-hook 'haskell-mode-hook 'ligature-mode)
 
 ;; (add-to-list 'company-backends 'company-ghc)

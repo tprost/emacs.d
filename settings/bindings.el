@@ -503,7 +503,7 @@
 (require 'bindings-projectile-mode)
 (require 'bindings-org-mode)
 (require 'bindings-haskell-mode)
-(require 'bindings-structured-haskell-mode)
+;; (require 'bindings-structured-haskell-mode)
 (require 'bindings-vterm)
 
 (provide 'bindings)

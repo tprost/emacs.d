@@ -48,10 +48,13 @@
 				(when register (buffer-to-projectile-register register))))))
 
 (defun my--projectile-run-command-in-vterm (name command)
-	(view-buffer (my--projectile-initialize-vterm name))
-	(vterm-send-return)
-	(vterm-insert command)
-	(vterm-send-return))
+	(let* ((b (my--projectile-initialize-vterm name)))
+		(with-current-buffer b
+  		(vterm-send-return)
+			(vterm-insert command)
+  		(vterm-send-return))
+		(display-buffer b)))
+
 
 (defun my--create-vterm-buffer-from-terminal-object (terminal)
 	"Make vterm buffer from parsed terminal obj from YAML."

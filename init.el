@@ -13,8 +13,16 @@
   (load bootstrap-file nil 'nomessage))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+
+(straight-use-package 'org)
+
 (add-to-list 'load-path "~/.emacs.d/settings")
 (add-to-list 'load-path "~/.emacs.d/elisp")
+
+
+(require 'setup-org-mode)
+
+
 
 (require 'setup-appearance)
 
@@ -26,7 +34,10 @@
 (require 'setup-helm)
 (require 'setup-projectile)
 (require 'projectile-buffer-registers)
+
+(require 'setup-lsp-mode)
 (require 'setup-company-mode)
+
 (require 'setup-magit)
 (require 'setup-dired)
 (require 'setup-csv-mode)
@@ -67,17 +78,13 @@
 ;; (load-file (expand-file-name "tprost.el" user-emacs-directory))
 ;; (load-file (expand-file-name "editing.el" user-emacs-directory))1
 
-(require 'setup-org)
-
 
 (require 'setup-yasnippet)
 (require 'setup-markdown-mode)
 (require 'setup-restclient)
 
-(require 'setup-lsp-mode)
-
 (require 'setup-haskell-mode)
-(require 'setup-structured-haskell-mode) ;; package cl is deprecated oh no
+;; (require 'setup-structured-haskell-mode) ;; package cl is deprecated oh no
 (require 'setup-rustic-mode)
 (require 'setup-haxe-mode)
 
@@ -92,7 +99,7 @@
 (require 'my-projectile)
 (require 'my-python-functions)
 
-(require 'haskell-stack-mode)
+;; (require 'haskell-stack-mode)
 
 (load-file (expand-file-name "custom.el" user-emacs-directory))
 
@@ -134,3 +141,17 @@
 
 
 (setq lsp-enable-automatic-install nil)
+
+(straight-use-package 'csharp-mode)
+(straight-use-package 'csproj-mode)
+(straight-use-package 'dotnet)
+
+(setq display-buffer-alist
+      '(("\\*compilation\\*"
+         (display-buffer-use-some-frame)
+         (inhibit-same-window . t))
+				("\\*vterm*"
+         (display-buffer-use-some-frame)
+         (inhibit-same-window . t))
+
+				))
