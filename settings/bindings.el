@@ -192,6 +192,26 @@
 
 ;; m
 (global-set-key (kbd "<C-m>") 'set-mark-command)
+(global-set-key (kbd "M-m") nil)
+(global-set-key (kbd "M-m M-;") 'er/mark-comment)
+(global-set-key (kbd "M-m M-b") 'er/mark-whole-buffer)
+(global-set-key (kbd "M-m M-c") 'er/mark-method-call)
+(global-set-key (kbd "M-m M-f") 'er/mark-defun)
+(global-set-key (kbd "M-m M-p") 'er/mark-paragraph)
+(global-set-key (kbd "M-m M-s") 'er/mark-sentence)
+(global-set-key (kbd "M-m M-w") 'er/mark-word)
+(global-set-key (kbd "M-m M-'") 'er/mark-inside-quotes)
+(global-set-key (kbd "M-m M-\"") 'er/mark-outside-quotes)
+(global-set-key (kbd "M-m M-[") 'er/mark-inside-pairs)
+(global-set-key (kbd "M-m M-{") 'er/mark-outside-pairs)
+(global-set-key (kbd "M-m M-]") 'er/mark-inside-pairs)
+(global-set-key (kbd "M-m M-}") 'er/mark-outside-pairs)
+(global-set-key (kbd "M-m M-u") 'er/mark-url)
+(global-set-key (kbd "M-m M-s") 'er/mark-symbol)
+(global-set-key (kbd "M-m M-l") 'my-mark-current-line)
+(global-set-key (kbd "M-m M-@") 'er/mark-email)
+(global-set-key (kbd "C-M-m") 'er/expand-region)
+(global-set-key (kbd "C-M-S-m") 'er/contract-region)
 
 ;; n
 (global-set-key (kbd "C-n") 'next-line)
@@ -199,30 +219,8 @@
 (global-set-key (kbd "C-M-n") 'move-text-line-down)
 (global-set-key (kbd "H-n") 'backward-sexp)
 
-;; o
-(global-set-key (kbd "C-o") 'er/expand-region)
-(global-set-key (kbd "C-S-o") 'er/contract-region)
-(global-set-key (kbd "M-o") nil)
-(global-set-key (kbd "M-o M-l") 'my-mark-current-line)
-(global-set-key (kbd "M-o M-w") 'er/mark-word)
-(global-set-key (kbd "M-o M-f") 'er/mark-defun)
-(global-set-key (kbd "M-o M-=") 'er/mark-next-accessor)
-(global-set-key (kbd "M-o M-b") 'er/mark-whole-buffer)
-(global-set-key (kbd "M-o M-c") 'er/mark-method-call)
-(global-set-key (kbd "M-o M-@") 'er/mark-email)
-(global-set-key (kbd "M-o M-[") 'er/mark-inside-pairs)
-(global-set-key (kbd "M-o M-{") 'er/mark-outside-pairs)
-(global-set-key (kbd "M-o M-]") 'er/mark-inside-pairs)
-(global-set-key (kbd "M-o M-}") 'er/mark-outside-pairs)
-(global-set-key (kbd "M-o M-p") 'er/mark-paragraph)
-(global-set-key (kbd "M-o M-\"") 'er/mark-outside-quotes)
-(global-set-key (kbd "M-o M-'") 'er/mark-inside-quotes)
-(global-set-key (kbd "M-o M-s") 'er/mark-sentence)
-(global-set-key (kbd "M-o M-u") 'er/mark-url)
-(global-set-key (kbd "M-o M-s") 'er/mark-symbol)
-(global-set-key (kbd "M-o M-;") 'er/mark-comment)
-(global-set-key (kbd "M-o M-:") 'er/mark-comment)
-(global-set-key (kbd "H-o") 'mark-sexp)
+;;
+;; (global-set-key (kbd "H-o") 'mark-sexp)
 
 ;; p
 (global-set-key (kbd "C-p") 'previous-line)
@@ -271,9 +269,17 @@
 (global-set-key (kbd "H-s") 'helm-multi-swoop-projectile)
 
 ;; t
-(global-set-key (kbd "C-t") 'my-open-line-below)
-(global-set-key (kbd "C-S-t") 'my-open-line-above)
-(global-set-key (kbd "M-t") 'delete-blank-lines)
+(global-set-key (kbd "C-t") 'my-indent-rigidly-1)
+(global-set-key (kbd "C-S-t") 'my-unindent-rigidly-1)
+(global-set-key (kbd "M-t") 'my-indent-rigidly-2)
+(global-set-key (kbd "M-S-t") 'my-unindent-rigidly-2)
+
+;; (global-set-key (kbd "M-t") nil)
+;; (global-set-key (kbd "M-t M-1") 'indent-to)
+;; (global-set-key (kbd "M-t M-1") (lambda () (interactive) (indent-to 1)))
+;; (global-set-key (kbd "M-t M-2") (lambda () (interactive) (indent-to 2)))
+(global-set-key (kbd "H-t") 'crux-indent-defun)
+(global-set-key (kbd "H-t") 'crux-indent-defun)
 
 ;; u
 
@@ -423,7 +429,7 @@
 (global-set-key (kbd "M-SPC") 'set-mark-command)
 
 ;; RET
-(global-set-key (kbd "RET") 'electric-newline-and-maybe-indent)
+(global-set-key (kbd "RET") 'newline-and-indent)
 
 ;; TAB
 (global-set-key [tab] 'company-complete)
@@ -465,7 +471,10 @@
 
 ;; (global-set-key (kbd "H-d") 'kill-sexp)
 ;; (global-set-key (kbd "H-S-D") 'backward-kill-sexp)
-;; (global-set-key (kbd "H-f") 'forward-sexp)
+(global-set-key (kbd "H-f") 'forward-sexp)
+(global-set-key (kbd "H-b") 'back-sexp)
+(global-set-key (kbd "H-n") 'forward-paragraph)
+(global-set-key (kbd "H-p") 'backward-paragraph)
 ;; (global-set-key (kbd "H-i") 'lsp-organize-imports)
 
 ;; (global-set-key (kbd "H-o") 'lsp-organize-imports)

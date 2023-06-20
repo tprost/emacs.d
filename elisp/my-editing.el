@@ -474,4 +474,40 @@ Version 2015-01-26"
     (goto-char (point-min))
     (forward-line (1- line))))
 
+(defun my-indent-rigidly-1 ()
+	"Indent the current line or region rigidly to the right by 2 tabs/spaces."
+	(interactive)
+	(if (use-region-p)
+		(progn
+		  (indent-rigidly (region-beginning) (region-end) 1)
+			(setq deactivate-mark nil))
+    (indent-rigidly (line-beginning-position) (line-end-position) 1)))
+
+(defun my-indent-rigidly-2 ()
+	"Indent the current line or region rigidly to the right by 2 tabs/spaces."
+	(interactive)
+	(if (use-region-p)
+		(progn
+		  (indent-rigidly (region-beginning) (region-end) 2)
+			(setq deactivate-mark nil))
+    (indent-rigidly (line-beginning-position) (line-end-position) 2)))
+
+(defun my-unindent-rigidly-1 ()
+	"Indent the current line or region rigidly to the right by 2 tabs/spaces."
+	(interactive)
+	(if (use-region-p)
+		(progn
+		  (indent-rigidly (region-beginning) (region-end) -1)
+			(setq deactivate-mark nil))
+    (indent-rigidly (line-beginning-position) (line-end-position) -1)))
+
+(defun my-unindent-rigidly-2 ()
+	"Indent the current line or region rigidly to the right by 2 tabs/spaces."
+	(interactive)
+	(if (use-region-p)
+		(progn
+			(indent-rigidly (region-beginning) (region-end) -2)
+			(setq deactivate-mark nil))
+		(indent-rigidly (line-beginning-position) (line-end-position) -2)))
+
 (provide 'my-editing)

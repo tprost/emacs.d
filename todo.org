@@ -1,49 +1,128 @@
 #+CATEGORY: emacs
 
-* TODO f2 should work in haskell project vterm mode
-* TODO helm make?
-* TODO make lsp checker for stack projects and another for cabal?
+* haskell dev
+** TODO haskell organize imports                                    :haskell:
+** NODO my-haskell-rename function 1                                :haskell:
+** TODO Haskell REPL mode + bindings + setup                        :haskell:
+
+** TODO fix Haskell clean up imports
+** TODO Haskell mode bindings                                       :haskell:
+
+** TODO find definition lookup in hackage
+** TODO better switch to test file function (for Haskell?)
+** TODO set up interactive haskell bindings                        :bindings:
+http://haskell.github.io/haskell-mode/manual/latest/
+** TODO haskell mode align binding                                 :bindings:
+http://haskell.github.io/haskell-mode/manual/latest/Aligning-code.html#Aligning-code
+
+* org mode
+** TODO organize org bindings with C-c :org:
+
+** TODO work through the rest of org mode functions and bindings        :org:
+** TODO figure out what "todo order" is in org mode                     :org:
+
+* python dev
+** TODO automatically invoke lsp-mode for Python files and projects  :python:
+** TODO make sure virtual environment is used for commands in Python projects with .venv? :python:
+** TODO get python lsp working for all projects                      :python:
+** TODO direnv for python projects                            :direnv:python:
+
+* miscellaneous editing
+** TODO [#A] set up tree sitter mode
+** TODO sort out indentation bindings
+** TODO the fuck is the backtab key?
+** TODO investigate paredit
+** TODO delete-trailing-whitespace                                  :bindings:
+** TODO search buffer                                               :bindings:
+** TODO visit most recent error from haskystack test vterm fn
+** TODO explore bookmarks
+** TODO explore hippie-expand
+** TODO go straight to bindings file command
+** TODO there's lots more to mark                                  :bindings:
+** TODO multiple cursors!                                          :bindings:
+** TODO how do I quickly look at the snippets for a mode, for example Haskell :yasnippet:
+** TODO Prompt to fire up project vterm buffers, docker, etc. when entering appropriate project
+** TODO how do I make Flycheck ignore untyped stuff
+** TODO assign buffers to numbers? or just use tab mode?
+** TODO how do we organize various scripts for local dev? Makefile?
+** TODO get lsp mode working for elisp                                :elisp:
+** TODO make sure projectile doesn't search through a million unnecessary lisp files
+** TODO find a way to organize and run processes and set up shells per project
+** TODO take first error link in compilation buffer and visit it in code window/frame
+** TODO function to find all occurences of TODO in project
+** TODO hotkey for creating a feature branch off of develop based on JIRA tag and name? :bindings:
+** TODO easier hotkeys for switch to wdired mode and out     :bindings:dired:
+** TODO find and remember command to start an additional shell
+** TODO dired mode color coding filenames?
+** TODO faster input mode... rebind RET?
+** TODO macro to set up frame and window for emacs editing?
+** TODO enlarge frame to two window units size macro
+** TODO figure out "stage all unstaged changes" in magit mode binding
+
+* language study
+
+** TODO function to create a definition for word with goldendict   :japanese:
+** TODO binding for goldendict lookup                              :japanese:
+** TODO binding for quick japanese org capture?           :japanese:bindings:
+** TODO automatically add spacing between each item                :japanese:
+** TODO hide square brackets on showing answer?                    :japanese:
+It'd be nice to be able to lookup stuff without going back to edit mode.
+Maybe allow cursor navigation?
+** TODO kanji drill mode with stroke order font                    :japanese:
+** TODO experiment with better looking Japanese font (Mincho)      :japanese:
+** TODO set up a japanese word todo capture system
+Because if I think of a word I want to memorize in Japanese, I want to quickly capture it and not have to make a drill item right away.
+
+* NODO investigate term-projectile + automatic named services for project
+workflows
+* NODO explore how to have an extra folder of yasnippets          :yasnippet:
+let's just fork an existing big repo of snippets, yeah?
+* NODO [#A] shortcut to go to projectile vterm with helm? quick keybindings to 1-9? :bindings:
+* NODO projectile level mapping of vterm identifiers and the command we should run
+* NODO projectile vterms should be configured to have run command?
+
+* NODO Function to start a general purpose vterm shell with a particular buffer name with command?
+* NODO Function to run command in existing vterm buffer
+
+* NODO My Go Projects (Start docker compose)
+
+* NODO Projectile, Layout, Project Terminals and Shell Commands
+* NODO make lsp checker for stack projects and another for cabal?
 https://www.flycheck.org/en/latest/user/syntax-checkers.html
-* TODO C-! shouldn't be project level? 
-* TODO fix haskell organize imports :haskell:
+* NODO haskell structured mode wrap parens                  :binding:haskell:
+* NODO write my-duplicate-paragraph                                 :binding:
+* NODO vterm C-o                                                    :binding:
+* DONE editorconfig
+
+* DONE projectile file ignore list                               :projectile:
+
+* DONE use .venv automatically for shell and one-off projectile shell commands
+- Start docker compose up in a shell
+- Start the local server (.venv)
+- Be able to run unit tests (.venv)
+- Be able to run BDD tests (.venv)
+- Reproduce it across MacOS and linux? 
+- Shell for running manage.py commands?
+* DONE f2 should work in haskell project vterm mode
+* DONE helm make?
+* DONE C-! shouldn't be project level? 
 * DONE haskell strip parentheses hotkey :binding:haskell:
 this is just shm/raise
-* TODO haskell structured mode wrap parens :binding:haskell:
 * DONE fix parantheses face so that it doesn't fuck up the region highlight
-* TODO sort out new line indent vs C-j vs electric etc.
-* TODO the fuck is the backtab key
-* TODO investigate paredit
-* TODO investigate structured-haskell-mode
+* DONE investigate structured-haskell-mode
 build isn't working oh no
 * DONE write my-isearch-from-beginning-of-buffer :binding:
-* TODO write my-duplicate-paragraph :binding:
-* TODO delete-trailing-whitespace :binding:
 * DONE duplicate line doesn't work great
-* TODO vterm C-o :binding:
-* TODO emacs project minor mode + project registers
-* TODO search buffer :binding:
+* DONE emacs project minor mode + project registers
+covered by workflows.yaml
 * DONE fix line artifact in echo area pink
-* TODO visit most recent error from haskystack test vterm fn
-* TODO explore bookmarks
 * DONE explore registers
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html
-* TODO explore hippie-expand
-* TODO go straight to bindings file command
-* TODO there's lots more to mark :bindings:
-* TODO multiple cursors! :bindings:
-* TODO fix Haskell clean up imports
-* TODO how do I make Flycheck ignore untyped stuff
 * DONE Start up Haskell REPL and send code to it :haskell:
-* TODO Haskell REPL mode + bindings + setup :haskell:
-
-* TODO assign buffers to numbers? or just use tab mode?
-
 * DONE style my tab bar mode
 * DONE explore tab bar history
 
 
-* TODO organize org bindings with C-c 
-* TODO tweak C-c . <key> bindings to be not C-<key> :hs:
 * DONE fix C-x C-a in elisp and other modes :bindings:
 
 * DONE why does LSP mode for Haskell chug at startup 
@@ -53,85 +132,11 @@ I guess because the env isn't cached? seems better now with direnv-nix
 
 * DONE org mode hide/show binding should match
 * DONE use tab mode? perhaps for project vterms?
-* TODO how do we organize various scripts for local dev? Makefile?
-
-* TODO get lsp mode working for elisp :elisp:
-
-* TODO my-haskell-rename function 1 :haskell:
 * DONE setup flycheck and keybindings
-* TODO Haskell mode bindings :haskell:
-* TODO work through the rest of org mode functions and bindings :org:
-
-* TODO make sure projectile doesn't search through a million unnecessary lisp files
-* TODO find a way to organize and run processes and set up shells per project
-* TODO automatically invoke lsp-mode for Python files and projects :python:
-* TODO make sure virtual environment is used for commands in Python projects with .venv? :python:
-
-* TODO take first error link in compilation buffer and visit it in code window/frame
-* TODO function to find all occurences of TODO in project
-
-* TODO hotkey for creating a feature branch off of develop based on JIRA tag and name? :bindings:
-* TODO easier hotkeys for switch to wdired mode and out :bindings:dired:
-
-* TODO find and remember command to start an additional shell
 * DONE tab in shell mode should autocomplete :bindings:
 vterm seems to work fine thank you
 
-* TODO dired mode color coding filenames?
-
-* TODO faster input mode... rebind RET?
-* TODO better switch to test file function (for Haskell?)
-* TODO figure out what "todo order" is in org mode :org:
-
-* TODO find definition lookup in hackage
-* TODO set up interactive haskell bindings :bindings:
-http://haskell.github.io/haskell-mode/manual/latest/
 * DONE setup flyspell?
-* TODO haskell mode align binding :bindings:
-http://haskell.github.io/haskell-mode/manual/latest/Aligning-code.html#Aligning-code
-* TODO macro to set up frame and window for emacs editing?
-* TODO enlarge frame to two window units size macro
-* TODO figure out "stage all unstaged changes" in magit mode binding
-
-* TODO editorconfig
-
-* TODO function to create a definition for word with goldendict :japanese:
-* TODO binding for goldendict lookup :japanese:
-* TODO binding for quick japanese org capture? :japanese:bindings:
-* TODO automatically add spacing between each item :japanese:
-* TODO hide square brackets on showing answer? :japanese:
-It'd be nice to be able to lookup stuff without going back to edit mode.
-Maybe allow cursor navigation?
-* TODO kanji drill mode with stroke order font :japanese:
-* TODO experiment with better looking Japanese font (Mincho) :japanese:
-
-* TODO get python lsp working for all projects :python:
-* TODO direnv for python projects :python: :direnv:
-
-* TODO projectile file ignore list :projectile:
-* TODO set up a japanese word todo capture system
-Because if I think of a word I want to memorize in Japanese, I want to quickly capture it and not have to make a drill item right away.
-* TODO investigate term-projectile + automatic named services for project
-* TODO explore how to have an extra folder of yasnippets :yasnippet:
-* TODO how do I quickly look at the snippets for a mode, for example Haskell :yasnippet:
-* TODO Prompt to fire up project vterm buffers, docker, etc. when entering appropriate project
-* TODO [#A] shortcut to go to projectile vterm with helm? quick keybindings to 1-9? :bindings:
-* TODO projectile level mapping of vterm identifiers and the command we should run
-* TODO projectile vterms should be configured to have run command?
-
-* TODO Function to start a general purpose vterm shell with a particular buffer name with command?
-* TODO Function to run command in existing vterm buffer
-
-* TODO use .venv automatically for shell and one-off projectile shell commands
-- Start docker compose up in a shell
-- Start the local server (.venv)
-- Be able to run unit tests (.venv)
-- Be able to run BDD tests (.venv)
-- Reproduce it across MacOS and linux? 
-- Shell for running manage.py commands?
-* TODO My Go Projects (Start docker compose)
-
-* TODO Projectile, Layout, Project Terminals and Shell Commands
 * DONE cleanup file structure in .emacs.d
 
 * DONE set up a nice home screen with drill?

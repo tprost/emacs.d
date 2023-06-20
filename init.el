@@ -13,14 +13,30 @@
   (load bootstrap-file nil 'nomessage))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-
-(straight-use-package 'org)
+(straight-pull-package "melpa")
 
 (add-to-list 'load-path "~/.emacs.d/settings")
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
 
 (require 'setup-org-mode)
+
+(straight-use-package 'tree-sitter)
+(straight-use-package 'tree-sitter-langs)
+(straight-use-package 'tsc)
+
+(require 'tsc)
+
+
+(require 'tree-sitter)
+(require 'tree-sitter-langs)
+(require 'tree-sitter-hl)
+(require 'tree-sitter-langs)
+(require 'tree-sitter-debug)
+(require 'tree-sitter-query)
+
+(global-tree-sitter-mode)
+(add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 
 
 
@@ -135,16 +151,11 @@
 (push '("\\*compilation\\*" . (nil (reusable-frames . t))) display-buffer-alist)
 
 (straight-use-package 'aggressive-indent)
-(global-aggressive-indent-mode 1)
 
 (straight-use-package 'helm-swoop)
 
 
 (setq lsp-enable-automatic-install nil)
-
-(straight-use-package 'csharp-mode)
-(straight-use-package 'csproj-mode)
-(straight-use-package 'dotnet)
 
 (setq display-buffer-alist
       '(("\\*compilation\\*"
@@ -154,4 +165,11 @@
          (display-buffer-use-some-frame)
          (inhibit-same-window . t))
 
+
+				
+				
 				))
+
+(straight-use-package 'bazel)
+
+(add-to-list 'auto-mode-alist '("/Tiltfile\\(?:\\..*\\)?\\'" . bazel-starlark-mode))

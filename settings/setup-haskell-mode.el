@@ -121,6 +121,11 @@
   (find-file (file-name-concat (projectile-project-root) "todo.org")))
 
 
+(defun my-tsc-forward-node ()
+	(interactive)
+	(goto-char (tsc-node-end-position (tree-sitter-node-at-pos :named))))
+
+
 
 ;; (flycheck-add-next-checker 'lsp 'haskell-stack-ghc)
 

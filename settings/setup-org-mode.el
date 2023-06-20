@@ -1,3 +1,5 @@
+(straight-use-package 'org)
+
 ;; ;; hack to make straight.el load newest org-mode
 ;; (require 'subr-x)
 
@@ -42,21 +44,17 @@
 
 ;; ;; customizations
 
-;; (setq my-org-todo-files (file-expand-wildcards "~/org/*/*todo.org"))
-;; (setq my-development-todo-files (file-expand-wildcards "~/dev/personal/**/*todo.org"))
-;; (setq my-emacs-todo-files (file-expand-wildcards "~/.emacs.d/*todo.org"))
-;; (setq my-playbook-todo-files (file-expand-wildcards "~/.playbook/*todo.org"))
-;; (setq my-dotfiles-todo-files (file-expand-wildcards "~/.dotfiles/*todo.org"))
-;; (setq my-nixos-todo-files (file-expand-wildcards "/etc/nixos/*todo.org"))
+(setq my-org-todo-files (file-expand-wildcards "~/org/*/*todo.org"))
+(setq my-development-todo-files (file-expand-wildcards "~/dev/personal/**/*todo.org"))
+(setq my-emacs-todo-files (file-expand-wildcards "~/.emacs.d/*todo.org"))
+(setq my-dotfiles-todo-files (file-expand-wildcards "~/.dotfiles/*todo.org"))
+(setq my-nixos-todo-files (file-expand-wildcards "/etc/nixos/*todo.org"))
 
-;; (setq org-agenda-files (append my-org-todo-files                               
-;;                                my-development-todo-files
-;;                                my-emacs-todo-files
-;;                                my-dotfiles-todo-files
-;; 															 my-nixos-todo-files
-;;                                my-playbook-todo-files))
-
-
+(setq org-agenda-files (append my-org-todo-files                               
+                               my-development-todo-files
+                               my-emacs-todo-files
+                               my-dotfiles-todo-files
+															 my-nixos-todo-files))
 
 ;; (setq org-agenda-span (quote fortnight))
 ;; (setq org-use-extra-keys t)
@@ -167,6 +165,9 @@
 ;; 	(org-sort-entries nil ?o))
 
 ;; (add-hook 'org-mode-hook (lambda ()	(visual-line-mode)))
+
+(setq org-todo-keywords
+      '((sequence "TODO" "|" "DONE" "NODO")))
 
 (provide 'setup-org-mode)
 
