@@ -170,6 +170,13 @@
 				
 				))
 
+(straight-use-package 'csharp-mode)
 (straight-use-package 'bazel)
 
 (add-to-list 'auto-mode-alist '("/Tiltfile\\(?:\\..*\\)?\\'" . bazel-starlark-mode))
+
+(straight-use-package 'clojure-mode)
+(straight-use-package 'cider)
+
+(setq cider-eval-timeout 30)
+(straight-use-package 'typescript-mode)

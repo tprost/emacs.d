@@ -116,6 +116,7 @@
 (global-set-key (kbd "M-F") 'forward-whitespace)
 (global-set-key (kbd "C-M-f") 'forward-paragraph)
 (global-set-key (kbd "C-M-S-f") 'my-forward-3-paragraphs)
+(global-set-key (kbd "H-f") 'forward-sexp)
 
 ;; g
 ;; (evil-global-set-key 'emacs  (kbd "g") 'keyboard-quit)
@@ -189,12 +190,13 @@
 (global-set-key (kbd "C-l") 'recenter)
 (global-set-key (kbd "C-S-l") 'recenter-other-window)
 (global-set-key (kbd "M-l") 'recenter-top-bottom)
+(global-set-key (kbd "H-l") 'lsp-lens-mode)
 
 ;; m
 (global-set-key (kbd "<C-m>") 'set-mark-command)
 (global-set-key (kbd "M-m") nil)
 (global-set-key (kbd "M-m M-;") 'er/mark-comment)
-(global-set-key (kbd "M-m M-b") 'er/mark-whole-buffer)
+(global-set-key (kbd "M-m M-b") 'mark-whole-buffer)
 (global-set-key (kbd "M-m M-c") 'er/mark-method-call)
 (global-set-key (kbd "M-m M-f") 'er/mark-defun)
 (global-set-key (kbd "M-m M-p") 'er/mark-paragraph)
@@ -212,12 +214,15 @@
 (global-set-key (kbd "M-m M-@") 'er/mark-email)
 (global-set-key (kbd "C-M-m") 'er/expand-region)
 (global-set-key (kbd "C-M-S-m") 'er/contract-region)
+(global-set-key (kbd "H-m") 'lsp-extend-selection)
+(global-set-key (kbd "H-S-m") 'er/contract-region) ;; no lsp fn exists yet I
+;; don't think
 
 ;; n
 (global-set-key (kbd "C-n") 'next-line)
 (global-set-key (kbd "M-n") 'forward-line)
 (global-set-key (kbd "C-M-n") 'move-text-line-down)
-(global-set-key (kbd "H-n") 'backward-sexp)
+(global-set-key (kbd "H-n") 'end-of-defun)
 
 ;;
 ;; (global-set-key (kbd "H-o") 'mark-sexp)
@@ -226,7 +231,7 @@
 (global-set-key (kbd "C-p") 'previous-line)
 (global-set-key (kbd "M-p") 'backward-line)
 (global-set-key (kbd "C-M-p") 'move-text-line-up)
-(global-set-key (kbd "H-p") 'backward-sexp)
+(global-set-key (kbd "H-p") 'beginning-of-defun)
 
 ;; q
 ;; (global-set-key (kbd "C-q") 'jump-to-register)
@@ -273,11 +278,6 @@
 (global-set-key (kbd "C-S-t") 'my-unindent-rigidly-1)
 (global-set-key (kbd "M-t") 'my-indent-rigidly-2)
 (global-set-key (kbd "M-S-t") 'my-unindent-rigidly-2)
-
-;; (global-set-key (kbd "M-t") nil)
-;; (global-set-key (kbd "M-t M-1") 'indent-to)
-;; (global-set-key (kbd "M-t M-1") (lambda () (interactive) (indent-to 1)))
-;; (global-set-key (kbd "M-t M-2") (lambda () (interactive) (indent-to 2)))
 (global-set-key (kbd "H-t") 'crux-indent-defun)
 (global-set-key (kbd "H-t") 'crux-indent-defun)
 

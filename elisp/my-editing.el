@@ -510,4 +510,10 @@ Version 2015-01-26"
 			(setq deactivate-mark nil))
 		(indent-rigidly (line-beginning-position) (line-end-position) -2)))
 
+;; (defun my-lsp-lens-toggle ()
+;; 	"If LSP lenses are visible, turn them off. If LSP lenses are not visible,
+;; 	turn them on."
+;; 	(interactive)
+	
+
 (provide 'my-editing)

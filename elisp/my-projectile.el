@@ -39,21 +39,29 @@
 				 (existing-buffer (get-buffer buffer-name)))
    	(if (buffer-live-p existing-buffer) existing-buffer (vterm buffer-name))))
 
-(defun my-projectile-initialize-vterm-with (name command register)
+(defun my-projectile-initialize-vterm-with (name command register path)
 	(let* ((buffer-name (my--projectile-vterm-name name)))
    	(unless (buffer-live-p (get-buffer buffer-name))
 			(let* ((new-vterm-buffer (vterm buffer-name)))
-				(vterm-insert command)
+	   		(vterm-send-return)
+	   		(vterm-insert (concat "cd " (projectile-project-root)))
+    		(vterm-send-return)
+				(when path (progn
+										(vterm-insert (concat "cd " path))
+										(vterm-send-return)))
+     		(vterm-send-return)
+   			(vterm-insert command)
 				(vterm-send-return)
 				(when register (buffer-to-projectile-register register))))))
 
 (defun my--projectile-run-command-in-vterm (name command)
 	(let* ((b (my--projectile-initialize-vterm name)))
-		(with-current-buffer b
-  		(vterm-send-return)
+		(with-current-buffer
 			(vterm-insert command)
   		(vterm-send-return))
 		(display-buffer b)))
+
+
 
 
 (defun my--create-vterm-buffer-from-terminal-object (terminal)
@@ -61,7 +69,9 @@
 	(message (gethash 'register terminal))
 	(my-projectile-initialize-vterm-with (gethash 'name terminal "untitled")
 																			 (gethash 'command terminal "ls")
-																			 (string-to-char (gethash 'register terminal))))
+																			 (string-to-char (gethash 'register
+																																terminal))
+																			 (gethash 'path terminal ".")))
 
 (defun my-create-vterm-buffers-from-terminals-file ()
 	"Parse the .terminals.yaml file in the project root and create vterm buffers."

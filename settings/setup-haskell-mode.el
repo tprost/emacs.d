@@ -25,6 +25,7 @@
 ;; (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 ;; (add-hook 'haskell-mode-hook 'haskell-collapse-mode)
 (add-hook 'haskell-mode-hook 'ligature-mode)
+(add-hook 'haskell-mode-hook 'haskell-decl-scan-mode)
 
 ;; (add-to-list 'company-backends 'company-ghc)
           
