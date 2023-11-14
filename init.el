@@ -100,6 +100,7 @@
 (require 'setup-restclient)
 
 (require 'setup-haskell-mode)
+(require 'setup-clojure-mode)
 ;; (require 'setup-structured-haskell-mode) ;; package cl is deprecated oh no
 (require 'setup-rustic-mode)
 (require 'setup-haxe-mode)
@@ -107,7 +108,6 @@
 
 (require 'setup-miscellaneous)
 (require 'stack)
-(require 'bindings)
 
 (require 'my-dictionary-functions)
 (require 'my-editing)
@@ -121,7 +121,7 @@
 
 (setq frame-resize-pixelwise t)
 
-(hydra-startup/body)
+
 
 ;; (global-set-key (kbd "M-`") 'other-window)
 
@@ -175,8 +175,18 @@
 
 (add-to-list 'auto-mode-alist '("/Tiltfile\\(?:\\..*\\)?\\'" . bazel-starlark-mode))
 
-(straight-use-package 'clojure-mode)
-(straight-use-package 'cider)
 
-(setq cider-eval-timeout 30)
 (straight-use-package 'typescript-mode)
+
+;; ANSI colors for compilation buffers
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (toggle-read-only)
+  (ansi-color-apply-on-region compilation-filter-start (point))
+  (toggle-read-only))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+(straight-use-package 'vue-mode)
+
+(require 'bindings)
+(hydra-startup/body)

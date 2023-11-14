@@ -21,7 +21,7 @@
 (global-set-key (kbd "M-A") 'my-avy-goto-line-text)
 (global-set-key (kbd "C-M-a") 'beginning-of-buffer)
 (global-set-key (kbd "C-M-S-a") 'my-beginning-of-buffer-text)
-(global-set-key (kbd "H-a") 'beginning-of-defun)
+
 
 ;; b
 (global-set-key (kbd "C-b") 'backward-char)
@@ -30,7 +30,6 @@
 (global-set-key (kbd "M-B") 'my-backward-whitespace)
 (global-set-key (kbd "C-M-b") 'backward-paragraph)
 (global-set-key (kbd "C-M-S-b") 'my-forward-3-paragraphs)
-(global-set-key (kbd "H-b") 'backward-sexp)
 
 ;; c
 (global-set-key (kbd "C-c C-k") 'delete-trailing-whitespace)
@@ -92,11 +91,11 @@
 
 ;; d
 (global-set-key (kbd "C-d") 'delete-char)
-(global-set-key (kbd "C-S-d") 'delete-backward-char)
+(global-set-key (kbd "C-S-d") 'my-delete-3-chars)
 (global-set-key (kbd "M-d") 'kill-word)
-(global-set-key (kbd "M-D") 'backward-kill-word)
+(global-set-key (kbd "M-D") 'my-kill-word-3-words)
 (global-set-key (kbd "C-M-d") 'kill-paragraph)
-(global-set-key (kbd "C-M-S-d") 'backward-kill-paragraph)
+(global-set-key (kbd "C-M-S-d") 'my-kill-3-paragraphs)
 
 ;; e
 (global-set-key (kbd "C-e") 'end-of-line)
@@ -105,7 +104,7 @@
 (global-set-key (kbd "M-E") 'my-avy-goto-end-of-line-text)
 (global-set-key (kbd "C-M-e") 'end-of-buffer)
 (global-set-key (kbd "C-M-S-e") 'my-end-of-buffer-text)
-(global-set-key (kbd "H-e") 'forward-paragraph)
+
 ;; (global-set-key (kbd "C-M-e") 'end-of-buffer)
 ;; (global-set-key (kbd "C-M-S-E") 'end-of-buffer-other-window)
 
@@ -116,7 +115,6 @@
 (global-set-key (kbd "M-F") 'forward-whitespace)
 (global-set-key (kbd "C-M-f") 'forward-paragraph)
 (global-set-key (kbd "C-M-S-f") 'my-forward-3-paragraphs)
-(global-set-key (kbd "H-f") 'forward-sexp)
 
 ;; g
 ;; (evil-global-set-key 'emacs  (kbd "g") 'keyboard-quit)
@@ -168,20 +166,12 @@
 (global-set-key (kbd "M-j M-0") 'avy-goto-word-0)
 (global-set-key (kbd "M-j M-1") 'avy-goto-word-1)
 (global-set-key (kbd "C-M-j") 'occur)
-(global-set-key (kbd "H-j") 'helm-semantic-or-imenu)
 ;; (global-set-key (kbd "H-j") 'lsp-goto-type-definition)
 
 ;; k
 (global-set-key (kbd "C-k") 'my-kill-line-or-region)
 (global-set-key (kbd "C-S-k") 'my-kill-to-beginning-of-line)
 (global-set-key (kbd "M-k") nil)
-(global-set-key (kbd "M-k M-w") 'kill-word)
-(global-set-key (kbd "M-k M-r") 'kill-region)
-(global-set-key (kbd "M-k M-p") 'kill-paragraph)
-(global-set-key (kbd "M-k M-s") 'kill-sentence)
-(global-set-key (kbd "M-k M-l") 'kill-whole-line)
-(global-set-key (kbd "M-k M-#") 'kill-rectangle)
-(global-set-key (kbd "H-k") 'kill-sexp)
 ;; (global-set-key (kbd "H-K") nil)
 ;; (global-set-key (kbd "H-K H-;") 'kill-comment)
 ;; (global-set-key (kbd "H-K H-:") 'kill-comment)
@@ -190,7 +180,6 @@
 (global-set-key (kbd "C-l") 'recenter)
 (global-set-key (kbd "C-S-l") 'recenter-other-window)
 (global-set-key (kbd "M-l") 'recenter-top-bottom)
-(global-set-key (kbd "H-l") 'lsp-lens-mode)
 
 ;; m
 (global-set-key (kbd "<C-m>") 'set-mark-command)
@@ -214,24 +203,22 @@
 (global-set-key (kbd "M-m M-@") 'er/mark-email)
 (global-set-key (kbd "C-M-m") 'er/expand-region)
 (global-set-key (kbd "C-M-S-m") 'er/contract-region)
-(global-set-key (kbd "H-m") 'lsp-extend-selection)
-(global-set-key (kbd "H-S-m") 'er/contract-region) ;; no lsp fn exists yet I
+
 ;; don't think
 
 ;; n
 (global-set-key (kbd "C-n") 'next-line)
 (global-set-key (kbd "M-n") 'forward-line)
 (global-set-key (kbd "C-M-n") 'move-text-line-down)
-(global-set-key (kbd "H-n") 'end-of-defun)
 
 ;;
-;; (global-set-key (kbd "H-o") 'mark-sexp)
+(global-set-key (kbd "C-o") 'er/expand-region)
 
 ;; p
 (global-set-key (kbd "C-p") 'previous-line)
-(global-set-key (kbd "M-p") 'backward-line)
+(global-set-key (kbd "C-S-p") 'my-previous-3-lines)
+(global-set-key (kbd "M-p") 'move-text-line-up)
 (global-set-key (kbd "C-M-p") 'move-text-line-up)
-(global-set-key (kbd "H-p") 'beginning-of-defun)
 
 ;; q
 ;; (global-set-key (kbd "C-q") 'jump-to-register)
@@ -262,7 +249,6 @@
 (global-set-key (kbd "C-S-r") 'query-replace-regexp)
 (global-set-key (kbd "M-r") 'my-replace-in-buffer)
 (global-set-key (kbd "C-M-r") 'my-replace-in-buffer-no-fear)
-(global-set-key (kbd "H-r") 'lsp-rename)
 
 ;; s
 (global-set-key (kbd "C-s") 'isearch-forward)
@@ -271,15 +257,12 @@
 (global-set-key (kbd "M-S") 'helm-swoop-same-face-at-point)
 (global-set-key (kbd "C-M-s") 'helm-multi-swoop)
 (global-set-key (kbd "C-M-S") 'helm-multi-swoop-all)
-(global-set-key (kbd "H-s") 'helm-multi-swoop-projectile)
 
 ;; t
 (global-set-key (kbd "C-t") 'my-indent-rigidly-1)
 (global-set-key (kbd "C-S-t") 'my-unindent-rigidly-1)
 (global-set-key (kbd "M-t") 'my-indent-rigidly-2)
 (global-set-key (kbd "M-S-t") 'my-unindent-rigidly-2)
-(global-set-key (kbd "H-t") 'crux-indent-defun)
-(global-set-key (kbd "H-t") 'crux-indent-defun)
 
 ;; u
 
@@ -308,37 +291,48 @@
 ;; z
 (global-set-key (kbd "C-z") 'undo)
 
-;; <return>
-(global-set-key (kbd "C-<return>") 'mc/mark-all-dwim)
-(global-set-key (kbd "C-S-<return>") 'mc/edit-lines)
-(global-set-key (kbd "M-<return>") nil)
-(global-set-key (kbd "M-<return>") nil)
-(global-set-key (kbd "M-<return> M-a") 'mc/mark-all-dwim)
-(global-set-key (kbd "M-<return> M-r") 'mc/mark-all-in-region)
-(global-set-key (kbd "M-<return> M-l") 'mc/edit-beginnings-of-lines)
-(global-set-key (kbd "M-<return> M-<return>") 'mc/mark-all-dwim)
-(global-set-key (kbd "M-<return> M-n") 'mc/mark-next-like-this)
-(global-set-key (kbd "M-<return> M-p") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-M-<return>") 'mc/mark-all-dwim)
-(global-set-key (kbd "H-<return>") 'my-eval-dwim)
+;; <return> 
+(global-set-key (kbd "C-<return>") 'eval-last-sexp)
+(global-set-key (kbd "M-<return>") 'eval-buffer)
+;; (global-set-key (kbd "C-S-<return>") 'mc/edit-lines)
+;; (global-set-key (kbd "M-<return>") nil)
+;; (global-set-key (kbd "M-<return>") nil)
+;; (global-set-key (kbd "M-<return> M-a") 'mc/mark-all-dwim)
+;; (global-set-key (kbd "M-<return> M-r") 'mc/mark-all-in-region)
+;; (global-set-key (kbd "M-<return> M-l") 'mc/edit-beginnings-of-lines)
+;; (global-set-key (kbd "M-<return> M-<return>") 'mc/mark-all-dwim)
+;; (global-set-key (kbd "M-<return> M-n") 'mc/mark-next-like-this)
+;; (global-set-key (kbd "M-<return> M-p") 'mc/mark-previous-like-this)
+;; (global-set-key (kbd "C-M-<return>") 'mc/mark-all-dwim)
+
+;; ;
+(global-set-key (kbd "C-;") 'comment-dwim)
+(global-set-key (kbd "M-;") 'comment-dwim)
+(global-set-key (kbd "H-;") 'comment-dwim)
+
+;; :
+(global-set-key (kbd "C-:") 'goto-line)
 
 ;; .
 (global-set-key (kbd "C-.") 'helm-buffers-list)
-(global-set-key (kbd "M-.") nil)
-(global-set-key (kbd "M-. M-n") 'next-buffer)
-(global-set-key (kbd "M-. M-p") 'previous-buffer)
-(global-set-key (kbd "M-. M-k") 'kill-this-buffer)
+(global-set-key (kbd "M-.") 'helm-projectile-switch-to-buffer)
+;; (global-set-key (kbd "M-. M-n") 'next-buffer)
+;; (global-set-key (kbd "M-. M-p") 'previous-buffer)
+;; (global-set-key (kbd "M-. M-k") 'kill-this-buffer)
+(global-set-key (kbd "H-.") 'helm-projectile-switch-to-buffer) 
+
 ;; (global-set-key (kbd "M-.") 'next-buffer)
 ;; (global-set-key (kbd "M-.") 'point-to-register)
 
 ;; ,
-(global-set-key (kbd "C-,") 'helm-find-files)
+(global-set-key (kbd "M-,") 'helm-find-files)
+(global-set-key (kbd "C-,") 'helm-projectile-find-file)
 
-;; ;
-(global-set-key (kbd "C-;") 'magit)
-(global-set-key (kbd "M-;") 'magit)
-(global-set-key (kbd "H-;") 'comment-dwim)
-(global-set-key (kbd "H-;") 'comment-dwim)
+;; <
+(global-set-key (kbd "M->") 'next-buffer)
+(global-set-key (kbd "M-<") 'previous-buffer)
+(global-set-key (kbd "C->") 'projectile-next-project-buffer)
+(global-set-key (kbd "C-<") 'projectile-previous-project-buffer)
 
 ;; /
 (global-set-key (kbd "C-/") 'dired-mode)
@@ -363,7 +357,6 @@
 (global-set-key (kbd "M-@") 'my-find-compilation-buffer)
 (global-set-key (kbd "H-@") 'projectile-compile-project)
 
-
 (global-set-key (kbd "C-%") 'query-replace) ;; isearch-mode
 (global-set-key (kbd "M-%") 'query-replace-regexp) ;; isearch-mode
 ;; (global-set-key (kbd "H-%") 'lsp-rename)
@@ -378,8 +371,9 @@
 
 
 ;; windows
-(global-set-key (kbd "C--") 'other-window)
-(global-set-key (kbd "C--") 'other-window)
+(global-set-key (kbd "C-'") 'delete-other-windows)
+;; (global-set-key (kbd "C-S-'") 'delete-window)
+(global-set-key (kbd "C-\"") 'split-window-vertically)
 (global-set-key (kbd "C-_") 'whitespace-mode)
 ;; (define-key 'my-register-map (kbd "C-w") 'window-configuration-to-register)
 
@@ -387,7 +381,10 @@
 (global-set-key (kbd "C-`") 'other-frame)
 (global-set-key (kbd "M-`") 'other-frame-backward)
 (global-set-key (kbd "M-`") 'hydra-frame-management/body)
-;; (global-set-key (kbd "C-~") 'flyspell-mode)
+
+(global-set-key (kbd "C-~") 'my-emacs-projectile-find-file)
+(global-set-key (kbd "M-~") 'my-emacs-bindings-file)
+
 ;; (global-set-key (kbd "C-=") 'other-frame)
 
 ;; (global-set-key (kbd "H-=") 'helm-make-projectile)
@@ -396,13 +393,6 @@
 (global-set-key (kbd "C-}") 'next-buffer)
 ;; (global-set-key (kbd "C-[") 'previous-buffer)
 ;; (global-set-key (kbd "C-]") 'next-buffer)
-
-;; <
-(global-set-key (kbd "C-<") 'text-scale-decrease)
-(global-set-key (kbd "C->") 'text-scale-increase)
-
-;; :
-(global-set-key (kbd "C-:") 'goto-line)
 
 ;; |
 (global-set-key (kbd "C-|") 'aggressive-indent-mode)
@@ -439,7 +429,6 @@
 (global-set-key (kbd "S-C-TAB") 'tab-previous)
 (global-set-key (kbd "M-<tab>") 'switch-to-buffer-in-projectile-register)
 (global-set-key (kbd "C-M-<tab>") 'buffer-to-projectile-register)
-(global-set-key (kbd "H-<tab>") 'yas-expand)
 (setq tab-bar-select-tab-modifiers '(hyper))
 
 ;; BACKSPACE
@@ -471,10 +460,29 @@
 
 ;; (global-set-key (kbd "H-d") 'kill-sexp)
 ;; (global-set-key (kbd "H-S-D") 'backward-kill-sexp)
+(global-set-key (kbd "H-a") 'beginning-of-defun)
+(global-set-key (kbd "H-b") 'backward-sexp)
+(global-set-key (kbd "H-c") 'helm-lsp-code-actions)
+(global-set-key (kbd "H-e") 'forward-paragraph)
+(global-set-key (kbd "H-f") 'forward-sexp)
+(global-set-key (kbd "H-j") 'helm-semantic-or-imenu)
+(global-set-key (kbd "H-k") 'kill-sexp)
+(global-set-key (kbd "H-l") 'lsp-lens-mode)
+(global-set-key (kbd "H-m") 'lsp-extend-selection)
+(global-set-key (kbd "H-S-m") 'er/contract-region) ;; no lsp fn exists yet I
+(global-set-key (kbd "H-n") 'end-of-defun)
+(global-set-key (kbd "H-p") 'beginning-of-defun)
+(global-set-key (kbd "H-r") 'lsp-rename)
+(global-set-key (kbd "H-s") 'helm-multi-swoop-projectile)
+(global-set-key (kbd "H-t") 'crux-indent-defun)
 (global-set-key (kbd "H-f") 'forward-sexp)
 (global-set-key (kbd "H-b") 'back-sexp)
 (global-set-key (kbd "H-n") 'forward-paragraph)
 (global-set-key (kbd "H-p") 'backward-paragraph)
+(global-set-key (kbd "H-x") 'eval-last-sexp)
+
+(global-set-key (kbd "H-<return>") 'my-eval-dwim)
+(global-set-key (kbd "H-<tab>") 'yas-expand)
 ;; (global-set-key (kbd "H-i") 'lsp-organize-imports)
 
 ;; (global-set-key (kbd "H-o") 'lsp-organize-imports)
@@ -514,6 +522,8 @@
 (require 'bindings-haskell-mode)
 ;; (require 'bindings-structured-haskell-mode)
 (require 'bindings-vterm)
+(require 'bindings-clojure-mode)
+(require 'bindings-paredit-mode)
 
 (provide 'bindings)
 

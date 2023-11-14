@@ -93,13 +93,16 @@
 													(yaml-parse-string (buffer-substring-no-properties
 																							(point-min) (point-max)))) '())))
 		workflows))
+;; (my--get-project-workflows)
 
 (defun my--get-project-workflow (workflow-name)
 	(let* ((workflows (my--get-project-workflows)))
 		(when workflows (gethash workflow-name workflows))))
+;; (my--get-project-workflow 'test)
 
 (defun my--get-project-workflow-command (workflow-name)
-  (gethash 'command (my--get-project-workflow)))
+  (gethash 'command (my--get-project-workflow workflow-name)))
+;; (my--get-project-workflow-command 'test)
 
 (defun my--execute-project-workflow (workflow-name)
   "Look for a commands.yaml file with a command named WORKFLOW-NAME and if it exists,
@@ -118,6 +121,10 @@
 	(interactive)
 	(unless (my--execute-project-workflow 'test)
     (projectile-test-project t)))
+
+;; (my--projectile-run-command-in-vterm "test" "arstarst")
+
+
 
 (defun my-unit-test-project ()
 	(interactive)

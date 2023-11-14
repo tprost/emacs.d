@@ -1,5 +1,10 @@
 #+CATEGORY: emacs
 
+* lsp dev
+
+
+* clojure dev
+
 * haskell dev
 ** TODO haskell organize imports                                    :haskell:
 ** NODO my-haskell-rename function 1                                :haskell:
