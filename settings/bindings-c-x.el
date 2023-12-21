@@ -67,10 +67,10 @@
 (define-key 'my-x-map (kbd "d") 'crux-recentf-find-directory)
 
 ;; e
-(define-key 'my-x-map (kbd "C-e") 'my-emacs-projectile-find-file)
-(define-key 'my-x-map (kbd "e t") 'my-emacs-todo-file)
-(define-key 'my-x-map (kbd "e b") 'my-emacs-bindings-file)
-(define-key 'my-x-map (kbd "e f") 'my-emacs-projectile-find-file)
+(define-key 'my-x-map (kbd "C-e C-f") 'my-emacs-projectile-find-file)
+(define-key 'my-x-map (kbd "C-e C-t") 'my-emacs-todo-file)
+(define-key 'my-x-map (kbd "C-e C-b") 'my-emacs-bindings-file)
+(define-key 'my-x-map (kbd "C-e C-f") 'my-emacs-projectile-find-file)
 ;; (define-prefix-command 'my-emacs-d-map)
 ;; (define-key my-emacs-d-map (kbd "t") #'my-emacs-todo-file)
 ;; (define-key my-x-map (kbd "e") my-emacs-d-map)

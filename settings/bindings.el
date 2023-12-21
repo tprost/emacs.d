@@ -314,8 +314,8 @@
 (global-set-key (kbd "C-:") 'goto-line)
 
 ;; .
-(global-set-key (kbd "C-.") 'helm-buffers-list)
-(global-set-key (kbd "M-.") 'helm-projectile-switch-to-buffer)
+(global-set-key (kbd "M-.") 'helm-buffers-list)
+(global-set-key (kbd "C-.") 'helm-projectile-switch-to-buffer)
 ;; (global-set-key (kbd "M-. M-n") 'next-buffer)
 ;; (global-set-key (kbd "M-. M-p") 'previous-buffer)
 ;; (global-set-key (kbd "M-. M-k") 'kill-this-buffer)
@@ -335,14 +335,20 @@
 (global-set-key (kbd "C-<") 'projectile-previous-project-buffer)
 
 ;; /
-(global-set-key (kbd "C-/") 'dired-mode)
-(define-key projectile-mode-map (kbd "C-/") 'projectile-command-map)
-;; (global-set-key (kbd "M-/") nil)
-;; (global-set-key (kbd "M-/ M-$") 'my-projectile-run-new-vterm)
+(global-set-key (kbd "C-/") 'my-dired-dwim)
 
 ;; ?
-(global-set-key (kbd "C-?") 'dired-mode)
-(global-set-key (kbd "H-?") 'helm-projectile-switch-to-buffer)
+(global-set-key (kbd "C-?") 'my-dired-dwim)
+
+;; windows
+;; frames
+(global-set-key (kbd "C-'") 'delete-other-windows)
+(global-set-key (kbd "C-\"") 'other-window)
+
+(global-set-key (kbd "C-`") 'other-frame)
+(global-set-key (kbd "M-`") 'other-frame-backward)
+(global-set-key (kbd "M-`") 'hydra-frame-management/body)
+
 
 ;; minor/major mode conveniences
 (global-set-key (kbd "C-!") 'flycheck-next-error)
@@ -370,17 +376,12 @@
 (global-set-key (kbd "C-)") 'kmacro-end-or-call-macro)
 
 
-;; windows
-(global-set-key (kbd "C-'") 'delete-other-windows)
+
+
 ;; (global-set-key (kbd "C-S-'") 'delete-window)
 (global-set-key (kbd "C-\"") 'split-window-vertically)
 (global-set-key (kbd "C-_") 'whitespace-mode)
 ;; (define-key 'my-register-map (kbd "C-w") 'window-configuration-to-register)
-
-;; frames
-(global-set-key (kbd "C-`") 'other-frame)
-(global-set-key (kbd "M-`") 'other-frame-backward)
-(global-set-key (kbd "M-`") 'hydra-frame-management/body)
 
 (global-set-key (kbd "C-~") 'my-emacs-projectile-find-file)
 (global-set-key (kbd "M-~") 'my-emacs-bindings-file)
@@ -474,12 +475,12 @@
 (global-set-key (kbd "H-p") 'beginning-of-defun)
 (global-set-key (kbd "H-r") 'lsp-rename)
 (global-set-key (kbd "H-s") 'helm-multi-swoop-projectile)
-(global-set-key (kbd "H-t") 'crux-indent-defun)
+(global-set-key (kbd "H-t") 'projectile-toggle-between-implementation-and-test)
 (global-set-key (kbd "H-f") 'forward-sexp)
-(global-set-key (kbd "H-b") 'back-sexp)
+(global-set-key (kbd "H-b") 'backward-sexp)
 (global-set-key (kbd "H-n") 'forward-paragraph)
 (global-set-key (kbd "H-p") 'backward-paragraph)
-(global-set-key (kbd "H-x") 'eval-last-sexp)
+(global-set-key (kbd "H-x") 'helm-M-x)
 
 (global-set-key (kbd "H-<return>") 'my-eval-dwim)
 (global-set-key (kbd "H-<tab>") 'yas-expand)

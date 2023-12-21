@@ -2,6 +2,6 @@
 
 (require 'flycheck)
 
-(global-flycheck-mode)
+(global-flycheck-mode 0)
 
 (provide 'setup-flycheck)

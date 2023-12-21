@@ -21,25 +21,6 @@
 
 (require 'setup-org-mode)
 
-(straight-use-package 'tree-sitter)
-(straight-use-package 'tree-sitter-langs)
-(straight-use-package 'tsc)
-
-(require 'tsc)
-
-
-(require 'tree-sitter)
-(require 'tree-sitter-langs)
-(require 'tree-sitter-hl)
-(require 'tree-sitter-langs)
-(require 'tree-sitter-debug)
-(require 'tree-sitter-query)
-
-(global-tree-sitter-mode)
-(add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
-
-
-
 (require 'setup-appearance)
 
 
@@ -190,3 +171,65 @@
 
 (require 'bindings)
 (hydra-startup/body)
+
+(straight-use-package 'web-mode)
+;; (straight-use-package 'slime)
+
+;; (setq inferior-lisp-program "sbcl")
+;; (setq slime-contribs '(slime-fancy quicklisp-systems))
+;; (slime-setup '(slime-fancy slime-quicklisp slime-asdf))
+
+;; (define-key slime-mode-map (kbd "C-<return>") 'slime-eval-defun)
+
+(straight-use-package
+ '(slite :host github :repo "tdrhq/slite"))
+
+(defun slite-run-at-point (&optional raw-prefix-arg)
+  "See `sly-compile-defun' for RAW-PREFIX-ARG."
+  (interactive "P")
+  (call-interactively 'sly-compile-defun)
+  (slite-run
+   (prin1-to-string
+    `(parachute:test
+      ,(let ((name (sly-parse-toplevel-form)))
+         (if (symbolp name)
+             `(quote ,(intern (sly-qualify-cl-symbol-name name)))
+           name))))))
+
+(defun slite-run-at-point-dwim (&optional raw-prefix-arg)
+  "See `sly-compile-defun' for RAW-PREFIX-ARG."
+  (interactive "P")
+  (call-interactively 'sly-compile-defun)
+  (slite-run
+   (cl-flet ((top-level-first-sexp
+              ()
+              (ignore-errors
+                (save-excursion
+                  (goto-char (car (sly-region-for-defun-at-point)))
+                  (down-list 1)
+                  (car (last (sly-parse-context (read (current-buffer)))))))))
+     (prin1-to-string
+      `(,(cond
+          ((let ((case-fold-search t))
+             (string-match-p "define-test$" (symbol-name (top-level-first-sexp)) ))
+           'parachute:test)
+          (t
+           'fiveam:run))
+        ,(let ((name (sly-parse-toplevel-form)))
+           (if (symbolp name)
+               `',(intern (sly-qualify-cl-symbol-name name))
+             name)))))))
+
+
+
+(straight-use-package 'sly)
+
+(define-key sly-mode-map (kbd "C-<return>") 'sly-eval-defun)
+(define-key sly-mode-map (kbd "M-<return>") 'sly-eval-buffer)
+(define-key sly-mode-map (kbd "H-<return>") 'slite-run-at-point-dwim)
+
+(require 'slite)
+
+
+
+(require 'sly)
