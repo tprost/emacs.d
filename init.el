@@ -173,16 +173,22 @@
 (hydra-startup/body)
 
 (straight-use-package 'web-mode)
-;; (straight-use-package 'slime)
+(straight-use-package 'slime)
+(straight-use-package 'sly)
 
-;; (setq inferior-lisp-program "sbcl")
-;; (setq slime-contribs '(slime-fancy quicklisp-systems))
-;; (slime-setup '(slime-fancy slime-quicklisp slime-asdf))
+(require 'slime)
+
+(setq inferior-lisp-program "sbcl")
+(setq slime-contribs '(slime-fancy quicklisp-systems))
+(slime-setup '(slime-fancy slime-quicklisp slime-asdf))
 
 ;; (define-key slime-mode-map (kbd "C-<return>") 'slime-eval-defun)
 
 (straight-use-package
  '(slite :host github :repo "tdrhq/slite"))
+
+(require 'slite)
+(require 'sly)
 
 (defun slite-run-at-point (&optional raw-prefix-arg)
   "See `sly-compile-defun' for RAW-PREFIX-ARG."
@@ -221,15 +227,12 @@
              name)))))))
 
 
-
-(straight-use-package 'sly)
-
 (define-key sly-mode-map (kbd "C-<return>") 'sly-eval-defun)
 (define-key sly-mode-map (kbd "M-<return>") 'sly-eval-buffer)
 (define-key sly-mode-map (kbd "H-<return>") 'slite-run-at-point-dwim)
 
-(require 'slite)
+(define-key slime-mode-map (kbd "C-<return>") 'slime-eval-defun)
+(define-key slime-mode-map (kbd "M-<return>") 'slime-eval-buffer)
+(define-key slime-mode-map (kbd "H-<return>") 'slite-run-at-point-dwim)
 
 
-
-(require 'sly)
