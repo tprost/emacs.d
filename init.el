@@ -236,3 +236,4 @@
 (define-key slime-mode-map (kbd "H-<return>") 'slite-run-at-point-dwim)
 
 
+(straight-use-package 'iy-go-to-char)

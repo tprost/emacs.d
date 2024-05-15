@@ -265,6 +265,7 @@
 (global-set-key (kbd "C-M-S") 'helm-swoop-same-face-at-point)
 (global-set-key (kbd "C-M-H-s") 'helm-multi-swoop)
 (global-set-key (kbd "C-M-H-S") 'helm-multi-swoop-all)
+(global-set-key (kbd "C-M-s") 'iy-go-to-char)
 
 ;; t
 (global-set-key (kbd "C-t") 'my-indent-rigidly-1)
@@ -323,6 +324,7 @@
 ;; .
 ;; (global-set-key (kbd "C-.") 'helm-projectile-switch-to-buffer)
 
+
 ;; ,
 
 ;; <
@@ -338,6 +340,16 @@
 (global-set-key (kbd "C-<up>") 'move-text-line-up)
 (global-set-key (kbd "C-<down>") 'move-text-line-down)
 
+(global-set-key (kbd "C-^") 'hs-toggle-hiding)
+
+(global-set-key (kbd "C-&") 'yas/expand)
+(global-set-key (kbd "C-%") 'query-replace) ;; isearch-mode
+(global-set-key (kbd "C-M-%") 'query-replace-regexp) ;; isearch-mode
+
+(global-set-key (kbd "C-*") 'todo)
+
+(global-set-key (kbd "C-(") 'kmacro-start-macro-or-insert-counter)
+(global-set-key (kbd "C-)") 'kmacro-end-or-call-macro)
 
 
 ;; [

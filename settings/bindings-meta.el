@@ -1,12 +1,16 @@
 
+(global-set-key (kbd "M-a") 'make-frame)
 (global-set-key (kbd "M-b") 'helm-buffers-list)
 (global-set-key (kbd "M-y") 'yasnippet)
-(global-set-key (kbd "M-f") 'other-frame)
+;; (global-set-key (kbd "M-f") 'other-frame)
+(global-set-key (kbd "M-f") 'helm-find-files)
+
 (global-set-key (kbd "M-d") 'my-dired-dwim)
-(global-set-key (kbd "M-v") 'my-dired-dwim)
-
-
+(global-set-key (kbd "M-v") 'vterm)
+(global-set-key (kbd "M-g") 'magit)
 (global-set-key (kbd "M-h") 'help)
+(global-set-key (kbd "M-1") 'delete-other-windows)
+
 (global-set-key (kbd "M-i") 'indent-for-tab-command)
 ;; (global-set-key (kbd "M-. M-n") 'next-buffer)
 ;; (global-set-key (kbd "M-. M-p") 'previous-buffer)
@@ -16,7 +20,6 @@
 
 ;; (global-set-key (kbd "M-.") 'next-buffer)
 ;; (global-set-key (kbd "M-.") 'point-to-register)
-(global-set-key (kbd "M-k") nil)
 (global-set-key (kbd "M-,") 'helm-find-files)
 
 (global-set-key (kbd "M->") 'next-buffer)
@@ -50,18 +53,6 @@
 
 
 ;; (global-set-key (kbd "H-%") 'lsp-rename)
-
-(global-set-key (kbd "C-^") 'hs-toggle-hiding)
-
-(global-set-key (kbd "C-&") 'yas/expand)
-(global-set-key (kbd "C-%") 'query-replace) ;; isearch-mode
-(global-set-key (kbd "C-M-%") 'query-replace-regexp) ;; isearch-mode
-
-(global-set-key (kbd "C-*") 'todo)
-
-(global-set-key (kbd "C-(") 'kmacro-start-macro-or-insert-counter)
-(global-set-key (kbd "C-)") 'kmacro-end-or-call-macro)
-
 
 
 
