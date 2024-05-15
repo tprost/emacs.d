@@ -18,7 +18,7 @@
 (global-set-key (kbd "C-a") 'beginning-of-line)
 (global-set-key (kbd "C-S-a") 'beginning-of-line-text)
 (global-set-key (kbd "C-M-a") 'avy-goto-line)
-(global-set-key (kbd "C-M-A") 'my-avy-goto-line-text)
+(global-set-key (kbd "C-M-S-a") 'my-avy-goto-line-text)
 (global-set-key (kbd "C-M-H-a") 'beginning-of-buffer)
 (global-set-key (kbd "C-M-H-S-a") 'my-beginning-of-buffer-text)
 (global-set-key (kbd "C-H-a") 'beginning-of-defun)
@@ -31,7 +31,7 @@
 (global-set-key (kbd "C-b") 'backward-char)
 (global-set-key (kbd "C-S-b") 'my-backward-3-chars) ;; TODO
 (global-set-key (kbd "C-M-b") 'backward-word)
-(global-set-key (kbd "C-M-B") 'my-backward-whitespace)
+(global-set-key (kbd "C-M-S-b") 'my-backward-whitespace)
 (global-set-key (kbd "C-M-H-b") 'backward-paragraph)
 (global-set-key (kbd "C-M-H-S-b") 'my-forward-3-paragraphs)
 (global-set-key (kbd "C-H-b") 'backward-sexp)
@@ -98,7 +98,7 @@
 (global-set-key (kbd "C-d") 'delete-char)
 (global-set-key (kbd "C-S-d") 'my-delete-3-chars)
 (global-set-key (kbd "C-M-d") 'kill-word)
-(global-set-key (kbd "C-M-D") 'my-kill-word-3-words)
+(global-set-key (kbd "C-M-S-d") 'my-kill-word-3-words)
 (global-set-key (kbd "C-H-d") 'kill-paragraph)
 (global-set-key (kbd "C-H-S-d") 'my-kill-3-paragraphs)
 
@@ -106,7 +106,7 @@
 (global-set-key (kbd "C-e") 'end-of-line)
 (global-set-key (kbd "C-S-e") 'my-end-of-line-text)
 (global-set-key (kbd "C-M-e") 'avy-goto-end-of-line)
-(global-set-key (kbd "C-M-E") 'my-avy-goto-end-of-line-text)
+(global-set-key (kbd "C-M-S-e") 'my-avy-goto-end-of-line-text)
 (global-set-key (kbd "C-M-H-e") 'end-of-buffer)
 (global-set-key (kbd "C-M-H-S-e") 'my-end-of-buffer-text)
 (global-set-key (kbd "C-H-e") 'end-of-paragraph)
@@ -118,7 +118,7 @@
 (global-set-key (kbd "C-f") 'forward-char)
 (global-set-key (kbd "C-S-f") 'my-forward-3-chars)
 (global-set-key (kbd "C-M-f") 'forward-word)
-(global-set-key (kbd "C-M-F") 'forward-whitespace)
+(global-set-key (kbd "C-M-S-f") 'forward-whitespace)
 (global-set-key (kbd "C-H-f") 'forward-paragraph)
 (global-set-key (kbd "C-H-S-f") 'my-forward-3-paragraphs)
 
@@ -159,18 +159,20 @@
 (define-prefix-command 'my-avy-map)
 
 (global-set-key (kbd "C-j") 'avy-goto-char)
-(global-set-key (kbd "C-M-j") nil)
-(global-set-key (kbd "C-M-j C-M-2") 'avy-goto-char-2)
-(global-set-key (kbd "C-M-j C-M-j") 'avy-goto-char)
-(global-set-key (kbd "C-M-j C-M-a") 'avy-goto-char-2-above)
-(global-set-key (kbd "C-M-j C-M-e") 'avy-goto-char-2-below)
-(global-set-key (kbd "C-M-j C-M-b") 'avy-goto-char-2-above)
-(global-set-key (kbd "C-M-j C-M-f") 'avy-goto-char-2-below)
-(global-set-key (kbd "C-M-j C-M-l") 'avy-goto-char-in-line)
-(global-set-key (kbd "C-M-j C-M-w") 'avy-goto-word-1)
-(global-set-key (kbd "C-M-j C-M-0") 'avy-goto-word-0)
-(global-set-key (kbd "C-M-j C-M-1") 'avy-goto-word-1)
-(global-set-key (kbd "C-M-j") 'occur)
+(global-set-key (kbd "C-S-j") nil)
+(global-set-key (kbd "C-S-j C-S-2") 'avy-goto-char-2)
+(global-set-key (kbd "C-S-j C-S-j") 'avy-goto-char)
+(global-set-key (kbd "C-S-j C-S-a") 'avy-goto-char-2-above)
+(global-set-key (kbd "C-S-j C-S-e") 'avy-goto-char-2-below)
+(global-set-key (kbd "C-S-j C-S-b") 'avy-goto-char-2-above)
+(global-set-key (kbd "C-S-j C-S-f") 'avy-goto-char-2-below)
+(global-set-key (kbd "C-S-j C-S-l") 'avy-goto-char-in-line)
+(global-set-key (kbd "C-S-j C-S-w") 'avy-goto-word-1)
+(global-set-key (kbd "C-S-j C-S-0") 'avy-goto-word-0)
+(global-set-key (kbd "C-S-j C-S-1") 'avy-goto-word-1)
+(global-set-key (kbd "C-M-j") 'helm-swoop)
+(global-set-key (kbd "C-M-S-j") 'helm-swoop-same-face-at-point)
+;; (global-set-key (kbd "C-M-j") 'occur)
 (global-set-key (kbd "C-H-j") 'lsp-goto-type-definition)
 
 ;; k
@@ -252,20 +254,15 @@
 ;; (define-key 'my-register-map (kbd "r p") 'prepend-to-register)
 
 ;; r
-(global-set-key (kbd "C-r") 'query-replace)
-(global-set-key (kbd "C-S-r") 'query-replace-regexp)
-(global-set-key (kbd "C-M-r") 'my-replace-in-buffer)
-(global-set-key (kbd "C-M-S-r") 'my-replace-in-buffer-no-fear)
-(global-set-key (kbd "C-H-r") 'lsp-rename)
+(global-set-key (kbd "C-r") 'iy-go-to-char-backward)
+(global-set-key (kbd "C-S-r") 'isearch-backward)
+(global-set-key (kbd "C-M-r") 'avy-goto-char-2-above)
 
 ;; s
-(global-set-key (kbd "C-s") 'isearch-forward)
-(global-set-key (kbd "C-S-s") 'isearch-backward)
-(global-set-key (kbd "C-M-s") 'helm-swoop)
-(global-set-key (kbd "C-M-S") 'helm-swoop-same-face-at-point)
-(global-set-key (kbd "C-M-H-s") 'helm-multi-swoop)
-(global-set-key (kbd "C-M-H-S") 'helm-multi-swoop-all)
-(global-set-key (kbd "C-M-s") 'iy-go-to-char)
+(global-set-key (kbd "C-s") 'iy-go-to-char)
+(global-set-key (kbd "C-S-s") 'isearch-forward)
+(global-set-key (kbd "C-M-s") 'avy-goto-char-2-below)
+
 
 ;; t
 (global-set-key (kbd "C-t") 'my-indent-rigidly-1)
@@ -343,6 +340,13 @@
 (global-set-key (kbd "C-^") 'hs-toggle-hiding)
 
 (global-set-key (kbd "C-&") 'yas/expand)
+
+;; (global-set-key (kbd "C-r") 'query-replace)
+;; (global-set-key (kbd "C-S-r") 'query-replace-regexp)
+;; (global-set-key (kbd "C-M-r") 'my-replace-in-buffer)
+;; (global-set-key (kbd "C-M-S-r") 'my-replace-in-buffer-no-fear)
+;; (global-set-key (kbd "C-H-r") 'lsp-rename)
+
 (global-set-key (kbd "C-%") 'query-replace) ;; isearch-mode
 (global-set-key (kbd "C-M-%") 'query-replace-regexp) ;; isearch-mode
 

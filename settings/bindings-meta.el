@@ -10,6 +10,8 @@
 (global-set-key (kbd "M-g") 'magit)
 (global-set-key (kbd "M-h") 'help)
 (global-set-key (kbd "M-1") 'delete-other-windows)
+(global-set-key (kbd "M-s") 'helm-multi-swoop)
+(global-set-key (kbd "M-S-s") 'helm-multi-swoop-all)
 
 (global-set-key (kbd "M-i") 'indent-for-tab-command)
 ;; (global-set-key (kbd "M-. M-n") 'next-buffer)
