@@ -190,27 +190,6 @@
 
 ;; m
 (global-set-key (kbd "<C-m>") 'set-mark-command)
-(global-set-key (kbd "C-M-m") nil)
-(global-set-key (kbd "C-M-m C-M-;") 'er/mark-comment)
-(global-set-key (kbd "C-M-m C-M-b") 'mark-whole-buffer)
-(global-set-key (kbd "C-M-m C-M-c") 'er/mark-method-call)
-(global-set-key (kbd "C-M-m C-M-f") 'er/mark-defun)
-(global-set-key (kbd "C-M-m C-M-p") 'er/mark-paragraph)
-(global-set-key (kbd "C-M-m C-M-s") 'er/mark-sentence)
-(global-set-key (kbd "C-M-m C-M-w") 'er/mark-word)
-(global-set-key (kbd "C-M-m C-M-'") 'er/mark-inside-quotes)
-(global-set-key (kbd "C-M-m C-M-\"") 'er/mark-outside-quotes)
-(global-set-key (kbd "C-M-m C-M-[") 'er/mark-inside-pairs)
-(global-set-key (kbd "C-M-m C-M-{") 'er/mark-outside-pairs)
-(global-set-key (kbd "C-M-m C-M-]") 'er/mark-inside-pairs)
-(global-set-key (kbd "C-M-m C-M-}") 'er/mark-outside-pairs)
-(global-set-key (kbd "C-M-m C-M-u") 'er/mark-url)
-(global-set-key (kbd "C-M-m C-M-s") 'er/mark-symbol)
-(global-set-key (kbd "C-M-m C-M-l") 'my-mark-current-line)
-(global-set-key (kbd "C-M-m C-M-@") 'er/mark-email)
-(global-set-key (kbd "C-M-H-m") 'er/expand-region)
-(global-set-key (kbd "C-M-H-S-m") 'er/contract-region)
-(global-set-key (kbd "C-H-m") 'lsp-extended-selection)
 
 ;; don't think
 
@@ -295,6 +274,7 @@
 
 ;; z
 (global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "C-S-z") 'undo-redo)
 
 ;; <return> 
 (global-set-key (kbd "C-<return>") 'eval-last-sexp)
@@ -319,10 +299,12 @@
 (global-set-key (kbd "C-:") 'goto-line)
 
 ;; .
-;; (global-set-key (kbd "C-.") 'helm-projectile-switch-to-buffer)
-
+(global-set-key (kbd "C-.") 'er/expand-region)
 
 ;; ,
+(global-set-key (kbd "C-,") 'er/contract-region)
+(global-set-key (kbd "C-<") nil)
+(global-set-key (kbd "C->") nil)
 
 ;; <
 
@@ -330,15 +312,9 @@
 
 ;; ?
 
-;; windows
-;; frames
-
-
-(global-set-key (kbd "C-<up>") 'move-text-line-up)
-(global-set-key (kbd "C-<down>") 'move-text-line-down)
-
-(global-set-key (kbd "C-^") 'hs-toggle-hiding)
-
+(global-set-key (kbd "C-^") 'move-text-line-up)
+(global-set-key (kbd "C-$") 'move-text-line-down)
+(global-set-key (kbd "C-*") 'hs-toggle-hiding)
 (global-set-key (kbd "C-&") 'yas/expand)
 
 ;; (global-set-key (kbd "C-r") 'query-replace)
@@ -349,8 +325,6 @@
 
 (global-set-key (kbd "C-%") 'query-replace) ;; isearch-mode
 (global-set-key (kbd "C-M-%") 'query-replace-regexp) ;; isearch-mode
-
-(global-set-key (kbd "C-*") 'todo)
 
 (global-set-key (kbd "C-(") 'kmacro-start-macro-or-insert-counter)
 (global-set-key (kbd "C-)") 'kmacro-end-or-call-macro)
@@ -435,6 +409,7 @@
 (define-key yas-keymap (kbd "C-g") 'abort-company-or-yas)
 
 ;; flycheck
+(global-set-key (kbd "C-!") 'flycheck-next-error)
 (define-key flycheck-mode-map flycheck-keymap-prefix nil)
 (setq flycheck-keymap-prefix (kbd "M-!"))
 (define-key flycheck-mode-map flycheck-keymap-prefix flycheck-command-map)

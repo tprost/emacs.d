@@ -235,5 +235,9 @@
 (define-key slime-mode-map (kbd "M-<return>") 'slime-eval-buffer)
 (define-key slime-mode-map (kbd "H-<return>") 'slite-run-at-point-dwim)
 
-
 (straight-use-package 'iy-go-to-char)
+(straight-use-package 'god-mode)
+
+(require 'god-mode)
+
+
