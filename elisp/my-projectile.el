@@ -56,8 +56,7 @@
 
 (defun my--projectile-run-command-in-vterm (name command)
 	(let* ((b (my--projectile-initialize-vterm name)))
-		(with-current-buffer b
-  		(message "hello")				
+		(with-current-buffer b  	 
 		  (vterm-insert command)
   		(vterm-send-return))
 		(display-buffer b)))
