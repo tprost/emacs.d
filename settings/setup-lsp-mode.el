@@ -1,3 +1,6 @@
+;; (setq lsp-keymap-prefix (kbd "<f17>")) ;; l need to set this before lsp is
+;; loaded
+
 (straight-use-package 'lsp-mode)
 (straight-use-package 'lsp-ui)
 (straight-use-package 'helm-lsp)
@@ -42,8 +45,8 @@
 ;; (add-hook 'go-mode-hook #'lsp)
 ;; (add-hook 'csharp-mode-hook #'lsp)
 
-(global-unset-key (kbd "C-x l"))
-(setq lsp-keymap-prefix "C-x l")
+;; (global-unset-key (kbd "C-x l"))
+;; (setq lsp-keymap-prefix "C-x l")
 
 ;; (local-set-key (kbd "C-c C-j") 'lsp-find-definition)
 ;;   (local-set-key (kbd "C-c C-x") 'lsp-restart-workspace)

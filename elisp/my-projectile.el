@@ -56,8 +56,9 @@
 
 (defun my--projectile-run-command-in-vterm (name command)
 	(let* ((b (my--projectile-initialize-vterm name)))
-		(with-current-buffer
-			(vterm-insert command)
+		(with-current-buffer b
+  		(message "hello")				
+		  (vterm-insert command)
   		(vterm-send-return))
 		(display-buffer b)))
 
@@ -105,7 +106,7 @@
 ;; (my--get-project-workflow-command 'test)
 
 (defun my--execute-project-workflow (workflow-name)
-  "Look for a commands.yaml file with a command named WORKFLOW-NAME and if it exists,
+  "Look for a workflows.yaml file with a command named WORKFLOW-NAME and if it exists,
    run the command in the appropriate vterm buffer, or in a compilation
    buffer if none is specified."
   (let* ((workflow (my--get-project-workflow workflow-name)))

@@ -58,16 +58,16 @@
       (while (search-forward search nil t)
         (replace-match replace nil t)))))
 
-(defun my-backward-whitespace ()
-  "Move the cursor backwards to the first non-whitespace character on the line."
+(defun my-backward-to-whitespace ()
+  "Move the cursor backwards to the next whitespace character on the line."
   (interactive)
   (forward-whitespace -1))
 
-(defun my-backward-to-first-whitespace ()
+(defun my-backward-to-before-whitespace ()
   "Move the cursor backwards to the first whitespace character on the line
 after the first non-whitespace character."
   (interactive)
-	(beginning-of-line-text)
+	(forward-whitespace -1)
 	(forward-whitespace 1))
 
 (defun my-kill-to-beginning-of-line ()
@@ -515,5 +515,20 @@ Version 2015-01-26"
 ;; 	turn them on."
 ;; 	(interactive)
 	
+
+(defun my-delete-current-line ()
+  "Delete (not kill) the current line."
+  (interactive)
+  (save-excursion
+    (delete-region
+     (progn (forward-visible-line 0) (point))
+     (progn (forward-visible-line 1) (point)))))
+
+(defun my-backward-delete-word ()
+  "Delete the previous word without saving it to the kill ring."
+  (interactive)
+  (let ((start (point)))
+    (backward-word)
+    (delete-region (point) start)))
 
 (provide 'my-editing)
