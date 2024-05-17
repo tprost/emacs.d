@@ -51,6 +51,8 @@
 (define-key paredit-mode-map (kbd "C-H->") 'paredit-forward-barf-sexp)
 (define-key paredit-mode-map (kbd "C-H-<") 'paredit-backward-barf-sexp)
 
+
+
 (define-key paredit-mode-map (kbd "C-H-C-f") 'paredit-forward)
 (define-key paredit-mode-map (kbd "C-H-f") 'paredit-forward)
 (define-key paredit-mode-map (kbd "C-H-C-f") 'paredit-forward-down)

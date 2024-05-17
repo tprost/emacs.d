@@ -14,6 +14,7 @@
 
 (define-key input-decode-map [?\C-m] [C-m])
 
+
 ;; a
 (global-set-key (kbd "C-a") 'crux-move-beginning-of-line)
 (global-set-key (kbd "C-S-a") 'beginning-of-line)
@@ -23,8 +24,8 @@
 (global-set-key (kbd "C-c C-a C-c") 'crux-beginning-of-line)
 (global-set-key (kbd "C-c C-a C-f") 'beginning-of-defun)
 (global-set-key (kbd "C-c C-a C-j") 'avy-goto-line)
+(global-set-key (kbd "C-c C-a C-l") 'goto-line)
 (global-set-key (kbd "C-c C-a C-a") 'goto-line)
-(global-set-key (kbd "C-c C-a C-g") 'goto-line)
 (global-set-key (kbd "C-H-a") 'beginning-of-defun)
 
 ;; (global-set-key (kbd "C-M-a") 'beginning-of-buffer)
@@ -108,7 +109,7 @@
 ;; d
 (global-set-key (kbd "C-d") 'delete-char)
 (global-set-key (kbd "C-S-d") 'backward-delete-char)
-(global-set-key (kbd "C-M-d") 'kill-word)
+(global-set-key (kbd "C-M-d") 'my-delete-word)
 (global-set-key (kbd "C-M-S-d") 'my-backward-delete-word)
 (global-set-key (kbd "C-c C-d C-p") 'delete-pair)
 (global-set-key (kbd "C-c C-d C-w") 'delete-trailing-whitespace)
@@ -129,7 +130,7 @@
 (global-set-key (kbd "C-M-e") 'end-of-buffer)
 (global-set-key (kbd "C-M-S-e") 'my-end-of-buffer-text)
 (global-set-key (kbd "C-c C-e C-j") 'avy-goto-end-of-line)
-(global-set-key (kbd "C-c C-e C-e") 'goto-line)
+(global-set-key (kbd "C-c C-e C-l") 'goto-line)
 (global-set-key (kbd "C-c C-e C-f") 'end-of-defun)
 
 ;; f
@@ -176,7 +177,6 @@
 ;; j
 (global-set-key (kbd "C-j") 'helm-swoop)
 (global-set-key (kbd "C-S-j") 'helm-swoop-back-to-last-point)
-(global-set-key (kbd "C-j") 'avy-goto-char)
 (global-set-key (kbd "C-M-j") 'avy-goto-char)
 (global-set-key (kbd "C-M-S-j") 'avy-goto-char-2)
 (global-set-key (kbd "C-c C-j C-j") 'avy-goto-char)
@@ -347,7 +347,7 @@
 
 ;; ,
 (global-set-key (kbd "C-,") 'mc/mark-all-dwim)
-(global-set-key (kbd "C-c C-,") 'mc/edit-lines)
+(global-set-key (kbd "C-c C-, C-l") 'mc/edit-lines)
 (global-set-key (kbd "C-c C-, C-a") 'mc/mark-all-dwim)
 (global-set-key (kbd "C-c C-, C-r") 'mc/mark-all-in-region)
 (global-set-key (kbd "C-c C-, C-a") 'mc/edit-beginnings-of-lines)
@@ -400,6 +400,11 @@
 
 ;; RET
 (global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "C-<return>") 'eval-last-sexp)
+(global-set-key (kbd "C-c C-<return> C-b") 'eval-buffer)
+(global-set-key (kbd "C-c C-<return> C-r") 'eval-region)
+(global-set-key (kbd "C-c C-<return> C-e") 'eval-expression)
+(global-set-key (kbd "C-c C-<return> C-x") 'eval-last-sexp)
 
 ;; TAB
 (global-set-key [tab] 'company-complete)
@@ -413,6 +418,12 @@
 (global-set-key (kbd "C-<backspace>") 'backward-delete-char)
 (global-set-key (kbd "C-M-<backspace>") 'backward-kill-word)
 (global-set-key (kbd "C-M-H-<backspace>") 'backward-kill-paragraph)
+
+ ;; (global-set-key (kbd "C-<return>") 'eval-last-sexp)
+ ;; (global-set-key (kbd "C-<return>") 'my-eval-dwim)
+ ;; (global-set-key (kbd "M-=") 'eval-defun)
+ ;; (global-set-key (kbd "C-c C-<return> C-b") 'ev al-buffer)
+ ;; (global-set-key (kbd "C-c C-<return> C-b") 'eval-buffer)
 
 
 (require 'bindings-meta)
@@ -497,7 +508,3 @@
 (require 'bindings-paredit-mode)
 
 (provide 'bindings)
-
-
-
-
