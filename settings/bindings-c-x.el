@@ -21,6 +21,7 @@ KEY-COMMAND-PAIRS should be a list of cons cells where the car is the key bindin
    ("C-x C-b" . helm-buffers-list)
 	 ("C-x C-d" . my-dired-dwim)	 
 	 ("C-x C-f" . helm-find-files)
+	 ("C-x C-c C-f C-p" . find-file-at-point)
 	 ("C-x C-g" . magit)
 	 ("C-x C-h" . help)	 
    ("C-x C-s" . save-buffer)))

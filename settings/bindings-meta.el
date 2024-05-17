@@ -1,3 +1,5 @@
+(global-set-key (kbd "M-c") nil)
+
 (global-set-key (kbd "M-'") 'delete-other-windows)
 (global-set-key (kbd "M-,") 'helm-find-files)
 (global-set-key (kbd "M-/") 'my-dired-dwim)
@@ -20,6 +22,8 @@
 
 (global-set-key (kbd "M-a") 'make-frame)
 (global-set-key (kbd "M-b") 'helm-buffers-list)
+
+(global-set-key (kbd "M-c M-f M-p") 'find-file-at-point)
 (global-set-key (kbd "M-d") 'my-dired-dwim)
 (global-set-key (kbd "M-f") 'helm-find-files)
 (global-set-key (kbd "M-g") 'magit)
@@ -30,6 +34,7 @@
 (global-set-key (kbd "M-s") 'helm-multi-swoop)
 (global-set-key (kbd "M-v") 'vterm)
 (global-set-key (kbd "M-x") 'helm-M-x)
+
 ;; (global-set-key (kbd "M-y") 'yasnippet)
 (global-set-key (kbd "M-{") 'previous-buffer)
 (global-set-key (kbd "M-|") 'aggressive-indent-mode)
