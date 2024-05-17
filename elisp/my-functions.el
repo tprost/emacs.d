@@ -181,4 +181,15 @@ With prefix arg, find the previous file."
 ;; (load "~/.emacs.d/dictionary-api.el")
 ;; ;; GNU Emac
 
+(defun my-emacs-reexecute-bindings-file ()
+  "Re-execute Emacs Lisp code in files matching ~/.emacs.d/settings/bindings*."
+  (interactive)
+  (let ((pattern "~/.emacs.d/settings/bindings.el"))
+    (dolist (file (file-expand-wildcards pattern))
+      (message "Reexecuting %s" file)
+      (load-file file))))
+
+
+
+
 (provide 'my-functions)

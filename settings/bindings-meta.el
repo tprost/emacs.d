@@ -1,32 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 (global-set-key (kbd "M-'") 'delete-other-windows)
 (global-set-key (kbd "M-,") 'helm-find-files)
 (global-set-key (kbd "M-/") 'my-dired-dwim)
@@ -59,12 +30,10 @@
 (global-set-key (kbd "M-s") 'helm-multi-swoop)
 (global-set-key (kbd "M-v") 'vterm)
 (global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-y") 'yasnippet)
+;; (global-set-key (kbd "M-y") 'yasnippet)
 (global-set-key (kbd "M-{") 'previous-buffer)
 (global-set-key (kbd "M-|") 'aggressive-indent-mode)
 (global-set-key (kbd "M-}") 'next-buffer)
-(global-set-key (kbd "M-~") 'my-emacs-bindings-file)
-(global-set-key (kbd "M-~") 'my-emacs-projectile-find-file)
 
 ;; (define-key 'my-register-map (kbd "C-w") 'window-configuration-to-register)
 ;; (global-set-key (kbd "C-$") 'run-shell-command)

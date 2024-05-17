@@ -10,6 +10,8 @@
 (require 'whole-line-or-region)
 (require 'hydra)
 
+(require 'bindings-hydras)
+
 (whole-line-or-region-global-mode t)
 
 (define-key input-decode-map [?\C-m] [C-m])
@@ -270,11 +272,13 @@
 ;; r
 (global-set-key (kbd "C-r") 'isearch-backward)
 (global-set-key (kbd "C-S-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-c C-r C-c") 'iy-go-to-char-backward)
 (global-set-key (kbd "C-M-r") 'avy-goto-char-2-above)
 
 ;; s
 (global-set-key (kbd "C-s") 'isearch-forward)
 (global-set-key (kbd "C-S-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-c C-s C-c") 'iy-go-to-char)
 (global-set-key (kbd "C-M-s") 'avy-goto-char-2-below)
 
 ;; t
@@ -306,7 +310,13 @@
 
 ;; y
 (global-set-key (kbd "C-y") 'yank)
+(global-set-key (kbd "C-c C-y C-#") 'yank-rectangle)
+(global-set-key (kbd "C-c C-y C-t") 'yank-rectangle)
 (global-set-key (kbd "C-M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-H-y") 'yas-expand)
+(global-set-key (kbd "C-H-S-y") 'yas-insert-snippet)
+(global-set-key (kbd "C-H-c C-H-y C-H-i") 'yas-insert-snippet)
+(global-set-key (kbd "C-H-c C-H-y C-H-s") 'yas-insert-snippet)
 
 ;; z
 (global-set-key (kbd "C-z") 'undo)
