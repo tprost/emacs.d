@@ -28,7 +28,7 @@
 (global-set-key (kbd "C-c C-a C-j") 'avy-goto-line)
 (global-set-key (kbd "C-c C-a C-l") 'goto-line)
 (global-set-key (kbd "C-c C-a C-a") 'goto-line)
-(global-set-key (kbd "C-H-a") 'beginning-of-defun)
+(global-set-key (kbd "C-H-a") 'helm-lsp-code-actions)
 
 ;; (global-set-key (kbd "C-M-a") 'beginning-of-buffer)
 ;; (global-set-key (kbd "C-M-S-a") 'my-beginning-of-buffer-text)
@@ -509,6 +509,7 @@
 ;; (global-set-key (kbd "M-r") 'jump-to-register)
 ;; (global-set-key (kbd "H-r") 'lsp-rename)
 
+(require 'bindings-clojure-mode)
 (require 'bindings-projectile-mode)
 (require 'bindings-org-mode)
 (require 'bindings-haskell-mode)

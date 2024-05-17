@@ -4,7 +4,7 @@
 (global-set-key (kbd "C-x C-a") 'make-frame)
 (global-set-key (kbd "C-x a") 'make-frame)
 
-(global-set-key (kbd "C-x C-b") 'helm-buffer-lisp)
+(global-set-key (kbd "C-x C-b") 'helm-buffer-list)
 (global-set-key (kbd "C-x b") 'helm-buffer-list)
 
 (global-set-key (kbd "C-x C-s") 'save-buffer)
@@ -18,7 +18,7 @@ KEY-COMMAND-PAIRS should be a list of cons cells where the car is the key bindin
 
 (set-multiple-key-bindings
  '(("C-x C-a" . make-frame)  
-   ("C-x C-b" . helm-buffer-lisp)
+   ("C-x C-b" . helm-buffers-list)
 	 ("C-x C-d" . my-dired-dwim)	 
 	 ("C-x C-f" . helm-find-files)
 	 ("C-x C-g" . magit)

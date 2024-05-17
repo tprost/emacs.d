@@ -11,7 +11,8 @@
 (global-set-key (kbd "H-l") 'lsp)
 (global-set-key (kbd "H-r") 'switch-to-buffer-in-projectile-register)
 (global-set-key (kbd "H-v") 'projectile-run-vterm)
-(global-set-key (kbd "H-x") 'helm-M-x)
+(global-set-key (kbd "H-x") nil)
+(global-set-key (kbd "H-x e") 'hydra-emacs/body)
 
 (global-set-key (kbd "H->") 'projectile-next-project-buffer)
 (global-set-key (kbd "H-<") 'projectile-previous-project-buffer)
