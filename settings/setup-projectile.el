@@ -25,6 +25,14 @@
                                   :run "npm start"
                                   :test-suffix ".spec")
 
+(projectile-register-project-type 'common-lisp '(".common-lisp")
+																	:test "run-tests.sh"
+																	:src-dir "src"
+																	:test-dir "test"
+																	:test-suffix "-test")
+																	
+																	
+
 ;; so that I can have multiple projects in a single repo
 ;; if I want
 (setq projectile-project-root-functions  '(projectile-root-local

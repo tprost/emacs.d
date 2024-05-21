@@ -174,9 +174,16 @@
 
 (straight-use-package 'web-mode)
 
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
 (straight-use-package 'iy-go-to-char)
 (straight-use-package 'god-mode)
+
+(straight-use-package 'direnv)
+
+(require 'direnv)
 
 (require 'god-mode)
 
 
+(direnv-mode)

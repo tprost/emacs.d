@@ -24,7 +24,8 @@ KEY-COMMAND-PAIRS should be a list of cons cells where the car is the key bindin
 	 ("C-x C-c C-f C-p" . find-file-at-point)
 	 ("C-x C-g" . magit)
 	 ("C-x C-h" . help)	 
-   ("C-x C-s" . save-buffer)))
+   ("C-x C-s" . save-buffer)
+	 ("C-x C-w" . hydra-window-management/body)))
 
 (provide 'bindings-c-x)
 
