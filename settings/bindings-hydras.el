@@ -23,6 +23,7 @@
   ("f" find-file "file")
   ("F" find-file-other-window "F")
   ("h" split-window-horizontally "horizontally")
+	("k" delete-window "nuke")
   ("s" split-window-horizontally "horizontally")	
   ("m" maximize-window "maximize")
   ("o" other-window "other")

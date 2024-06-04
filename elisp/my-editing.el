@@ -331,6 +331,13 @@ Version 2015-01-26"
   (interactive)
   (dired "~/Downloads"))
 
+(defun my-delete-word ()
+  "Delete the word forward from the current cursor position without saving it to the kill ring."
+  (interactive)
+  (let ((beg (point))
+        (end (progn (forward-word) (point))))
+    (delete-region beg end)))
+
 (defun my-eval-dwim (beginning end)
   (interactive "r")    
   (if (use-region-p)

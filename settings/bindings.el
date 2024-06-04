@@ -313,6 +313,9 @@
 (global-set-key (kbd "C-c C-y C-#") 'yank-rectangle)
 (global-set-key (kbd "C-c C-y C-t") 'yank-rectangle)
 (global-set-key (kbd "C-M-y") 'helm-show-kill-ring)
+(define-key yas-minor-mode-map (kbd "C-H-y") 'yas-expand)
+(define-key yas-minor-mode-map (kbd "C-H-S-y") 'yas-insert-snippet)
+
 (global-set-key (kbd "C-H-y") 'yas-expand)
 (global-set-key (kbd "C-H-S-y") 'yas-insert-snippet)
 (global-set-key (kbd "C-H-c C-H-y C-H-i") 'yas-insert-snippet)
@@ -463,7 +466,6 @@
 
 (global-set-key (kbd "<f15>") 'magit) ;; g
 (global-set-key (kbd "<f22>") 'projectile-run-project) 
-(global-set-key (kbd "<f24>") 'revert-buffer) ;; v
 (global-set-key (kbd "<f11>") 'hydra-window-management/body) ;; w
 
 
@@ -517,5 +519,8 @@
 (require 'bindings-vterm)
 (require 'bindings-clojure-mode)
 (require 'bindings-paredit-mode)
+
+(with-eval-after-load 'magit
+  (define-key magit-mode-map (kbd "<tab>") 'magit-section-toggle))
 
 (provide 'bindings)

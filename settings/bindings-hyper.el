@@ -4,7 +4,9 @@
 
 ;; c for cycle, as in, dev cycle
 (global-set-key (kbd "H-c") nil)
-(global-set-key (kbd "H-c H-t H-t") 'projectile-toggle-between-implementation-and-test)
+(global-set-key (kbd "H-c H-t H-t")
+								'projectile-toggle-between-implementation-and-test)
+(global-set-key (kbd "H-o") 'projectile-toggle-between-implementation-and-test)
 
 (global-set-key (kbd "H-f") 'projectile-find-file)
 (global-set-key (kbd "H-j") 'helm-semantic-or-imenu)

@@ -44,14 +44,16 @@
 
 (define-key paredit-mode-map (kbd "C-H-l") 'paredit-forward-slurp-sexp)
 (define-key paredit-mode-map (kbd "C-H-S-l") 'paredit-backward-slurp-sexp)
-(define-key paredit-mode-map (kbd "C-H-u") 'paredit-forward-barf-sexp)
-(define-key paredit-mode-map (kbd "C-H-S-u") 'paredit-backward-barf-sexp)
 (define-key paredit-mode-map (kbd "C-H-.") 'paredit-forward-slurp-sexp)
 (define-key paredit-mode-map (kbd "C-H-,") 'paredit-backward-slurp-sexp)
 (define-key paredit-mode-map (kbd "C-H->") 'paredit-forward-barf-sexp)
 (define-key paredit-mode-map (kbd "C-H-<") 'paredit-backward-barf-sexp)
 
-
+;; (define-key paredit-mode-map (kbd "C-H-u") 'paredit-forward-slurp-sexp)
+;; (define-key paredit-mode-map (kbd "C-H-S-u") 'paredit-backward-slurp-sexp)
+;; (define-key paredit-mode-map (kbd "C-H-b") 'paredit-forward-barf-sexp)
+;; (define-key paredit-mode-map (kbd "C-H-S-") 'paredit-backward-barf-sexp)
+;; (define-key paredit-mode-map (kbd "C-H-s") 'paredit-splice-sexp)
 
 (define-key paredit-mode-map (kbd "C-H-C-f") 'paredit-forward)
 (define-key paredit-mode-map (kbd "C-H-f") 'paredit-forward)
@@ -116,7 +118,6 @@
 ;; (define-key paredit-mode-map "M-d"'paredit-forward-kill-word)
 ;; (define-key paredit-mode-map "M-q"'paredit-reindent-defun)
 ;; (define-key paredit-mode-map "M-r"'paredit-raise-sexp)
-;; (define-key paredit-mode-map "M-s"'paredit-splice-sexp)
 ;; (define-key paredit-mode-map "M-DEL"'paredit-backward-kill-word)
 ;; (define-key paredit-mode-map "ESC C-<left>"'paredit-backward-slurp-sexp)
 ;; (define-key paredit-mode-map "ESC C-<right>"'paredit-backward-barf-sexp)

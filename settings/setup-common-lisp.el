@@ -12,7 +12,7 @@
 ;; slite is for running tests
 
 (straight-use-package
- '(slite :host github :repo "tdrhq/slite")) 
+ '(slite :host github :repo "tdrhq/slite"))
 (require 'slite)
 
 (defun slite-run-at-point (&optional raw-prefix-arg)
@@ -56,6 +56,7 @@
 (define-key sly-mode-map (kbd "M-<return>") 'sly-eval-buffer)
 (define-key sly-mode-map (kbd "H-<return>") 'slite-run-at-point-dwim)
 
+(add-hook 'lisp-mode-hook #'enable-paredit-mode)
 ;; (straight-use-package 'mgl-try)
 
 ;; (define-key slime-mode-map (kbd "C-<return>") 'slime-eval-defun)
