@@ -7,7 +7,7 @@
 
 * haskell dev
 ** TODO haskell organize imports                                    :haskell:
-** NODO my-haskell-rename function 1                                :haskell:
+** TODO my-haskell-rename function 1                                :haskell:
 ** TODO Haskell REPL mode + bindings + setup                        :haskell:
 
 ** TODO fix Haskell clean up imports

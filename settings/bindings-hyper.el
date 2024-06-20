@@ -29,7 +29,7 @@
 
 (global-set-key (kbd "H-S-v") 'my-projectile-run-new-vterm)
 
-
+(global-set-key (kbd "H-|") 'crux-cleanup-buffer-or-region)
 
 
 (global-set-key (kbd "H-@") 'projectile-compile-project)

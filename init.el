@@ -92,6 +92,7 @@
 
 (require 'my-dictionary-functions)
 (require 'my-editing)
+(require 'my-files)
 (require 'my-functions)
 (require 'my-projectile)
 (require 'my-python-functions)
@@ -184,6 +185,5 @@
 (require 'direnv)
 
 (require 'god-mode)
-
 
 (direnv-mode)

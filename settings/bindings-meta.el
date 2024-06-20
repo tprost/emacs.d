@@ -33,6 +33,7 @@
 (global-set-key (kbd "M-c M-f M-p") 'find-file-at-point)
 (global-set-key (kbd "M-d") 'my-dired-dwim)
 (global-set-key (kbd "M-f") 'helm-find-files)
+(global-set-key (kbd "M-c M-f M-p") 'my-open-file-at-point-with-line)
 (global-set-key (kbd "M-g") 'magit)
 (global-set-key (kbd "M-h") 'help)
 (global-set-key (kbd "M-i") 'indent-for-tab-command)

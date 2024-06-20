@@ -395,6 +395,8 @@
 (global-set-key (kbd "C-(") 'kmacro-start-macro-or-insert-counter)
 (global-set-key (kbd "C-)") 'kmacro-end-or-call-macro)
 
+(global-set-key (kbd "C-|") 'indent-region)
+
 
 ;; [
 ;; It's probably a bad idea to bind C-
