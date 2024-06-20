@@ -53,4 +53,6 @@
 
 ;; (helm/turn-off-header-line)
 
+(setq helm-find-files-ignore-thing-at-point t)
+
 (provide 'setup-helm)
