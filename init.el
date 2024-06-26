@@ -47,6 +47,7 @@
 ;; (require 'setup-lua-mode)
 ;; (require 'setup-js2-mode)
 (require 'setup-python-mode)
+(require 'setup-bazel)
 ;; (require 'setup-typescript-mode)
 ;; (require 'setup-c++-mode)
 
@@ -153,9 +154,6 @@
 				))
 
 (straight-use-package 'csharp-mode)
-(straight-use-package 'bazel)
-
-(add-to-list 'auto-mode-alist '("/Tiltfile\\(?:\\..*\\)?\\'" . bazel-starlark-mode))
 
 
 (straight-use-package 'typescript-mode)
@@ -186,4 +184,21 @@
 
 (require 'god-mode)
 
+(defun pre-commit-on-current-file ()
+  "Run pre-commit on the current file before saving."
+	(interactive)
+  (when (and (buffer-file-name)
+             (executable-find "pre-commit"))
+    (shell-command-to-string (format "pre-commit run --files %s"
+																		 (shell-quote-argument
+																			(buffer-file-name))))))
+
+(defun pre-commit ()
+  "Run pre-commit on the current file before saving."
+	(interactive)
+  (when (executable-find "pre-commit")
+    (shell-command-to-string "pre-commit run")))
+
 (direnv-mode)
+
+(straight-use-package 'tiltfile)

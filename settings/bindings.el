@@ -102,7 +102,7 @@
 ;; (define-key my-editing-map (kbd "o b") 'my-open-line-below)
 ;; (define-key my-editing-map (kbd "C-&") 'crux-duplicate-current-line-or-region)
 ;; (define-key my-editing-map (kbd "& ;")
-;; 	'crux-duplicate-and-comment-current-line-or-region)
+;;	'crux-duplicate-and-comment-current-line-or-region)
 ;; (define-key my-editing-map (kbd "C-l") 'delete-blank-lines)
 ;; (define-key my-editing-map (kbd "C-w") 'fixup-whitespace)
 
@@ -326,7 +326,7 @@
 (global-set-key (kbd "C-S-z") 'undo-only)
 (global-set-key (kbd "C-M-z") 'undo-redo)
 
-;; <return> 
+;; <return>
 (global-set-key (kbd "C-<return>") 'eval-last-sexp)
 (global-set-key (kbd "M-<return>") 'eval-buffer)
 
@@ -434,11 +434,11 @@
 (global-set-key (kbd "C-M-<backspace>") 'backward-kill-word)
 (global-set-key (kbd "C-M-H-<backspace>") 'backward-kill-paragraph)
 
- ;; (global-set-key (kbd "C-<return>") 'eval-last-sexp)
- ;; (global-set-key (kbd "C-<return>") 'my-eval-dwim)
- ;; (global-set-key (kbd "M-=") 'eval-defun)
- ;; (global-set-key (kbd "C-c C-<return> C-b") 'ev al-buffer)
- ;; (global-set-key (kbd "C-c C-<return> C-b") 'eval-buffer)
+;; (global-set-key (kbd "C-<return>") 'eval-last-sexp)
+;; (global-set-key (kbd "C-<return>") 'my-eval-dwim)
+;; (global-set-key (kbd "M-=") 'eval-defun)
+;; (global-set-key (kbd "C-c C-<return> C-b") 'ev al-buffer)
+;; (global-set-key (kbd "C-c C-<return> C-b") 'eval-buffer)
 
 
 (require 'bindings-meta)
@@ -467,7 +467,7 @@
 ;; (global-set-key (kbd "<f17>") 'my-lsp-map)
 
 (global-set-key (kbd "<f15>") 'magit) ;; g
-(global-set-key (kbd "<f22>") 'projectile-run-project) 
+(global-set-key (kbd "<f22>") 'projectile-run-project)
 (global-set-key (kbd "<f11>") 'hydra-window-management/body) ;; w
 
 
@@ -523,6 +523,6 @@
 (require 'bindings-paredit-mode)
 
 (with-eval-after-load 'magit
-  (define-key magit-mode-map (kbd "<tab>") 'magit-section-toggle))
+	(define-key magit-mode-map (kbd "<tab>") 'magit-section-toggle))
 
 (provide 'bindings)
