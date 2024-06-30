@@ -395,7 +395,8 @@
 (global-set-key (kbd "C-(") 'kmacro-start-macro-or-insert-counter)
 (global-set-key (kbd "C-)") 'kmacro-end-or-call-macro)
 
-(global-set-key (kbd "C-|") 'indent-region)
+(global-set-key (kbd "C-|") 'indent-buffer)
+(global-set-key (kbd "C-c C-| C-r") 'indent-region)
 
 
 ;; [
@@ -513,13 +514,12 @@
 ;; (global-set-key (kbd "M-r") 'jump-to-register)
 ;; (global-set-key (kbd "H-r") 'lsp-rename)
 
-(require 'bindings-clojure-mode)
+(require 'bindings-clojure)
 (require 'bindings-projectile-mode)
 (require 'bindings-org-mode)
 (require 'bindings-haskell-mode)
 ;; (require 'bindings-structured-haskell-mode)
 (require 'bindings-vterm)
-(require 'bindings-clojure-mode)
 (require 'bindings-paredit-mode)
 
 (with-eval-after-load 'magit

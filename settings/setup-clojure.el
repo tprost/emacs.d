@@ -18,7 +18,25 @@
     (cljr-add-keybindings-with-prefix "C-c C-m")
 		(lsp))
 
+;; ;; Define your custom keybindings
+;; (defun my-cider-mode-keybindings ()
+;;   "Custom keybindings for Cider mode."
+  
+;;   ;; Add more keybindings as needed
+;;   )
+
+;; (define-key cider-mode-map (kbd "C-c C-e") 'cider-eval-last-sexp)
+;; (define-key cider-mode-map (kbd "C-c C-r") 'cider-eval-region)
+;; (define-key cider-mode-map (kbd "C-c C-b") 'cider-eval-buffer)
+
+;; Add your custom keybindings to cider-mode-hook
+;; (add-hook 'cider-mode-hook 'my-cider-mode-keybindings)
+
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
+(add-hook 'clojure-mode-hook #'ligature-mode)
 
 
-(provide 'setup-clojure-mode)
+(require 'ligature)
+(ligature-set-ligatures 'clojure-mode '("==" "!=" "->" "->>" "::" ">=" "<="))
+
+(provide 'setup-clojure)

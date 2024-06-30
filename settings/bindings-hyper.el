@@ -16,8 +16,11 @@
 (global-set-key (kbd "H-x") nil)
 (global-set-key (kbd "H-x e") 'hydra-emacs/body)
 
-(global-set-key (kbd "H->") 'projectile-next-project-buffer)
-(global-set-key (kbd "H-<") 'projectile-previous-project-buffer)
+;; (global-set-key (kbd "H->") 'projectile-next-project-buffer)
+;; (global-set-key (kbd "H-<") 'projectile-previous-project-buffer)
+
+(global-set-key (kbd "H->") nil)
+(global-set-key (kbd "H-<") nil)
 
 (global-set-key (kbd "H-<return>") 'my-eval-dwim)
 (global-set-key (kbd "H-<tab>") 'yas-expand)

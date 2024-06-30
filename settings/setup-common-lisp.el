@@ -51,12 +51,31 @@
                `',(intern (sly-qualify-cl-symbol-name name))
              name)))))))
 
-
-(define-key sly-mode-map (kbd "C-<return>") 'sly-eval-defun)
-(define-key sly-mode-map (kbd "M-<return>") 'sly-eval-buffer)
-(define-key sly-mode-map (kbd "H-<return>") 'slite-run-at-point-dwim)
-
 (add-hook 'lisp-mode-hook #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook #'prettify-symbols-mode)
+
+(defun my-common-lisp-mode-hook ()
+  "Customize Common Lisp mode."
+  (setq indent-tabs-mode nil) ; Use spaces instead of tabs
+  (setq lisp-indent-offset 2)) ; Set the indentation level to 2 spaces
+
+(add-hook 'lisp-mode-hook #'my-common-lisp-mode-hook)
+
+;; Function to indent buffer before saving
+(defun indent-buffer ()
+  "Indent whole buffer before saving."
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+;; Add to `before-save-hook` for Lisp modes
+(add-hook 'lisp-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook #'indent-buffer nil 'local)))
+
+(add-hook 'emacs-lisp-mode-hook
+					(lambda ()
+            (add-hook 'before-save-hook #'indent-buffer nil 'local)))
+
 ;; (straight-use-package 'mgl-try)
 
 ;; (define-key slime-mode-map (kbd "C-<return>") 'slime-eval-defun)

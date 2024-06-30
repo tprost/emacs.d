@@ -13,8 +13,8 @@
   (interactive)
   (let* ((filename (ffap-file-at-point))
          (line-number (and filename
-													 (when (thing-at-point-looking-at (create-filepath-with-line-regex filename))
-																		 (string-to-number (match-string 1))))))		
+													 (when (thing-at-point-looking-at (my-create-filepath-with-line-regex filename))
+														 (string-to-number (match-string 1))))))		
     (if filename
         (progn
           (find-file filename)

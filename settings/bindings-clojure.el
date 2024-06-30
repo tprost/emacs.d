@@ -36,4 +36,15 @@
 (define-key cider-mode-map (kbd "C-H-j") 'cider-find-var)
 
 
-(provide 'bindings-clojure-mode)
+
+(define-key cider-mode-map (kbd "H->") 'cider-jack-in)
+(define-key cider-mode-map (kbd "H-<") 'cider-quit)
+
+(define-key cider-mode-map (kbd "H-c H-> H-q") 'cider-quit)
+(define-key cider-mode-map (kbd "H-c H-> H-r") 'cider-restart)
+
+(define-key clojure-mode-map (kbd "H->") 'cider-jack-in)
+
+
+
+(provide 'bindings-clojure)

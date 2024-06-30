@@ -13,7 +13,7 @@
   (load bootstrap-file nil 'nomessage))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(straight-pull-package "melpa")
+;; (straight-pull-package "melpa")
 
 (add-to-list 'load-path "~/.emacs.d/settings")
 (add-to-list 'load-path "~/.emacs.d/elisp")
@@ -54,7 +54,7 @@
 ;; file types
 ;; (require 'setup-dockerfile-mode)
 ;; (require 'setup-feature-mode)
-;; (require 'setup-json-mode)
+(require 'setup-json-mode)
 ;; (require 'setup-makefile)
 ;; (require 'setup-markdown-mode)
 ;; (require 'setup-yaml-mode)
@@ -82,7 +82,7 @@
 (require 'setup-restclient)
 
 (require 'setup-haskell-mode)
-(require 'setup-clojure-mode)
+(require 'setup-clojure)
 ;; (require 'setup-structured-haskell-mode) ;; package cl is deprecated oh no
 (require 'setup-rustic-mode)
 (require 'setup-haxe-mode)
@@ -199,6 +199,5 @@
   (when (executable-find "pre-commit")
     (shell-command-to-string "pre-commit run")))
 
-(direnv-mode)
 
-(straight-use-package 'tiltfile)
+(direnv-mode)
