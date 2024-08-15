@@ -18,6 +18,10 @@
 (add-to-list 'load-path "~/.emacs.d/settings")
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
+;; (straight-use-package 'evil)
+
+;; (require 'evil)
+;; (evil-mode t)
 
 (require 'setup-org-mode)
 
@@ -201,3 +205,25 @@
 
 
 (direnv-mode)
+
+
+;; (straight-use-package 'swank-js)
+
+;; ;;(global-set-key [f5] 'slime-js-reload)
+;; (add-hook 'js2-mode-hook
+;;           (lambda ()
+;;             (slime-js-minor-mode 1)))
+
+(straight-use-package 'indium)
+
+(setq indium-client-debug t)
+(require 'indium)
+
+(setq indium-client-debug t)
+
+
+(straight-use-package 'nodejs-repl)
+
+(global-display-line-numbers-mode t)
+(setq display-line-numbers 'relative)
+(setq display-line-numbers-type 'relative)

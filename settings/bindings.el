@@ -16,7 +16,6 @@
 
 (define-key input-decode-map [?\C-m] [C-m])
 
-
 ;; a
 (global-set-key (kbd "C-a") 'crux-move-beginning-of-line)
 (global-set-key (kbd "C-S-a") 'beginning-of-line)
@@ -33,7 +32,6 @@
 ;; (global-set-key (kbd "C-M-a") 'beginning-of-buffer)
 ;; (global-set-key (kbd "C-M-S-a") 'my-beginning-of-buffer-text)
 
-
 ;; b
 (global-set-key (kbd "C-b") 'backward-char)
 (global-set-key (kbd "C-S-b") 'iy-go-to-char-backward) ;; TODO
@@ -45,10 +43,12 @@
 (global-set-key (kbd "C-c C-b C-w") 'my-backward-to-whitespace)
 (global-set-key (kbd "C-c C-b C-s") 'backward-sentence)
 (global-set-key (kbd "C-c C-b C-x") 'backward-sexp)
+(global-set-key (kbd "C-H-b") 'backward-sexp)
+
 
 ;; (global-set-key (kbd "C-M-H-b") 'backward-paragraph)
 ;; (global-set-key (kbd "C-M-H-S-b") 'my-forward-3-paragraphs)
-(global-set-key (kbd "C-H-b") 'backward-sexp)
+
 
 ;; c
 ;; (global-set-key (kbd "C-c C-k") 'delete-trailing-whitespace)
@@ -121,6 +121,7 @@
 (global-set-key (kbd "C-c C-d C-&") 'delete-duplicate-lines)
 (global-set-key (kbd "C-c C-d C-l") 'my-delete-current-line)
 (global-set-key (kbd "C-H-d") 'delete-active-region)
+
 ;; transpose-chars
 ;; zap-to-char
 ;; delete-trailing-whitespace
@@ -514,6 +515,7 @@
 ;; (global-set-key (kbd "M-r") 'jump-to-register)
 ;; (global-set-key (kbd "H-r") 'lsp-rename)
 
+;; (require 'bindings-evil-mode)
 (require 'bindings-clojure)
 (require 'bindings-projectile-mode)
 (require 'bindings-org-mode)
@@ -521,6 +523,7 @@
 ;; (require 'bindings-structured-haskell-mode)
 (require 'bindings-vterm)
 (require 'bindings-paredit-mode)
+(require 'bindings-common-lisp)
 
 (with-eval-after-load 'magit
 	(define-key magit-mode-map (kbd "<tab>") 'magit-section-toggle))
