@@ -19,10 +19,12 @@
 (straight-use-package 'nix-mode)
 (straight-use-package 'glsl-mode)
 (straight-use-package 'frame-cmds)
-
 (straight-use-package 'exec-path-from-shell)
+
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
+
+;; (setq explicit-shell-file-name "/bin/bash")
 
 (defun look-up-in-goldendict (word)
   (start-process "goldendict" nil "goldendict" word)
@@ -38,19 +40,6 @@
     )
   )
 
-;; (setq explicit-shell-file-name "/bin/bash")
 
-(setq inhibit-startup-screen t)
-(setq initial-buffer-choice nil)
-
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
-  backup-by-copying t    ; Don't delink hardlinks
-  version-control t      ; Use version numbers on backups
-  delete-old-versions t  ; Automatically delete excess backups
-  kept-new-versions 20   ; how many of the newest versions to keep
-  kept-old-versions 5    ; and how many of the old
-  )
-
-(setq create-lockfiles nil)
 
 (provide 'setup-miscellaneous)

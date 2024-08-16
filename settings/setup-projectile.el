@@ -1,10 +1,6 @@
-(straight-use-package 'projectile)
-
-;; (add-to-list 'load-path "~/.emacs.d/site-lisp/projectile")
-
 (require 'projectile)
-(straight-use-package 'helm-projectile)
 (require 'helm-projectile)
+
 ;; (require-package 'projectile)
 ;;
 
@@ -30,15 +26,15 @@
 																	:src-dir "src"
 																	:test-dir "test"
 																	:test-suffix "-test")
-																	
-																	
+
+
 
 ;; so that I can have multiple projects in a single repo
 ;; if I want
 (setq projectile-project-root-functions  '(projectile-root-local
-    projectile-root-top-down
-    projectile-root-bottom-up    
-    projectile-root-top-down-recurring))
+																					 projectile-root-top-down
+																					 projectile-root-bottom-up    
+																					 projectile-root-top-down-recurring))
 
 ;; (projectile-run-test)
 ;; (global-set-key (kbd "C-c p t") 'projectile-test-project)
@@ -50,5 +46,4 @@
 
 ;; watch tests
 
-(straight-use-package 'term-projectile)
 (provide 'setup-projectile)

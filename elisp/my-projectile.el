@@ -26,11 +26,6 @@
 	(interactive)
 	(projectile-run-vterm t))
 
-(straight-use-package 'yaml-mode)
-(straight-use-package 'yaml)
-(require 'yaml-mode)
-(require 'yaml)
-
 (defun my--projectile-vterm-name (key)
 	(concat "*vterm " (projectile-project-name) "* " name))
 
@@ -47,8 +42,8 @@
 	   		(vterm-insert (concat "cd " (projectile-project-root)))
     		(vterm-send-return)
 				(when path (progn
-										(vterm-insert (concat "cd " path))
-										(vterm-send-return)))
+										 (vterm-insert (concat "cd " path))
+										 (vterm-send-return)))
      		(vterm-send-return)
    			(vterm-insert command)
 				(vterm-send-return)
