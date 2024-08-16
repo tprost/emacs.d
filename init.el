@@ -46,13 +46,38 @@
 (add-hook 'after-init-hook #'elpaca-process-queues)
 (elpaca `(,@elpaca-order))
 
+;; Install use-package support
+(elpaca elpaca-use-package
+  ;; Enable use-package :ensure support for Elpaca.
+  (elpaca-use-package-mode))
 (add-to-list 'load-path "~/.emacs.d/elisp")
 (add-to-list 'load-path "~/.emacs.d/settings")
 (add-to-list 'load-path "~/.emacs.d/bindings")
+(elpaca (catppuccin :repo "https://github.com/catppuccin/emacs.git" :main
+												 "catppuccin-theme.el" :wait t)
+
+	(load-theme 'catppuccin :no-confirm))
+
+
+
+
+
+
+
+
+
+(use-package evil :ensure t :demand t :config 																		
+	(evil-mode 1)
+	
+(require 'bindings)
+	(require 'bindings-evil-mode)
+	(require 'bindings-emacs-lisp-mode)	(setup-evil-mode-bindings)
+)
 
 
 (elpaca 'helm
-	(require 'setup-helm))
+	(require 'setup-helm)
+)
 (elpaca 'projectile
 	(require 'setup-projectile))
 (elpaca 'crux)
@@ -67,25 +92,18 @@
 ;; (elpaca 'ansi-color)
 
 ;; setup beacon
-(elpaca 'beacon
+(elpaca 'beacon 
 	(beacon-mode 1)
 	(setq beacon-lighter ""))
 
 ;; setup 
-(require 'bindings-evil-mode)
 
 (elpaca transient)
-(elpaca 'evil
-	(evil-mode 1)
-	(setup-evil-mode-bindings))
-(elpaca (catppuccin :repo "https://github.com/catppuccin/emacs.git" :main "catppuccin-theme.el")
-	(load-theme 'catppuccin :no-confirm))
 
 (setq inhibit-startup-screen t)
 (setq initial-buffer-choice nil)
 
 (require 'setup-appearance)
-(require 'bindings)
 
 (require 'setup-defaults)
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -98,6 +116,10 @@
 (elpaca 'lispy
 	(require 'lispy))
 
+(add-hook 'elpaca-after-init-hook
+					(lambda ()
+						(setup-emacs-lisp-mode-bindings)
+						))
 ;; (message "hello world" (+ 1 1))
 ;; (add-hook 'lisp-mode-hook 'highlight-sexp-mode)
 ;; (add-hook 'emacs-lisp-mode-hook 'highlight-sexp-mode)

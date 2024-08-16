@@ -21,6 +21,11 @@
 (add-to-list 'same-window-buffer-names "*ansi-term*")
 
 (set-face-attribute 'helm-selection nil :background "#3e2e6e")
+(defun no-non-selected-cursor ()
+  "Set ‘cursor-in-non-selected-windows’ to nil locally in the current buffer."
+  (setq-local cursor-in-non-selected-windows nil))
+
+(add-hook 'helm-update-hook 'no-non-selected-cursor)
 
 ;; (setq helm-display-header-line nil)
 

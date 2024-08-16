@@ -330,8 +330,8 @@
 (global-set-key (kbd "C-M-z") 'undo-redo)
 
 ;; <return>
-(global-set-key (kbd "C-<return>") nil)
-(global-set-key (kbd "M-<return>") nil)
+(global-unset-key (kbd "C-<return>"))
+(global-unset-key (kbd "M-<return>"))
 
 ;; ;
 (global-set-key (kbd "C-;") 'comment-dwim)

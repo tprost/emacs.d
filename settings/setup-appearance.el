@@ -22,8 +22,8 @@
 ;; (if (string= (system-name) "nixos")
 ;;     (set-face-attribute 'default nil :font "PragmataPro Mono Liga 12"))
 
-(global-display-line-numbers-mode t)
 (setq display-line-numbers-type 'relative)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (setq window-header-line-height 40)
 (setq window-divider-default-places 'right-only)
