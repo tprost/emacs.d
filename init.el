@@ -91,6 +91,14 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
 (elpaca (highlight-sexp :host github :repo "daimrod/highlight-sexp"))
+
+(elpaca 'eval-sexp-fu
+	(require 'eval-sexp-fu))
+
+(elpaca 'lispy
+	(require 'lispy))
+
+;; (message "hello world" (+ 1 1))
 ;; (add-hook 'lisp-mode-hook 'highlight-sexp-mode)
 ;; (add-hook 'emacs-lisp-mode-hook 'highlight-sexp-mode)
 

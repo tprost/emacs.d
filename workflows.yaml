@@ -1,0 +1,12 @@
+test:
+  command: cargo test
+  terminal: test
+unit:
+  command: cargo test ---unit
+  terminal: unit
+build:
+  command: cargo build
+  terminal: build
+fix:
+  command: cargo fix
+
