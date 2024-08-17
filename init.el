@@ -1,9 +1,9 @@
 (defun efs/display-startup-time ()
-  (message "Emacs loaded in %s with %d garbage collections."
-           (format "%.2f seconds"
-                   (float-time
+	(message "Emacs loaded in %s with %d garbage collections."
+					 (format "%.2f seconds"
+									 (float-time
 										(time-subtract after-init-time before-init-time)))
-           gcs-done))
+					 gcs-done))
 
 (add-hook 'emacs-startup-hook #'efs/display-startup-time)
 
@@ -54,7 +54,7 @@
 (add-to-list 'load-path "~/.emacs.d/settings")
 (add-to-list 'load-path "~/.emacs.d/bindings")
 (elpaca (catppuccin :repo "https://github.com/catppuccin/emacs.git" :main
-												 "catppuccin-theme.el" :wait t)
+										"catppuccin-theme.el" :wait t)
 
 	(load-theme 'catppuccin :no-confirm))
 
@@ -69,15 +69,16 @@
 (use-package evil :ensure t :demand t :config 																		
 	(evil-mode 1)
 	
-(require 'bindings)
+	(require 'bindings)
+	
 	(require 'bindings-evil-mode)
 	(require 'bindings-emacs-lisp-mode)	(setup-evil-mode-bindings)
-)
+	)
 
 
 (elpaca 'helm
 	(require 'setup-helm)
-)
+	)
 (elpaca 'projectile
 	(require 'setup-projectile))
 (elpaca 'crux)
@@ -113,13 +114,43 @@
 (elpaca 'eval-sexp-fu
 	(require 'eval-sexp-fu))
 
-(elpaca 'lispy
-	(require 'lispy))
+;; (elpaca 'lispy
+;; 	(require 'lispy))
+
+;; (elpaca 'evil-lispy
+;; 	(require 'evil-lispy))
+
+(elpaca 'evil-cleverparens)
+
+
+(evil-define-key 'normal 'evil-cleverparens-mode (kbd "y") 'evil-paste-after)
+(evil-define-key 'normal 'evil-cleverparens-mode (kbd "a") 'evil-beginning-of-line)
+(evil-define-key 'normal 'evil-cleverparens-mode (kbd "y") 'evil-paste-after)
+(evil-define-key 'normal 'evil-cleverparens-mode (kbd "P") 'evil-cp-beginning-of-defun)
+(evil-define-key 'normal 'evil-cleverparens-mode (kbd "N") 'evil-cp-end-of-defun)
+(evil-define-key 'visual 'evil-cleverparens-mode (kbd "w") 'evil-cp-yank)
+;; (evil-define-key 'visual 'evil-cleverparens-mode (kbd "w") 'evil-cp-yank)
+;; (evil-define-key 'visual 'evil-cleverparens-mode (kbd "y") 'evil-paste-after)
+
+(elpaca 'company
+	(global-company-mode))
+
+(elpaca 'clojure-ts-mode
+	(require 'clojure-ts-mode))
+
+;; (elpaca 'python-ts-mode)
+;; (treesit-install-language-grammar 'python)
+
+(elpaca 'cider)
 
 (add-hook 'elpaca-after-init-hook
 					(lambda ()
 						(setup-emacs-lisp-mode-bindings)
 						))
+
+(setq major-mode-remap-alist
+      '((python-mode . python-ts-mode)))
+    
 ;; (message "hello world" (+ 1 1))
 ;; (add-hook 'lisp-mode-hook 'highlight-sexp-mode)
 ;; (add-hook 'emacs-lisp-mode-hook 'highlight-sexp-mode)
@@ -222,6 +253,10 @@
 			)
 
 (setq create-lockfiles nil)
+
+(elpaca 'exec-path-from-shell
+	(when (memq window-system '(mac ns x))
+		(exec-path-from-shell-initialize)))
 ;; (require 'my-python-functions)
 
 

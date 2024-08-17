@@ -89,7 +89,10 @@
 
 	(evil-define-key 'normal 'global (kbd "<leader>fs") 'save-buffer)
 	(evil-define-key 'normal 'global (kbd "<leader>ff") 'helm-find-files)
-	(evil-define-key 'normal 'global (kbd "<leader>se") 'my-emacs-projectile-find-file)
+	(evil-define-key 'normal 'global (kbd "<leader>se")
+	'my-emacs-projectile-find-file)
+
+	(evil-define-key 'normal 'global (kbd "<leader>pp") 'projectile-switch-project)
 
 	;; (setq evil-emacs-state-cursor '("blue" box))
 	;; (setq evil-normal-state-cursor '("firebrfick" box))
