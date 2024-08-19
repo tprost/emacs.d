@@ -11,11 +11,12 @@
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
 (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
-(defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
-                              :ref nil :depth 1
-                              :files (:defaults "elpaca-test.el" (:exclude "extensions"))
-                              :build (:not elpaca--activate-package)))
-(let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
+(defvar elpaca-order
+  '(elpaca :repo "https://github.com/progfolio/elpaca.git"
+           :ref nil :depth 1
+           :files (:defaults "elpaca-test.el" (:exclude "extensions"))
+           :build (:not elpaca--activate-package)))
+(let* ((repo (expand-file-name "elpaca/" elpaca-repos-directory))
        (build (expand-file-name "elpaca/" elpaca-builds-directory))
        (order (cdr elpaca-order))
        (default-directory repo))
@@ -25,20 +26,30 @@
     (when (< emacs-major-version 28) (require 'subr-x))
     (condition-case-unless-debug err
         (if-let ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
-                 ((zerop (apply #'call-process `("git" nil ,buffer t "clone"
-                                                 ,@(when-let ((depth (plist-get order :depth)))
-                                                     (list (format "--depth=%d" depth) "--no-single-branch"))
-                                                 ,(plist-get order :repo) ,repo))))
-                 ((zerop (call-process "git" nil buffer t "checkout"
-                                       (or (plist-get order :ref) "--"))))
+                 ((zerop
+                   (apply #'call-process
+                          `("git" nil ,buffer t "clone"
+                            ,@(when-let ((depth (plist-get order :depth)))
+                                (list
+                                 (format "--depth=%d" depth)
+                                 "--no-single-branch"))
+                            ,(plist-get order :repo)
+                            ,repo))))
+                 ((zerop
+                   (call-process "git" nil buffer t "checkout"
+                                 (or (plist-get order :ref) "--"))))
                  (emacs (concat invocation-directory invocation-name))
-                 ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
-                                       "--eval" "(byte-recompile-directory \".\" 0 'force)")))
+                 ((zerop
+                   (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
+                                 "--eval"
+                                 "(byte-recompile-directory \".\" 0 'force)")))
                  ((require 'elpaca))
                  ((elpaca-generate-autoloads "elpaca" repo)))
             (progn (message "%s" (buffer-string)) (kill-buffer buffer))
           (error "%s" (with-current-buffer buffer (buffer-string))))
-      ((error) (warn "%s" err) (delete-directory repo 'recursive))))
+      ((error)
+       (warn "%s" err)
+       (delete-directory repo 'recursive))))
   (unless (require 'elpaca-autoloads nil t)
     (require 'elpaca)
     (elpaca-generate-autoloads "elpaca" repo)
@@ -53,38 +64,36 @@
 (add-to-list 'load-path "~/.emacs.d/elisp")
 (add-to-list 'load-path "~/.emacs.d/settings")
 (add-to-list 'load-path "~/.emacs.d/bindings")
-(elpaca (catppuccin :repo "https://github.com/catppuccin/emacs.git" :main
-										"catppuccin-theme.el" :wait t)
+(elpaca
+    (catppuccin :repo "https://github.com/catppuccin/emacs.git" :main
+								"catppuccin-theme.el" :wait t)
 
 	(load-theme 'catppuccin :no-confirm))
 
 
 
 
-
+(elpaca 'srefactor)
 
 
 
 ;;; Bindings
-(use-package evil :ensure t :demand t :config 																		
+(use-package evil :ensure t :demand t :config
 	(evil-mode 1)
-	
+
 	(require 'bindings)
-	
+
 	(require 'bindings-evil-mode)
 	(require 'bindings-emacs-lisp-mode)
 
 	(setup-nasty-emacs-hybrid-evil-bindings)
 	(setup-evil-mode-bindings)
-	
+
 
 	(setup-emacs-lisp-mode-bindings))
 
-(elpaca 'helm
-		(require 'setup-helm))
+(elpaca 'helm (require 'setup-helm))
 
-
-	
 
 
 
@@ -98,18 +107,14 @@
 (elpaca 'magit)
 
 ;; (elpaca 'projectile-variables)
-(elpaca 'hydra
-	(require 'bindings-hydras))
+(elpaca 'hydra (require 'bindings-hydras))
 
-(elpaca 'which-key
-	(which-key-mode))
+(elpaca 'which-key (which-key-mode))
 ;; (elpaca 'ansi-color)
 
 ;; setup beacon
 
-(elpaca 'beacon 
-	(setq beacon-lighter "")
-	(beacon-mode 1))
+(elpaca 'beacon (setq beacon-lighter "") (beacon-mode 1))
 ;; setup 
 
 (elpaca transient)
@@ -122,10 +127,10 @@
 (require 'setup-defaults)
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
-;; (elpaca (highlight-sexp :host github :repo "daimrod/highlight-sexp"))
-
-(elpaca 'eval-sexp-fu
-	(require 'eval-sexp-fu))
+(elpaca
+    (elfmt :host github :repo "riscy/elfmt" :main "elfmt.el")
+  (require 'elfmt))
+(elpaca 'eval-sexp-fu (require 'eval-sexp-fu))
 
 ;; (elpaca 'lispy
 ;; 	(require 'lispy))
@@ -140,23 +145,22 @@
 ;; 	(require 'evil-lispy))
 (elpaca 'lispy)
 
-(elpaca 'company
-	(global-company-mode))
+(elpaca 'company (global-company-mode))
 
-(elpaca 'clojure-ts-mode
-	(require 'clojure-ts-mode))
+(elpaca 'clojure-ts-mode (require 'clojure-ts-mode))
 
 
-(elpaca 'paredit)
+(elpaca 'paredit (require 'paredit))
 
+
+(setq pp-use-max-width 80)
 
 ;; (elpaca 'python-ts-mode)
 ;; (treesit-install-language-grammar 'python)
 
 (elpaca 'cider)
 
-(setq major-mode-remap-alist
-      '((python-mode . python-ts-mode)))
+(setq major-mode-remap-alist '((python-mode . python-ts-mode)))
 
 ;; (message "hello world" (+ 1 1))
 ;; (add-hook 'lisp-mode-hook 'highlight-sexp-mode)
@@ -251,7 +255,8 @@
 (require 'my-functions)
 (require 'my-projectile)
 
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
+(setq backup-directory-alist
+      '(("." . "~/.emacs.d/backup"))
 			backup-by-copying t    ; Don't delink hardlinks
 			version-control t      ; Use version numbers on backups
 			delete-old-versions t  ; Automatically delete excess backups
@@ -262,19 +267,15 @@
 (setq create-lockfiles nil)
 
 (elpaca 'exec-path-from-shell
-	(when (memq window-system '(mac ns x))
-		(exec-path-from-shell-initialize)))
+	(when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize)))
 
 
-(elpaca 'lsp-mode
-	(require 'setup-lsp-mode))
+(elpaca 'lsp-mode (require 'setup-lsp-mode))
 (elpaca 'lsp-ui)
 (elpaca 'helm-lsp)
-(elpaca 'direnv
-	(direnv-mode))
+(elpaca 'direnv (direnv-mode))
 
-(elpaca 'envrc
-	(envrc-global-mode))
+(elpaca 'envrc (envrc-global-mode))
 
 
 (setq display-line-numbers-type 'relative)

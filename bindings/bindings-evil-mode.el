@@ -3,11 +3,15 @@
 	(define-key evil-motion-state-map (kbd "F") 'evil-lookup)
 	(define-key evil-motion-state-map (kbd "s") 'evil-next-line)
 	(define-key evil-normal-state-map (kbd "S") 'evil-join)
+	(define-key evil-normal-state-map (kbd "J") nil)
+	(define-key evil-normal-state-map (kbd "T") nil)
+	(define-key evil-motion-state-map (kbd "T") nil)
+	(define-key evil-normal-state-map (kbd "R") nil)
+	(define-key evil-motion-state-map (kbd "R") nil)
 	;; T is a would-be motion-state window command
 	(define-key evil-motion-state-map (kbd "t") 'evil-forward-char)
 	;; R is a would-be motion-state window command
 	(define-key evil-motion-state-map (kbd "r") 'evil-backward-char)
-
 	(define-key evil-motion-state-map (kbd "h") 'evil-find-char-to)
 	(define-key evil-motion-state-map (kbd "H") 'evil-find-char-to-backward)
 	(define-key evil-motion-state-map (kbd "j") 'evil-find-char)
@@ -16,82 +20,53 @@
 	(define-key evil-normal-state-map (kbd "K") 'evil-change-whole-line)
 	(define-key evil-normal-state-map (kbd "l") 'evil-replace)
 	(define-key evil-normal-state-map (kbd "L") 'evil-enter-replace-state)
-
 	(define-key evil-normal-state-map (kbd "r") nil)
-	(define-key evil-normal-state-map (kbd "s") nil)
-
-	)
-
-
-
-
+	(define-key evil-normal-state-map (kbd "s") nil))
 
 (defun setup-evil-mode-bindings ()
+  (require 'evil)
 
-	(require 'evil)
-	
-	;; (define-key evil-visual-state-map (kbd "w") 'evil-yank)
-	;; (define-key evil-visual-state-map (kbd "W") 'evil-yank-line)
-	;; (define-key evil-visual-state-map (kbd "y") nil)
-	;; (define-key evil-visual-state-map (kbd "Y") nil)
-
-	;; (define-key evil-visual-state-map (kbd "w") 'evil-yank)
-	;; (define-key evil-visual-state-map (kbd "W") 'evil-yank-line)
-	;; (define-key evil-visual-state-map (kbd "p") 'evil-paste-after)
-	;; (define-key evil-visual-state-map (kbd "Y") nil)
-	;; (define-key evil-visual-state-map (kbd "y") 'evil-paste-after)
-
-	;; evil-find-char   was mapped to f in normal mode
-	;; evil-search-next was mapped to n in normal mode
-	;; evil-?                         a in normal mode (the insert thingie);
-
-	(evil-set-leader nil (kbd ",") t)
-	(evil-set-leader nil (kbd "<SPC>")) 
-	
-
-	(evil-define-key 'normal 'global (kbd "<leader>xx") 'helm-M-x)
-	(evil-define-key 'normal 'global (kbd "<leader>xs") 'save-buffer)
-	(evil-define-key 'normal 'global (kbd "<leader>xw") 'evil-window-map)
-	
-	(evil-define-key 'normal 'global (kbd "<leader>g") 'magit)
-	(evil-define-key 'normal 'global (kbd "<leader>w") 'hydra-window-management/body)
-
-
-	(evil-define-key 'normal 'global (kbd "<leader>fs") 'save-buffer)
-	(evil-define-key 'normal 'global (kbd "<leader>ff") 'helm-find-files)
-	
-	(evil-define-key 'normal 'global (kbd "<leader>se") 'my-emacs-projectile-find-file)
-	(evil-define-key 'normal 'global (kbd "<leader>se") 'my-emacs-projectile-find-file)
-
-	(evil-define-key 'normal 'global (kbd "<leader>b") nil)
-	(evil-define-key 'normal 'global (kbd "<leader>bb") 'helm-buffers-list)
-	(evil-define-key 'normal 'global (kbd "<leader>bn") 'next-buffer)
-	(evil-define-key 'normal 'global (kbd "<leader>bp") 'previous-buffer)
-
-	(evil-define-key 'normal 'global (kbd "<leader>xs") 'save-buffer)
-	(evil-define-key 'normal 'global (kbd "<leader>xf") 'helm-find-files)
-
+  (evil-set-leader nil (kbd ",") t)
+  (evil-set-leader nil (kbd "<SPC>"))
+  (evil-define-key 'normal 'global (kbd "<leader>xx") 'helm-M-x)
+  (evil-define-key 'normal 'global (kbd "<leader>xs") 'save-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader>xw") 'evil-window-map)
+  (evil-define-key 'normal 'global (kbd "<leader>g") 'magit)
+  (evil-define-key 'normal 'global
+    (kbd "<leader>w")
+    'hydra-window-management/body)
+  (evil-define-key 'normal 'global (kbd "<leader>fs") 'save-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader>ff") 'helm-find-files)
+  (evil-define-key 'normal 'global
+    (kbd "<leader>se")
+    'my-emacs-projectile-find-file)
+  (evil-define-key 'normal 'global
+    (kbd "<leader>se")
+    'my-emacs-projectile-find-file)
+  (evil-define-key 'normal 'global (kbd "<leader>b") nil)
+  (evil-define-key 'normal 'global (kbd "<leader>bb") 'helm-buffers-list)
+  (evil-define-key 'normal 'global (kbd "<leader>bn") 'next-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader>bp") 'previous-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader>xs") 'save-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader>xf") 'helm-find-files)
+  (evil-define-key 'normal 'global (kbd "<leader>xb") 'helm-buffers-list)
   (evil-define-key 'normal 'global (kbd "<leader>>") 'next-buffer)
-	(evil-define-key 'normal 'global (kbd "<leader><") 'previous-buffer)
-
-	(evil-define-key 'normal 'global (kbd "<leader>p") 'projectile-command-map)
-	(evil-define-key 'visual 'global (kbd "<f1>") 'evil-normal-state)
-	(evil-define-key 'insert 'global (kbd "<f1>") 'evil-normal-state)
-	(evil-define-key 'replace 'global (kbd "<f1>") 'evil-normal-state)
-	(evil-define-key 'insert 'global (kbd "<f1>") 'evil-normal-state)
-	(evil-define-key 'visual 'global (kbd "<f3>") 'evil-normal-state)
-	(evil-define-key 'insert 'global (kbd "<f3>") 'evil-normal-state)
-	(evil-define-key 'replace 'global (kbd "<f3>") 'evil-normal-state)
-	(evil-define-key 'insert 'global (kbd "<f3>") 'evil-normal-state)
-
-	;; (setq evil-emacs-state-cursor '("blue" box))
+  (evil-define-key 'normal 'global (kbd "<leader><") 'previous-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader>p") 'projectile-command-map)
+  (evil-define-key 'visual 'global (kbd "<f1>") 'evil-normal-state)
+  (evil-define-key 'insert 'global (kbd "<f1>") 'evil-normal-state)
+  (evil-define-key 'replace 'global (kbd "<f1>") 'evil-normal-state)
+  (evil-define-key 'insert 'global (kbd "<f1>") 'evil-normal-state)
+  (evil-define-key 'visual 'global (kbd "<f3>") 'evil-normal-state)
+  (evil-define-key 'insert 'global (kbd "<f3>") 'evil-normal-state)
+  (evil-define-key 'replace 'global (kbd "<f3>") 'evil-normal-state)
+  (evil-define-key 'insert 'global (kbd "<f3>") 'evil-normal-state)
+  ;; (setq evil-emacs-state-cursor '("blue" box))
 	;; (setq evil-normal-state-cursor '("firebrfick" box))
 	;; (setq evil-visual-state-cursor '("cyan" box))
 	;; (setq evil-insert-state-cursor '("dark violet" box))
 	;; (setq evil-replace-state-cursor '("red" bar))
 	;; (setq evil-operator-state-cursor '("red" hollow))
-	
-	(setq evil-move-beyond-eol t)
-	
-	)
+  (setq evil-move-beyond-eol t))
+
 (provide 'bindings-evil-mode)
