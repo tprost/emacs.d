@@ -373,8 +373,8 @@
 ;; TODO
 
 ;; <
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C->") 'projectile-next-project-buffer)
+(global-set-key (kbd "C-<") 'projectile-previous-project-buffer)
 
 ;; /
 (global-set-key (kbd "C-/") 'undo)
@@ -455,7 +455,7 @@
 (global-set-key (kbd "<undo>") 'undo)
 (global-set-key (kbd "<menu>") 'switch-to-buffer-in-projectile-register)
 
-(global-set-key (kbd "<f1>") 'my-test-project) ;; !
+(global-set-key (kbd "<f5>") 'my-test-project) ;; !
 (global-set-key (kbd "<f2>") 'my-run-project) ;; r
 (global-set-key (kbd "<f3>") 'my-compile-project)
 (global-set-key (kbd "<f4>") 'my-unit-test-project) ;; t

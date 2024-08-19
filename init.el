@@ -65,26 +65,39 @@
 
 
 
-
+;;; Bindings
 (use-package evil :ensure t :demand t :config 																		
 	(evil-mode 1)
 	
 	(require 'bindings)
 	
 	(require 'bindings-evil-mode)
-	(require 'bindings-emacs-lisp-mode)	(setup-evil-mode-bindings)
-	)
+	(require 'bindings-emacs-lisp-mode)
 
+	(setup-nasty-emacs-hybrid-evil-bindings)
+	(setup-evil-mode-bindings)
+	
+
+	(setup-emacs-lisp-mode-bindings))
 
 (elpaca 'helm
-	(require 'setup-helm)
-	)
+		(require 'setup-helm))
+
+
+	
+
+
+
 (elpaca 'projectile
+
+	(require 'bindings-projectile-mode)
 	(require 'setup-projectile))
-(elpaca 'crux)
-;; (elpaca 'projectile-variables)
 (elpaca 'helm-projectile)
+
+(elpaca 'crux)
 (elpaca 'magit)
+
+;; (elpaca 'projectile-variables)
 (elpaca 'hydra
 	(require 'bindings-hydras))
 
@@ -93,10 +106,10 @@
 ;; (elpaca 'ansi-color)
 
 ;; setup beacon
-(elpaca 'beacon 
-	(beacon-mode 1)
-	(setq beacon-lighter ""))
 
+(elpaca 'beacon 
+	(setq beacon-lighter "")
+	(beacon-mode 1))
 ;; setup 
 
 (elpaca transient)
@@ -109,7 +122,7 @@
 (require 'setup-defaults)
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
-(elpaca (highlight-sexp :host github :repo "daimrod/highlight-sexp"))
+;; (elpaca (highlight-sexp :host github :repo "daimrod/highlight-sexp"))
 
 (elpaca 'eval-sexp-fu
 	(require 'eval-sexp-fu))
@@ -117,20 +130,15 @@
 ;; (elpaca 'lispy
 ;; 	(require 'lispy))
 
+(elpaca 'evil-cleverparens
+	;; (require 'evil-cleverparens-text-objects)
+	)
+
+
+
 ;; (elpaca 'evil-lispy
 ;; 	(require 'evil-lispy))
-
-(elpaca 'evil-cleverparens)
-
-
-(evil-define-key 'normal 'evil-cleverparens-mode (kbd "y") 'evil-paste-after)
-(evil-define-key 'normal 'evil-cleverparens-mode (kbd "a") 'evil-beginning-of-line)
-(evil-define-key 'normal 'evil-cleverparens-mode (kbd "y") 'evil-paste-after)
-(evil-define-key 'normal 'evil-cleverparens-mode (kbd "P") 'evil-cp-beginning-of-defun)
-(evil-define-key 'normal 'evil-cleverparens-mode (kbd "N") 'evil-cp-end-of-defun)
-(evil-define-key 'visual 'evil-cleverparens-mode (kbd "w") 'evil-cp-yank)
-;; (evil-define-key 'visual 'evil-cleverparens-mode (kbd "w") 'evil-cp-yank)
-;; (evil-define-key 'visual 'evil-cleverparens-mode (kbd "y") 'evil-paste-after)
+(elpaca 'lispy)
 
 (elpaca 'company
 	(global-company-mode))
@@ -138,19 +146,18 @@
 (elpaca 'clojure-ts-mode
 	(require 'clojure-ts-mode))
 
+
+(elpaca 'paredit)
+
+
 ;; (elpaca 'python-ts-mode)
 ;; (treesit-install-language-grammar 'python)
 
 (elpaca 'cider)
 
-(add-hook 'elpaca-after-init-hook
-					(lambda ()
-						(setup-emacs-lisp-mode-bindings)
-						))
-
 (setq major-mode-remap-alist
       '((python-mode . python-ts-mode)))
-    
+
 ;; (message "hello world" (+ 1 1))
 ;; (add-hook 'lisp-mode-hook 'highlight-sexp-mode)
 ;; (add-hook 'emacs-lisp-mode-hook 'highlight-sexp-mode)
@@ -257,9 +264,50 @@
 (elpaca 'exec-path-from-shell
 	(when (memq window-system '(mac ns x))
 		(exec-path-from-shell-initialize)))
+
+
+(elpaca 'lsp-mode
+	(require 'setup-lsp-mode))
+(elpaca 'lsp-ui)
+(elpaca 'helm-lsp)
+(elpaca 'direnv
+	(direnv-mode))
+
+(elpaca 'envrc
+	(envrc-global-mode))
+
+
+(setq display-line-numbers-type 'relative)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'fundamental-mode-hook 'display-line-numbers-mode)
+
+
+(defun my-mode-line-visual-bell ()
+  (setq visible-bell nil)
+  (setq ring-bell-function 'my-mode-line-visual-bell--flash))
+
+(defun my-mode-line-visual-bell--flash ()
+  (let ((frame (selected-frame)))
+    (run-with-timer
+     0.1 nil
+     #'(lambda (frame)
+         (let ((inhibit-quit)
+               (inhibit-redisplay t))
+           (invert-face 'header-line frame)
+           (invert-face 'header-line-highlight frame)
+           (invert-face 'mode-line frame)
+           (invert-face 'mode-line-inactive frame)))
+     frame)
+    (let ((inhibit-quit)
+          (inhibit-redisplay t))
+      (invert-face 'header-line frame)
+      (invert-face 'header-line-highlight frame)
+      (invert-face 'mode-line frame)
+      (invert-face 'mode-line-inactive frame))))
+(my-mode-line-visual-bell)
 ;; (require 'my-python-functions)
 
-
+;; (exec-path-from-shell-initialize)
 ;; ;; (require 'haskell-stack-mode)
 
 ;; (load-file (expand-file-name "custom.el" user-emacs-directory))

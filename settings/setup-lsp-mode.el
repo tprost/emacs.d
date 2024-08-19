@@ -1,15 +1,6 @@
 ;; (setq lsp-keymap-prefix (kbd "<f17>")) ;; l need to set this before lsp is
 ;; loaded
 
-(straight-use-package 'lsp-mode)
-(straight-use-package 'lsp-ui)
-(straight-use-package 'helm-lsp)
-(straight-use-package 'direnv)
-
-(straight-use-package 'envrc)
-(envrc-global-mode)
-
-(direnv-mode)
 
 (require 'lsp-mode)
 

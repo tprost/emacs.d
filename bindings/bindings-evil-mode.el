@@ -1,5 +1,26 @@
+(defun setup-nasty-emacs-hybrid-evil-bindings ()
+	(define-key evil-motion-state-map (kbd "f") 'evil-previous-line)
+	(define-key evil-motion-state-map (kbd "F") 'evil-lookup)
+	(define-key evil-motion-state-map (kbd "s") 'evil-next-line)
+	(define-key evil-normal-state-map (kbd "S") 'evil-join)
+	;; T is a would-be motion-state window command
+	(define-key evil-motion-state-map (kbd "t") 'evil-forward-char)
+	;; R is a would-be motion-state window command
+	(define-key evil-motion-state-map (kbd "r") 'evil-backward-char)
 
+	(define-key evil-motion-state-map (kbd "h") 'evil-find-char-to)
+	(define-key evil-motion-state-map (kbd "H") 'evil-find-char-to-backward)
+	(define-key evil-motion-state-map (kbd "j") 'evil-find-char)
+	(define-key evil-motion-state-map (kbd "J") 'evil-find-char-backward)
+	(define-key evil-normal-state-map (kbd "k") 'evil-substitute)
+	(define-key evil-normal-state-map (kbd "K") 'evil-change-whole-line)
+	(define-key evil-normal-state-map (kbd "l") 'evil-replace)
+	(define-key evil-normal-state-map (kbd "L") 'evil-enter-replace-state)
 
+	(define-key evil-normal-state-map (kbd "r") nil)
+	(define-key evil-normal-state-map (kbd "s") nil)
+
+	)
 
 
 
@@ -9,60 +30,6 @@
 
 	(require 'evil)
 	
-	(define-key evil-normal-state-map (kbd "n") 'evil-next-line)
-	
-	(define-key evil-normal-state-map (kbd "p") 'evil-previous-line)
-	
-
-	(define-key evil-normal-state-map (kbd "f") 'evil-forward-char)
-	(define-key evil-normal-state-map (kbd "b") 'evil-backward-char)
-	(define-key evil-normal-state-map (kbd "F") 'evil-forward-WORD-end)
-	(define-key evil-normal-state-map (kbd "B") 'evil-backward-WORD-begin)
-	;; (define-key evil-normal-state-map (kbd "b") 'evil-backward-word-begin) ;
-	;; (define-key evil-normal-state-map (kbd "f") 'evil-forward-word-end)
-	(define-key evil-normal-state-map (kbd "A") 'evil-first-non-blank)
-	(define-key evil-normal-state-map (kbd "E") 'evil-last-non-blank)
-  (define-key evil-normal-state-map (kbd "a") 'evil-beginning-of-line)
-  (define-key evil-normal-state-map (kbd "e") 'evil-end-of-line)
-	
-	(define-key evil-normal-state-map (kbd "^") 'evil-first-non-blank)
-	(define-key evil-normal-state-map (kbd "$") 'evil-end-of-line)
-
-	;; f b a e ^ $
-	(define-key evil-motion-state-map (kbd "n") 'evil-next-line)
-	(define-key evil-motion-state-map (kbd "p") 'evil-previous-line)
-
-	(define-key evil-motion-state-map (kbd "f") 'evil-forward-char)
-	(define-key evil-motion-state-map (kbd "b") 'evil-backward-char)
-	(define-key evil-motion-state-map (kbd "F") 'evil-forward-WORD-end)
-	(define-key evil-motion-state-map (kbd "B") 'evil-backward-WORD-begin)
-	(define-key evil-motion-state-map (kbd "A") 'evil-first-non-blank)
-	(define-key evil-motion-state-map (kbd "E") 'evil-last-non-blank)
-  (define-key evil-motion-state-map (kbd "a") 'evil-beginning-of-line)
-  (define-key evil-motion-state-map (kbd "e") 'evil-end-of-line)
-	(define-key evil-motion-state-map (kbd "^") 'evil-first-non-blank)
-	(define-key evil-motion-state-map (kbd "$") 'evil-end-of-line)
-
-	(define-key evil-normal-state-map (kbd "k") 'evil-delete)
-	(define-key evil-normal-state-map (kbd "K") 'evil-delete-line)
-	(define-key evil-normal-state-map (kbd "w") 'evil-yank)
-	(define-key evil-normal-state-map (kbd "W") 'evil-yank-line)
-	(define-key evil-normal-state-map (kbd "y") 'evil-paste-after)
-	(define-key evil-normal-state-map (kbd "Y") 'yank)
-	(define-key evil-normal-state-map (kbd "l") 'evil-append)
-	(define-key evil-normal-state-map (kbd "L") 'evil-append-line)
-
-	(define-key evil-motion-state-map (kbd "w") 'evil-yank)
-	(define-key evil-motion-state-map (kbd "W") 'evil-yank-line)
-	(define-key evil-motion-state-map (kbd "y") nil)
-	(define-key evil-motion-state-map (kbd "Y") nil)
-
-	;; Undo
-	(define-key evil-normal-state-map (kbd "u") 'evil-undo)
-	(define-key evil-normal-state-map (kbd "U") 'evil-redo)
-
-	(define-key evil-normal-state-map (kbd "x") 'evil-delete-char)
-
 	;; (define-key evil-visual-state-map (kbd "w") 'evil-yank)
 	;; (define-key evil-visual-state-map (kbd "W") 'evil-yank-line)
 	;; (define-key evil-visual-state-map (kbd "y") nil)
@@ -82,17 +49,40 @@
 	(evil-set-leader nil (kbd "<SPC>")) 
 	
 
-	(evil-define-key 'normal 'global (kbd "<leader>x") 'helm-M-x) 
+	(evil-define-key 'normal 'global (kbd "<leader>xx") 'helm-M-x)
+	(evil-define-key 'normal 'global (kbd "<leader>xs") 'save-buffer)
+	(evil-define-key 'normal 'global (kbd "<leader>xw") 'evil-window-map)
+	
 	(evil-define-key 'normal 'global (kbd "<leader>g") 'magit)
 	(evil-define-key 'normal 'global (kbd "<leader>w") 'hydra-window-management/body)
 
 
 	(evil-define-key 'normal 'global (kbd "<leader>fs") 'save-buffer)
 	(evil-define-key 'normal 'global (kbd "<leader>ff") 'helm-find-files)
-	(evil-define-key 'normal 'global (kbd "<leader>se")
-	'my-emacs-projectile-find-file)
+	
+	(evil-define-key 'normal 'global (kbd "<leader>se") 'my-emacs-projectile-find-file)
+	(evil-define-key 'normal 'global (kbd "<leader>se") 'my-emacs-projectile-find-file)
 
-	(evil-define-key 'normal 'global (kbd "<leader>pp") 'projectile-switch-project)
+	(evil-define-key 'normal 'global (kbd "<leader>b") nil)
+	(evil-define-key 'normal 'global (kbd "<leader>bb") 'helm-buffers-list)
+	(evil-define-key 'normal 'global (kbd "<leader>bn") 'next-buffer)
+	(evil-define-key 'normal 'global (kbd "<leader>bp") 'previous-buffer)
+
+	(evil-define-key 'normal 'global (kbd "<leader>xs") 'save-buffer)
+	(evil-define-key 'normal 'global (kbd "<leader>xf") 'helm-find-files)
+
+  (evil-define-key 'normal 'global (kbd "<leader>>") 'next-buffer)
+	(evil-define-key 'normal 'global (kbd "<leader><") 'previous-buffer)
+
+	(evil-define-key 'normal 'global (kbd "<leader>p") 'projectile-command-map)
+	(evil-define-key 'visual 'global (kbd "<f1>") 'evil-normal-state)
+	(evil-define-key 'insert 'global (kbd "<f1>") 'evil-normal-state)
+	(evil-define-key 'replace 'global (kbd "<f1>") 'evil-normal-state)
+	(evil-define-key 'insert 'global (kbd "<f1>") 'evil-normal-state)
+	(evil-define-key 'visual 'global (kbd "<f3>") 'evil-normal-state)
+	(evil-define-key 'insert 'global (kbd "<f3>") 'evil-normal-state)
+	(evil-define-key 'replace 'global (kbd "<f3>") 'evil-normal-state)
+	(evil-define-key 'insert 'global (kbd "<f3>") 'evil-normal-state)
 
 	;; (setq evil-emacs-state-cursor '("blue" box))
 	;; (setq evil-normal-state-cursor '("firebrfick" box))
@@ -100,9 +90,8 @@
 	;; (setq evil-insert-state-cursor '("dark violet" box))
 	;; (setq evil-replace-state-cursor '("red" bar))
 	;; (setq evil-operator-state-cursor '("red" hollow))
-
+	
 	(setq evil-move-beyond-eol t)
 	
 	)
-
 (provide 'bindings-evil-mode)
