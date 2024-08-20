@@ -51,6 +51,7 @@
 
 (package! clojure-ts-mode)
 (package! eval-sexp-fu)
+(package! evil-cleverparens)
 (package! elfmt
   :recipe (:host github :repo "riscy/elfmt"
            :files ("elfmt.el")))
