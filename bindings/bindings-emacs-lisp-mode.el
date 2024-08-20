@@ -96,7 +96,8 @@
 
 (add-hook 'emacs-lisp-mode-hook 'evilisp-mode)
 
-(add-hook 'emacs-lisp-mode-hook (lambda () (add-hook 'after-save-hook 'elfmt)))
+(add-hook 'emacs-lisp-mode-hook (lambda () (add-hook 'after-save-hook 'elfmt
+																										 nil 'make-it-local)))
 
 (provide 'bindings-emacs-lisp-mode)
 
