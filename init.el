@@ -1,79 +1,17 @@
-(defun efs/display-startup-time ()
-	(message "Emacs loaded in %s with %d garbage collections."
-					 (format "%.2f seconds"
-									 (float-time
-										(time-subtract after-init-time before-init-time)))
-					 gcs-done))
+(load-file "~/.emacs.d/elpaca-init.el")
 
-(add-hook 'emacs-startup-hook #'efs/display-startup-time)
 
-(defvar elpaca-installer-version 0.7)
-(defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
-(defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
-(defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
-(defvar elpaca-order
-  '(elpaca :repo "https://github.com/progfolio/elpaca.git"
-           :ref nil :depth 1
-           :files (:defaults "elpaca-test.el" (:exclude "extensions"))
-           :build (:not elpaca--activate-package)))
-(let* ((repo (expand-file-name "elpaca/" elpaca-repos-directory))
-       (build (expand-file-name "elpaca/" elpaca-builds-directory))
-       (order (cdr elpaca-order))
-       (default-directory repo))
-  (add-to-list 'load-path (if (file-exists-p build) build repo))
-  (unless (file-exists-p repo)
-    (make-directory repo t)
-    (when (< emacs-major-version 28) (require 'subr-x))
-    (condition-case-unless-debug err
-        (if-let ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
-                 ((zerop
-                   (apply #'call-process
-                          `("git" nil ,buffer t "clone"
-                            ,@(when-let ((depth (plist-get order :depth)))
-                                (list
-                                 (format "--depth=%d" depth)
-                                 "--no-single-branch"))
-                            ,(plist-get order :repo)
-                            ,repo))))
-                 ((zerop
-                   (call-process "git" nil buffer t "checkout"
-                                 (or (plist-get order :ref) "--"))))
-                 (emacs (concat invocation-directory invocation-name))
-                 ((zerop
-                   (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
-                                 "--eval"
-                                 "(byte-recompile-directory \".\" 0 'force)")))
-                 ((require 'elpaca))
-                 ((elpaca-generate-autoloads "elpaca" repo)))
-            (progn (message "%s" (buffer-string)) (kill-buffer buffer))
-          (error "%s" (with-current-buffer buffer (buffer-string))))
-      ((error)
-       (warn "%s" err)
-       (delete-directory repo 'recursive))))
-  (unless (require 'elpaca-autoloads nil t)
-    (require 'elpaca)
-    (elpaca-generate-autoloads "elpaca" repo)
-    (load "./elpaca-autoloads")))
-(add-hook 'after-init-hook #'elpaca-process-queues)
-(elpaca `(,@elpaca-order))
-
-;; Install use-package support
-(elpaca elpaca-use-package
-  ;; Enable use-package :ensure support for Elpaca.
-  (elpaca-use-package-mode))
 (add-to-list 'load-path "~/.emacs.d/elisp")
 (add-to-list 'load-path "~/.emacs.d/settings")
 (add-to-list 'load-path "~/.emacs.d/bindings")
 (elpaca
-    (catppuccin :repo "https://github.com/catppuccin/emacs.git" :main
-								"catppuccin-theme.el" :wait t)
+    (catppuccin :repo "https://github.com/catppuccin/emacs.git" :main "catppuccin-theme.el" :wait t)
 
 	(load-theme 'catppuccin :no-confirm))
 
 
 
 
-(elpaca 'srefactor)
 
 
 
@@ -127,40 +65,28 @@
 (require 'setup-defaults)
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
-(elpaca
-    (elfmt :host github :repo "riscy/elfmt" :main "elfmt.el")
-  (require 'elfmt))
+(elpaca (elfmt :host github :repo "riscy/elfmt" :main "elfmt.el") (require 'elfmt))
 (elpaca 'eval-sexp-fu (require 'eval-sexp-fu))
 
-;; (elpaca 'lispy
-;; 	(require 'lispy))
+(elpaca 'evil-cleverparens)
 
-(elpaca 'evil-cleverparens
-	;; (require 'evil-cleverparens-text-objects)
-	)
-
-
-
-;; (elpaca 'evil-lispy
-;; 	(require 'evil-lispy))
 (elpaca 'lispy)
 
 (elpaca 'company (global-company-mode))
 
-(elpaca 'clojure-ts-mode (require 'clojure-ts-mode))
+(elpaca 'clojure-ts-mode (require 'clojure-ts-mode) (require 'bindings-clojure-ts-mode))
 
 
 (elpaca 'paredit (require 'paredit))
 
-
-(setq pp-use-max-width 80)
+(elpaca 'cider-eval-sexp-fu (require 'cider-eval-sexp-fu))
 
 ;; (elpaca 'python-ts-mode)
 ;; (treesit-install-language-grammar 'python)
 
 (elpaca 'cider)
 
-(setq major-mode-remap-alist '((python-mode . python-ts-mode)))
+(setq major-mode-remap-alist '((clojure-mode . clojure-ts-mode) (python-mode . python-ts-mode)))
 
 ;; (message "hello world" (+ 1 1))
 ;; (add-hook 'lisp-mode-hook 'highlight-sexp-mode)
@@ -263,7 +189,7 @@
 			kept-new-versions 20   ; how many of the newest versions to keep
 			kept-old-versions 5    ; and how many of the old
 			)
-
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 (setq create-lockfiles nil)
 
 (elpaca 'exec-path-from-shell
@@ -283,9 +209,7 @@
 (add-hook 'fundamental-mode-hook 'display-line-numbers-mode)
 
 
-(defun my-mode-line-visual-bell ()
-  (setq visible-bell nil)
-  (setq ring-bell-function 'my-mode-line-visual-bell--flash))
+(defun my-mode-line-visual-bell () (setq visible-bell nil) (setq ring-bell-function 'my-mode-line-visual-bell--flash))
 
 (defun my-mode-line-visual-bell--flash ()
   (let ((frame (selected-frame)))

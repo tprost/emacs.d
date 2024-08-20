@@ -16,8 +16,9 @@
 
 ;; 	)
 
-
-(defhydra paredit ()
+(setq-default fill-column 120)
+(defhydra paredit
+  ()
 
 	("H-f" paredit-backward-up)
 	("H-s" paredit-forward-up)
@@ -36,7 +37,7 @@
 	(evil-define-key 'normal emacs-lisp-mode-map (kbd "M-<return>") 'eval-defun)
 	;; (evil-define-key 'normal emacs-lisp-mode-map (kbd "H-<RET>") 'eval-last-sexp)
 
-	(evil-define-key 'normal emacs-lisp-mode-map (kbd "<RET>")      'eval-sexp-fu-eval-sexp-inner-sexp)
+	(evil-define-key 'normal emacs-lisp-mode-map (kbd "<RET>") 'eval-sexp-fu-eval-sexp-inner-sexp)
 	(evil-define-key 'normal emacs-lisp-mode-map (kbd "<localleader><RET>f") 'eval-defun)
 	(evil-define-key 'normal emacs-lisp-mode-map (kbd "<localleader><RET>il") 'eval-sexp-fu-eval-sexp-inner-list)
 	(evil-define-key 'normal emacs-lisp-mode-map (kbd "<localleader><RET>is") 'eval-sexp-fu-eval-sexp-inner-sexp)
@@ -81,11 +82,9 @@
   :init-value nil
   :lighter " evilisp"
 	:keymap evilisp-mode-map
-	(when evilisp-mode
-    (evil-normalize-keymaps)))  ; Ensure keymaps are updated when mode is enabled
+	(when evilisp-mode (evil-normalize-keymaps)))  ; Ensure keymaps are updated when mode is enabled
 
-(evil-define-key 'visual evilisp-mode-map (kbd "a")
-	evilisp-outer-text-objects-map)
+(evil-define-key 'visual evilisp-mode-map (kbd "a") evilisp-outer-text-objects-map)
 (evil-define-key nil evilisp-mode-map (kbd "H-w") 'paredit-backward-up)
 (evil-define-key nil evilisp-mode-map (kbd "H-f") 'beginning-of-defun)
 (evil-define-key nil evilisp-mode-map (kbd "H-s") 'end-of-defun)
@@ -96,6 +95,8 @@
 (evil-define-key nil evilisp-mode-map (kbd "H-x") 'paredit-backward-down)
 
 (add-hook 'emacs-lisp-mode-hook 'evilisp-mode)
+
+(add-hook 'emacs-lisp-mode-hook (lambda () (add-hook 'after-save-hook 'elfmt)))
 
 (provide 'bindings-emacs-lisp-mode)
 
