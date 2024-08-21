@@ -125,13 +125,22 @@
   ;; T is a would-be motion-state window command
   (define-key evil-motion-state-map (kbd "t") 'evil-forward-char)
   ;; R is a would-be motion-state window command
+
   (define-key evil-motion-state-map (kbd "r") 'evil-backward-char)
+
+  ;; t
   (define-key evil-motion-state-map (kbd "h") 'evil-find-char-to)
   (define-key evil-motion-state-map (kbd "H") 'evil-find-char-to-backward)
+
+  ;; f
   (define-key evil-motion-state-map (kbd "j") 'evil-find-char)
   (define-key evil-motion-state-map (kbd "J") 'evil-find-char-backward)
+
+  ;; s
   (define-key evil-normal-state-map (kbd "k") 'evil-substitute)
   (define-key evil-normal-state-map (kbd "K") 'evil-change-whole-line)
+
+  ;; r
   (define-key evil-normal-state-map (kbd "l") 'evil-replace)
   (define-key evil-normal-state-map (kbd "L") 'evil-enter-replace-state)
   (define-key evil-normal-state-map (kbd "r") nil)
@@ -207,3 +216,41 @@
 
 (add-hook 'emacs-lisp-mode-hook 'evilisp-mode)
 (add-hook 'clojure-ts-mode-hook 'evilisp-mode)
+(use-package! cider-eval-sexp-fu)
+(map! :localleader
+      :map (clojure-ts-mode-map lisp-interaction-mode-map)
+      :desc "Expand macro" "m" #'macrostep-expand
+      (:prefix ("e" . "eval")
+               "b" #'cider-eval-buffer
+               "d" #'cider-eval-defun-at-point
+               "p" #'eval-sexp-fu-cider-eval-sexp-inner-list
+               "e" #'eval-sexp-fu-cider-eval-sexp-inner-sexp
+               "x" #'eval-expression
+               "r" #'cider-eval-region
+               "l" #'load-library)
+      )
+
+
+(after! cider-eval-sexp-fu
+  (evil-define-key 'visual clojure-ts-mode-map (kbd "<RET>") 'eval-sexp-fu-cider-eval-sexp-inner-sexp)
+  (evil-define-key 'normal clojure-ts-mode-map (kbd "<RET>") 'eval-sexp-fu-cider-eval-sexp-inner-sexp)
+  (evil-define-key 'normal clojure-ts-mode-map (kbd "C-<return>") 'eval-sexp-fu-cider-eval-sexp-inner-list)
+  (evil-define-key 'normal clojure-ts-mode-map (kbd "M-<return>") 'cider-eval-defun-at-point)
+  )
+
+(after! smart-parens
+  (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
+  (remove-hook 'emacs-lisp-mode-hook #'smartparens-global-mode)
+
+  (smartparens-global-mode -1)
+  )
+
+(after! evil
+  (evil-define-key 'visual 'global (kbd "<f1>") 'evil-normal-state)
+  (evil-define-key 'insert 'global (kbd "<f1>") 'evil-normal-state)
+  (evil-define-key 'replace 'global (kbd "<f1>") 'evil-normal-state)
+  (evil-define-key 'insert 'global (kbd "<f1>") 'evil-normal-state)
+  (evil-define-key 'visual 'global (kbd "<f3>") 'evil-normal-state)
+  (evil-define-key 'insert 'global (kbd "<f3>") 'evil-normal-state)
+  (evil-define-key 'replace 'global (kbd "<f3>") 'evil-normal-state)
+  (evil-define-key 'insert 'global (kbd "<f3>") 'evil-normal-state))
