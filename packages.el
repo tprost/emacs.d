@@ -55,3 +55,4 @@
 (package! elfmt
   :recipe (:host github :repo "riscy/elfmt"
            :files ("elfmt.el")))
+(package! cider-eval-sexp-fu)
