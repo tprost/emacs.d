@@ -56,3 +56,9 @@
   :recipe (:host github :repo "riscy/elfmt"
            :files ("elfmt.el")))
 (package! cider-eval-sexp-fu)
+(package! envrc)
+(package! exec-path-from-shell)
+(package! slite
+  :recipe (:host github :repo "tdrhq/slite"
+           :files ("slite.el")))
+(package! expand-region)

@@ -79,6 +79,8 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 (use-package! eval-sexp-fu)
+(use-package! slite)
+
 ;; (elpaca (elfmt :host github :repo "riscy/elfmt" :main "elfmt.el") (require 'elfmt))
 
 (after! eval-sexp-fu
@@ -108,8 +110,13 @@
                "l" #'find-library))
 
 (after! evil
-  (evil-define-key '(motion normal) evil-snipe-local-mode-map (kbd "s") nil)
   (evil-define-key '(motion normal) evil-snipe-override-local-mode-map (kbd "t") nil)
+  (evil-define-key '(motion normal) evil-snipe-local-mode-map (kbd "s") nil)
+  (evil-define-key '(motion normal) evil-snipe-local-mode-map (kbd "S") nil)
+
+  (evil-define-key '(motion normal) evil-snipe-local-mode-map (kbd "k") nil)
+  (evil-define-key '(motion normal) evil-snipe-local-mode-map (kbd "K") nil)
+
   (evil-define-key '(motion normal) evil-snipe-override-local-mode-map (kbd "f") nil)
   (evil-define-key '(motion normal) evil-snipe-override-local-mode-map (kbd "f") nil)
   (define-key evil-motion-state-map (kbd "f") 'evil-previous-line)
@@ -131,12 +138,16 @@
   ;; t
   (define-key evil-motion-state-map (kbd "h") 'evil-find-char-to)
   (define-key evil-motion-state-map (kbd "H") 'evil-find-char-to-backward)
+  (evil-define-key '(motion normal) evil-snipe-local-mode-map (kbd "h") 'evil-snipe-t)
+  (evil-define-key '(motion normal) evil-snipe-local-mode-map (kbd "H") 'evil-snipe-T)
 
   ;; f
   (define-key evil-motion-state-map (kbd "j") 'evil-find-char)
   (define-key evil-motion-state-map (kbd "J") 'evil-find-char-backward)
 
   ;; s
+  (evil-define-key '(motion normal) evil-snipe-local-mode-map (kbd "j") 'evil-snipe-s)
+  (evil-define-key '(motion normal) evil-snipe-local-mode-map (kbd "J") 'evil-snipe-S)
   (define-key evil-normal-state-map (kbd "k") 'evil-substitute)
   (define-key evil-normal-state-map (kbd "K") 'evil-change-whole-line)
 
@@ -148,7 +159,8 @@
   (evil-define-key 'insert 'global (kbd "C-c") 'evil-normal-state)
   )
 
-;; (setq major-mode-remap-alist '((clojure-mode . clojure-ts-mode) (python-mode . python-ts-mode)))
+(setq major-mode-remap-alist '((clojure-mode . clojure-ts-mode)
+                               (python-mode . python-ts-mode)))
 (map! :localleader
       :map (clojure-lisp-mode-map lisp-interaction-mode-map)
       :desc "Expand macro" "m" #'macrostep-expand
@@ -205,8 +217,10 @@
   (define-key evilisp-inner-text-objects-map "W" #'evil-cp-inner-WORD)
 
   (evil-define-key 'visual evilisp-mode-map (kbd "a") evilisp-outer-text-objects-map)
-  (evil-define-key nil evilisp-mode-map (kbd "H-w") 'paredit-backward-up)
   (evil-define-key nil evilisp-mode-map (kbd "H-f") 'beginning-of-defun)
+  (evil-define-key nil evilisp-mode-map (kbd "<localleader>l") 'evil-evilisp-state)
+  (map! :localleader :map evilisp-mode-map :n "l" 'evil-evilisp-state)
+  (evil-define-key nil evilisp-mode-map (kbd "H-w") 'paredit-backward-up)
   (evil-define-key nil evilisp-mode-map (kbd "H-s") 'end-of-defun)
   (evil-define-key nil evilisp-mode-map (kbd "H-p") 'paredit-forward-up)
   (evil-define-key nil evilisp-mode-map (kbd "H-r") 'paredit-backward)
@@ -216,6 +230,8 @@
 
 (add-hook 'emacs-lisp-mode-hook 'evilisp-mode)
 (add-hook 'clojure-ts-mode-hook 'evilisp-mode)
+(add-hook 'lisp-mode-hook 'evilisp-mode)
+
 (use-package! cider-eval-sexp-fu)
 (map! :localleader
       :map (clojure-ts-mode-map lisp-interaction-mode-map)
@@ -238,9 +254,10 @@
   (evil-define-key 'normal clojure-ts-mode-map (kbd "M-<return>") 'cider-eval-defun-at-point)
   )
 
-(after! smart-parens
+(after! smartparens
   (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
   (remove-hook 'emacs-lisp-mode-hook #'smartparens-global-mode)
+  (remove-hook 'lisp-mode-hook #'smartparens-global-mode)
 
   (smartparens-global-mode -1)
   )
@@ -254,3 +271,100 @@
   (evil-define-key 'insert 'global (kbd "<f3>") 'evil-normal-state)
   (evil-define-key 'replace 'global (kbd "<f3>") 'evil-normal-state)
   (evil-define-key 'insert 'global (kbd "<f3>") 'evil-normal-state))
+(use-package! envrc)
+(after! envrc
+  (envrc-global-mode))
+(after! exec-path-from-shell
+  (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize)))
+
+(after! popup
+  (set-popup-rule! "^\\*cider-repl"
+    :side 'top))
+
+(after! sly
+
+  (evil-define-key 'visual sly-mode-map (kbd "<RET>") 'eval-sexp-fu-sly-eval-expression-inner-sexp)
+  (evil-define-key 'normal sly-mode-map (kbd "<RET>") 'eval-sexp-fu-sly-eval-expression-inner-sexp)
+  (evil-define-key 'normal sly-mode-map (kbd "C-<return>") 'eval-sexp-fu-sly-eval-expression-inner-list)
+  (evil-define-key 'normal sly-mode-map (kbd "M-<return>") 'sly-eval-defun)
+  (evil-define-key 'normal sly-mode-map (kbd "<localleader><return>") '+slite-run-at-point-dwim)
+  (map! :localleader :n :map sly-mode-map
+        :desc "My Custom Command" "<return>" #'+slite-run-at-point-dwim)
+  )
+(after! magit
+  (set-popup-rule! "^magit"
+    :size 0.25                 ;; Makes the Magit status window take up half the frame height
+    :side 'bottom             ;; Opens the window at the bottom
+    :select t                 ;; Automatically focus the Magit window
+    ))
+(setq doom-theme 'doom-vibrant)
+(after! slite
+  (require 'slite)
+
+  (set-popup-rule! "^\\*Test Results\\*"
+    :size '+popup-shrink-to-fit ;; Makes the buffer take up 25% of the frame height
+    :side 'bottom              ;; Opens the window at the bottom
+    :select nil                  ;; Automatically focus the buffer when it opens
+    )
+
+  )
+
+
+(defun +slite-run-at-point (&optional raw-prefix-arg)
+  "See `sly-compile-defun' for RAW-PREFIX-ARG."
+  (interactive "P")
+  (call-interactively 'sly-compile-defun)
+  (slite-run
+   (prin1-to-string
+    `(parachute:test
+      ,(let ((name (sly-parse-toplevel-form)))
+         (if (symbolp name)
+             `(quote ,(intern (sly-qualify-cl-symbol-name name)))
+           name))))))
+(defun +slite-run-at-point-dwim (&optional raw-prefix-arg)
+  "See `sly-compile-defun' for RAW-PREFIX-ARG."
+  (interactive "P")
+  (call-interactively 'sly-compile-defun)
+  (slite-run
+   (cl-flet ((top-level-first-sexp
+               ()
+               (ignore-errors
+                 (save-excursion
+                   (goto-char (car (sly-region-for-defun-at-point)))
+                   (down-list 1)
+                   (car (last (sly-parse-context (read (current-buffer)))))))))
+     (prin1-to-string
+      `(,(cond
+          ((let ((case-fold-search t))
+             (string-match-p "define-test$" (symbol-name (top-level-first-sexp)) ))
+           'parachute:test)
+          (t
+           'fiveam:run))
+        ,(let ((name (sly-parse-toplevel-form)))
+           (if (symbolp name)
+               `',(intern (sly-qualify-cl-symbol-name name))
+             name)))))))
+(use-package! expand-region)
+
+
+
+
+(after! evil (evil-define-state evilisp
+               "basically paredit mode but as an evil state and i add more crap"
+               :tag " )> "
+               :suppress-keymap t
+               )
+  (evil-define-key 'evilisp 'global (kbd "f") 'beginning-of-defun)
+
+  (evil-define-key 'evilisp 'global (kbd "w") 'paredit-backward-up)
+  (evil-define-key 'evilisp 'global (kbd "f") 'beginning-of-defun)
+  (evil-define-key 'evilisp 'global (kbd "s") 'end-of-defun)
+  (evil-define-key 'evilisp 'global (kbd "p") 'paredit-forward-up)
+  (evil-define-key 'evilisp 'global (kbd "r") 'paredit-backward)
+  (evil-define-key 'evilisp 'global (kbd "t") 'paredit-forward)
+  (evil-define-key 'evilisp 'global (kbd "v") 'paredit-forward-down)
+
+  (evil-define-key 'evilisp 'global (kbd "x") 'paredit-backward-down)
+  (evil-define-key 'evilisp 'global (kbd "<f3>") 'evil-normal-state)
+  (evil-define-key 'evilisp 'global (kbd "d") 'paredit-kill-region)
+  )
