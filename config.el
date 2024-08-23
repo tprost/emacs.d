@@ -181,56 +181,22 @@
                "l" #'find-library))
 
 
-;;
-;; Setup my little "Evilisp" mode
-;;
-(defvar evilisp-mode-map (make-sparse-keymap))
-(define-minor-mode evilisp-mode
-  "A minor mode for custom Evil text objects specific to Lisp."
-  :init-value nil
-  :lighter " evilisp"
-  :keymap evilisp-mode-map
-  (when evilisp-mode (evil-normalize-keymaps)))
 
 (use-package! evil-cleverparens)
+(after! evil-cleverparens
+  (require 'evil-cleverparens-text-objects)
 
-(after! evil
-  (defvar evilisp-outer-text-objects-map
-    (let ((map (make-sparse-keymap)))
-      (set-keymap-parent map evil-outer-text-objects-map)
-      map)
-    "Keymap for evilisp mode's outer text objects.")
+  (add-to-list 'evil-cp-additional-movement-keys '("R" . evil-cp-backward-sexp))
+  (add-to-list 'evil-cp-additional-movement-keys '("T" . evil-cp-forward-sexp))
 
-  (defvar evilisp-inner-text-objects-map
-    (let ((map (make-sparse-keymap)))
-      (set-keymap-parent map evil-inner-text-objects-map)
-      map)
-    "Keymap for evilisp mode's outer text objects.")
+  (setq evil-cp-additional-movement-keys
+        (assoc-delete-all "H" evil-cp-additional-movement-keys))
+  (setq evil-cp-additional-movement-keys
+        (assoc-delete-all "L" evil-cp-additional-movement-keys))
+  (evil-cp-set-additional-movement-keys)
+  )
 
-  (define-key evilisp-outer-text-objects-map "f" #'evil-cp-a-form)
-  (define-key evilisp-inner-text-objects-map "f" #'evil-cp-inner-form)
-  (define-key evilisp-outer-text-objects-map "c" #'evil-cp-a-comment)
-  (define-key evilisp-inner-text-objects-map "c" #'evil-cp-inner-comment)
-  (define-key evilisp-outer-text-objects-map "d" #'evil-cp-a-defun)
-  (define-key evilisp-inner-text-objects-map "d" #'evil-cp-inner-defun)
-  (define-key evilisp-outer-text-objects-map "W" #'evil-cp-a-WORD)
-  (define-key evilisp-inner-text-objects-map "W" #'evil-cp-inner-WORD)
-
-  (evil-define-key 'visual evilisp-mode-map (kbd "a") evilisp-outer-text-objects-map)
-  (evil-define-key nil evilisp-mode-map (kbd "H-f") 'beginning-of-defun)
-  (evil-define-key nil evilisp-mode-map (kbd "<localleader>l") 'evil-evilisp-state)
-  (map! :localleader :map evilisp-mode-map :n "l" 'evil-evilisp-state)
-  (evil-define-key nil evilisp-mode-map (kbd "H-w") 'paredit-backward-up)
-  (evil-define-key nil evilisp-mode-map (kbd "H-s") 'end-of-defun)
-  (evil-define-key nil evilisp-mode-map (kbd "H-p") 'paredit-forward-up)
-  (evil-define-key nil evilisp-mode-map (kbd "H-r") 'paredit-backward)
-  (evil-define-key nil evilisp-mode-map (kbd "H-t") 'paredit-forward)
-  (evil-define-key nil evilisp-mode-map (kbd "H-v") 'paredit-forward-down)
-  (evil-define-key nil evilisp-mode-map (kbd "H-x") 'paredit-backward-down))
-
-(add-hook 'emacs-lisp-mode-hook 'evilisp-mode)
-(add-hook 'clojure-ts-mode-hook 'evilisp-mode)
-(add-hook 'lisp-mode-hook 'evilisp-mode)
+(load! "evilisp.el")
 
 (use-package! cider-eval-sexp-fu)
 (map! :localleader
@@ -263,10 +229,10 @@
   )
 
 (after! evil
-  (evil-define-key 'visual 'global (kbd "<f1>") 'evil-normal-state)
-  (evil-define-key 'insert 'global (kbd "<f1>") 'evil-normal-state)
-  (evil-define-key 'replace 'global (kbd "<f1>") 'evil-normal-state)
-  (evil-define-key 'insert 'global (kbd "<f1>") 'evil-normal-state)
+  (evil-define-key 'visual 'global (kbd "<f2>") 'evil-normal-state)
+  (evil-define-key 'insert 'global (kbd "<f2>") 'evil-normal-state)
+  (evil-define-key 'replace 'global (kbd "<f2>") 'evil-normal-state)
+  (evil-define-key 'insert 'global (kbd "<f2>") 'evil-normal-state)
   (evil-define-key 'visual 'global (kbd "<f3>") 'evil-normal-state)
   (evil-define-key 'insert 'global (kbd "<f3>") 'evil-normal-state)
   (evil-define-key 'replace 'global (kbd "<f3>") 'evil-normal-state)
@@ -366,5 +332,16 @@
 
   (evil-define-key 'evilisp 'global (kbd "x") 'paredit-backward-down)
   (evil-define-key 'evilisp 'global (kbd "<f3>") 'evil-normal-state)
-  (evil-define-key 'evilisp 'global (kbd "d") 'paredit-kill-region)
+  (evil-define-key 'evilisp 'global (kbd "d") nil)
   )
+(defun +expand-region-to-parent ()
+  "Expand the region to the parent form in Lisp."
+  (interactive)
+  (er/expand-region 2)
+  )
+
+;; (use-package! bind-map)
+;; (use-package! evil-lisp-state
+;;   (after! evil-lisp-state
+
+;;     (evil-lisp-state-leader "z")))
