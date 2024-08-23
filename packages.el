@@ -62,3 +62,5 @@
   :recipe (:host github :repo "tdrhq/slite"
            :files ("slite.el")))
 (package! expand-region)
+(package! lispy)
+(package! evil-lisp-state)
