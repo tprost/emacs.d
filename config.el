@@ -82,32 +82,6 @@
 (use-package! slite)
 
 ;; (elpaca (elfmt :host github :repo "riscy/elfmt" :main "elfmt.el") (require 'elfmt))
-
-(after! eval-sexp-fu
-  (evil-define-key 'visual emacs-lisp-mode-map (kbd "<RET>") 'eval-sexp-fu-eval-sexp-inner-sexp)
-  (evil-define-key 'normal emacs-lisp-mode-map (kbd "C-<return>") 'eval-sexp-fu-eval-sexp-inner-list)
-  (evil-define-key 'normal emacs-lisp-mode-map (kbd "M-<return>") 'eval-defun)
-  (evil-define-key 'normal emacs-lisp-mode-map (kbd "<RET>") 'eval-sexp-fu-eval-sexp-inner-sexp))
-
-(map! :localleader
-      :map (emacs-lisp-mode-map lisp-interaction-mode-map)
-      :desc "Expand macro" "m" #'macrostep-expand
-      (:prefix ("d" . "debug")
-               "f" #'+emacs-lisp/edebug-instrument-defun-on
-               "F" #'+emacs-lisp/edebug-instrument-defun-off)
-      (:prefix ("e" . "eval")
-               "b" #'eval-buffer
-               "d" #'eval-defun
-               "p" #'eval-sexp-fu-eval-sexp-inner-list
-               "e" #'eval-sexp-fu-eval-sexp-inner-sexp
-               "x" #'eval-expression
-               "r" #'eval-region
-               "l" #'load-library)
-      (:prefix ("g" . "goto")
-               "f" #'find-function
-               "v" #'find-variable
-               "l" #'find-library))
-
 (after! evil
   (evil-define-key '(motion normal) evil-snipe-override-local-mode-map (kbd "t") nil)
   (evil-define-key '(motion normal) evil-snipe-local-mode-map (kbd "s") nil)
@@ -195,29 +169,12 @@
 
 (load! "evilisp.el")
 
-(use-package! cider-eval-sexp-fu)
-(map! :localleader
-      :map (clojure-ts-mode-map lisp-interaction-mode-map)
-      :desc "Expand macro" "m" #'macrostep-expand
-      (:prefix ("e" . "eval")
-               "b" #'cider-eval-buffer
-               "d" #'cider-eval-defun-at-point
-               "p" #'eval-sexp-fu-cider-eval-sexp-inner-list
-               "e" #'eval-sexp-fu-cider-eval-sexp-inner-sexp
-               "x" #'eval-expression
-               "r" #'cider-eval-region
-               "l" #'load-library))
+(load! "config-clojure.el")
+(load! "config-emacs-lisp.el")
 
-
-(after! cider-eval-sexp-fu
-  (evil-define-key 'visual clojure-ts-mode-map (kbd "<RET>") 'eval-sexp-fu-cider-eval-sexp-inner-sexp)
-  (evil-define-key 'normal clojure-ts-mode-map (kbd "<RET>") 'eval-sexp-fu-cider-eval-sexp-inner-sexp)
-  (evil-define-key 'normal clojure-ts-mode-map (kbd "C-<return>") 'eval-sexp-fu-cider-eval-sexp-inner-list)
-  (evil-define-key 'normal clojure-ts-mode-map (kbd "M-<return>") 'cider-eval-defun-at-point))
-
+;; disable smartparns everywhere
 (after! smartparens
   (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
-  (remove-hook 'emacs-lisp-mode-hook #'smartparens-global-mode)
   (remove-hook 'lisp-mode-hook #'smartparens-global-mode)
 
   (smartparens-global-mode -1))
@@ -237,95 +194,13 @@
 (after! exec-path-from-shell
   (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize)))
 
-(after! popup
-  (set-popup-rule! "^\\*cider-repl"
-    :side 'top))
+(load! "config-rice.el")
 
-(after! sly
-
-  (evil-define-key 'visual sly-mode-map (kbd "<RET>") 'eval-sexp-fu-sly-eval-expression-inner-sexp)
-  (evil-define-key 'normal sly-mode-map (kbd "<RET>") 'eval-sexp-fu-sly-eval-expression-inner-sexp)
-  (evil-define-key 'normal sly-mode-map (kbd "C-<return>") 'eval-sexp-fu-sly-eval-expression-inner-list)
-  (evil-define-key 'normal sly-mode-map (kbd "M-<return>") 'sly-eval-defun)
-  (evil-define-key 'normal sly-mode-map (kbd "<localleader><return>") '+slite-run-at-point-dwim)
-  (map! :localleader :n :map sly-mode-map
-        :desc "My Custom Command" "<return>" #'+slite-run-at-point-dwim))
-
-(after! magit
-  (set-popup-rule! "^magit"
-    :size 0.25                 ;; Makes the Magit status window take up half the frame height
-    :side 'bottom             ;; Opens the window at the bottom
-    :select t                 ;; Automatically focus the Magit window
-    ))
-(setq doom-theme 'doom-vibrant)
-(after! slite
-  (require 'slite)
-
-  (set-popup-rule! "^\\*Test Results\\*"
-    :size '+popup-shrink-to-fit ;; Makes the buffer take up 25% of the frame height
-    :side 'bottom              ;; Opens the window at the bottom
-    :select nil                  ;; Automatically focus the buffer when it opens
-    ))
-
-
-(defun +slite-run-at-point (&optional raw-prefix-arg)
-  "See `sly-compile-defun' for RAW-PREFIX-ARG."
-  (interactive "P")
-  (call-interactively 'sly-compile-defun)
-  (slite-run
-   (prin1-to-string
-    `(parachute:test
-      ,(let ((name (sly-parse-toplevel-form)))
-         (if (symbolp name)
-             `(quote ,(intern (sly-qualify-cl-symbol-name name)))
-           name))))))
-
-(defun +slite-run-at-point-dwim (&optional raw-prefix-arg)
-  "See `sly-compile-defun' for RAW-PREFIX-ARG."
-  (interactive "P")
-  (call-interactively 'sly-compile-defun)
-  (slite-run
-   (cl-flet ((top-level-first-sexp
-               ()
-               (ignore-errors
-                 (save-excursion
-                   (goto-char (car (sly-region-for-defun-at-point)))
-                   (down-list 1)
-                   (car (last (sly-parse-context (read (current-buffer)))))))))
-     (prin1-to-string
-      `(,(cond
-          ((let ((case-fold-search t))
-             (string-match-p "define-test$" (symbol-name (top-level-first-sexp)) ))
-           'parachute:test)
-          (t
-           'fiveam:run))
-        ,(let ((name (sly-parse-toplevel-form)))
-           (if (symbolp name)
-               `',(intern (sly-qualify-cl-symbol-name name))
-             name)))))))
 (use-package! expand-region)
 
 
+(load! "config-common-lisp.el")
 
-
-(after! evil (evil-define-state evilisp
-               "basically paredit mode but as an evil state and i add more crap"
-               :tag " )> "
-               :suppress-keymap t
-               )
-  (evil-define-key 'evilisp 'global (kbd "f") 'beginning-of-defun)
-
-  (evil-define-key 'evilisp 'global (kbd "w") 'paredit-backward-up)
-  (evil-define-key 'evilisp 'global (kbd "f") 'beginning-of-defun)
-  (evil-define-key 'evilisp 'global (kbd "s") 'end-of-defun)
-  (evil-define-key 'evilisp 'global (kbd "p") 'paredit-forward-up)
-  (evil-define-key 'evilisp 'global (kbd "r") 'paredit-backward)
-  (evil-define-key 'evilisp 'global (kbd "t") 'paredit-forward)
-  (evil-define-key 'evilisp 'global (kbd "v") 'paredit-forward-down)
-
-  (evil-define-key 'evilisp 'global (kbd "x") 'paredit-backward-down)
-  (evil-define-key 'evilisp 'global (kbd "<f3>") 'evil-normal-state)
-  (evil-define-key 'evilisp 'global (kbd "d") nil))
 
 (defun +expand-region-to-parent ()
   "Expand the region to the parent form in Lisp."
@@ -349,25 +224,3 @@
       (backward-char))                  ; Delete the whitespace
     (message "Trailing parentheses cleaned up!")))
 
-(defun my-dweebery-is-always-greater ()
-  (let* ((banner '(
-                   "                    Music can change the world.                  "
-                   " _______________________________________________________________ "
-                   "|| | | ||| | ||| | | ||| | ||| | | ||| | ||| | | ||| | ||| | | ||"
-                   "||_|_|_|||_|_|||_|_|_|||_|_|||_|_|_|||_|_|||_|_|_|||_|_|||_|_|_||"
-                   "| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |"
-                   "|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|"))
-         (longest-line (apply #'max (mapcar #'length banner))))
-    (put-text-property
-     (point)
-     (dolist (line banner (point))
-       (insert (+doom-dashboard--center
-                +doom-dashboard--width
-                (concat line (make-string (max 0 (- longest-line (length line))) 32)))
-               "\n"))
-     'face 'doom-dashboard-banner)))
-
-(setq +doom-dashboard-ascii-banner-fn #'my-dweebery-is-always-greater)
-
-
-(setq default-frame-alist '((left . 0) (width . 141) (fullscreen . fullheight)))

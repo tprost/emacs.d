@@ -127,6 +127,21 @@
   (evil-define-key nil evilisp-mode-map (kbd "H-S") 'paredit-split-sexp)
   (evil-define-key nil evilisp-mode-map (kbd "H-J") 'paredit-join-sexp))
 
-(add-hook 'emacs-lisp-mode-hook 'evilisp-mode)
-(add-hook 'clojure-ts-mode-hook 'evilisp-mode)
-(add-hook 'lisp-mode-hook 'evilisp-mode)
+(after! evil (evil-define-state evilisp
+               "basically paredit mode but as an evil state and i add more crap"
+               :tag " )> "
+               :suppress-keymap t
+               )
+  (evil-define-key 'evilisp 'global (kbd "f") 'beginning-of-defun)
+
+  (evil-define-key 'evilisp 'global (kbd "w") 'paredit-backward-up)
+  (evil-define-key 'evilisp 'global (kbd "f") 'beginning-of-defun)
+  (evil-define-key 'evilisp 'global (kbd "s") 'end-of-defun)
+  (evil-define-key 'evilisp 'global (kbd "p") 'paredit-forward-up)
+  (evil-define-key 'evilisp 'global (kbd "r") 'paredit-backward)
+  (evil-define-key 'evilisp 'global (kbd "t") 'paredit-forward)
+  (evil-define-key 'evilisp 'global (kbd "v") 'paredit-forward-down)
+
+  (evil-define-key 'evilisp 'global (kbd "x") 'paredit-backward-down)
+  (evil-define-key 'evilisp 'global (kbd "<f3>") 'evil-normal-state)
+  (evil-define-key 'evilisp 'global (kbd "d") nil))
