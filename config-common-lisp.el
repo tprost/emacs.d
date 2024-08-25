@@ -1,4 +1,6 @@
 ;;; config-common-lisp.el -*- lexical-binding: t; -*-
+(use-package! eval-sexp-fu)
+(use-package! slite)
 (after! sly
 
   (evil-define-key 'visual sly-mode-map (kbd "<RET>") 'eval-sexp-fu-sly-eval-expression-inner-sexp)
@@ -9,12 +11,6 @@
   (map! :localleader :n :map sly-mode-map
         :desc "My Custom Command" "<return>" #'+slite-run-at-point-dwim))
 
-(after! magit
-  (set-popup-rule! "^magit"
-    :size 0.25                 ;; Makes the Magit status window take up half the frame height
-    :side 'bottom             ;; Opens the window at the bottom
-    :select t                 ;; Automatically focus the Magit window
-    ))
 
 (after! slite
   (require 'slite)
@@ -62,5 +58,26 @@
                `',(intern (sly-qualify-cl-symbol-name name))
              name)))))))
 
+(map! :localleader
+      :map (clojure-lisp-mode-map lisp-interaction-mode-map)
+      :desc "Expand macro" "m" #'macrostep-expand
+      (:prefix ("d" . "debug")
+               "f" #'+emacs-lisp/edebug-instrument-defun-on
+               "F" #'+emacs-lisp/edebug-instrument-defun-off)
+      (:prefix ("e" . "eval")
+               "b" #'eval-buffer
+               "d" #'eval-defun
+               "p" #'eval-sexp-fu-eval-sexp-inner-list
+               "e" #'eval-sexp-fu-eval-sexp-inner-sexp
+               "x" #'eval-expression
+               "r" #'eval-region
+               "l" #'load-library)
+      (:prefix ("g" . "goto")
+               "f" #'find-function
+               "v" #'find-variable
+               "l" #'find-library))
+
+(after! smartparens
+  (remove-hook 'lisp-mode-hook #'smartparens-global-mode))
 
 (add-hook 'lisp-mode-hook 'evilisp-mode)

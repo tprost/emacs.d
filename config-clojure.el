@@ -1,5 +1,6 @@
 ;;; config-clojure.el -*- lexical-binding: t; -*-
 
+(use-package! eval-sexp-fu)
 (use-package! cider-eval-sexp-fu)
 (map! :localleader
       :map (clojure-ts-mode-map lisp-interaction-mode-map)

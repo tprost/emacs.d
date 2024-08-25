@@ -1,6 +1,7 @@
 ;;; config-emacs-lisp.el -*- lexical-binding: t; -*-
 
 
+(use-package! eval-sexp-fu)
 (add-hook 'emacs-lisp-mode-hook 'evilisp-mode)
 
 (after! smartparens
