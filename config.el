@@ -87,8 +87,7 @@
   (evil-define-key 'visual emacs-lisp-mode-map (kbd "<RET>") 'eval-sexp-fu-eval-sexp-inner-sexp)
   (evil-define-key 'normal emacs-lisp-mode-map (kbd "C-<return>") 'eval-sexp-fu-eval-sexp-inner-list)
   (evil-define-key 'normal emacs-lisp-mode-map (kbd "M-<return>") 'eval-defun)
-  (evil-define-key 'normal emacs-lisp-mode-map (kbd "<RET>") 'eval-sexp-fu-eval-sexp-inner-sexp)
-  )
+  (evil-define-key 'normal emacs-lisp-mode-map (kbd "<RET>") 'eval-sexp-fu-eval-sexp-inner-sexp))
 
 (map! :localleader
       :map (emacs-lisp-mode-map lisp-interaction-mode-map)
@@ -156,8 +155,7 @@
   (define-key evil-normal-state-map (kbd "L") 'evil-enter-replace-state)
   (define-key evil-normal-state-map (kbd "r") nil)
   (define-key evil-normal-state-map (kbd "s") nil)
-  (evil-define-key 'insert 'global (kbd "C-c") 'evil-normal-state)
-  )
+  (evil-define-key 'insert 'global (kbd "C-c") 'evil-normal-state))
 
 (setq major-mode-remap-alist '((clojure-mode . clojure-ts-mode)
                                (python-mode . python-ts-mode)))
@@ -193,8 +191,7 @@
         (assoc-delete-all "H" evil-cp-additional-movement-keys))
   (setq evil-cp-additional-movement-keys
         (assoc-delete-all "L" evil-cp-additional-movement-keys))
-  (evil-cp-set-additional-movement-keys)
-  )
+  (evil-cp-set-additional-movement-keys))
 
 (load! "evilisp.el")
 
@@ -209,24 +206,21 @@
                "e" #'eval-sexp-fu-cider-eval-sexp-inner-sexp
                "x" #'eval-expression
                "r" #'cider-eval-region
-               "l" #'load-library)
-      )
+               "l" #'load-library))
 
 
 (after! cider-eval-sexp-fu
   (evil-define-key 'visual clojure-ts-mode-map (kbd "<RET>") 'eval-sexp-fu-cider-eval-sexp-inner-sexp)
   (evil-define-key 'normal clojure-ts-mode-map (kbd "<RET>") 'eval-sexp-fu-cider-eval-sexp-inner-sexp)
   (evil-define-key 'normal clojure-ts-mode-map (kbd "C-<return>") 'eval-sexp-fu-cider-eval-sexp-inner-list)
-  (evil-define-key 'normal clojure-ts-mode-map (kbd "M-<return>") 'cider-eval-defun-at-point)
-  )
+  (evil-define-key 'normal clojure-ts-mode-map (kbd "M-<return>") 'cider-eval-defun-at-point))
 
 (after! smartparens
   (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
   (remove-hook 'emacs-lisp-mode-hook #'smartparens-global-mode)
   (remove-hook 'lisp-mode-hook #'smartparens-global-mode)
 
-  (smartparens-global-mode -1)
-  )
+  (smartparens-global-mode -1))
 
 (after! evil
   (evil-define-key 'visual 'global (kbd "<f2>") 'evil-normal-state)
@@ -255,8 +249,8 @@
   (evil-define-key 'normal sly-mode-map (kbd "M-<return>") 'sly-eval-defun)
   (evil-define-key 'normal sly-mode-map (kbd "<localleader><return>") '+slite-run-at-point-dwim)
   (map! :localleader :n :map sly-mode-map
-        :desc "My Custom Command" "<return>" #'+slite-run-at-point-dwim)
-  )
+        :desc "My Custom Command" "<return>" #'+slite-run-at-point-dwim))
+
 (after! magit
   (set-popup-rule! "^magit"
     :size 0.25                 ;; Makes the Magit status window take up half the frame height
@@ -271,9 +265,7 @@
     :size '+popup-shrink-to-fit ;; Makes the buffer take up 25% of the frame height
     :side 'bottom              ;; Opens the window at the bottom
     :select nil                  ;; Automatically focus the buffer when it opens
-    )
-
-  )
+    ))
 
 
 (defun +slite-run-at-point (&optional raw-prefix-arg)
@@ -287,6 +279,7 @@
          (if (symbolp name)
              `(quote ,(intern (sly-qualify-cl-symbol-name name)))
            name))))))
+
 (defun +slite-run-at-point-dwim (&optional raw-prefix-arg)
   "See `sly-compile-defun' for RAW-PREFIX-ARG."
   (interactive "P")

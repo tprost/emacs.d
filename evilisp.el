@@ -45,6 +45,9 @@
   (evil-define-key nil evilisp-mode-map (kbd "<localleader>l") 'evil-evilisp-state)
   (map! :localleader :map evilisp-mode-map :n "l" 'evil-evilisp-state)
 
+  (evil-define-key nil evilisp-mode-map (kbd "<localleader>c") '+clean-up-trailing-parentheses)
+  (map! :localleader :n :map evilisp-mode-map
+        :desc "Tidy trailing parentheses" "c" #'+clean-up-trailing-parentheses)
 
   (evil-define-key nil evilisp-mode-map (kbd "M-f") 'evil-cp-beginning-of-defun)
   (evil-define-key nil evilisp-mode-map (kbd "M-s") 'evil-cp-end-of-defun)
@@ -122,8 +125,7 @@
   (evil-define-key nil evilisp-mode-map (kbd "H-{") 'paredit-backward-barf-sexp)
 
   (evil-define-key nil evilisp-mode-map (kbd "H-S") 'paredit-split-sexp)
-  (evil-define-key nil evilisp-mode-map (kbd "H-J") 'paredit-join-sexp)
-  )
+  (evil-define-key nil evilisp-mode-map (kbd "H-J") 'paredit-join-sexp))
 
 (add-hook 'emacs-lisp-mode-hook 'evilisp-mode)
 (add-hook 'clojure-ts-mode-hook 'evilisp-mode)
