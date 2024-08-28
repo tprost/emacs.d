@@ -20,7 +20,8 @@
      'face 'doom-dashboard-banner)))
 (setq +doom-dashboard-ascii-banner-fn #'my-dweebery-is-always-greater)
 (setq default-frame-alist '((left . 0) (width . 141) (fullscreen . fullheight)))
-
+(add-to-list 'default-frame-alist
+             '(vertical-scroll-bars . nil))
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use

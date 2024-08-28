@@ -29,3 +29,5 @@
   (remove-hook 'clojure-ts-hook #'smartparens-global-mode))
 
 (add-hook 'clojure-ts-mode-hook 'evilisp-mode)
+(add-hook 'clojure-ts-mode-hook
+          (lambda () (add-hook 'after-save-hook 'cider-format-buffer)))

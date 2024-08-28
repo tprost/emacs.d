@@ -15,6 +15,19 @@
   "Remove any whitespace between the last symbol in a defun and the closing parenthesis."
   (interactive)
   (save-excursion
+    (sp-backward-up-sexp)
+    (forward-char)
+    (sp-end-of-sexp)
+    (backward-char)                     ; Move back over the last symbol
+    (while (looking-at "[ \t\n]")       ; While there's whitespace
+      (delete-char 1)
+      (backward-char))                  ; Delete the whitespace
+    (message "Trailing parentheses cleaned up!")))
+
+(defun +clean-up-trailing-parentheses-in-defun ()
+  "Remove any whitespace between the last symbol in a defun and the closing parenthesis."
+  (interactive)
+  (save-excursion
     (beginning-of-defun)
     (evil-cp-end-of-defun)                                    ; Move to the end of the defun
     (backward-char)                     ; Move back over the last symbol
@@ -22,7 +35,6 @@
       (delete-char 1)
       (backward-char))                  ; Delete the whitespace
     (message "Trailing parentheses cleaned up!")))
-
 
 (use-package! evil-cleverparens)
 (after! evil-cleverparens

@@ -61,6 +61,7 @@
 
 (load! "evilisp.el")
 
+(load! "config-evil.el")
 (load! "config-clojure.el")
 (load! "config-emacs-lisp.el")
 
@@ -81,3 +82,34 @@
 (load! "config-common-lisp.el")
 (load! "config-magit.el")
 
+(use-package! redshank)
+(use-package! slime)
+
+
+(after! redshank
+  (require 'redshank))
+(defun +extract-to-common-lisp-function (name)
+  "Extract the current region into a new Common Lisp function with NAME."
+  (interactive "sEnter the name of the new function: ")
+  (let ((start (region-beginning))
+        (end (region-end))
+        (defun-name (read-from-string (concat name "()"))))
+    (if (use-region-p)
+        (progn
+          ;; Replace the region with a function call
+          (kill-region start end)
+          (insert (format "%s" defun-name))
+
+          ;; Go to the beginning of the current defun and insert the new function
+          (save-excursion
+
+            (beginning-of-defun)
+            (insert "(defun ")
+            (insert defun-name)
+            (insert "()")
+
+
+            (yank)
+            (insert ")")
+            )
+          (message "No region selected.")))))

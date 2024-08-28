@@ -64,3 +64,6 @@
 (package! expand-region)
 (package! lispy)
 (package! evil-lisp-state)
+(package! redshank)
+(package! slime)
+(package! common-lisp-snippets)

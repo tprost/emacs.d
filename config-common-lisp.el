@@ -81,3 +81,7 @@
   (remove-hook 'lisp-mode-hook #'smartparens-global-mode))
 
 (add-hook 'lisp-mode-hook 'evilisp-mode)
+
+(use-package! common-lisp-snippets)
+(after! common-lisp-snippets
+  (require 'common-lisp-snippets))
