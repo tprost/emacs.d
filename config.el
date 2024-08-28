@@ -59,6 +59,10 @@
 (defun is-macosx ()
   (eq system-type 'darwin))
 
+;;; add to ~/.doom.d/config.el
+(setq doom-leader-key "<SPC>"
+      doom-localleader-key "<SPC> m")
+
 (load! "evilisp.el")
 
 (load! "config-evil.el")
