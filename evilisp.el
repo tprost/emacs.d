@@ -115,7 +115,13 @@
       (evil-define-key nil evilisp-mode-map (kbd "M-t") 'evil-cp-forward-sexp)
       (evil-define-key nil evilisp-mode-map (kbd "M-T") 'evil-cp-up-sexp)
       (evil-define-key nil evilisp-mode-map (kbd "C-M-r") 'evil-cp-drag-backward)
-      (evil-define-key nil evilisp-mode-map (kbd "C-M-t") 'evil-cp-drag-forward)))
+      (evil-define-key nil evilisp-mode-map (kbd "C-M-t") 'evil-cp-drag-forward)
+
+
+      ;; (evil-define-key nil evilisp-mode-map (kbd "C-M-R") 'evil-cp-raise-form)
+      ;; (evil-define-key nil evilisp-mode-map (kbd "C-M-r") 'sp-raise-sexp)
+
+      ))
   (evil-define-key nil evilisp-mode-map (kbd "M-w") 'evil-cp-forward-symbol-begin)
   (evil-define-key nil evilisp-mode-map (kbd "M-e") 'evil-cp-forward-symbol-end)
   (evil-define-key nil evilisp-mode-map (kbd "M-b") 'evil-cp-backward-symbol-begin)
@@ -136,8 +142,10 @@
   (evil-define-key nil evilisp-mode-map (kbd "C-M-J") 'sp-join-sexp)
   (evil-define-key nil evilisp-mode-map (kbd "C-M-s") 'sp-splice-sexp)
   (evil-define-key nil evilisp-mode-map (kbd "C-M-S") 'sp-split-sexp)
-  (evil-define-key nil evilisp-mode-map (kbd "C-M-R") 'evil-cp-raise-form)
-  (evil-define-key nil evilisp-mode-map (kbd "C-M-r") 'sp-raise-sexp)
+  (evil-define-key nil evilisp-mode-map (kbd "C-M-s") 'sp-forward-slurp-sexp)
+  (evil-define-key nil evilisp-mode-map (kbd "C-M-S") 'sp-backward-slurp-sexp)
+  (evil-define-key nil evilisp-mode-map (kbd "C-M-b") 'sp-forward-barf-sexp)
+  (evil-define-key nil evilisp-mode-map (kbd "C-M-B") 'sp-backward-barf-sexp)
 
   (evil-define-key nil evilisp-mode-map (kbd "C-M-i") 'evil-cp-insert-at-beginning-of-form)
   (evil-define-key nil evilisp-mode-map (kbd "C-M-w") 'evil-cp-copy-paste-form)

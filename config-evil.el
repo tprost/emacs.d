@@ -60,3 +60,5 @@
   (evil-define-key 'insert 'global (kbd "<f3>") 'evil-normal-state)
   (evil-define-key 'replace 'global (kbd "<f3>") 'evil-normal-state)
   (evil-define-key 'insert 'global (kbd "<f3>") 'evil-normal-state))
+
+;; ffap-other-window;

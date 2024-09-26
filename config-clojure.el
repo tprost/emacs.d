@@ -1,7 +1,7 @@
 ;;; config-clojure.el -*- lexical-binding: t; -*-
 
-(use-package! eval-sexp-fu)
-(use-package! cider-eval-sexp-fu)
+(use-package! eval-sexp-fu :defer t)
+(use-package! cider-eval-sexp-fu :defer t)
 (map! :localleader
       :map (clojure-ts-mode-map lisp-interaction-mode-map)
       :desc "Expand macro" "m" #'macrostep-expand
@@ -29,5 +29,12 @@
   (remove-hook 'clojure-ts-hook #'smartparens-global-mode))
 
 (add-hook 'clojure-ts-mode-hook 'evilisp-mode)
-(add-hook 'clojure-ts-mode-hook
-          (lambda () (add-hook 'after-save-hook 'cider-format-buffer)))
+
+(defun remove-function-from-after-save-hooks (fn)
+  "Remove FN from `after-save-hook` in all buffers."
+  (dolist (buffer (buffer-list))
+    (with-current-buffer buffer
+      (remove-hook 'after-save-hook fn t))))
+
+;; Example usage: Remove 'my-function from all after-save hooks
+(remove-function-from-after-save-hooks 'cider-format-buffer)

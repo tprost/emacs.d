@@ -68,13 +68,14 @@
 (load! "config-evil.el")
 (load! "config-clojure.el")
 (load! "config-emacs-lisp.el")
+(load! "config-haskell.el")
 
 ;; disable smartparens everywhere
 (after! smartparens
   (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
   (smartparens-global-mode -1))
-(use-package! envrc)
+(use-package! envrc :defer t)
 (after! envrc
   (envrc-global-mode))
 (after! exec-path-from-shell
@@ -86,8 +87,8 @@
 (load! "config-common-lisp.el")
 (load! "config-magit.el")
 
-(use-package! redshank)
-(use-package! slime)
+;; (use-package! redshank)
+;; (use-package! slime)
 
 
 (after! redshank
@@ -117,3 +118,110 @@
             (insert ")")
             )
           (message "No region selected.")))))
+(after! graphql-mode
+  (remove-hook! 'graphql-mode-local-vars-hook #'lsp!)
+  )
+
+
+(after! org
+  (setq org-capture-templates
+        (setq org-capture-templates
+              '(("i" "Inbox" entry (file+headline "~/org/todo/inbox.org" "Getting Things Done Inbox")
+                 "* TODO %?\n  %i")
+                ("j" "Journal" entry (file+datetree "~/org/journal.org")
+                 "* %?\nEntered on %U\n  %i\n  %a")))
+
+        ))
+
+(map! :leader "yi" #'yas-insert-snippet)
+(map! :leader "ye" #'yas-expand)
+(map! :leader "yy" #'yas-insert-snippet)
+
+(map! :i "<f4>" #'yas-expand)
+
+
+(map! :localleader ";" #'comment-dwim)
+(map! "M-;" #'comment-dwim)
+
+
+(defun +projectile-run-make-test ()
+  (interactive)
+  (makefile-executor-execute-target (concat (projectile-project-root) "Makefile") "test")
+  )
+
+(map! :leader "pt" #'+projectile-run-make-test)
+
+(defun +find-nixos-configuration-file ()
+  (interactive)
+  (find-file "/etc/nixos/configuration.nix")
+
+  )
+
+
+(map! :leader "fn" #'+find-nixos-configuration-file)
+
+(after! org-roam
+  (require 'org-roam)
+  (setq org-roam-directory "~/org/roam")
+  (cl-defmethod org-roam-node-slug :around ((node org-roam-node))
+    (string-replace "_" "-" (cl-call-next-method)))
+
+
+  (setq org-roam-dailies-directory "daily/")
+  (setq org-roam-dailies-capture-templates
+        '(("d" "default" entry
+           "* %?"
+           :target (file+head "%<%Y-%m-%d>.org"
+                              "#+title: %<%Y-%m-%d>\n")))))
+
+(map! :leader "ri" #'org-roam-node-insert)
+(map! :leader "rf" #'org-roam-node-find)
+(map! :leader "rr" #'org-roam-dailies-capture-today)
+(map! :leader "rgd" #'org-roam-dailies-goto-today)
+(map! :leader "rgy" #'org-roam-dailies-goto-yesterday)
+(map! :leader "gr" nil)
+(map! :leader "grd" #'org-roam-dailies-goto-today)
+
+(use-package! websocket
+  :after org-roam)
+(use-package! org-roam-ui
+  :after org-roam ;; or :after org
+  ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+  ;;         a hookable mode anymore, you're advised to pick something yourself
+  ;;         if you don't care about startup time, use
+  ;;  :hook (after-init . org-roam-ui-mode)
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
+
+(defun +capture-gtd-inbox-todo ()
+  (interactive)
+  (org-capture nil "i"))
+
+(map! :leader "z" '+capture-gtd-inbox-todo)
+(map! :leader "<f2>" '+capture-gtd-inbox-todo)
+
+(setq org-gtd-update-ack "3.0.0")
+(use-package! org-gtd
+  :after org
+  :config
+  (setq org-edna-use-inheritance t)
+  (org-edna-mode)
+  (setq org-gtd-directory "~/org/todo")
+  (map! :leader
+        (:prefix ("d" . "org-gtd")
+         :desc "Capture"        "c"  #'org-gtd-capture
+         :desc "Engage"         "e"  #'org-gtd-engage
+         :desc "Process inbox"  "p"  #'org-gtd-process-inbox
+         :desc "Show all next"  "n"  #'org-gtd-show-all-next
+         :desc "Stuck projects" "s"  #'org-gtd-review-stuck-projects))
+  (map! :map org-gtd-clarify-map
+        :desc "Organize this item" "C-c c" #'org-gtd-organize))
+(setq org-agenda-files '("~/org/todo"))
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "firefox")
+
+(use-package! esup :defer t)

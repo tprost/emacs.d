@@ -20,7 +20,8 @@
 
   (setq major-mode-remap-alist '((clojure-mode . clojure-ts-mode)))
 
-  (set-formatter! 'cljfmt '("cljfmt" "fix" "-") :modes '(clojure-mode clojurec-mode clojurescript-mode))
+  (set-formatter! 'cljfmt '("cljfmt" "fix" "-") :modes '(clojure-mode clojure-ts-mode clojurec-mode clojurescript-mode))
+
 
   (when (modulep! +lsp)
     ;; (add-hook! '(clojure-mode-local-vars-hook

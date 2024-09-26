@@ -1,6 +1,6 @@
 ;;; config-common-lisp.el -*- lexical-binding: t; -*-
-(use-package! eval-sexp-fu)
-(use-package! slite)
+(use-package! eval-sexp-fu :defer t)
+(use-package! slite :defer t)
 (after! sly
 
   (evil-define-key 'visual sly-mode-map (kbd "<RET>") 'eval-sexp-fu-sly-eval-expression-inner-sexp)
@@ -82,6 +82,11 @@
 
 (add-hook 'lisp-mode-hook 'evilisp-mode)
 
-(use-package! common-lisp-snippets)
+(use-package! common-lisp-snippets :defer t)
 (after! common-lisp-snippets
   (require 'common-lisp-snippets))
+
+
+(defun +extract-common-lisp-function ()
+  (interactive)
+  )
