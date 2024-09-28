@@ -1,5 +1,5 @@
 ;;; config-common-lisp.el -*- lexical-binding: t; -*-
-(use-package! eval-sexp-fu :defer t)
+(use-package! eval-sexp-fu)
 (use-package! slite :defer t)
 (after! sly
 
