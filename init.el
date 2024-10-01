@@ -145,6 +145,7 @@
              (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "typescript/src"))
              (yaml . ("https://github.com/ikatyang/tree-sitter-yaml" "v0.5.0"))
 	     (commonlisp . ("https://github.com/tree-sitter-grammars/tree-sitter-commonlisp"))
+	     (elisp . ("https://github.com/Wilfred/tree-sitter-elisp"))
 	     ))
     (add-to-list 'treesit-language-source-alist grammar)
     ;; Only install `grammar' if we don't already have it
@@ -162,6 +163,7 @@
            (conf-toml-mode . toml-ts-mode)
            (go-mode . go-ts-mode)
            (css-mode . css-ts-mode)
+	   (clojure-mode . clojure-ts-mode)
            (json-mode . json-ts-mode)
            (js-json-mode . json-ts-mode)))
   (add-to-list 'major-mode-remap-alist mapping))
@@ -172,10 +174,12 @@
   (treesit-parser-create 'commonlisp))
 (add-hook 'lisp-mode-hook '+setup-common-lisp-treesitter)
 
-
-;; (load "~/.config/emacs/popup.el")
+(defun +setup-emacs-lisp-treesitter ()
+  (treesit-parser-create 'elisp))
+(add-hook 'emacs-lisp-mode-hook '+setup-common-lisp-treesitter)
 
 (use-package sly
+  
   :defer t
   :init
 
@@ -183,7 +187,8 @@
   (define-key sly-editing-mode-map (kbd "M-p") nil)
   (define-key sly-editing-mode-map (kbd "M-n") nil)
   (define-key sly-mode-map (kbd "C-<return>") 'eval-sexp-fu-sly-eval-expression-inner-sexp)
-  (define-key sly-mode-map (kbd "M-<return>") 'eval-sexp-fu-sly-eval-expression-inner-list)
+  (define-key sly-mode-map (kbd "M-<return>") 'eval-sexp-fu-sly-eval-expression-inner-list))
+
 
 (setf (alist-get "*Test Results*" display-buffer-alist nil nil 'equal)
       '((display-buffer-reuse-window
@@ -230,7 +235,6 @@
            (if (symbolp name)
                `',(intern (sly-qualify-cl-symbol-name name))
              name)))))))
-  )
 
 
 
@@ -283,6 +287,7 @@
 (define-key '+leader-prefix-command (kbd "f") '+file-prefix-command)
 (define-key '+leader-prefix-command (kbd "b") '+buffer-prefix-command)
 (define-key '+leader-prefix-command (kbd "d") 'dired)
+(define-key '+leader-prefix-command (kbd "w") '+window-prefix-command)
 
 (use-package meow
   :straight (meow :type git :host github :repo "tprost/helix" :files ("*.el" "tutor.txt"))
@@ -322,14 +327,16 @@
      '("1" . meow-digit-argument)
      '("-" . negative-argument)
 
-
+     
      '("a" . meow-append)
      '("A" . meow-open-below)
      '("b" . meow-move-prev-word-start)
-     '("B" . meow-back-symbol)
+     '("B" . meow-move-prev-long-word-start)
      '("c" . meow-change)
+     '("C" . meow-copy-selection-on-next-line)
      '("d" . meow-delete-selection)
      '("e" . meow-move-next-word-end)
+     '("E" . meow-move-next-long-word-end)
      '("f" . meow-prev)
      '("F" . meow-prev-expand)
      '("/" . isearch-forward)
@@ -343,8 +350,15 @@
      '("k" . meow-kill)
      ;; '("l" . meow-line)
      ;; '("L" . meow-goto-line)
-     '("m" . meow-mark-word)
-     '("M" . meow-mark-symbol)
+     ;; '("m" . meow-mark-word)
+     ;; '("M" . meow-mark-symbol)
+
+     '("n" . meow-find)
+     '("N" . meow-find-prev-char)
+
+     '("j" . meow-find-till-char)
+     '("J" . meow-find-till-previous-char)
+     
      '("s" . meow-next)
      '("S" . meow-next-expand)
      '("o" . meow-open-below)
@@ -355,11 +369,11 @@
      '("i" . meow-insert)
      '("I" . meow-open-above)
      ;; '("t" . meow-till)
-     '("u" . meow-undo)
-     '("U" . meow-redo)
+     '("u" . undo)
+     '("U" . redo)
      '("v" . meow-visual-line)
      '("w" . meow-move-next-word-start)
-     ;; '("W" . meow-next-symbol)
+     '("W" . meow-move-next-long-word-start)
      '("x" . meow-line)
      '("X" . meow-line)
      '("y" . meow-save)
@@ -375,16 +389,26 @@
   (meow-setup)
   (meow-global-mode 1)
 
-  (define-key meow-normal-state-keymap (kbd "SPC") '+leader-prefix-command)
-
-
-  )
+  (define-key meow-normal-state-keymap (kbd "SPC") '+leader-prefix-command))
 
 (use-package markdown-mode
   :defer t)
+(use-package cider-eval-sexp-fu)
+
+
+(define-prefix-command '+clojure-localleader-prefix-command)
+(define-key '+clojure-localleader-prefix-command (kbd "'") 'cider-jack-in)
 
 (use-package clojure-ts-mode
-  :defer t)
+  :defer t
+  :config
+  
+  (define-key clojure-ts-mode-map (kbd "C-<return>") 'eval-sexp-fu-cider-eval-expression-inner-sexp)
+  (define-key clojure-ts-mode-map (kbd "M-<return>") 'eval-sexp-fu-cider-eval-expression-inner-list)
+
+;; (meow-define-keys 'normal (cons "m" clojure-ts-mode-map))
+
+  )
 
 (global-set-key (kbd "<TAB>") 'completion-at-point)
 
@@ -415,7 +439,7 @@
   (require 'org-roam)
   (setq org-roam-directory "~/org/roam")
 
- (cl-defmethod org-roam-node-slug :around ((node org-roam-node))
+  (cl-defmethod org-roam-node-slug :around ((node org-roam-node))
     (string-replace "_" "-" (cl-call-next-method)))
 
 
@@ -430,9 +454,9 @@
 (use-package org-roam :defer t)
 
 (use-package envrc
-	      :defer t
-	      :init
-	      (envrc-global-mode))
+  :defer t
+  :init
+  (envrc-global-mode))
 
 (use-package exec-path-from-shell
   :init
@@ -459,6 +483,7 @@
   (require 'eval-sexp-fu)
 
   )
+(set-face-attribute 'show-paren-match nil :background nil)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -474,7 +499,6 @@
  '(eval-sexp-fu-flash ((t (:background "gray22"))))
  '(fixed-pitch ((t nil))))
 
-(set-face-attribute 'show-paren-match nil :background nil)
 
 
 
