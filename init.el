@@ -84,12 +84,7 @@
 
   )
 
-;; (defun map! (destination key fn)
-;;   (when (eq destination :leader)
-;;     (meow-leader-define-key '(key . fn))
-;;     (message "derp")))
 
-;; (map! :leader "fn" #'+find-nixos-configuration-file)
 (setq ring-bell-function 'ignore)
 (setq visible-bell t)
 
@@ -289,108 +284,432 @@
 (define-key '+leader-prefix-command (kbd "d") 'dired)
 (define-key '+leader-prefix-command (kbd "w") '+window-prefix-command)
 
-(use-package meow
-  :straight (meow :type git :host github :repo "tprost/helix" :files ("*.el" "tutor.txt"))
-  :init
-  (defun meow-setup ()
-    (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
-    (meow-motion-overwrite-define-key
-     ;; '("j" . meow-next)
-     ;; '("k" . meow-prev)
-     '("<escape>" . ignore))
-    (meow-leader-define-key
-     ;; SPC j/k will run the original command in MOTION state.
+;; (use-package meow
+;;   :straight (meow :type git :host github :repo "tprost/helix" :files ("*.el" "tutor.txt"))
+;;   :init
+;;   (defun meow-setup ()
+;;     (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
+;;     (meow-motion-overwrite-define-key
+;;      ;; '("j" . meow-next)
+;;      ;; '("k" . meow-prev)
+;;      '("<escape>" . ignore))
+;;     (meow-leader-define-key
+;;      ;; SPC j/k will run the original command in MOTION state.
 
-     ;; Use SPC (0-9) for digit arguments.
-     '("p" . +project-prefix-command)
-     '("o" . +open-prefix-command)
-     '("f" . +file-prefix-command)
-     '("b" . +buffer-prefix-command)
-     '("w" . +window-prefix-command)
-     '("g" . magit)
+;;      ;; Use SPC (0-9) for digit arguments.
+;;      '("p" . +project-prefix-command)
+;;      '("o" . +open-prefix-command)
+;;      '("f" . +file-prefix-command)
+;;      '("b" . +buffer-prefix-command)
+;;      '("w" . +window-prefix-command)
+;;      '("g" . magit)
 
 
-     ;; '("g" . magit)
+;;      ;; '("g" . magit)
 
-     '("/" . meow-keypad-describe-key)
-     '("?" . meow-cheatsheet))
-    (meow-normal-define-key
-     '("0" . meow-digit-argument)
-     '("9" . meow-digit-argument)
-     '("8" . meow-digit-argument)
-     '("7" . meow-digit-argument)
-     '("6" . meow-digit-argument)
-     '("5" . meow-digit-argument)
-     '("4" . meow-digit-argument)
-     '("3" . meow-digit-argument)
-     '("2" . meow-digit-argument)
-     '("1" . meow-digit-argument)
-     '("-" . negative-argument)
+;;      '("/" . meow-keypad-describe-key)
+;;      '("?" . meow-cheatsheet))
+;;     (meow-normal-define-key
+;;      '("0" . meow-digit-argument)
+;;      '("9" . meow-digit-argument)
+;;      '("8" . meow-digit-argument)
+;;      '("7" . meow-digit-argument)
+;;      '("6" . meow-digit-argument)
+;;      '("5" . meow-digit-argument)
+;;      '("4" . meow-digit-argument)
+;;      '("3" . meow-digit-argument)
+;;      '("2" . meow-digit-argument)
+;;      '("1" . meow-digit-argument)
+;;      '("-" . negative-argument)
 
      
-     '("a" . meow-append)
-     '("A" . meow-open-below)
-     '("b" . meow-move-prev-word-start)
-     '("B" . meow-move-prev-long-word-start)
-     '("c" . meow-change)
-     '("C" . meow-copy-selection-on-next-line)
-     '("d" . meow-delete-selection)
-     '("e" . meow-move-next-word-end)
-     '("E" . meow-move-next-long-word-end)
-     '("f" . meow-prev)
-     '("F" . meow-prev-expand)
-     '("/" . isearch-forward)
-     '("g" . +goto-prefix-command)
-     '("G" . goto-line)
-     '("r" . meow-left)
-     '("R" . meow-left-expand)
-     '("t" . meow-right)
-     '("T" . meow-right-expand)
-     ;; '("j" . meow-join)
-     '("k" . meow-kill)
-     ;; '("l" . meow-line)
-     ;; '("L" . meow-goto-line)
-     ;; '("m" . meow-mark-word)
-     ;; '("M" . meow-mark-symbol)
+;;      '("a" . meow-append)
+;;      '("A" . meow-open-below)
+;;      '("b" . meow-move-prev-word-start)
+;;      '("B" . meow-move-prev-long-word-start)
+;;      '("c" . meow-change)
+;;      '("C" . meow-copy-selection-on-next-line)
+;;      '("d" . meow-delete-selection)
+;;      '("e" . meow-move-next-word-end)
+;;      '("E" . meow-move-next-long-word-end)
+;;      '("f" . meow-prev)
+;;      '("F" . meow-prev-expand)
+;;      '("/" . isearch-forward)
+;;      '("g" . +goto-prefix-command)
+;;      '("G" . goto-line)
+;;      '("r" . meow-left)
+;;      '("R" . meow-left-expand)
+;;      '("t" . meow-right)
+;;      '("T" . meow-right-expand)
+;;      ;; '("j" . meow-join)
+;;      '("k" . meow-kill)
+;;      ;; '("l" . meow-line)
+;;      ;; '("L" . meow-goto-line)
+;;      ;; '("m" . meow-mark-word)
+;;      ;; '("M" . meow-mark-symbol)
 
-     '("n" . meow-find)
-     '("N" . meow-find-prev-char)
+;;      '("n" . meow-find)
+;;      '("N" . meow-find-prev-char)
 
-     '("j" . meow-find-till-char)
-     '("J" . meow-find-till-previous-char)
+;;      '("j" . meow-find-till-char)
+;;      '("J" . meow-find-till-previous-char)
      
-     '("s" . meow-next)
-     '("S" . meow-next-expand)
-     '("o" . meow-open-below)
-     '("O" . meow-open-above)
-     '("p" . meow-yank)
-     '("q" . meow-quit)
-     ;; '("r" . meow-replace)
-     '("i" . meow-insert)
-     '("I" . meow-open-above)
-     ;; '("t" . meow-till)
-     '("u" . undo)
-     '("U" . redo)
-     '("v" . meow-visual-line)
-     '("w" . meow-move-next-word-start)
-     '("W" . meow-move-next-long-word-start)
-     '("x" . meow-line)
-     '("X" . meow-line)
-     '("y" . meow-save)
-     '("z" . meow-pop-selection)
-     '(";" . meow-collapse-selection)
-     '("'" . repeat)
+;;      '("s" . meow-next)
+;;      '("S" . meow-next-expand)
+;;      '("o" . meow-open-below)
+;;      '("O" . meow-open-above)
+;;      '("p" . meow-yank)
+;;      '("q" . meow-quit)
+;;      ;; '("r" . meow-replace)
+;;      '("i" . meow-insert)
+;;      '("I" . meow-open-above)
+;;      ;; '("t" . meow-till)
+;;      '("u" . undo)
+;;      '("U" . redo)
+;;      '("v" . meow-visual-line)
+;;      '("w" . meow-move-next-word-start)
+;;      '("W" . meow-move-next-long-word-start)
+;;      '("x" . meow-line)
+;;      '("X" . meow-line)
+;;      '("y" . meow-save)
+;;      '("z" . meow-pop-selection)
+;;      '(";" . meow-collapse-selection)
+;;      '("'" . repeat)
      
-     '("." . repeat)
-     '("<escape>" . ignore)))
+;;      '("." . repeat)
+;;      '("<escape>" . ignore)))
 
-  (require 'meow)
+  ;; (require 'meow)
 
-  (meow-setup)
-  (meow-global-mode 1)
+  ;; (meow-setup)
+  ;; (meow-global-mode 1)
 
-  (define-key meow-normal-state-keymap (kbd "SPC") '+leader-prefix-command))
+;; (define-key meow-normal-state-keymap (kbd "SPC") '+leader-prefix-command))
 
+;; (use-package meow)
+(use-package evil
+  :straight t   ;; Use straight.el to install the package
+  :defer t      ;; Defer loading the package until needed)
+)
+(require 'evil-common)
+(require 'evil-core)
+
+(defun evil-repeat-pre-hook ())
+(defun evil-repeat-post-hook ())
+
+
+(defun evil-visual-activate-hook (&optional _command)
+  "Enable Visual state if the region is activated."
+  ;; (unless (evil-visual-state-p)
+  ;;   (evil-with-delay nil
+  ;;       (post-command-hook nil t "evil-activate-visual-state")
+  ;;     ;; the activation may only be momentary, so re-check
+  ;;     ;; in `post-command-hook' before entering Visual state
+  ;;     (unless (or ;; (evil-visual-state-p)
+  ;;                 (evil-insert-state-p)
+  ;;                 (evil-emacs-state-p))
+  ;;       (when (and (region-active-p)
+  ;;                  (not deactivate-mark))
+  ;;         (evil-visual-state))))
+
+
+    )
+(put 'evil-visual-activate-hook 'permanent-local-hook t)
+
+(defun evil-visual-deactivate-hook (&optional command)
+  "Deactivate the region and restore Transient Mark mode."
+  ;; (setq command (or command this-command))
+  ;; (remove-hook 'deactivate-mark-hook
+  ;;              #'evil-visual-deactivate-hook t)
+  ;; (remove-hook 'evil-normal-state-entry-hook
+  ;;              #'evil-visual-deactivate-hook t)
+  ;; (cond
+  ;;  ((and (evil-visual-state-p) command
+  ;;        (not (evil-get-command-property command :keep-visual)))
+  ;;   (setq evil-visual-region-expanded nil)
+  ;;   (evil-exit-visual-state))
+  ;;  ((not (evil-visual-state-p))
+  ;;   (evil-active-region -1)
+  ;;   (evil-restore-transient-mark-mode)))
+  )
+(put 'evil-visual-deactivate-hook 'permanent-local-hook t)
+
+(evil-define-state normal
+  "Normal state.
+AKA \"Command\" state."
+  :tag " <N> "
+  ;; :enable (motion)
+  (cond
+   ((evil-normal-state-p)
+    (overwrite-mode -1)
+    )
+   (t
+    )))
+
+(evil-define-state insert
+  "Insert state."
+  :tag " <I> "
+  :cursor (bar . 2)
+  :message "-- INSERT --"
+  ;; :entry-hook (evil-start-track-last-insertion)
+  ;; :exit-hook (evil-cleanup-insert-state evil-stop-track-last-insertion)
+  :input-method t
+  (cond
+   ((evil-insert-state-p)
+    (message "insert mode")
+    )
+   (t
+    (message "insert mode no more"))))
+
+(evil-define-state emacs
+  "Emacs state."
+  :tag " <E> "
+  :message "-- EMACS --"
+  :input-method t
+  :intercept-esc nil)
+
+(evil-define-state visual
+  "Visual state."
+  :tag " <V> "
+  :message "-- VISUAL --"
+  :input-method t
+  :intercept-esc nil)
+
+;; (defun map! (destination key fn)
+;;   (when (eq destination :leader)
+;;     (meow-leader-define-key '(key . fn))
+;;     (message "derp")))
+
+;; (map! :leader "fn" #'+find-nixos-configuration-file)
+(defmacro map! (&rest args)
+  `(evil-define-key ,@args))
+
+(defun +append ()
+  (interactive)
+  (if (region-active-p)
+      (goto-char (max (point) (mark)))
+       (forward-char))
+  (evil-insert-state))
+
+(defun +insert ()
+  (interactive)
+  (when (region-active-p)
+    (goto-char (min (point) (mark))))
+  (evil-insert-state))
+
+(defun +move-next-word-start ()
+  (interactive)
+  (if (region-active-p)
+      (progn
+	(set-mark (max (point) (mark)))
+	(evil-forward-beginning 'evil-word))
+    (set-mark (point))
+    (evil-forward-beginning 'evil-word)))
+
+(defun +move-next-long-word-start ()
+  (interactive)
+  (if (region-active-p)
+      (progn
+	(set-mark (max (point) (mark)))
+	(evil-forward-beginning 'evil-WORD))
+    (set-mark (point))
+    (evil-forward-beginning 'evil-WORD)))
+
+(defun +move-next-word-end ()
+  (interactive)
+  (when (and (region-active-p) (> (point) (mark)))
+    (backward-char))
+  (let ((momentum (and (use-region-p) (< (mark) (point)))))
+    (set-mark (point))
+    (evil-forward-end 'evil-word 1)
+    (when momentum
+      (set-mark (+ 1 (mark))))
+    (forward-char)))
+
+
+(defun +move-next-long-word-end ()
+  (interactive)
+  (when (and (region-active-p) (> (point) (mark)))
+    (backward-char))
+  (let ((momentum (and (use-region-p) (< (mark) (point)))))
+    (set-mark (point))
+    (evil-forward-end 'evil-WORD 1)
+    (when momentum
+      (set-mark (+ 1 (mark))))
+    (forward-char)))
+
+(defun +move-prev-word-start ()
+  (interactive)
+  (when (and (region-active-p) (> (point) (mark)))
+    (backward-char))
+    (when (and (use-region-p) (< (mark) (point)))
+      (forward-char))
+  (set-mark (point))
+  (evil-backward-beginning 'evil-word 1))
+
+(defun +move-prev-long-word-start ()
+  (interactive)
+  (when (and (region-active-p) (> (point) (mark)))
+    (backward-char))
+    (when (and (use-region-p) (< (mark) (point)))
+      (forward-char))
+  (set-mark (point))
+  (evil-backward-beginning 'evil-WORD 1))
+
+(defun +mark-line ()
+  (interactive)
+  (set-mark (line-beginning-position))
+  (goto-char (line-end-position)))
+
+(defun +delete-region-or-char ()
+  (interactive)
+  (if (not (region-active-p))
+      (delete-char 1)
+    (+prepare-region-for-kill)
+    (kill-region (mark) (point))))
+
+(defun +region-is-full-line-p ()
+  "Return t if the region is a full line."
+  (and (use-region-p)
+       (= (line-beginning-position) (region-beginning))
+       (= (line-end-position) (region-end))))
+
+(defun +prepare-region-for-kill ()
+  (when (and (+region-is-full-line-p)
+             (< (point) (point-max)))
+    (forward-char 1)))
+
+(defun +collapse-region ()
+  (interactive)
+  (when (region-active-p)
+    (if (> (point) (mark))
+	(progn
+	  (deactivate-mark)
+	  (backward-char))
+      (deactivate-mark))))
+
+;; (defun +-make-selection (type mark pos &optional expand)
+;;   "Make a selection with TYPE, MARK and POS.
+
+;; The direction of selection is MARK -> POS."
+;;   (if (and (region-active-p) expand)
+;;       (let ((orig-mark (mark))
+;;             (orig-pos (point)))
+;;         (if (< mark pos)
+;;             (list type (min orig-mark orig-pos) pos)
+;;           (list type (max orig-mark orig-pos) pos)))
+;;     (list type mark pos)))
+
+(defun +find-char (n ch &optional expand)
+  "Find the next N char read from minibuffer."
+  (interactive "p\ncFind:")
+  (let* ((case-fold-search nil)
+         (ch-str (if (eq ch 13) "\n" (char-to-string ch)))
+         (beg (point))
+         end)
+    (save-mark-and-excursion
+      (setq end (search-forward ch-str nil t n)))
+    (if (not end)
+        (message "char %s not found" ch-str)
+      ;; (+-make-selection '(select . find) beg end expand)
+      (set-mark (point))
+      (goto-char end))
+      (setq meow--last-find ch)
+      ;; (meow--maybe-highlight-um-positions
+      ;;  '(meow--find-continue-backward . meow--find-continue-forward))
+
+      ))
+
+(defun +kill-ring-save ()
+  (interactive)
+  (+prepare-region-for-kill)
+  (kill-ring-save nil nil t))
+
+(evil-global-set-key 'normal (kbd "<leader>p") '+project-prefix-command)
+(evil-global-set-key 'normal (kbd "<leader>o") '+open-prefix-command)
+(evil-global-set-key 'normal (kbd "<leader>f") '+file-prefix-command)
+(evil-global-set-key 'normal (kbd "<leader>b") '+buffer-prefix-command)
+(evil-global-set-key 'normal (kbd "<leader>w") '+window-prefix-command)
+(evil-global-set-key 'normal (kbd "<leader>g") 'magit)
+
+(map! 'normal 'global (kbd "i")   '+insert)
+(map! 'insert 'global (kbd "ESC") 'evil-normal-state)
+(map! 'normal 'global (kbd "a")   '+append)
+(map! 'normal 'global (kbd "f")   'previous-line)
+(map! 'normal 'global (kbd "s")   'next-line)
+(map! 'normal 'global (kbd "t")   'forward-char)
+(map! 'normal 'global (kbd "r")   'backward-char)
+(map! 'normal 'global (kbd "e")   '+move-next-word-end)
+(map! 'normal 'global (kbd "b")   '+move-prev-word-start)
+(map! 'normal 'global (kbd "w")   '+move-next-word-start)
+(map! 'normal 'global (kbd "x")   '+mark-line)
+(map! 'normal 'global (kbd "d")   '+delete-region-or-char)
+(map! 'normal 'global (kbd "p")   'yank)
+(map! 'normal 'global (kbd "y")   '+kill-ring-save)
+(map! 'normal 'global (kbd "u")   'undo)
+(map! 'normal 'global (kbd "U")   'redo)
+(map! 'normal 'global (kbd ";")   '+collapse-region)
+(map! 'normal 'global (kbd "n")   '+find-char)
+
+
+(evil-set-leader '(normal) (kbd "SPC"))
+
+(evil-mode)
+
+;; (map! 'normal (kbd "i") 'evil-insert)
+
+;;      '("a" . meow-append)
+;;      '("A" . meow-open-below)
+;;      '("b" . meow-move-prev-word-start)
+;;      '("B" . meow-move-prev-long-word-start)
+;;      '("c" . meow-change)
+;;      '("C" . meow-copy-selection-on-next-line)
+;;      '("d" . meow-delete-selection)
+;;      '("e" . meow-move-next-word-end)
+;;      '("E" . meow-move-next-long-word-end)
+;;      '("f" . meow-prev)
+;;      '("F" . meow-prev-expand)
+;;      '("/" . isearch-forward)
+;;      '("g" . +goto-prefix-command)
+;;      '("G" . goto-line)
+;;      '("r" . meow-left)
+;;      '("R" . meow-left-expand)
+;;      '("t" . meow-right)
+;;      '("T" . meow-right-expand)
+;;      ;; '("j" . meow-join)
+;;      '("k" . meow-kill)
+;;      ;; '("l" . meow-line)
+;;      ;; '("L" . meow-goto-line)
+;;      ;; '("m" . meow-mark-word)
+;;      ;; '("M" . meow-mark-symbol)
+
+;;      '("n" . meow-find)
+;;      '("N" . meow-find-prev-char)
+
+;;      '("j" . meow-find-till-char)
+;;      '("J" . meow-find-till-previous-char)
+     
+;;      '("s" . meow-next)
+;;      '("S" . meow-next-expand)
+;;      '("o" . meow-open-below)
+;;      '("O" . meow-open-above)
+;;      '("p" . meow-yank)
+;;      '("q" . meow-quit)
+;;      ;; '("r" . meow-replace)
+;;      '("i" . meow-insert)
+;;      '("I" . meow-open-above)
+;;      ;; '("t" . meow-till)
+;;      '("u" . undo)
+;;      '("U" . redo)
+;;      '("v" . meow-visual-line)
+;;      '("w" . meow-move-next-word-start)
+;;      '("W" . meow-move-next-long-word-start)
+;;      '("x" . meow-line)
+;;      '("X" . meow-line)
+;;      '("y" . meow-save)
+;;      '("z" . meow-pop-selection)
+      ;;      '(";" . meow-collapse-selection)
+      
 (use-package markdown-mode
   :defer t)
 (use-package cider-eval-sexp-fu)
