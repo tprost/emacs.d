@@ -237,6 +237,7 @@
 (define-key +project-prefix-command (kbd "p") 'project-switch-project)
 (define-key +project-prefix-command (kbd "f") 'project-find-file)
 (define-key +project-prefix-command (kbd "b") 'project-switch-to-buffer)
+(define-key +project-prefix-command (kbd "t") '+makefile-execute-test)
 
 (define-prefix-command '+open-prefix-command)
 (define-key +open-prefix-command (kbd "f") 'make-frame)
@@ -246,7 +247,7 @@
 (define-key +file-prefix-command (kbd "s") 'save-buffer)
 
 (define-prefix-command '+buffer-prefix-command)
-(define-key +buffer-prefix-command (kbd "b") 'list-buffers)
+(define-key +buffer-prefix-command (kbd "b") 'switch-to-buffer)
 (define-key +buffer-prefix-command (kbd "r") 'revert-buffer)
 (define-key +buffer-prefix-command (kbd "p") 'previous-buffer)
 (define-key +buffer-prefix-command (kbd "n") 'next-buffer)
@@ -456,8 +457,8 @@ AKA \"Command\" state."
   :input-method t
   (cond
    ((evil-insert-state-p)
-    (message "insert mode")
-    )
+    (deactivate-mark)
+    (message "insert mode"))
    (t
     (message "insert mode no more"))))
 
@@ -475,7 +476,7 @@ AKA \"Command\" state."
   :input-method t
   :intercept-esc nil)
 
-;; (defun map! (destination key fn)
+;; (defun map! (destination key fn)c
 ;;   (when (eq destination :leader)
 ;;     (meow-leader-define-key '(key . fn))
 ;;     (message "derp")))
@@ -588,17 +589,15 @@ AKA \"Command\" state."
 	  (backward-char))
       (deactivate-mark))))
 
-;; (defun +-make-selection (type mark pos &optional expand)
-;;   "Make a selection with TYPE, MARK and POS.
-
-;; The direction of selection is MARK -> POS."
-;;   (if (and (region-active-p) expand)
-;;       (let ((orig-mark (mark))
-;;             (orig-pos (point)))
-;;         (if (< mark pos)
-;;             (list type (min orig-mark orig-pos) pos)
-;;           (list type (max orig-mark orig-pos) pos)))
-;;     (list type mark pos)))
+(defun +change ()
+  (interactive)
+  (if (not (region-active-p))
+      (progn
+	(delete-char 1)
+	(evil-insert-state))
+    (progn
+      (kill-region (mark) (point))
+      (evil-insert-state))))
 
 (defun +find-char (n ch &optional expand)
   "Find the next N char read from minibuffer."
@@ -611,7 +610,6 @@ AKA \"Command\" state."
       (setq end (search-forward ch-str nil t n)))
     (if (not end)
         (message "char %s not found" ch-str)
-      ;; (+-make-selection '(select . find) beg end expand)
       (set-mark (point))
       (goto-char end))
       (setq meow--last-find ch)
@@ -625,12 +623,48 @@ AKA \"Command\" state."
   (+prepare-region-for-kill)
   (kill-ring-save nil nil t))
 
+(defun +toggle-kmacro-recording ()
+  "Start or stop recording a keyboard macro."
+  (interactive)
+  (if (or defining-kbd-macro executing-kbd-macro)
+      (kmacro-end-macro nil)
+    (kmacro-start-macro nil)))  
+
+
+(eval-after-load 'dired
+  '(progn
+     ;; use the standard Dired bindings as a base
+     (defvar dired-mode-map)
+     (evil-make-overriding-map dired-mode-map 'normal)
+     (evil-add-hjkl-bindings dired-mode-map 'normal
+       "J" 'dired-goto-file                   ; "j"
+       "K" 'dired-do-kill-lines               ; "k"
+       "r" 'dired-do-redisplay                ; "l"
+       ;; ":d", ":v", ":s", ":e"
+       ";" (lookup-key dired-mode-map ":"))))
+
+
+(use-package makefile-executor)
+
+(defun +makefile-execute-test ()
+  (interactive)
+  (makefile-executor-execute-target (concat (project-root (project-current)) "Makefile") "test"))
+
+(map! nil sly-mode-map (kbd "<localleader>eb") 'sly-eval-buffer)
+(map! nil sly-mode-map (kbd "<localleader>et") '+slite-run-at-point-dwim)
+(map! nil sly-mode-map (kbd "<localleader>'") 'sly)
+;; (add-hook 'wdired-mode-hook #'evil-change-to-initial-state)
+
 (evil-global-set-key 'normal (kbd "<leader>p") '+project-prefix-command)
 (evil-global-set-key 'normal (kbd "<leader>o") '+open-prefix-command)
 (evil-global-set-key 'normal (kbd "<leader>f") '+file-prefix-command)
 (evil-global-set-key 'normal (kbd "<leader>b") '+buffer-prefix-command)
 (evil-global-set-key 'normal (kbd "<leader>w") '+window-prefix-command)
+(evil-global-set-key 'normal (kbd "<leader>d") 'dired)
 (evil-global-set-key 'normal (kbd "<leader>g") 'magit)
+(evil-global-set-key 'normal (kbd "<leader>Q") 'kmacro-start-macro)
+(evil-global-set-key 'normal (kbd "<leader>q") 'kmacro-call-macro)
+(evil-global-set-key 'normal (kbd "<leader>r") '+roam-prefix-command)
 
 (map! 'normal 'global (kbd "i")   '+insert)
 (map! 'insert 'global (kbd "ESC") 'evil-normal-state)
@@ -648,11 +682,15 @@ AKA \"Command\" state."
 (map! 'normal 'global (kbd "y")   '+kill-ring-save)
 (map! 'normal 'global (kbd "u")   'undo)
 (map! 'normal 'global (kbd "U")   'redo)
+;; (map! 'normal 'global (kbd "q")   '+toggle-kmacro-recording)
+;; (map! 'normal 'global (kbd "Q")   'kmacro-call-macro)
 (map! 'normal 'global (kbd ";")   '+collapse-region)
 (map! 'normal 'global (kbd "n")   '+find-char)
+(map! 'normal 'global (kbd "c")   '+change)
 
 
 (evil-set-leader '(normal) (kbd "SPC"))
+(evil-set-leader '(normal) (kbd "m") t)
 
 (evil-mode)
 
@@ -768,7 +806,17 @@ AKA \"Command\" state."
            "* %?"
            :target (file+head "%<%Y-%m-%d>.org"
                               "#+title: %<%Y-%m-%d>\n"))))
-  
+
+(define-prefix-command '+roam-prefix-command)
+(define-key +roam-prefix-command (kbd "i") 'org-roam-node-insert)
+(define-key +roam-prefix-command (kbd "f") 'org-roam-node-find)
+
+
+;; (map! :leader "rr" #'org-roam-dailies-capture-today) hello
+;; (map! :leader "rgd" #'org-roam-dailies-goto-today)
+;; (map! :leader "rgy" #'org-roam-dailies-goto-yesterday)
+;; (map! :leader "gr" nil)
+;; (map! :leader "grd" #'org-roam-dailies-goto-today)
   )
 (use-package org-roam :defer t)
 
@@ -800,9 +848,11 @@ AKA \"Command\" state."
   (define-key emacs-lisp-mode-map (kbd "H-<return>") 'eval-defun)
 
   (require 'eval-sexp-fu)
-
-  )
 (set-face-attribute 'show-paren-match nil :background nil)
+
+)
+
+(setq compilation-scroll-output t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
