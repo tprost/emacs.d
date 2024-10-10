@@ -345,6 +345,10 @@
 (map! nil sly-mode-map (kbd "<localleader>eb") 'sly-eval-buffer)
 (map! nil sly-mode-map (kbd "<localleader>et") '+slite-run-at-point-dwim)
 (map! nil sly-mode-map (kbd "<localleader>'") 'sly)
+(map! nil sly-mode-map (kbd "<localleader>xb") 'sly-eval-buffer)
+(map! nil sly-mode-map (kbd "<f4>") 'sly-eval-buffer)
+(map! nil sly-mode-map (kbd "<localleader>xt") '+slite-run-at-point-dwim)
+(map! nil sly-mode-map (kbd "<localleader>'") 'sly)
 ;; (add-hook 'wdired-mode-hook #'evil-change-to-initial-state)
 
 (evil-global-set-key 'normal (kbd "<leader>p") '+project-prefix-command)
@@ -360,9 +364,8 @@
 (evil-global-set-key 'normal (kbd "<leader>/") 'project-find-regexp)
 
 
-
 (evil-set-leader '(normal) (kbd "SPC"))
-(evil-set-leader '(normal) (kbd "m") t)
+(evil-set-leader '(normal) (kbd "<f4>") t)
 
 (evil-mode)
 
@@ -383,7 +386,7 @@
   
   (define-key clojure-ts-mode-map (kbd "C-<return>") 'eval-sexp-fu-cider-eval-expression-inner-sexp)
   (define-key clojure-ts-mode-map (kbd "M-<return>") 'eval-sexp-fu-cider-eval-expression-inner-list)
-
+  (define-key clojure-ts-mode-map (kbd "<localleader>xb") 'cider-eval-buffer)
 
   )
 
