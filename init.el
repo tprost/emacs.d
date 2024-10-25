@@ -106,7 +106,6 @@
 
 (which-key-mode)
 
-
 ;; (use-package '(evil-mc :type git :host github :repo "gabesoft/evil-mc" :demand nil))
 ;; (use-package evil-multiedit)		;
 ;; (use-package evil-mc
@@ -189,7 +188,19 @@
   (define-key sly-editing-mode-map (kbd "M-p") nil)
   (define-key sly-editing-mode-map (kbd "M-n") nil)
   (define-key sly-mode-map (kbd "C-<return>") 'eval-sexp-fu-sly-eval-expression-inner-sexp)
-  (define-key sly-mode-map (kbd "M-<return>") 'eval-sexp-fu-sly-eval-expression-inner-list))
+  (define-key sly-mode-map (kbd "M-<return>") 'eval-sexp-fu-sly-eval-expression-inner-list)
+
+
+;; (map! nil sly-mode-map (kbd "<f4>eb") 'sly-eval-buffer)
+;; (map! nil sly-mode-map (kbd "<f4>et") '+slite-run-at-point-dwim)
+;; (map! nil sly-mode-map (kbd "<f4>'") 'sly)
+;; (map! nil sly-mode-map (kbd "<f4>xb") 'sly-eval-buffer)
+;; (map! nil sly-mode-map (kbd "<f4>eb") 'sly-eval-buffer)
+;; (map! nil sly-mode-map (kbd "<f4>") 'sly-eval-buffer)
+;; (map! nil sly-mode-map (kbd "<f4>xt") '+slite-run-at-point-dwim)
+;; (map! nil sly-mode-map (kbd "<f4>'") 'sly)
+
+  )
 
 
 (setf (alist-get "*Test Results*" display-buffer-alist nil nil 'equal)
@@ -277,7 +288,7 @@
 (define-key +window-prefix-command (kbd "q") 'kill-buffer-and-window) ;; Tmux: kill window
 (define-key +window-prefix-command (kbd "!") 'delete-other-windows) ;; Tmux: kill window
 (global-set-key (kbd "<f1>") '+window-prefix-command)
-(global-set-key (kbd "<f2>") 'meow-normal-mode)
+(global-set-key (kbd "<f2>") 'helix-normal-mode)
 
 (define-prefix-command '+goto-prefix-command)
 (define-key +goto-prefix-command (kbd "r") 'beginning-of-line)
@@ -297,17 +308,21 @@
 
 (require 'helix)
 
-(eval-after-load 'dired
-  '(progn
-     ;; use the standard Dired bindings as a base
-     (defvar dired-mode-map)
-     (evil-make-overriding-map dired-mode-map 'normal)
-     (evil-add-hjkl-bindings dired-mode-map 'normal
-       "J" 'dired-goto-file                   ; "j"
-       "K" 'dired-do-kill-lines               ; "k"
-       "r" 'dired-do-redisplay                ; "l"
-       ;; ":d", ":v", ":s", ":e"
-       ";" (lookup-key dired-mode-map ":"))))
+(helix-global-mode)
+
+(helix-define-key '(normal visual) 'global (kbd "SPC") '+leader-prefix-command)
+
+;; (eval-after-load 'dired
+;;   '(progn
+;;      ;; use the standard Dired bindings as a base
+;;      (defvar dired-mode-map)
+;;      (evil-make-overriding-map dired-mode-map 'normal)
+;;      (evil-add-hjkl-bindings dired-mode-map 'normal
+;;        "J" 'dired-goto-file                   ; "j"
+;;        "K" 'dired-do-kill-lines               ; "k"
+;;        "r" 'dired-do-redisplay                ; "l"
+;;        ;; ":d", ":v", ":s", ":e"
+;;        ";" (lookup-key dired-mode-map ":"))))
 
 
 (use-package makefile-executor)
@@ -317,8 +332,7 @@
   (makefile-executor-execute-target (concat (project-root (project-current)) "Makefile") "test"))
 
 (defmacro map! (&rest args)
-  `(evil-define-key ,@args))
-
+  `(helix-define-key ,@args))
 (use-package avy)
 
 (map! 'normal 'global (kbd "f") 'helix-previous-line)
@@ -339,35 +353,28 @@
 (map! 'normal 'global (kbd "k") 'helix-replace-char)
 (map! 'normal 'global (kbd "j") 'avy-goto-char)
 
-(define-key 'helix-goto-prefix-command (kbd "t") 'end-of-line)
-(define-key 'helix-goto-prefix-command (kbd "r") 'beginning-of-line)
+;; (define-key 'helix-goto-prefix-command (kbd "t") 'end-of-line)
+;; (define-key 'helix-goto-prefix-command (kbd "r") 'beginning-of-line)
 
-(map! nil sly-mode-map (kbd "<localleader>eb") 'sly-eval-buffer)
-(map! nil sly-mode-map (kbd "<localleader>et") '+slite-run-at-point-dwim)
-(map! nil sly-mode-map (kbd "<localleader>'") 'sly)
-(map! nil sly-mode-map (kbd "<localleader>xb") 'sly-eval-buffer)
-(map! nil sly-mode-map (kbd "<f4>") 'sly-eval-buffer)
-(map! nil sly-mode-map (kbd "<localleader>xt") '+slite-run-at-point-dwim)
-(map! nil sly-mode-map (kbd "<localleader>'") 'sly)
 ;; (add-hook 'wdired-mode-hook #'evil-change-to-initial-state)
 
-(evil-global-set-key 'normal (kbd "<leader>p") '+project-prefix-command)
-(evil-global-set-key 'normal (kbd "<leader>o") '+open-prefix-command)
-(evil-global-set-key 'normal (kbd "<leader>f") '+file-prefix-command)
-(evil-global-set-key 'normal (kbd "<leader>b") '+buffer-prefix-command)
-(evil-global-set-key 'normal (kbd "<leader>w") '+window-prefix-command)
-(evil-global-set-key 'normal (kbd "<leader>d") 'dired)
-(evil-global-set-key 'normal (kbd "<leader>g") 'magit)
-(evil-global-set-key 'normal (kbd "<leader>Q") 'kmacro-start-macro)
-(evil-global-set-key 'normal (kbd "<leader>q") 'kmacro-call-macro)
-(evil-global-set-key 'normal (kbd "<leader>r") '+roam-prefix-command)
-(evil-global-set-key 'normal (kbd "<leader>/") 'project-find-regexp)
-
-
-(evil-set-leader '(normal) (kbd "SPC"))
-(evil-set-leader '(normal) (kbd "<f4>") t)
-
-(evil-mode)
+;; (evil-global-set-key 'normal (kbd "<leader>p") '+project-prefix-command)
+;; (evil-global-set-key 'normal (kbd "<leader>o") '+open-prefix-command)
+;; (evil-global-set-key 'normal (kbd "<leader>f") '+file-prefix-command)
+;; (evil-global-set-key 'normal (kbd "<leader>b") '+buffer-prefix-command)
+;; (evil-global-set-key 'normal (kbd "<leader>w") '+window-prefix-command)
+;; (evil-global-set-key 'normal (kbd "<leader>d") 'dired)
+;; (evil-global-set-key 'normal (kbd "<leader>g") 'magit)
+;; (evil-global-set-key 'normal (kbd "<leader>Q") 'kmacro-start-macro)
+;; (evil-global-set-key 'normal (kbd "<leader>q") 'kmacro-call-macro)
+;; (evil-global-set-key 'normal (kbd "<leader>r") '+roam-prefix-command)
+;; (evil-global-set-key 'normal (kbd "<leader>/") 'project-find-regexp)
+;; 
+;; 
+;; (evil-set-leader '(normal) (kbd "SPC"))
+;; (evil-set-leader '(normal) (kbd "m") t)
+;; 
+;; (evil-mode)
 
 
 (use-package yasnippet)
@@ -375,7 +382,7 @@
 (use-package markdown-mode
   :defer t)
 (use-package cider-eval-sexp-fu)
-
+;; (require 'cider-eval-sexp-fu)
 
 (define-prefix-command '+clojure-localleader-prefix-command)
 (define-key '+clojure-localleader-prefix-command (kbd "'") 'cider-jack-in)
@@ -384,9 +391,10 @@
   :defer t
   :config
   
-  (define-key clojure-ts-mode-map (kbd "C-<return>") 'eval-sexp-fu-cider-eval-expression-inner-sexp)
-  (define-key clojure-ts-mode-map (kbd "M-<return>") 'eval-sexp-fu-cider-eval-expression-inner-list)
-  (define-key clojure-ts-mode-map (kbd "<localleader>xb") 'cider-eval-buffer)
+  (define-key clojure-ts-mode-map (kbd "C-<return>") 'eval-sexp-fu-cider-eval-sexp-inner-sexp)
+  (define-key clojure-ts-mode-map (kbd "M-<return>") 'eval-sexp-fu-cider-eval-sexp-inner-list)
+  ;; (define-key clojure-ts-mode-map (kbd "<return>xb") 'cider-eval-buffer)
+  ;; (define-key clojure-ts-mode-map (kbd "<return>eb") 'cider-eval-buffer)
 
   )
 
@@ -455,7 +463,7 @@
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-c C-l")
-  ;; :hook
+  ;; :hook 
   ;; (python-ts-mode . lsp-deferred)
   ;; (clojure-ts-mode . lsp-deferred)
   ;; (clojure-mode . lsp-deferred)
@@ -463,20 +471,57 @@
   )
 
 
+;; (defun normalize-helix-emacs-lisp-normal-state-mode ()
+  
+;;   (message "ok maybe I will toggle the spificitt mode")
+;;   (if (eq (helix--current-state) 'normal)
+;;       (helix-emacs-lisp-normal-state-mode 1)
+;;     (helix-emacs-lisp-normal-state-mode -1)))
+
+;; (defun add-da-hook ()
+;;   (add-hook 'helix-normal-mode-hook 'normalize-helix-emacs-lisp-normal-state-mode nil t))
+
+
+
+
+
+
+
+;; (define-key emacs-lisp-mode-map (kbd "<return>") nil)
+
+
+;; (define-minor-mode helix-emacs-lisp-normal-state-mode
+;;   "Minor mode that is supposed to be active when in emacs-lisp-mode and helix-normal-mode"
+;;   :keymap (make-sparse-keymap))
+
+;; (defvar emacs-lisp-mode-normal-state-map (make-sparse-keymap))
+;; (define-key helix-emacs-lisp-normal-state-mode-map (kbd "<return>") '+emacs-lisp-prefix-command)
+
+;; (add-hook 'emacs-lisp-mode-hook 'add-da-hook nil t)
+
+
 (use-package eval-sexp-fu
   :defer t
+  :init
 
   
-  :init
+  (define-prefix-command '+emacs-lisp-prefix-command)
+  (define-key +emacs-lisp-prefix-command (kbd "b") 'eval-buffer)
+  (define-key +emacs-lisp-prefix-command (kbd "e") 'eval-last-sexp)
+
+
+
+
+ ;; (helix-define-key-for-mode 'emacs-lisp-mode 'normal (kbd "<return>") 'derp) ;
+
+  ;;  (helix-define-key '(normal visual) emacs-lisp-mode-map (kbd "<return>") '+emacs-lisp-prefix-command)
 
   (define-key emacs-lisp-mode-map (kbd "C-<return>") 'eval-sexp-fu-eval-sexp-inner-sexp)
   (define-key emacs-lisp-mode-map (kbd "M-<return>") 'eval-sexp-fu-eval-sexp-inner-list)
   (define-key emacs-lisp-mode-map (kbd "H-<return>") 'eval-defun)
 
   (require 'eval-sexp-fu)
-  (set-face-attribute 'show-paren-match nil :background nil)
-
-)
+  (set-face-attribute 'show-paren-match nil :background nil))
 
 (setq compilation-scroll-output t)
 
@@ -503,3 +548,7 @@
 ;; )
 
 ;; (require 'combobulate)
+
+(use-package go-mode)
+(use-package zig-mode)
+
