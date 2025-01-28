@@ -102,10 +102,15 @@
 (use-package corfu
   :defer t
   :init
-  (global-corfu-mode))
+  (global-corfu-mode)
+  ;; (tab-always-indent 'complete)
 
-(which-key-mode)
+  )
 
+(use-package which-key
+  :init
+  (which-key-mode)
+  )
 ;; (use-package '(evil-mc :type git :host github :repo "gabesoft/evil-mc" :demand nil))
 ;; (use-package evil-multiedit)		;
 ;; (use-package evil-mc
@@ -138,16 +143,18 @@
              (html . ("https://github.com/tree-sitter/tree-sitter-html" "v0.20.1"))
              (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "v0.20.1" "src"))
              (json . ("https://github.com/tree-sitter/tree-sitter-json" "v0.23.0"))
-             (markdown . "https://github.com/ikatyang/tree-sitter-markdown")
+             ;; (markdown . "https://github.com/ikatyang/tree-sitter-markdown")
              (python . ("https://github.com/tree-sitter/tree-sitter-python" "v0.20.4"))
-             (rust . "https://github.com/tree-sitter/tree-sitter-rust")
+             ;; (rust . "https://github.com/tree-sitter/tree-sitter-rust")
              (toml . ("https://github.com/tree-sitter/tree-sitter-toml" "v0.5.1"))
              (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "tsx/src"))
              (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "typescript/src"))
              (yaml . ("https://github.com/ikatyang/tree-sitter-yaml" "v0.5.0"))
-	     (commonlisp . ("https://github.com/tree-sitter-grammars/tree-sitter-commonlisp"))
-	     (elisp . ("https://github.com/Wilfred/tree-sitter-elisp"))
-	     ))
+	           (commonlisp . ("https://github.com/tree-sitter-grammars/tree-sitter-commonlisp"))
+	           (elisp . ("https://github.com/Wilfred/tree-sitter-elisp"))
+             (ocaml . ("https://github.com/tree-sitter/tree-sitter-ocaml" "v0.23.2" "grammars/ocaml/src/"))
+             (ocaml-interface . ("https://github.com/tree-sitter/tree-sitter-ocaml" "v0.23.2" "grammars/interface/src/"))
+	           ))
     (add-to-list 'treesit-language-source-alist grammar)
     ;; Only install `grammar' if we don't already have it
     ;; installed. However, if you want to *update* a grammar then
@@ -156,6 +163,7 @@
       (treesit-install-language-grammar (car grammar)))))
 
 (dolist (mapping
+         
          '((python-mode . python-ts-mode)
            (css-mode . css-ts-mode)
            (typescript-mode . typescript-ts-mode)
@@ -164,9 +172,11 @@
            (conf-toml-mode . toml-ts-mode)
            (go-mode . go-ts-mode)
            (css-mode . css-ts-mode)
-	   (clojure-mode . clojure-ts-mode)
+	         (clojure-mode . clojure-ts-mode)
            (json-mode . json-ts-mode)
-           (js-json-mode . json-ts-mode)))
+           (js-json-mode . json-ts-mode)
+           (tuareg-mode . ocaml-ts-mode)
+           ))
   (add-to-list 'major-mode-remap-alist mapping))
 (+setup-install-grammars)
 
@@ -191,14 +201,14 @@
   (define-key sly-mode-map (kbd "M-<return>") 'eval-sexp-fu-sly-eval-expression-inner-list)
 
 
-;; (map! nil sly-mode-map (kbd "<f4>eb") 'sly-eval-buffer)
-;; (map! nil sly-mode-map (kbd "<f4>et") '+slite-run-at-point-dwim)
-;; (map! nil sly-mode-map (kbd "<f4>'") 'sly)
-;; (map! nil sly-mode-map (kbd "<f4>xb") 'sly-eval-buffer)
-;; (map! nil sly-mode-map (kbd "<f4>eb") 'sly-eval-buffer)
-;; (map! nil sly-mode-map (kbd "<f4>") 'sly-eval-buffer)
-;; (map! nil sly-mode-map (kbd "<f4>xt") '+slite-run-at-point-dwim)
-;; (map! nil sly-mode-map (kbd "<f4>'") 'sly)
+  ;; (map! nil sly-mode-map (kbd "<f4>eb") 'sly-eval-buffer)
+  ;; (map! nil sly-mode-map (kbd "<f4>et") '+slite-run-at-point-dwim)
+  ;; (map! nil sly-mode-map (kbd "<f4>'") 'sly)
+  ;; (map! nil sly-mode-map (kbd "<f4>xb") 'sly-eval-buffer)
+  ;; (map! nil sly-mode-map (kbd "<f4>eb") 'sly-eval-buffer)
+  ;; (map! nil sly-mode-map (kbd "<f4>") 'sly-eval-buffer)
+  ;; (map! nil sly-mode-map (kbd "<f4>xt") '+slite-run-at-point-dwim)
+  ;; (map! nil sly-mode-map (kbd "<f4>'") 'sly)
 
   )
 
@@ -304,7 +314,7 @@
 (define-key '+leader-prefix-command (kbd "w") '+window-prefix-command)
 
 (use-package helix
-  :straight (helix :type git :host github :repo "tprost/helix"))
+  :straight (helix :type git :host github :repo "tprost/helix" :branch "remove-evil-mode"))
 
 (require 'helix)
 
@@ -398,7 +408,6 @@
 
   )
 
-(global-set-key (kbd "<TAB>") 'completion-at-point)
 
 (setq straight-vc-git-default-protocol 'ssh)
 
@@ -438,16 +447,16 @@
            :target (file+head "%<%Y-%m-%d>.org"
                               "#+title: %<%Y-%m-%d>\n"))))
 
-(define-prefix-command '+roam-prefix-command)
-(define-key +roam-prefix-command (kbd "i") 'org-roam-node-insert)
-(define-key +roam-prefix-command (kbd "f") 'org-roam-node-find)
+  (define-prefix-command '+roam-prefix-command)
+  (define-key +roam-prefix-command (kbd "i") 'org-roam-node-insert)
+  (define-key +roam-prefix-command (kbd "f") 'org-roam-node-find)
 
 
-;; (map! :leader "rr" #'org-roam-dailies-capture-today) hello
-;; (map! :leader "rgd" #'org-roam-dailies-goto-today)
-;; (map! :leader "rgy" #'org-roam-dailies-goto-yesterday)
-;; (map! :leader "gr" nil)
-;; (map! :leader "grd" #'org-roam-dailies-goto-today)
+  ;; (map! :leader "rr" #'org-roam-dailies-capture-today) hello
+  ;; (map! :leader "rgd" #'org-roam-dailies-goto-today)
+  ;; (map! :leader "rgy" #'org-roam-dailies-goto-yesterday)
+  ;; (map! :leader "gr" nil)
+  ;; (map! :leader "grd" #'org-roam-dailies-goto-today)
   )
 (use-package org-roam :defer t)
 
@@ -472,7 +481,7 @@
 
 
 ;; (defun normalize-helix-emacs-lisp-normal-state-mode ()
-  
+
 ;;   (message "ok maybe I will toggle the spificitt mode")
 ;;   (if (eq (helix--current-state) 'normal)
 ;;       (helix-emacs-lisp-normal-state-mode 1)
@@ -512,7 +521,7 @@
 
 
 
- ;; (helix-define-key-for-mode 'emacs-lisp-mode 'normal (kbd "<return>") 'derp) ;
+  ;; (helix-define-key-for-mode 'emacs-lisp-mode 'normal (kbd "<return>") 'derp) ;
 
   ;;  (helix-define-key '(normal visual) emacs-lisp-mode-map (kbd "<return>") '+emacs-lisp-prefix-command)
 
@@ -540,15 +549,65 @@
  '(fixed-pitch ((t nil))))
 
 
-(use-package rust-mode
-  :init
-  (setq rust-mode-treesitter-derive t))
+(use-package rust-mode)
+  ;; :init
+  ;; (setq rust-mode-treesitter-derive t))
 ;; (use-package combobulate
 ;; :defer t
 ;; )
 
 ;; (require 'combobulate)
 
-(use-package go-mode)
 (use-package zig-mode)
 
+(use-package go-mode
+  :config
+  (defun lsp-go-install-save-hooks ()
+    (add-hook 'before-save-hook #'lsp-format-buffer t t)
+    (add-hook 'before-save-hook #'lsp-organize-imports t t))
+  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
+  ;; Start LSP Mode and YASnippet mode
+  (add-hook 'go-mode-hook #'lsp-deferred)
+  (add-hook 'go-mode-hook #'yas-minor-mode)
+
+  (add-hook 'go-ts-mode-hook #'lsp-go-install-save-hooks)
+
+  (add-hook 'go-ts-mode-hook #'lsp-deferred)
+  (add-hook 'go-ts-mode-hook #'yas-minor-mode))
+
+(setq default-tab-width 2)
+
+(setq-default 
+ tab-width 2
+ standard-indent 2
+ indent-tabs-mode nil)
+                                        ; makes sure tabs are not used.
+
+(global-set-key (kbd "TAB") 'completion-at-point)
+
+
+(use-package consult)
+(use-package consult-lsp)
+
+(customize-set-variable 'mac-option-modifier 'meta)
+
+;; (use-package ligature)
+
+;; (ligature-set-ligatures
+;;    'prog-mode
+;;    '("<--" "<---" "<<-" "<-" "<->" "->" "->>" "-->" "--->"
+;;      "<!--" "-<<" "-<" "-<-" "->-" ">-" ">>-" "<-->" "<--->"
+;;      "<---->" "<==" "<===" "<<=" "<=" "<=>" "=>" "=>>" "==>"
+;;      "===>" "<!---" "=<<" "=<" "=<=" "=>=" ">=" ">>=" "<==>"
+;;      "<===>" "<====>" "<-------" "------->" "<======>" "<~~"
+;;      "<~" "~>" "~~>" "\\/" "/\\" "==" "!=" "/=" "~=" "<>"
+;;      "===" "!==" "=/=" "=!=" ":=" ":-" ":+" "<*" "<*>" "*>"
+;;      "<|" "<|>" "|>" "+:" "-:" "=:" "::" ":::" "<." "<.>"
+;;      ".>" "(*" "*)" ":>" "++" "+++" "|-" "-|"))
+
+
+(use-package restclient)
+(use-package ocaml-ts-mode)
+
+(use-package graphql-mode)
