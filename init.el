@@ -266,6 +266,7 @@
 (define-key +project-prefix-command (kbd "f") 'project-find-file)
 (define-key +project-prefix-command (kbd "b") 'project-switch-to-buffer)
 (define-key +project-prefix-command (kbd "t") '+makefile-execute-test)
+(define-key +project-prefix-command (kbd "c") 'project-compile)
 
 (define-prefix-command '+open-prefix-command)
 (define-key +open-prefix-command (kbd "f") 'make-frame)
@@ -611,3 +612,19 @@
 (use-package ocaml-ts-mode)
 
 (use-package graphql-mode)
+
+;; ;; Set lsp-ocaml server (ocamllsp)
+;; (setq lsp-ocaml-lang-server-command '("ocamllsp"))
+;; (setq lsp-ocaml-ocaml-lang-server-command '("ocamllsp"))
+;; (setq lsp-ocaml-lsp-server-command '("ocamllsp"))
+(use-package tuareg)
+
+(add-to-list 'lsp-language-id-configuration '(ocaml-ts-mode . "ocaml"))
+(lsp-register-client (make-lsp-client
+                      :new-connection (lsp-stdio-connection "ocamllsp")
+                      :activation-fn (lsp-activate-on "ocaml")
+                      :server-id 'ocamllsp))
+
+
+(use-package carp-mode
+  :straight (carp-mode :type git :host github :repo "carp-lang/carp-emacs"))
